@@ -9,7 +9,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
 
-        <title>{{ config('app.name', 'ILANDS SOLUTIONS | AI Tax Strategies') }}</title>
+        <title>{{ config('app.name', 'unstack my taxes') }}</title>
         <meta name="description" content="Optimize your tax profile with AI-powered insights. Specialized for gig workers, freelancers, and expats.">
         <meta name="robots" content="index, follow">
 
@@ -76,26 +76,8 @@
     @include('components.footer')
    
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="{{asset("assets/js/main.js")}}" type="script"></script>
-{{-- <script type="text/javascript">
-    function googleTranslateElementInit() {
-        // Widget Desktop
-        new google.translate.TranslateElement({
-            pageLanguage: 'en', // Langue par défaut de votre site
-            includedLanguages: 'en,fr',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
+    <script src="{{asset('assets/js/main.js')}}" type="script"></script>
 
-        // Widget Mobile (optionnel si vous le dupliquez dans le menu burger)
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'en,fr',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element_mobile');
-    }
-</script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> --}}
 
 {{-- google --}}

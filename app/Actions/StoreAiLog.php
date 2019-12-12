@@ -15,7 +15,6 @@ class StoreAiLog
       "tokens_used" => $usadeTokens,
     ]);
 
-    
     $lastTokens = Token::latest("id")->value("total_tokens") ?? 0;
 
     Token::create([
