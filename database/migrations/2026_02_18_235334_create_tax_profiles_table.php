@@ -26,6 +26,7 @@ return new class extends Migration
             $table->double('other_income',15,2)->default(0.00);
             $table->boolean('crypto_activity')->default(false);
             $table->json('raw_payload')->nullable();
+            
             $table->timestamps();
         });
     }
