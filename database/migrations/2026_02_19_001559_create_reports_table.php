@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('ai_response')->nullable();
             $table->text('summary')->nullable();
             $table->string('pdf_path')->nullable();
-            $table->timestamps('generated_at')->nullable();
+            $table->timestamp('generated_at')->nullable();
             
             $table->timestamps();
         });

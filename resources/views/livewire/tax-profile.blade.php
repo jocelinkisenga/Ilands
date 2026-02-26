@@ -17,7 +17,7 @@
         <div class="card bg-base-100 shadow-2xl border border-success/20">
             <div class="card-body">
 
-                <form method="POST" action="{{ route('tax-profiles.store') }}" class="space-y-8">
+                <form method="POST" action="" class="space-y-8">
                     @csrf
 
                     <!-- Filing Status -->
@@ -96,27 +96,50 @@
                             <label class="label">
                                 <span class="label-text font-semibold">Pays</span>
                             </label>
-                            <input type="text" name="country"
-                                class="input input-bordered focus:input-success"
-                                placeholder="France">
+                                    <select wire:model="selectedCountry"
+                class="select select-bordered select-success">
+                    <option value="">Choisir un pays</option>
+
+                        @foreach($countries as $country)
+                            <option value="{{ $country['id'] }}">
+                                {{ $country['name'] }}
+                            </option>
+                        @endforeach
+                     </select>
                         </div>
 
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text font-semibold">État / Province</span>
                             </label>
-                            <input type="text" name="state"
-                                class="input input-bordered focus:input-success"
-                                placeholder="Île-de-France">
+                                    <select wire:model="selectedState"
+                class="select select-bordered select-success"
+                @disabled(!$states)>
+                    <option value="">Choisir une province</option>
+
+                    @foreach($states as $state)
+                        <option value="{{ $state->id }}">
+                            {{ $state->name }}
+                        </option>
+                    @endforeach
+        </select>
                         </div>
 
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text font-semibold">Ville</span>
                             </label>
-                            <input type="text" name="town"
-                                class="input input-bordered focus:input-success"
-                                placeholder="Paris">
+                                    <select wire:model="selectedCity"
+                class="select select-bordered select-success"
+                @disabled(!$cities)>
+            <option value="">Choisir une ville</option>
+
+                        @foreach($cities as $city)
+                            <option value="{{ $city->name }}">
+                                {{ $city->name }}
+                            </option>
+                        @endforeach
+        </select>
                         </div>
 
                     </div>
