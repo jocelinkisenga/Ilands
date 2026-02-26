@@ -17,7 +17,7 @@
         <div class="card bg-base-100 shadow-2xl border border-success/20">
             <div class="card-body">
 
-                <form method="POST" action="" class="space-y-8">
+                <form method="POST" action="" class="space-y-8" wire:submit.prevent="save">
                     @csrf
 
                     <!-- Filing Status -->
@@ -28,7 +28,7 @@
                             </span>
                         </label>
 
-                        <select wire:model.live="property"="filing_status" class="select select-bordered focus:select-success">
+                        <select wire:model.live="filing_status" class="select select-bordered focus:select-success">
                             <option value="single">Célibataire</option>
                             <option value="married_joint">Marié (Déclaration commune)</option>
                             <option value="married_separeted">Marié (Déclaration séparée)</option>
@@ -47,7 +47,7 @@
                                     Revenu annuel (€)
                                 </span>
                             </label>
-                            <input type="number" step="0.01" name="annual_income"
+                            <input type="number" step="0.01" wire:model.live="property"="annual_income"
                                 class="input input-bordered focus:input-success"
                                 placeholder="0.00">
                         </div>
@@ -58,7 +58,7 @@
                                     Revenu activité commerciale (€)
                                 </span>
                             </label>
-                            <input type="number" step="0.01" name="business_income"
+                            <input type="number" step="0.01" wire:model.live="property"="business_income"
                                 class="input input-bordered focus:input-success"
                                 placeholder="0.00">
                         </div>
@@ -69,7 +69,7 @@
                                     Autres revenus (€)
                                 </span>
                             </label>
-                            <input type="number" step="0.01" name="other_income"
+                            <input type="number" step="0.01" wire:model.live="property"="other_income"
                                 class="input input-bordered focus:input-success"
                                 placeholder="0.00">
                         </div>
@@ -149,13 +149,18 @@
 
                     <div class="form-control">
                         <label class="cursor-pointer flex items-center gap-4">
-                            <input type="checkbox" name="crypto_activity"
-                                class="toggle toggle-success">
+                            <input type="checkbox" wire:model.live="crypto_activity"
+                                class="toggle toggle-success" @if($crypto_activity) checked @endif>
                             <span class="label-text font-semibold">
                                 J'ai une activité crypto
                             </span>
                         </label>
                     </div>
+                    <label class="label">
+        <span class="label-text-alt text-base-content/50">
+            Cela inclut le trading, le staking ou les paiements reçus en crypto.
+        </span>
+    </label>
 
                     <!-- Submit -->
                     <div class="pt-6">
