@@ -48,6 +48,8 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
              'role'    => RoleEnum::class,
+             'stripe_id',
+             'trial_ends_at'
         ];
     }
 
@@ -59,5 +61,11 @@ class User extends Authenticatable
     public function isClient(): bool
     {
         return $this->role === RoleEnum::CLIENT;
+    }
+
+    public function isSuscribed() : bool {
+      if  ($this->role === RoleEnum::CLIENT and $this->trial_ends_at !== null) {
+        return true;
+      }  else { return false; }
     }
 }
