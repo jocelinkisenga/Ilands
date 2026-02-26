@@ -22,13 +22,13 @@
 
                     <!-- Filing Status -->
                     <div class="form-control">
-                        <label class="label">
+                        <label class="label mr-3">
                             <span class="label-text font-semibold text-success">
                                 Statut Fiscal
                             </span>
                         </label>
 
-                        <select name="filing_status" class="select select-bordered focus:select-success">
+                        <select wire:model.live="property"="filing_status" class="select select-bordered focus:select-success">
                             <option value="single">Célibataire</option>
                             <option value="married_joint">Marié (Déclaration commune)</option>
                             <option value="married_separeted">Marié (Déclaration séparée)</option>
@@ -80,7 +80,7 @@
                                     Nombre de personnes à charge
                                 </span>
                             </label>
-                            <input type="number" name="depends"
+                            <input type="number" wire:model.live="property"="depends"
                                 class="input input-bordered focus:input-success"
                                 placeholder="0">
                         </div>
@@ -96,12 +96,12 @@
                             <label class="label">
                                 <span class="label-text font-semibold">Pays</span>
                             </label>
-                                    <select wire:model="selectedCountry"
+                                    <select wire:model.live="selectedCountry"
                 class="select select-bordered select-success">
                     <option value="">Choisir un pays</option>
 
                         @foreach($countries as $country)
-                            <option value="{{ $country['id'] }}">
+                            <option value="{{ $country['id'] }}" >
                                 {{ $country['name'] }}
                             </option>
                         @endforeach
@@ -112,14 +112,14 @@
                             <label class="label">
                                 <span class="label-text font-semibold">État / Province</span>
                             </label>
-                                    <select wire:model="selectedState"
+                                    <select wire:model.live="selectedState"
                 class="select select-bordered select-success"
                 @disabled(!$states)>
                     <option value="">Choisir une province</option>
 
                     @foreach($states as $state)
-                        <option value="{{ $state->id }}">
-                            {{ $state->name }}
+                        <option value="{{ $state['id'] }}">
+                            {{ $state['name'] }}
                         </option>
                     @endforeach
         </select>
@@ -129,14 +129,14 @@
                             <label class="label">
                                 <span class="label-text font-semibold">Ville</span>
                             </label>
-                                    <select wire:model="selectedCity"
+                                    <select wire:model.live="selectedCity"
                 class="select select-bordered select-success"
                 @disabled(!$cities)>
             <option value="">Choisir une ville</option>
 
                         @foreach($cities as $city)
-                            <option value="{{ $city->name }}">
-                                {{ $city->name }}
+                            <option value="{{ $city['name'] }}">
+                                {{ $city['name'] }}
                             </option>
                         @endforeach
         </select>

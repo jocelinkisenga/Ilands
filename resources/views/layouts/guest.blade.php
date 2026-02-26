@@ -13,6 +13,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
     <body x-data="{ darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches }"
       :class="darkMode ? 'dark bg-slate-900 text-white' : 'bg-slate-50 text-slate-800'"
@@ -21,6 +22,7 @@
                 @yield("content")
             
     @include('components.footer')
+    @livewireScripts
     <script src="https://unpkg.com/lucide@latest"></script>
 <script>
     lucide.createIcons();

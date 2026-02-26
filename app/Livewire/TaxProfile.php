@@ -15,6 +15,7 @@ class TaxProfile extends Component
     public $selectedCountry = null;
     public $selectedState = null;
     public $selectedCity = null;
+    public $property;
 
     public function mount()
     {
@@ -23,27 +24,26 @@ class TaxProfile extends Component
 
         public function updatedSelectedCountry($value)
     {
+
+
         $this->states = [];
         $this->cities = [];
         $this->selectedState = null;
         $this->selectedCity = null;
 
-        if ($value) {
-            // $this->states = World::states([
-            //     'filters' => ['country_id' => $value]
-            // ])->data;
-          $this->states =   World::countries([
-    'fields' => 'states',
-    'filters' => [
-        'id' => $value,
-    ]
-]);
 
+        if ($value) {
+            $this->states = World::states([
+                'filters' => ['country_id' => $value]
+            ])->data;
+ 
         }
     }
 
     public function updatedSelectedState($value)
     {
+        
+
         $this->cities = [];
         $this->selectedCity = null;
 
@@ -54,9 +54,9 @@ class TaxProfile extends Component
         }
     }
 
+
     public function render()
-    {
-        
+    { 
 
         return view('livewire.tax-profile');
     }
