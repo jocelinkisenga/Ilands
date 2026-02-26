@@ -9,4 +9,8 @@ class SubscriptionController extends Controller
     public function subscribe(){
         dd('subscribed');
     }
+
+    public function pricing() {
+        return view('pages.pricing');
+    }
 }

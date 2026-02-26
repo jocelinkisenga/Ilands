@@ -6,8 +6,10 @@ use App\Http\Middleware\SubscriptionMiddleWare;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('pricing', [SubscriptionController::class, 'pricing'])->name('pricing');
 
 Route::get('/subscribe', [SubscriptionController::class, 'index'])->middleware(SubscriptionMiddleWare::class)->name('subscribe');
 
