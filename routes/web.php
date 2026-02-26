@@ -14,7 +14,7 @@ Route::get('pricing', [SubscriptionController::class, 'pricing'])->name('pricing
 
 Route::get('/subscribe', [SubscriptionController::class, 'index'])->middleware(SubscriptionMiddleWare::class)->name('subscribe');
 
-Route::livewire('/tax-profile',TaxProfile::class);
+Route::livewire('/tax-profile',TaxProfile::class)->name('tax-profile');
 
 
 
