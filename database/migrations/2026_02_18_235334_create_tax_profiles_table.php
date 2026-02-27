@@ -15,17 +15,17 @@ return new class extends Migration
     {
         Schema::create('tax_profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->enum('filing_status', ['single','married_joint','married_separeted','head_household'])->default('single');
-            $table->double('annual_income',15,2)->default(0.00);
-            $table->string('country')->nullable();
-            $table->string('state')->nullable();
-            $table->string('town')->nullable();
-            $table->integer('depends')->nullable();
-            $table->double('business_income',15,2)->default(0.00);
-            $table->double('other_income',15,2)->default(0.00);
-            $table->boolean('crypto_activity')->default(false);
-            $table->json('raw_payload')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('filing_status');
+            $table->string('state_residence');
+            $table->year('tax_year')->default(2025);
+            $table->text('encrypted_dependents');
+            $table->json('income_details');  
+            $table->json('deductions');      
+            $table->json('life_events');    
+            $table->json('goals');     
+
+            $table->json('raw_payload');
             
             $table->timestamps();
         });

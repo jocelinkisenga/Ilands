@@ -8,7 +8,10 @@ use App\Http\Middleware\SubscriptionMiddleWare;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\TaxProfile;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\LegalController;
 use App\Livewire\Blog;
+use App\Livewire\Contact;
+use Symfony\Component\Routing\Route as RoutingRoute;
 
 Route::get('/', function () {
     return view('home');
@@ -22,8 +25,9 @@ Route::get('/subscribe', [SubscriptionController::class, 'index'])->middleware(S
 
 Route::livewire('/tax-profile',TaxProfile::class)->name('tax-profile');
 Route::livewire('/blog',Blog::class)->name('blog');
-
-
+Route::get('contact', Contact::class)->name('contact');
+Route::get('terms', [LegalController::class, 'terms'])->name('terms');
+Route::get('privacy', [LegalController::class, 'privacy'])->name('privacy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

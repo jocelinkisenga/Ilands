@@ -13,21 +13,23 @@ class TaxProfile extends Model
          'annual_income', 
          'country', 
         'state', 
-        'town', 
-        'depends', 
-        'business_income', 
-        'other_income', 
-        'crypto_activity', 
+        'town',
+        'encrypted_dependents', 
+        'income_details', 
+        'deductions', 
+        'life_events', 
+        'goals', 
         'raw_payload'
-    ];
+        ];
 
     protected $casts = [
-        'annual_income' => 'double',
-        'business_income' => 'double',
-        'other_income' => 'double',
-        'crypto_activity' => 'boolean',
-        'raw_payload' => 'array', // Important pour la manipulation JSON
-    ];
+            'encrypted_dependents' => 'encrypted:array',
+            'income_details' => 'array',
+            'deductions' => 'array',
+            'life_events' => 'array',
+            'goals' => 'array',
+            'raw_payload' => 'array',
+        ];
 
     public function user(): BelongsTo
     {
