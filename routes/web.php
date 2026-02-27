@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Middleware\SubscriptionMiddleWare;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +11,8 @@ use App\Livewire\TaxProfile;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('about', [AboutController::class, 'index'])->name('about');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/services', [ServiceController::class, 'index'])->name('services');
 Route::get('pricing', [SubscriptionController::class, 'pricing'])->name('pricing');
 
 Route::get('/subscribe', [SubscriptionController::class, 'index'])->middleware(SubscriptionMiddleWare::class)->name('subscribe');
