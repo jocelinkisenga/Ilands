@@ -22,11 +22,11 @@
                 @yield("content")
             
     @include('components.footer')
-    @livewireScripts
+   
     <script src="https://unpkg.com/lucide@latest"></script>
 <script>
     lucide.createIcons();
 </script>
-
+ @livewireScripts
     </body>
 </html>

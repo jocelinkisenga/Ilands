@@ -14,58 +14,59 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body x-data="{ darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches }"
-      :class="darkMode ? 'dark bg-slate-900 text-white' : 'bg-slate-50 text-slate-800'"
-      class="transition duration-500">
-    <form method="POST" action="{{ route('register') }}" class="py-16">
-        @csrf
+    <body >
+<div class="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-12">
+    
+    <div class="mb-6 text-center">
+        <h1 class="text-3xl font-black tracking-tighter uppercase text-white">
+            CRÉER UN <span class="text-green-500 underline decoration-green-500/30">PROFIL FISCAL</span>
+        </h1>
+        <p class="text-gray-400 mt-2">Sécurisez vos données avec un chiffrement de niveau bancaire.</p>
+    </div>
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+    <div class="max-w-md w-full bg-white/5 border border-green-500/20 rounded-3xl p-8 shadow-2xl">
+        <form method="POST" action="{{ route('register') }}" class="space-y-5">
+            @csrf
+            
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-green-500 mb-2">Prénom & Nom</label>
+                <input type="text" name="name" value="{{ old('name') }}" required
+                       class="w-full bg-black border border-white/10 rounded-xl p-4 focus:border-green-500 outline-none transition text-white">
+                @error('name') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+            </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-green-500 mb-2">Email</label>
+                <input type="email" name="email" value="{{ $email ?? old('email') }}" required
+                       class="w-full bg-black border border-white/10 rounded-xl p-4 focus:border-green-500 outline-none transition text-white">
+                @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+            </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-green-500 mb-2">Mot de passe</label>
+                <input type="password" name="password" required
+                       class="w-full bg-black border border-white/10 rounded-xl p-4 focus:border-green-500 outline-none transition text-white"
+                       placeholder="Min. 8 caractères">
+                @error('password') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+            </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-green-500 mb-2">Confirmer le mot de passe</label>
+                <input type="password" name="password_confirmation" required
+                       class="w-full bg-black border border-white/10 rounded-xl p-4 focus:border-green-500 outline-none transition text-white">
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+            <button type="submit" 
+                    class="w-full bg-green-600 hover:bg-green-500 text-white py-4 rounded-xl font-bold transition shadow-lg shadow-green-900/30 mt-4">
+                Créer mon compte
+            </button>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <p class="text-center text-gray-500 text-xs mt-4">
+                En vous inscrivant, vous acceptez nos <a href="#" class="text-white underline">Conditions d'Utilisation</a> et notre <a href="#" class="text-white underline">Politique de Confidentialité</a>.
+            </p>
+        </form>
+    </div>
+</div>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
     </body>
 </html>

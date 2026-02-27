@@ -1,9 +1,9 @@
 <?php
+
 namespace App\Livewire;
 
 use App\Models\Lead;
 use Livewire\Component;
-use Livewire\Attributes\Validate;
 
 class TaxScreener extends Component
 {
@@ -15,27 +15,39 @@ class TaxScreener extends Component
     public $annual_income = '';
     public $tracking_status = '';
     public $tax_concern = '';
-    
-    #[Validate('required|min:2')]
     public $first_name = '';
-    
-    #[Validate('required|email')]
     public $email = '';
 
     public $recommendation = null;
 
+    // Validation dynamique selon l'étape
     public function nextStep()
     {
+        if ($this->step == 1) {
+
+            $this->validate(['income_source' => 'required'], ['income_source.required' => 'Veuillez sélectionner une source de revenus.']);
+        } elseif ($this->step == 2) {
+            
+            $this->validate(['annual_income' => 'required'], ['annual_income.required' => 'Veuillez sélectionner une tranche de revenus.']);
+        } elseif ($this->step == 3) {
+            $this->validate(['tracking_status' => 'required'], ['tracking_status.required' => 'Veuillez sélectionner une option de suivi.']);
+        }
+
         if ($this->step < $this->totalSteps) {
             $this->step++;
-        } else {
-            $this->submit();
         }
     }
 
     public function submit()
     {
-        $this->validate();
+        // Validation de la dernière étape
+        $this->validate([
+            'first_name' => 'required|min:2',
+            'email'      => 'required|email|unique:leads,email',
+        ], [
+            'first_name.required' => 'Le prénom est obligatoire.',
+            'email.required' => 'Une adresse email valide est requise.'
+        ]);
 
         // Logique de recommandation
         if ($this->income_source === 'gig' && $this->tracking_status === 'no') {
@@ -55,7 +67,7 @@ class TaxScreener extends Component
             ];
         }
 
-        // Sauvegarde en base MySQL
+        
         Lead::create([
             'first_name' => $this->first_name,
             'email' => $this->email,
@@ -69,8 +81,16 @@ class TaxScreener extends Component
         $this->step = 'results';
     }
 
+    public function previousStep()
+{
+    if ($this->step > 1) {
+        $this->step--;
+        $this->resetErrorBag(); 
+    }
+}
+
     public function render()
     {
-        return view('livewire.tax-screener')->extends('layouts.guest');
+        return view('livewire.tax-screener');
     }
 }

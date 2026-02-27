@@ -6,9 +6,49 @@
     <title>Connexion | TaxAI</title>
     @vite('resources/css/app.css')
 </head>
-<body class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center px-4">
+<body >
 
-    <div class="w-full max-w-md">
+<div class="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6">
+    
+    <div class="mb-8 text-center">
+        <h1 class="text-3xl font-black tracking-tighter uppercase">
+            ILANDS <span class="text-green-500">SOLUTIONS</span>
+        </h1>
+    </div>
+
+    <div class="max-w-md w-full bg-white/5 border border-green-500/20 rounded-3xl p-8 shadow-2xl">
+        <form method="POST" action="{{ route('login') }}" class="space-y-6">
+            @csrf
+            
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-green-500 mb-2">Email</label>
+                <input type="email" name="email" value="{{ old('email') }}" required autofocus
+                       class="w-full bg-black border border-white/10 rounded-xl p-4 focus:border-green-500 outline-none transition">
+                @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-green-500 mb-2">Password</label>
+                <input type="password" name="password" required
+                       class="w-full bg-black border border-white/10 rounded-xl p-4 focus:border-green-500 outline-none transition">
+            </div>
+
+            <div class="flex items-center justify-between text-sm">
+                <label class="flex items-center">
+                    <input type="checkbox" name="remember" class="rounded border-white/10 bg-black text-green-600">
+                    <span class="ml-2 text-gray-400">Rester connecté</span>
+                </label>
+            </div>
+
+            <button type="submit" 
+                    class="w-full bg-green-600 hover:bg-green-500 text-white py-4 rounded-xl font-bold transition shadow-lg shadow-green-900/20">
+                Se connecter
+            </button>
+        </form>
+    </div>
+</div>
+
+{{--     <div class="w-full max-w-md">
 
         <!-- Logo / Brand -->
         <div class="text-center mb-8">
@@ -100,7 +140,7 @@
             </a>
         </p>
 
-    </div>
+    </div> --}}
 
 </body>
 </html>
