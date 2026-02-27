@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Middleware\SubscriptionMiddleWare;
@@ -9,7 +10,7 @@ use App\Livewire\TaxProfile;
 Route::get('/', function () {
     return view('home');
 });
-
+Route::get('about', [AboutController::class, 'index'])->name('about');
 Route::get('pricing', [SubscriptionController::class, 'pricing'])->name('pricing');
 
 Route::get('/subscribe', [SubscriptionController::class, 'index'])->middleware(SubscriptionMiddleWare::class)->name('subscribe');
