@@ -66,19 +66,18 @@
 
         <div>
             <h1 class="text-4xl md:text-6xl font-bold leading-tight">
-                Next-Generation Tax Advisory.
-                <span class="text-emerald-400">Powered by AI.</span>
+                Maximize Your Tax Deductions
+                <span class="text-emerald-400"> Without Expensive CPAs.</span>
             </h1>
 
             <p class="mt-6 text-lg text-white/70 leading-relaxed">
-                AI-enhanced tax optimization for freelancers, gig workers and expats
-                across the US and Europe. Built with licensed professionals.
+                AI-Powered Tax Advisory for Gig Workers & Expats - From $9
             </p>
 
             <div class="mt-10 flex flex-col sm:flex-row gap-4">
                 <button @click="openAssessment=true"
                         class="bg-emerald-500 hover:bg-emerald-600 text-black font-semibold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-500/20 transition">
-                    Start Free Tax Assessment →
+                    Get Your Free Tax Screener →
                 </button>
 
                 <a href="#how"
