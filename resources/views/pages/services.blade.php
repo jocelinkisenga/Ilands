@@ -1,7 +1,4 @@
-@extends('layouts.guest')
-
-@section('content')
-
+<x-guest-layout>
 <div class="bg-black text-white min-h-screen">
 
     <!-- HERO -->
@@ -192,5 +189,4 @@
     </section>
 
 </div>
-
-@endsection
+</x-guest-layout>

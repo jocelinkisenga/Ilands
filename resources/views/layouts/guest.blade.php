@@ -19,8 +19,8 @@
       :class="darkMode ? 'dark bg-slate-900 text-white' : 'bg-slate-50 text-slate-800'"
       class="transition duration-500">
       @include('components.navbar')
-                @yield("content")
-            
+               {{ $slot }}
+         
     @include('components.footer')
    
     <script src="https://unpkg.com/lucide@latest"></script>

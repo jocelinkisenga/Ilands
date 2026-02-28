@@ -113,7 +113,7 @@
                         <p class="text-2xl font-bold">{{ $recommendation['tier'] }}</p>
                     </div>
 
-                    <a href="/register" class="inline-block w-full text-center bg-green-600 hover:bg-green-500 border-none text-white py-4 rounded-xl text-lg font-bold transition">
+                <a href="/register" class="inline-block w-full text-center bg-green-600 hover:bg-green-500 border-none text-white py-4 rounded-xl text-lg font-bold transition">
                         Commencer mon profil
                     </a>
                 </div>

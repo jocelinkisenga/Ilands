@@ -1,46 +1,6 @@
-@extends('layouts.guest')
-
-@section('content')
+<x-guest-layout>
 
 <div x-data="app()" x-init="init()" class="bg-black text-white scroll-smooth">
-
-<!-- ================= NAVBAR ================= -->
-<header class="fixed w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="flex items-center justify-between h-20">
-
-            <!-- Logo -->
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
-                    <span class="text-emerald-400 font-bold">TA</span>
-                </div>
-                <span class="font-semibold tracking-wide">Tax Advisory AI</span>
-            </div>
-
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex gap-8 text-sm text-white/70">
-                <a href="#how" class="hover:text-white transition">How It Works</a>
-                <a href="#calculator" class="hover:text-white transition">Calculator</a>
-                <a href="#pricing" class="hover:text-white transition">Pricing</a>
-                <a href="#faq" class="hover:text-white transition">FAQ</a>
-            </nav>
-
-            <!-- Right -->
-            <div class="hidden md:flex items-center gap-4">
-                <button @click="openAssessment=true"
-                        class="bg-emerald-500 hover:bg-emerald-600 text-black font-semibold px-6 py-2.5 rounded-xl shadow-lg shadow-emerald-500/20 transition">
-                    Free Assessment
-                </button>
-            </div>
-
-            <!-- Mobile -->
-            <button @click="mobile=true" class="md:hidden">
-                ☰
-            </button>
-
-        </div>
-    </div>
-</header>
 
 <!-- Mobile Menu -->
 <div x-show="mobile" x-transition class="fixed inset-0 bg-black/95 z-40 p-10">
@@ -250,33 +210,7 @@
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer class="py-12 border-t border-white/10 text-center text-white/50 text-sm">
-    © {{ date('Y') }} Tax Advisory AI.
-    <div class="mt-4 max-w-3xl mx-auto">
-        AI-assisted tax optimization insights developed with licensed professionals.
-        For legal representation, consult a licensed advisor in your jurisdiction.
-    </div>
-</footer>
 
-<!-- ================= AI ASSESSMENT MODAL ================= -->
-<div x-show="openAssessment" x-transition
-     class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-6">
-
-    <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-10 max-w-lg w-full">
-        <h3 class="text-2xl font-bold mb-6">Free Tax Assessment</h3>
-
-        <input type="text" placeholder="Your Email"
-               class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 mb-4">
-
-        <button class="w-full bg-emerald-500 text-black py-3 rounded-xl">
-            Continue →
-        </button>
-
-        <button @click="openAssessment=false" class="mt-4 text-sm text-white/60">
-            Cancel
-        </button>
-    </div>
-</div>
 
 </div>
 
@@ -311,4 +245,4 @@ function app() {
 }
 </script>
 
-@endsection
+</x-guest-layout>
