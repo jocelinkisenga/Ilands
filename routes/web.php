@@ -23,7 +23,7 @@ Route::get('/faq', [FaqController::class, 'index']);
 Route::get('pricing', [SubscriptionController::class, 'pricing'])->name('pricing');
 
 Route::get('/subscribe', [SubscriptionController::class, 'index'])->middleware(SubscriptionMiddleWare::class)->name('subscribe');
-Route::livewire('/tax-screener', TaxScreener::class)->name('taxt-screener');
+Route::livewire('/tax-screener', TaxScreener::class)->name('tax-screener');
 Route::livewire('/tax-profile',TaxProfile::class)->name('tax-profile');
 Route::livewire('/blog',Blog::class)->name('blog');
 Route::get('contact', Contact::class)->name('contact');

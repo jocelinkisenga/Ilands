@@ -2,20 +2,6 @@
 
 <div x-data="app()" x-init="init()" class="bg-black text-white scroll-smooth">
 
-<!-- Mobile Menu -->
-<div x-show="mobile" x-transition class="fixed inset-0 bg-black/95 z-40 p-10">
-    <button @click="mobile=false" class="text-right w-full mb-10">✕</button>
-    <div class="flex flex-col gap-6 text-lg">
-        <a href="#how">How It Works</a>
-        <a href="#calculator">Calculator</a>
-        <a href="#pricing">Pricing</a>
-        <button @click="openAssessment=true; mobile=false"
-                class="bg-emerald-500 text-black py-3 rounded-xl">
-            Free Assessment
-        </button>
-    </div>
-</div>
-
 <!-- ================= HERO ================= -->
 <section class="pt-40 pb-32 relative overflow-hidden">
 
@@ -35,10 +21,10 @@
             </p>
 
             <div class="mt-10 flex flex-col sm:flex-row gap-4">
-                <button @click="openAssessment=true"
+                <a href="{{route('tax-screener')}}" 
                         class="bg-emerald-500 hover:bg-emerald-600 text-black font-semibold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-500/20 transition">
                     Get Your Free Tax Screener →
-                </button>
+                </a>
 
                 <a href="#how"
                    class="border border-white/20 px-8 py-4 rounded-2xl text-white/80 hover:border-white/40 transition">
@@ -202,10 +188,10 @@
         <h2 class="text-4xl font-bold mb-6">
             Rebuilding Tax Advisory for the AI Era.
         </h2>
-        <button @click="openAssessment=true"
+        <a href="{{route('tax-screener')}}" 
                 class="bg-black text-white px-10 py-4 rounded-2xl font-semibold hover:bg-gray-900 transition shadow-xl">
-            Start Your Free Assessment →
-        </button>
+            SGet Your Free Tax Screener →
+        </a>
     </div>
 </section>
 

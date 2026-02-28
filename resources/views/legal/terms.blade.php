@@ -1,6 +1,4 @@
-@extends('layouts.guest')
-
-@section('content')
+<x-guest-layout>
 <div class="bg-black text-white min-h-screen pb-20">
     <section class="py-16 border-b border-green-500/10">
         <div class="max-w-4xl mx-auto px-6">
@@ -48,4 +46,4 @@
         </section>
     </div>
 </div>
-@endsection
+</x-guest-layout>
