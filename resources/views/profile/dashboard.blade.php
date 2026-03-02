@@ -18,7 +18,7 @@
             <div class="stat-desc font-bold">1 analyse en attente de validation</div>
         </div>
     </div>
-
+    
     <div class="card bg-base-100 shadow-xl border border-base-200">
         <div class="card-body">
             <h2 class="card-title justify-between">
@@ -39,12 +39,15 @@
                     </thead>
                     <tbody>
                         <tr>
+                        @foreach($taxProfiles as $profile)
+                        <tr>
                             <td>26 Feb 2026</td>
                             <td>Revenus Crypto</td>
                             <td><span class="badge badge-warning">Validation Humaine</span></td>
-                            <td><progress class="progress progress-primary w-20" value="88" max="100"></progress> 88%</td>
+                            <td><progress class="progress progress-primary w-20" value="88" max="100"></progress> {{$profile->score}}%</td>
                             <td><button class="btn btn-ghost btn-xs" disabled>En attente</button></td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

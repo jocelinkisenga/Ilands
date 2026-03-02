@@ -8,6 +8,11 @@ use Exception;
 
 class TaxProfileService
 {
+    public function getAllTaxProfiles () {
+        return TaxProfile::where('user_id',auth()->user()->id)->latest()->get();
+    }
+
+
     /**
      * Enregistrer un nouveau profil fiscal.
      */

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Middleware\SubscriptionMiddleWare;
@@ -12,6 +12,7 @@ use App\Http\Controllers\LegalController;
 use App\Livewire\Blog;
 use App\Livewire\Contact;
 use App\Livewire\TaxScreener;
+use App\Http\Controllers\Client\DashboardController;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 Route::get('/', function () {
@@ -30,9 +31,7 @@ Route::get('contact', Contact::class)->name('contact');
 Route::get('terms', [LegalController::class, 'terms'])->name('terms');
 Route::get('privacy', [LegalController::class, 'privacy'])->name('privacy');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'index'] )->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
