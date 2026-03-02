@@ -6,7 +6,6 @@
             <p class="text-gray-400 mt-2">Last Updated: February 2026</p>
         </div>
     </section>
-
     <div class="max-w-4xl mx-auto px-6 mt-12 prose prose-invert prose-green">
         
         <div class="bg-green-600/10 border-l-4 border-green-600 p-6 mb-10 rounded-r-xl">
