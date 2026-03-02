@@ -9,27 +9,17 @@ class TaxProfile extends Model
 {
     protected $fillable = [
         'user_id',
-         'filing_status', 
-         'annual_income', 
-         'country', 
-        'state', 
-        'town',
-        'encrypted_dependents', 
-        'income_details', 
-        'deductions', 
-        'life_events', 
-        'goals', 
-        'raw_payload'
-        ];
+        'tax_year',
+        'data',
+        'scores',
+        'recommended_tier',
+        'ai_summary'
+    ];
 
     protected $casts = [
-            'encrypted_dependents' => 'encrypted:array',
-            'income_details' => 'array',
-            'deductions' => 'array',
-            'life_events' => 'array',
-            'goals' => 'array',
-            'raw_payload' => 'array',
-        ];
+        'data' => 'array',
+        'scores' => 'array',
+    ];
 
     public function user(): BelongsTo
     {

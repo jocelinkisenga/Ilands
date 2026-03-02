@@ -11,23 +11,23 @@
             </div>
 
             <div class="hidden lg:flex items-center space-x-6">
-                <a href="/" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">Simulation</a>
+ 
                 <a href="/services" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">Services</a>
-                <a href="/about" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">À Propos</a>
+                <a href="/about" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">About Us</a>
                 <a href="/contact" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">Contact</a>
                 
                 <div class="h-6 w-[1px] bg-slate-200 dark:bg-white/10 mx-2"></div>
 
                 @auth
-                    <a href="/dashboard" class="text-xs font-bold uppercase tracking-widest text-green-600 dark:text-green-500 transition">Mon Dossier</a>
+                    <a href="/dashboard" class="text-xs font-bold uppercase tracking-widest text-green-600 dark:text-green-500 transition">My Account</a>
                     <form method="POST" action="{{ route('logout') }}" class="inline">
                         @csrf
-                        <button type="submit" class="text-xs font-bold uppercase tracking-widest text-red-500 hover:text-red-400 transition">Quitter</button>
+                        <button type="submit" class="text-xs font-bold uppercase tracking-widest text-red-500 hover:text-red-400 transition">Logout</button>
                     </form>
                 @else
-                    <a href="/login" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">Connexion</a>
-                    <a href="/register" class="bg-green-600 dark:bg-green-500 text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:brightness-110 transition shadow-lg">
-                        S'inscrire
+                    <a href="/login" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">Login</a>
+                    <a href="/tax-screener" class="bg-green-600 dark:bg-green-500 text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:brightness-110 transition shadow-lg">
+                        Get your free tax screener
                     </a>
                 @endauth
 
@@ -63,20 +63,20 @@
         
         <a href="/" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Simulation</a>
         <a href="/services" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Services</a>
-        <a href="/about" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">À Propos</a>
+        <a href="/about" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">About Us</a>
         <a href="/contact" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Contact</a>
         
         <div class="pt-4 space-y-4">
             @auth
-                <a href="/dashboard" class="block text-sm font-bold uppercase tracking-widest text-green-600 py-2">Tableau de Bord</a>
+                <a href="/dashboard" class="block text-sm font-bold uppercase tracking-widest text-green-600 py-2">Dashboard</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="block w-full text-left text-sm font-bold uppercase tracking-widest text-red-500 py-2">Déconnexion</button>
+                    <button type="submit" class="block w-full text-left text-sm font-bold uppercase tracking-widest text-red-500 py-2">Logout</button>
                 </form>
             @else
-                <a href="/login" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-2">Connexion</a>
-                <a href="/register" class="block bg-green-600 dark:bg-green-500 text-white px-6 py-4 rounded-xl font-bold text-center text-xs uppercase tracking-widest shadow-lg shadow-green-900/20">
-                    S'inscrire Maintenant
+                <a href="/login" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-2">Login</a>
+                <a href="/tax-screener" class="block bg-green-600 dark:bg-green-500 text-white px-6 py-4 rounded-xl font-bold text-center text-xs uppercase tracking-widest shadow-lg shadow-green-900/20">
+                    Get your free tax screener
                 </a>
             @endauth
         </div>

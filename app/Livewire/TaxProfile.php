@@ -34,6 +34,40 @@ class TaxProfile extends Component
     public $country;
     public $state;
 
+
+
+        public $step = 1;
+    public $totalSteps = 8;
+
+    public $form = [
+        'income' => [],
+        'business' => [],
+        'expenses' => [],
+        'assets' => [],
+        'life_events' => [],
+        'risk' => [],
+        'goals' => [],
+        'personal' => [],
+    ];
+
+    public $scores = [];
+
+    public function nextStep()
+    {
+        if ($this->step < $this->totalSteps) {
+            $this->step++;
+        }
+    }
+
+    public function previousStep()
+    {
+        if ($this->step > 1) {
+            $this->step--;
+        }
+    }
+    
+    
+
     public function mount()
     {
         $this->countries = World::countries()->data;

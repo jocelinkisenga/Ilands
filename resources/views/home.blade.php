@@ -3,7 +3,7 @@
 <div x-data="app()" x-init="init()" class="bg-black text-white scroll-smooth">
 
 <!-- ================= HERO ================= -->
-<section class="pt-40 pb-32 relative overflow-hidden">
+<section class="pt-15 pb-32 relative overflow-hidden">
 
     <!-- Animated Gradient -->
     <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-transparent to-transparent animate-pulse"></div>
@@ -69,29 +69,7 @@
     </div>
 </section>
 
-<!-- ================= ROI CALCULATOR ================= -->
-<section id="calculator" class="py-28 bg-white/5">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold mb-12">Tax Optimization Calculator</h2>
 
-        <div class="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-10 text-left">
-            <label class="block mb-4 text-sm">Annual Income</label>
-            <input type="number" x-model="income"
-                   class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 mb-6">
-
-            <label class="block mb-4 text-sm">Estimated Deduction Improvement (%)</label>
-            <input type="range" min="1" max="25" x-model="rate" class="w-full mb-6">
-
-            <div class="text-xl font-semibold">
-                Potential Additional Savings:
-                <span class="text-emerald-400">
-                    <span x-text="currencySymbol"></span>
-                    <span x-text="calculateSavings()"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ================= BENEFITS ================= -->
 <section class="py-28">
