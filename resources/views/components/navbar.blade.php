@@ -38,7 +38,8 @@
             </div>
 
             <div class="lg:hidden flex items-center gap-3">
-                <button onclick="document.documentElement.classList.toggle('dark')" class="p-2 rounded-lg bg-slate-100 dark:bg-white/10">
+                <button @click="dark = !dark"
+             class="p-2 rounded-lg bg-slate-100 dark:bg-white/10">
                     <span class="dark:hidden">🌙</span>
                     <span class="hidden dark:inline">☀️</span>
                 </button>

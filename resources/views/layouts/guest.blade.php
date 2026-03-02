@@ -15,9 +15,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
-    <body x-data="{ darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches }"
-      :class="darkMode ? 'dark bg-slate-900 text-white' : 'bg-slate-50 text-slate-800'"
-      class="transition duration-500">
+    <body     x-data="{ dark: true }"
+    :class="dark ? 'dark bg-black text-white' : 'bg-gray-100 text-gray-900'"      
+    class="transition duration-500">
       @include('components.navbar')
                {{ $slot }}
          

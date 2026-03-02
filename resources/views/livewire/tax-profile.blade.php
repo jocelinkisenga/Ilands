@@ -67,18 +67,18 @@
     @if($step === 2)
         <h2 class="text-2xl font-semibold mb-6">Business Structure & Operations</h2>
 
-        <div class="space-y-4">
+        <div class="grid md:grid-cols-2 space-y-4">
 
-            <label><input type="checkbox" wire:model="form.business.separate_bank"> Separate Business Bank Account</label>
-            <label><input type="checkbox" wire:model="form.business.separate_credit"> Separate Business Credit Card</label>
-            <label><input type="checkbox" wire:model="form.business.accounting_software"> Using Accounting Software</label>
-            <label><input type="checkbox" wire:model="form.business.payroll_system"> Payroll System Active</label>
-            <label><input type="checkbox" wire:model="form.business.contractors_paid"> Contractors Paid</label>
-            <label><input type="checkbox" wire:model="form.business.inventory_business"> Inventory Based Business</label>
-            <label><input type="checkbox" wire:model="form.business.business_vehicle"> Business Vehicle Use</label>
-            <label><input type="checkbox" wire:model="form.business.accountable_plan"> Accountable Plan in Place</label>
-            <label><input type="checkbox" wire:model="form.business.home_office_doc"> Home Office Documentation</label>
-            <label><input type="checkbox" wire:model="form.business.monthly_bookkeeping"> Monthly Bookkeeping</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.separate_bank"> Separate Business Bank Account</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.separate_credit"> Separate Business Credit Card</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.accounting_software"> Using Accounting Software</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.payroll_system"> Payroll System Active</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.contractors_paid"> Contractors Paid</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.inventory_business"> Inventory Based Business</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.business_vehicle"> Business Vehicle Use</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.accountable_plan"> Accountable Plan in Place</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.home_office_doc"> Home Office Documentation</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.monthly_bookkeeping"> Monthly Bookkeeping</label>
 
         </div>
     @endif
@@ -192,16 +192,16 @@
     @if($step === 5)
         <h2 class="text-2xl font-semibold mb-6">Life Events</h2>
 
-        <div class="space-y-3">
-            <label><input type="checkbox" wire:model="form.life_events.bought_home"> Bought/Sold Home</label>
-            <label><input type="checkbox" wire:model="form.life_events.married_divorced"> Married/Divorced</label>
-            <label><input type="checkbox" wire:model="form.life_events.had_child"> Had a Child</label>
-            <label><input type="checkbox" wire:model="form.life_events.started_business"> Started Business</label>
-            <label><input type="checkbox" wire:model="form.life_events.sold_business"> Sold Business</label>
-            <label><input type="checkbox" wire:model="form.life_events.moved_state"> Moved State</label>
-            <label><input type="checkbox" wire:model="form.life_events.inherited_assets"> Inherited Assets</label>
-            <label><input type="checkbox" wire:model="form.life_events.large_medical"> Large Medical Expenses</label>
-            <label><input type="checkbox" wire:model="form.life_events.large_charity"> Large Charitable Donations</label>
+        <div class="grid md:grid-cols-2 space-y-3">
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.bought_home"> Bought/Sold Home</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.married_divorced"> Married/Divorced</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.had_child"> Had a Child</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.started_business"> Started Business</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.sold_business"> Sold Business</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.moved_state"> Moved State</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.inherited_assets"> Inherited Assets</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.large_medical"> Large Medical Expenses</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.large_charity"> Large Charitable Donations</label>
         </div>
     @endif
 
@@ -212,13 +212,13 @@
     @if($step === 6)
         <h2 class="text-2xl font-semibold mb-6">Compliance & Risk</h2>
 
-        <div class="space-y-3">
-            <label><input type="checkbox" wire:model="form.risk.irs_notice"> IRS Notice Received</label>
-            <label><input type="checkbox" wire:model="form.risk.prior_audit"> Prior Audit</label>
-            <label><input type="checkbox" wire:model="form.risk.late_filing"> Late Filings</label>
-            <label><input type="checkbox" wire:model="form.risk.foreign_account"> Foreign Bank Accounts</label>
-            <label><input type="checkbox" wire:model="form.risk.crypto_unreported"> Unreported Crypto</label>
-            <label><input type="checkbox" wire:model="form.risk.unfiled_years"> Unfiled Tax Years</label>
+        <div class="grid md:grid-cols-2 space-y-3">
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.risk.irs_notice"> IRS Notice Received</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.risk.prior_audit"> Prior Audit</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.risk.late_filing"> Late Filings</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.risk.foreign_account"> Foreign Bank Accounts</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.risk.crypto_unreported"> Unreported Crypto</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.risk.unfiled_years"> Unfiled Tax Years</label>
         </div>
     @endif
 
@@ -229,13 +229,13 @@
     @if($step === 7)
         <h2 class="text-2xl font-semibold mb-6">Strategic Goals</h2>
 
-        <div class="space-y-3">
-            <label><input type="checkbox" wire:model="form.goals.reduce_liability"> Reduce Tax Liability</label>
-            <label><input type="checkbox" wire:model="form.goals.optimize_structure"> Optimize Entity Structure</label>
-            <label><input type="checkbox" wire:model="form.goals.audit_defense"> Prepare for Audit</label>
-            <label><input type="checkbox" wire:model="form.goals.retirement_strategy"> Retirement Strategy</label>
-            <label><input type="checkbox" wire:model="form.goals.exit_planning"> Exit Planning</label>
-            <label><input type="checkbox" wire:model="form.goals.generational_wealth"> Generational Wealth</label>
+        <div class="grid md:grid-cols-2 space-y-3">
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.goals.reduce_liability"> Reduce Tax Liability</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.goals.optimize_structure"> Optimize Entity Structure</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.goals.audit_defense"> Prepare for Audit</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.goals.retirement_strategy"> Retirement Strategy</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.goals.exit_planning"> Exit Planning</label>
+            <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.goals.generational_wealth"> Generational Wealth</label>
         </div>
     @endif
 
@@ -266,7 +266,65 @@
             <input type="number" placeholder="Number of Dependents"
                 wire:model="form.personal.dependents"
                 class="input">
+
+
         </div>
+                            <!-- Location Section -->
+                    <div class="divider text-success font-bold">Localisation</div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text font-semibold">Pays</span>
+                            </label>
+                                    <select wire:model.live="selectedCountry"
+                class="select select-bordered select-success">
+                    <option value="">Choisir un pays</option>
+
+                        @foreach($countries as $country)
+                            <option value="{{ $country['id'] }}" >
+                                {{ $country['name'] }}
+                            </option>
+                        @endforeach
+                     </select>
+                        </div>
+
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text font-semibold">État / Province</span>
+                            </label>
+                                    <select wire:model.live="selectedState"
+                class="select select-bordered select-success"
+                @disabled(!$states)>
+                    <option value="">Choisir une province</option>
+
+                    @foreach($states as $state)
+                        <option value="{{ $state['id'] }}">
+                            {{ $state['name'] }}
+                        </option>
+                    @endforeach
+        </select>
+                        </div>
+
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text font-semibold">Ville</span>
+                            </label>
+                                    <select wire:model.live="selectedCity"
+                class="select select-bordered select-success"
+                @disabled(!$cities)>
+            <option value="">Choisir une ville</option>
+
+                        @foreach($cities as $city)
+                            <option value="{{ $city['name'] }}">
+                                {{ $city['name'] }}
+                            </option>
+                        @endforeach
+        </select>
+                        </div>
+
+                    </div>
     @endif
 
 

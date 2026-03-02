@@ -52,26 +52,15 @@ class TaxProfile extends Component
 
     public $scores = [];
 
-    public function nextStep()
-    {
-        if ($this->step < $this->totalSteps) {
-            $this->step++;
-        }
-    }
 
-    public function previousStep()
-    {
-        if ($this->step > 1) {
-            $this->step--;
-        }
-    }
     
     
 
     public function mount()
     {
-        $this->countries = World::countries()->data;
+        dd($this->countries = World::countries()->data);
     }
+
 
         public function updatedSelectedCountry($value)
     {
@@ -148,6 +137,20 @@ class TaxProfile extends Component
             $this->addError('save_error', 'an error occurade while saving');
         }
 
+    }
+
+        public function nextStep()
+    {
+        if ($this->step < $this->totalSteps) {
+            $this->step++;
+        }
+    }
+
+    public function previousStep()
+    {
+        if ($this->step > 1) {
+            $this->step--;
+        }
     }
 
     public function render()
