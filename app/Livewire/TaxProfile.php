@@ -36,7 +36,7 @@ class TaxProfile extends Component
 
 
 
-        public $step = 1;
+    public $step = 1;
     public $totalSteps = 8;
 
     public $form = [
@@ -58,7 +58,8 @@ class TaxProfile extends Component
 
     public function mount()
     {
-        dd($this->countries = World::countries()->data);
+
+        $this->countries = World::countries()->data;
     }
 
 
@@ -107,21 +108,61 @@ class TaxProfile extends Component
                 }
     }
 
-    public function save(TaxProfileService $service) {
-        
-        
 
-       $validatedData = $this->validate();
-        $fullData = array_merge($validatedData, [
-            'user_id' => Auth::id(),
-            'country' => $this->country['name'],
-            'state' => $this->state['name'],
-            'town' => $this->selectedCity,
-            'business_income' => $this->business_income,
-            'other_income' => $this->other_income,
-            'crypto_activity' => $this->crypto_activity,
-            'raw_payload' => $this->all(), // Capture l'état complet au moment du clic 
-        ]);
+    public function calculateScores()
+    {
+        $optimization = 0;
+        $risk = 0;
+        $complexity = 0;
+
+        // Example scoring logic
+        if (!empty($this->form['income']['self_employed']) &&
+            empty($this->form['expenses']['retirement_contribution'])) {
+            $optimization += 15;
+        }
+
+        if (!empty($this->form['risk']['foreign_account'])) {
+            $risk += 20;
+        }
+
+        if (!empty($this->form['income']['rental_income'])) {
+            $complexity += 15;
+        }
+
+        $this->scores = [
+            'optimization' => min($optimization, 100),
+            'risk' => min($risk, 100),
+            'complexity' => min($complexity, 100),
+        ];
+    }
+
+    public function determineTier()
+    {
+        if ($this->scores['complexity'] > 60) {
+            return 'Elite';
+        }
+
+        if ($this->scores['optimization'] > 40) {
+            return 'Growth';
+        }
+
+        return 'Foundation';
+    }
+
+    public function save(TaxProfileService $service)
+    {
+       
+        $this->calculateScores();
+
+        $tier = $this->determineTier();
+
+
+        $fullData = [
+            'user_id' => auth()->id(),
+            'data' => $this->form,
+            'scores' => $this->scores,
+            'recommended_tier' => $tier,
+        ];
 
 
         try {
@@ -137,19 +178,22 @@ class TaxProfile extends Component
             $this->addError('save_error', 'an error occurade while saving');
         }
 
+        
     }
 
-        public function nextStep()
-    {
-        if ($this->step < $this->totalSteps) {
-            $this->step++;
+
+    public function nextStep()
+         {
+            if ($this->step < $this->totalSteps) {
+                $this->step++;
+            }
         }
-    }
 
     public function previousStep()
     {
         if ($this->step > 1) {
             $this->step--;
+            $this->resetErrorBag(); 
         }
     }
 
@@ -158,4 +202,6 @@ class TaxProfile extends Component
 
         return view('livewire.tax-profile');
     }
+
+
 }

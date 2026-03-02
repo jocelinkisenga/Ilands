@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('tax_profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-        $table->year('tax_year')->default(2026);
-        $table->json('data');          
-        $table->json('scores')->nullable();
-        $table->string('recommended_tier')->nullable();
-        $table->longText('ai_summary')->nullable();
+            $table->year('tax_year')->default(2026);
+            $table->json('data');          
+            $table->json('scores')->nullable();
+            $table->string('recommended_tier')->nullable();
+            $table->longText('ai_summary')->nullable();
             
             $table->timestamps();
         });

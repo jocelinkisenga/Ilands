@@ -12,7 +12,7 @@
                  style="width: {{ ($step/$totalSteps)*100 }}%"></div>
         </div>
     </div>
-
+    
     {{-- =========================
         STEP 1 — INCOME
     ========================== --}}
@@ -58,13 +58,21 @@
                 class="input">
 
         </div>
-    @endif
-
+    
+                    <div class="flex gap-4">
+                        <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
+                            Back
+                        </button>
+                        <button wire:click="nextStep" 
+                            class="w-2/3 bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white py-4 rounded-xl font-bold transition">
+                            Next
+                        </button>
+                    </div>
 
     {{-- =========================
         STEP 2 — BUSINESS STRUCTURE
     ========================== --}}
-    @if($step === 2)
+    @elseif($step === 2)
         <h2 class="text-2xl font-semibold mb-6">Business Structure & Operations</h2>
 
         <div class="grid md:grid-cols-2 space-y-4">
@@ -81,13 +89,21 @@
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.monthly_bookkeeping"> Monthly Bookkeeping</label>
 
         </div>
-    @endif
+                        <div class="flex gap-4">
+                        <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
+                            Back
+                        </button>
+                        <button wire:click="nextStep" 
+                            class="w-2/3 bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white py-4 rounded-xl font-bold transition">
+                            Next
+                        </button>
+                    </div>
 
 
     {{-- =========================
         STEP 3 — DEDUCTIONS
     ========================== --}}
-    @if($step === 3)
+    @elseif($step === 3)
         <h2 class="text-2xl font-semibold mb-6">Deductible Expenses</h2>
 
         <div class="grid md:grid-cols-2 gap-6">
@@ -149,13 +165,21 @@
                 class="input">
 
         </div>
-    @endif
-
+    
+                    <div class="flex gap-4">
+                        <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
+                            Back
+                        </button>
+                        <button wire:click="nextStep" 
+                            class="w-2/3 bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white py-4 rounded-xl font-bold transition">
+                            Next
+                        </button>
+                    </div>
 
     {{-- =========================
         STEP 4 — ASSETS
     ========================== --}}
-    @if($step === 4)
+    @elseif($step === 4)
         <h2 class="text-2xl font-semibold mb-6">Assets & Liabilities</h2>
 
         <div class="grid md:grid-cols-2 gap-6">
@@ -183,13 +207,21 @@
                 wire:model="form.assets.business_loans"
                 class="input">
         </div>
-    @endif
+                        <div class="flex gap-4">
+                        <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
+                            Back
+                        </button>
+                        <button wire:click="nextStep" 
+                            class="w-2/3 bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white py-4 rounded-xl font-bold transition">
+                            Next
+                        </button>
+                    </div>
 
 
     {{-- =========================
         STEP 5 — LIFE EVENTS
     ========================== --}}
-    @if($step === 5)
+    @elseif($step === 5)
         <h2 class="text-2xl font-semibold mb-6">Life Events</h2>
 
         <div class="grid md:grid-cols-2 space-y-3">
@@ -203,13 +235,21 @@
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.large_medical"> Large Medical Expenses</label>
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.large_charity"> Large Charitable Donations</label>
         </div>
-    @endif
+                        <div class="flex gap-4">
+                        <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
+                            Back
+                        </button>
+                        <button wire:click="nextStep" 
+                            class="w-2/3 bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white py-4 rounded-xl font-bold transition">
+                            Next
+                        </button>
+                    </div>
 
 
     {{-- =========================
         STEP 6 — RISK & COMPLIANCE
     ========================== --}}
-    @if($step === 6)
+    @elseif($step === 6)
         <h2 class="text-2xl font-semibold mb-6">Compliance & Risk</h2>
 
         <div class="grid md:grid-cols-2 space-y-3">
@@ -220,13 +260,21 @@
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.risk.crypto_unreported"> Unreported Crypto</label>
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.risk.unfiled_years"> Unfiled Tax Years</label>
         </div>
-    @endif
-
+    
+                    <div class="flex gap-4">
+                        <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
+                            Back
+                        </button>
+                        <button wire:click="nextStep" 
+                            class="w-2/3 bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white py-4 rounded-xl font-bold transition">
+                            Next
+                        </button>
+                    </div>
 
     {{-- =========================
         STEP 7 — GOALS
     ========================== --}}
-    @if($step === 7)
+    @elseif($step === 7)
         <h2 class="text-2xl font-semibold mb-6">Strategic Goals</h2>
 
         <div class="grid md:grid-cols-2 space-y-3">
@@ -237,13 +285,21 @@
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.goals.exit_planning"> Exit Planning</label>
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.goals.generational_wealth"> Generational Wealth</label>
         </div>
-    @endif
 
+                    <div class="flex gap-4">
+                        <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
+                            Back
+                        </button>
+                        <button wire:click="nextStep" 
+                            class="w-2/3 bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white py-4 rounded-xl font-bold transition">
+                            Next
+                        </button>
+                    </div>
 
     {{-- =========================
         STEP 8 — PERSONAL
     ========================== --}}
-    @if($step === 8)
+    @elseif($step === 8)
         <h2 class="text-2xl font-semibold mb-6">Personal Information</h2>
 
         <div class="grid md:grid-cols-2 gap-6">
@@ -270,6 +326,7 @@
 
         </div>
                             <!-- Location Section -->
+                        <!-- Location Section -->
                     <div class="divider text-success font-bold">Localisation</div>
 
                     <div class="grid md:grid-cols-3 gap-6">
@@ -325,11 +382,22 @@
                         </div>
 
                     </div>
+
+
+                                        <div class="flex gap-4">
+                        <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
+                            Back
+                        </button>
+                        <button wire:click="save"
+                            class="w-2/3 bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white py-4 rounded-xl font-bold transition">
+                            Next
+                        </button>
+                    </div>
     @endif
 
 
     {{-- NAVIGATION --}}
-    <div class="flex justify-between mt-10">
+{{--     <div class="flex justify-between mt-10">
         @if($step > 1)
             <button wire:click="previousStep"
                 class="px-6 py-3 border border-green-500 rounded-lg">
@@ -343,14 +411,15 @@
                 Next
             </button>
         @else
-            <button wire:click="submit"
+            <button wire:click="save" 
                 class="px-6 py-3 bg-green-600 rounded-lg">
                 Generate Report
             </button>
-        @endif
+        @endif --}}
     </div>
 
-</div>
+
+
 
 {{-- Shared Tailwind Style --}}
 <style>

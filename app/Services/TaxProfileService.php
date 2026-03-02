@@ -11,15 +11,15 @@ class TaxProfileService
     /**
      * Enregistrer un nouveau profil fiscal.
      */
-    public function register(array $data): TaxProfile
+    public function register(array $data)
     {
-        return DB::transaction(function () use ($data) {
-            $profile = TaxProfile::create($data);
 
-            $this->logAction('create', $profile);
+    $profile = TaxProfile::create($data);
 
-            return $profile;
-        });
+    $this->logAction('create', $profile);
+    
+    return $profile;
+
     }
 
     /**

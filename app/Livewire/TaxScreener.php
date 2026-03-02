@@ -20,7 +20,7 @@ class TaxScreener extends Component
 
     public $recommendation = null;
 
-    // Validation dynamique selon l'étape
+    
     public function nextStep()
     {
         if ($this->step == 1) {
@@ -40,7 +40,7 @@ class TaxScreener extends Component
 
     public function submit()
     {
-        // Validation de la dernière étape
+        
         $this->validate([
             'first_name' => 'required|min:2',
             'email'      => 'required|email|unique:leads,email',
@@ -49,7 +49,7 @@ class TaxScreener extends Component
             'email.required' => 'Une adresse email valide est requise.'
         ]);
 
-        // Logique de recommandation
+       
         if ($this->income_source === 'gig' && $this->tracking_status === 'no') {
             $this->recommendation = [
                 'tier' => 'Business AI',
