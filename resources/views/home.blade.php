@@ -72,7 +72,7 @@
 
 
 <!-- ================= BENEFITS ================= -->
-<section class="py-28">
+<section class="py-16">
     <div class="max-w-7xl mx-auto px-6 text-center">
         <h2 class="text-4xl font-bold mb-16">Professional Advisory. Intelligent Execution.</h2>
 
@@ -106,7 +106,7 @@
 </section>
 
 <!-- ================= HOW IT WORKS ================= -->
-<section id="how" class="py-28 bg-white/5">
+<section id="how" class="py-16 bg-white/5">
     <div class="max-w-6xl mx-auto px-6 text-center">
         <h2 class="text-4xl font-bold mb-16">How It Works</h2>
 
@@ -135,7 +135,7 @@
 </section>
 
 <!-- ================= PRICING ================= -->
-<section id="pricing" class="py-28">
+<section id="pricing" class="py-16">
     <div class="max-w-6xl mx-auto px-6 text-center">
         <h2 class="text-4xl font-bold mb-16">Transparent Pricing</h2>
 

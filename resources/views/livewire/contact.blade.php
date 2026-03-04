@@ -11,7 +11,7 @@
         </div>
     </section>
 
-    <section class="py-16">
+    <section class="py-8">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 

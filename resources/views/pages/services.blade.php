@@ -109,7 +109,7 @@
 
 
     <!-- COMPARISON TABLE -->
-    <section class="py-24 border-t border-green-500/10">
+    <section class="py-16 border-t border-green-500/10">
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-16">
                 Plan Comparison
