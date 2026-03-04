@@ -31,7 +31,7 @@
                     </a>
                 @endauth
 
-                <button onclick="document.documentElement.classList.toggle('dark')" class="ml-4 p-2 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-white transition">
+                <button onclick="toggleDarkMode()" class="ml-4 p-2 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-white transition">
                     <span class="dark:hidden text-base">🌙</span>
                     <span class="hidden dark:inline text-base">☀️</span>
                 </button>

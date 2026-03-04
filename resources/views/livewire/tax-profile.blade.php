@@ -89,7 +89,7 @@
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.business.monthly_bookkeeping"> Monthly Bookkeeping</label>
 
         </div>
-                        <div class="flex gap-4">
+                        <div class="flex gap-4 py-8">
                         <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
                             Back
                         </button>
@@ -166,7 +166,7 @@
 
         </div>
     
-                    <div class="flex gap-4">
+                    <div class="flex gap-4 py-8">
                         <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
                             Back
                         </button>
@@ -207,7 +207,7 @@
                 wire:model="form.assets.business_loans"
                 class="input">
         </div>
-                        <div class="flex gap-4">
+                        <div class="flex gap-4 py-8">
                         <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
                             Back
                         </button>
@@ -235,7 +235,7 @@
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.large_medical"> Large Medical Expenses</label>
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.life_events.large_charity"> Large Charitable Donations</label>
         </div>
-                        <div class="flex gap-4">
+                        <div class="flex gap-4 py-8">
                         <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
                             Back
                         </button>
@@ -261,7 +261,7 @@
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.risk.unfiled_years"> Unfiled Tax Years</label>
         </div>
     
-                    <div class="flex gap-4">
+                    <div class="flex gap-4 py-8">
                         <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
                             Back
                         </button>
@@ -286,7 +286,7 @@
             <label class="block w-full cursor-pointer"><input type="checkbox" wire:model="form.goals.generational_wealth"> Generational Wealth</label>
         </div>
 
-                    <div class="flex gap-4">
+                    <div class="flex gap-4 py-8">
                         <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
                             Back
                         </button>
@@ -384,7 +384,7 @@
                     </div>
 
 
-                    <div class="flex gap-4 ">
+                    <div class="flex gap-4 py-8">
                         <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
                             Back
                         </button>

@@ -39,6 +39,14 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script>
+    // Vérifie la préférence enregistrée ou celle du système
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+</script>
         @livewireStyles
     </head>
     <body     x-data="{ dark: true }"
@@ -50,6 +58,21 @@
     @include('components.footer')
    
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+
+
+    function toggleDarkMode() {
+  
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+</script>
 <script>
     lucide.createIcons();
 </script>
