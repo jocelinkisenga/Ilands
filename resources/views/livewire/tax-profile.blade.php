@@ -59,7 +59,7 @@
 
         </div>
     
-                    <div class="flex gap-4">
+                    <div class="flex gap-4 py-8">
                         <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
                             Back
                         </button>
@@ -384,7 +384,7 @@
                     </div>
 
 
-                                        <div class="flex gap-4">
+                    <div class="flex gap-4 ">
                         <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
                             Back
                         </button>
