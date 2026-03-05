@@ -18,10 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['client','admin'])->default('client');
-            $table->string('stripe_id')->nullable();
-            $table->string('pm_type')->nullable();
-            $table->string('pm_last_four')->nullable();
-            $table->timestamp('trial_ends_at')->nullable();
+        
             $table->rememberToken();
             $table->timestamps();
         });
