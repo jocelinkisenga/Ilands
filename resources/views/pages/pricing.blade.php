@@ -1,6 +1,4 @@
-@extends('layouts.guest')
-
-@section('content')
+<x-guest-layout>
 <div class="py-24 bg-base-200 min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -14,11 +12,11 @@
             </p>
         </div>
 
-        @include('components.plans')
+        @include('components.pricing')
 
         <p class="text-center mt-12 text-sm text-base-content/50 italic">
             Toutes nos offres incluent la politique de rétention et de backups automatisés prévue dans notre gouvernance IA.
         </p>
     </div>
 </div>
-@endsection
+</x-guest-layout>

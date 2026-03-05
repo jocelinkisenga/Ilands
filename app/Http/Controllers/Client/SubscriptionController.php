@@ -14,4 +14,8 @@ class SubscriptionController extends Controller
     {
         return view('pages.pricing');
     }
+
+    public function success () {
+        return view("subscription.success");
+    }
 }

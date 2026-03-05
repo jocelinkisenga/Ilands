@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Client\ProfileController;
+use App\Http\Controllers\Client\CheckoutContoller;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\Client\SubscriptionController;
 use App\Http\Middleware\SubscriptionMiddleWare;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\TaxProfile;
@@ -31,8 +32,10 @@ Route::get('contact', Contact::class)->name('contact');
 Route::get('terms', [LegalController::class, 'terms'])->name('terms');
 Route::get('privacy', [LegalController::class, 'privacy'])->name('privacy');
 
-Route::get('/dashboard',[DashboardController::class,'index'] )->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard/{plan?}',[DashboardController::class,'index'] )->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/checkout',CheckoutContoller::class)->middleware(['auth', 'verified'])->name('checkout');
+Route::get('checkout-success', [SubscriptionController::class, 'success'])->name('checkout-success');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
