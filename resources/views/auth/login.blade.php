@@ -36,7 +36,7 @@
             <div class="flex items-center justify-between text-sm">
                 <label class="flex items-center">
                     <input type="checkbox" name="remember" class="rounded border-white/10 bg-black text-green-600">
-                    <span class="ml-2 text-gray-400">Rester connecté</span>
+                    <span class="ml-2 text-gray-400">Stay logged in</span>
                 </label>
             </div>
 
@@ -46,7 +46,9 @@
             </button>
         </form>
     </div>
+    <a href="{{route('register')}}" class="text-green-500">you don't have an account? Register her</a>
 </div>
+
 
 {{--     <div class="w-full max-w-md">
 

@@ -58,7 +58,7 @@
 
             <button type="submit" 
                     class="w-full bg-green-600 hover:bg-green-500 text-white py-4 rounded-xl font-bold transition shadow-lg shadow-green-900/30 mt-4">
-                Créer mon compte
+               Create account
             </button>
 
             <p class="text-center text-gray-500 text-xs mt-4">
@@ -66,6 +66,7 @@
             </p>
         </form>
     </div>
+     <a href="{{route('login')}}" class="text-green-500">Already have an account? login here</a>
 </div>
     </body>
 </html>

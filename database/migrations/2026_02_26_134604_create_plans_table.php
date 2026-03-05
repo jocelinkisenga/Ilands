@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique(); 
             $table->string('stripe_id')->nullable(); 
             $table->decimal('price', 8, 2);
-            $table->integer('analysis_quota')->default(1); // Nombre d'analyses par mois
+            $table->integer('analysis_quota')->default(1); 
             $table->boolean('has_human_validation')->default(false); 
             $table->string('support_type')->default('email'); 
             $table->timestamps();

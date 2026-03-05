@@ -22,7 +22,7 @@
 
             <div class="mt-10 flex flex-col sm:flex-row gap-4">
                 <a href="{{route('tax-screener')}}" 
-                        class="bg-emerald-500 hover:bg-emerald-600 text-black font-semibold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-500/20 transition">
+                        class="bg-emerald-500 snd__button hover:bg-emerald-600 text-black font-semibold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-500/20 transition">
                     Get Your Free Tax Screener →
                 </a>
 

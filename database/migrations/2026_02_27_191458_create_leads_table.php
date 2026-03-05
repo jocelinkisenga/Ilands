@@ -15,9 +15,9 @@ return new class extends Migration
         $table->id();
         $table->string('first_name');
         $table->string('email')->unique();
-        $table->string('primary_income_source'); // gig, freelance, w2, expat, other
-        $table->string('income_bracket'); // <30k, 30-60k, etc.
-        $table->string('tracking_status'); // yes, sometimes, no
+        $table->string('primary_income_source');
+        $table->string('income_bracket');
+        $table->string('tracking_status'); 
         $table->text('tax_concern')->nullable();
         $table->string('recommended_tier');
             $table->timestamps();

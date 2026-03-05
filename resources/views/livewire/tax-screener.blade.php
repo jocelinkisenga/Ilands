@@ -23,7 +23,7 @@
                         @error('income_source') <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span> @enderror
                     </div>
                     
-                    <button wire:click="nextStep" @if(!$income_source) disabled @endif class="w-full bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 py-4 rounded-xl font-bold text-white transition disabled:opacity-30">
+                    <button wire:click="nextStep" @if(!$income_source) disabled @endif class="w-full snd__button bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 py-4 rounded-xl font-bold text-white transition disabled:opacity-30">
                         Next
                     </button>
                 </div>
@@ -43,12 +43,12 @@
                     </div>
 
                     <div class="flex gap-4">
-                        <button wire:click="previousStep" class="w-1/3 bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
+                        <button wire:click="previousStep" class="w-1/3 snd__button bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 py-4 rounded-xl font-bold transition">
                             Back
                         </button>
                         <button wire:click="nextStep" 
                             @if(!$annual_income) disabled @endif
-                            class="w-2/3 bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white disabled:opacity-30 disabled:cursor-not-allowed py-4 rounded-xl font-bold transition">
+                            class="w-2/3 snd__button bg-green-600 hover:bg-green-700 dark:hover:bg-green-500 text-white disabled:opacity-30 disabled:cursor-not-allowed py-4 rounded-xl font-bold transition">
                             Next
                         </button>
                     </div>

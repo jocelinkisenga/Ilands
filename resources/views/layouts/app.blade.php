@@ -16,11 +16,12 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src="https://cdn.jsdelivr.net/gh/snd-lib/snd-lib@v1.2.4/dist/browser/snd.js?kit=01"></script>
          @livewireStyles
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+            @include('components.navbar')
 
             <!-- Page Heading -->
             @isset($header)
@@ -36,6 +37,7 @@
                 {{ $slot }}
             </main>
         </div>
+        @include('components.footer')
         @livewireScripts
     </body>
 </html>
