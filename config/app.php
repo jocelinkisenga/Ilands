@@ -107,10 +107,6 @@ return [
       /**
      * stripe paiment
      */
-'STRIPE_KEY'=> 'pk_test_51MPMpZIr46jOY2dWW99WwIcGk9cxXk3t8PCTU8r6JwfZroHgknc7YLlKeew1yeWxOWlKI6V05Q4biD3k0qVzIlEF00JugIOt9y',
-
-'stripe_secret'=>'sk_test_51MPMpZIr46jOY2dWXs4P1twWiHwjl9PDG4AD43EA9NKkXSBf7N9PS5XJTuQvRWF9JyTFGa0OTqP90TIJ149nMZmw006anyLDWa',
-
 
 
     /*
