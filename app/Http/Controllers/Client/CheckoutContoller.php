@@ -10,10 +10,11 @@ class CheckoutContoller extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request, string $plan = "price_1T7jXLIr46jOY2dWdjhaShLd")
+    public function __invoke(Request $request, string $plan = 'prod_U4ncjLG9fyJMma')
     {
+        // 
     return $request->user()
-        ->newSubscription('prod_U4ncjLG9fyJMma', $plan)
+        ->newSubscription('default', $plan)
         ->checkout([
             'success_url' => route('checkout-success'),
             'cancel_url' => route('dashboard'),

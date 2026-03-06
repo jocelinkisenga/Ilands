@@ -14,32 +14,56 @@ use App\Livewire\Blog;
 use App\Livewire\Contact;
 use App\Livewire\TaxScreener;
 use App\Http\Controllers\Client\DashboardController;
-use Symfony\Component\Routing\Route as RoutingRoute;
 
+/*
+|--------------------------------------------------------------------------
+| Public Routes
+|--------------------------------------------------------------------------
+*/
 Route::get('/', function () {
     return view('home');
 });
+
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/services', [ServiceController::class, 'index'])->name('services');
 Route::get('/faq', [FaqController::class, 'index']);
-Route::get('pricing', [SubscriptionController::class, 'pricing'])->name('pricing');
+Route::get('/pricing', [SubscriptionController::class, 'pricing'])->name('pricing');
+Route::get('/terms', [LegalController::class, 'terms'])->name('terms');
+Route::get('/privacy', [LegalController::class, 'privacy'])->name('privacy');
+Route::livewire('/blog', Blog::class)->name('blog');
+Route::get('/contact', Contact::class)->name('contact');
 
-Route::get('/subscribe', [SubscriptionController::class, 'index'])->middleware(SubscriptionMiddleWare::class)->name('subscribe');
-Route::livewire('/tax-screener', TaxScreener::class)->name('tax-screener');
-Route::livewire('/tax-profile',TaxProfile::class)->name('tax-profile');
-Route::livewire('/blog',Blog::class)->name('blog');
-Route::get('contact', Contact::class)->name('contact');
-Route::get('terms', [LegalController::class, 'terms'])->name('terms');
-Route::get('privacy', [LegalController::class, 'privacy'])->name('privacy');
-
-Route::get('/dashboard/{plan?}',[DashboardController::class,'index'] )->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/checkout',CheckoutContoller::class)->middleware(['auth', 'verified'])->name('checkout');
-Route::get('checkout-success', [SubscriptionController::class, 'success'])->name('checkout-success');
+/*
+|--------------------------------------------------------------------------
+| Authenticated Routes
+|--------------------------------------------------------------------------
+*/
 Route::middleware('auth')->group(function () {
+    
+    // Profile Management
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/checkout-success', [SubscriptionController::class, 'success'])->name('checkout-success');
+
+    // Routes requiring Email Verification
+    Route::middleware('verified')->group(function () {
+        Route::get('/checkout/{plan?}', CheckoutContoller::class)->name('checkout');
+        Route::get('/dashboard/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::livewire('/tax-screener', TaxScreener::class)->name('tax-screener');
+       
+        Route::get('/subscribe', [SubscriptionController::class, 'index'])
+            ->middleware('auth')
+            ->name('subscribe');
+
+        // Routes requiring an Active Subscription
+        Route::middleware('subscribed')->group(function () {
+             Route::livewire('/tax-profile', TaxProfile::class)->name('tax-profile');
+        
+            
+        });
+    });
 });
 
 require __DIR__.'/auth.php';

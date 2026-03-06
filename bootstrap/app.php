@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\Subscribed;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Http\Middleware\App\Http\Middleware\SubscriptionMiddleWare;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -13,6 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
      //   $middleware->append(AdminMiddleware::class);
+        $middleware->alias([
+        'subscribed' => \App\Http\Middleware\Subscribed::class,
+    ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
