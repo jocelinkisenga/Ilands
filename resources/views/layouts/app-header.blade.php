@@ -47,12 +47,20 @@
                         fill="" />
                 </svg>
             </button>
+             <div class="flex items-center">
+                <a href="/" class="flex-shrink-0 flex items-center gap-2">
+                    <span class="text-xl font-black tracking-tighter uppercase text-slate-900 dark:text-white">
+                        ILANDS <span class="text-green-600 dark:text-green-500">SOLUTIONS</span>
+                    </span>
+                </a>
+            </div>
 
-            <!-- Logo (mobile only) -->
+{{--             <!-- Logo (mobile only) -->
             <a href="/" class="xl:hidden">
-                <img class="dark:hidden" src="/images/logo/logo.svg" alt="Logo" />
-                <img class="hidden dark:block" src="/images/logo/logo-dark.svg" alt="Logo" />
-            </a>
+               {{--  <img class="dark:hidden" src="/images/logo/logo.svg" alt="Logo" />
+                <img class="hidden dark:block" src="/images/logo/logo-dark.svg" alt="Logo" /> --}}
+              {{--   ILANDS SOLUTION
+            </a> --}} 
 
             <!-- Application Menu Toggle (mobile only) -->
             <button @click="toggleApplicationMenu()"

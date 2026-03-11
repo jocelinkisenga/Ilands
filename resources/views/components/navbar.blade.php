@@ -31,14 +31,14 @@
                     </a>
                 @endauth
 
-                <button onclick="toggleDarkMode()" class="ml-4 p-2 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-white transition">
+                <button @click.prevent="$store.theme.toggle()" class="ml-4 p-2 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-white transition">
                     <span class="dark:hidden text-base">🌙</span>
                     <span class="hidden dark:inline text-base">☀️</span>
                 </button>
             </div>
 
             <div class="lg:hidden flex items-center gap-3">
-                <button @click="dark = !dark"
+                <button @click.prevent="$store.theme.toggle()"
              class="p-2 rounded-lg bg-slate-100 dark:bg-white/10">
                     <span class="dark:hidden">🌙</span>
                     <span class="hidden dark:inline">☀️</span>
