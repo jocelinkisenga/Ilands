@@ -1,135 +1,82 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<div class="min-h-screen bg-slate-50 p-6 text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100 md:p-12">
+  <div class="mx-auto max-w-6xl">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold tracking-tight">Welcome back!</h1>
+      <p class="mt-1 text-slate-500 dark:text-slate-400">Continue your tax education journey.</p>
+    </header>
 
-    <div class="p-6 space-y-6">
+    <section class="mb-12 flex flex-col items-center justify-between gap-6 rounded-2xl bg-slate-900 p-8 text-white dark:bg-slate-900/50 dark:ring-1 dark:ring-slate-800 md:flex-row">
+      <div class="flex items-center gap-4">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-800">
+          <svg class="h-6 w-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold">Unlock Full Access</h2>
+          <p class="text-slate-400">Get unlimited videos, documents, and AI chat for just $9/month.</p>
+        </div>
+      </div>
+      <button class="group flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-slate-900 transition-all hover:bg-slate-100 active:scale-95">
+        Upgrade Now
+        <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </button>
+    </section>
 
-        @if(!auth()->user()->subscribed('default'))
-            {{-- VUE POUR UTILISATEUR NON ABONNÉ --}}
-            <div class="card bg-base-100 shadow-xl border border-warning">
-                <div class="card-body items-center text-center">
-                    <h2 class="card-title text-2xl text-warning">Passez à la vitesse supérieure !</h2>
-                    <p class="py-4">Votre compte actuel ne vous permet pas d'accéder aux analyses fiscales complètes. Abonnez-vous pour débloquer toutes nos fonctionnalités et sécuriser vos déclarations.</p>
-                    <div class="card-actions justify-center mt-4">
-                        <a href="{{ route('pricing') }}" class="btn btn-warning">Découvrir nos offres</a>
-                        <a href="{{ route('profile.edit') }}" class="btn btn-outline">Gérer mon profil</a>
-                    </div>
-                </div>
+    <section class="mb-12">
+      <div class="mb-6 flex items-center gap-2">
+        <span class="text-xl">🎯</span>
+        <h3 class="text-lg font-bold">Start Here</h3>
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div class="group cursor-pointer rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50 text-red-500 dark:bg-red-500/10">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
+            <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Start Here Video</span>
+          </div>
+          <h4 class="mb-4 text-lg font-bold leading-tight">Whats New in 2026 (Part 2) - TurboTax Tax Tips Podcast</h4>
+          <span class="text-sm text-slate-400">2 min</span>
+        </div>
 
-            {{-- Aperçu flouté / grisé pour donner envie --}}
-            <div class="opacity-50 pointer-events-none mt-8">
-                <div class="stats shadow w-full border border-base-200">
-                    <div class="stat">
-                        <div class="stat-title">Available Analyses</div>
-                        <div class="stat-value">-- / --</div>
-                    </div>
-                </div>
+        <div class="group cursor-pointer rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-500 dark:bg-blue-500/10">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
             </div>
+            <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Checklist</span>
+          </div>
+          <h4 class="mb-4 text-lg font-bold leading-tight">Profit or Loss From Business (Sole Proprietorship)</h4>
+          <span class="text-sm text-slate-400 font-medium">PDF</span>
+        </div>
 
-        @else
-            {{-- VUE POUR UTILISATEUR ABONNÉ --}}
-            
-            {{-- En-tête de gestion d'abonnement --}}
-            <div class="flex justify-between items-center bg-base-200 p-4 rounded-lg shadow-sm">
-                <div>
-                    <span class="font-bold text-success">✓ Abonnement Actif</span>
-                    <span class="text-sm text-gray-500 ml-2">Renouvellement automatique activé</span>
-                </div>
-                <div class="space-x-2">
-                    <a href="{{ route('profile.edit') }}" class="btn btn-sm btn-outline">Mon Profil</a>
-                    {{-- Si vous avez implémenté le Billing Portal de Stripe --}}
-                    {{-- <a href="{{ route('billing-portal') }}" class="btn btn-sm btn-primary">Gérer l'abonnement & Factures</a> --}}
-                </div>
+        <div class="group cursor-pointer rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 text-emerald-500 dark:bg-emerald-500/10">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
             </div>
+            <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">AI Assistant</span>
+          </div>
+          <h4 class="mb-2 text-lg font-bold">Ask this first...</h4>
+          <p class="text-sm text-slate-500 dark:text-slate-400 italic">"I'm filing a W-2 return. What are the most common credits..."</p>
+        </div>
+      </div>
+    </section>
 
-            {{-- Statistiques --}}
-            <div class="stats shadow w-full border border-base-200 mt-6">
-                <div class="stat">
-                    <div class="stat-title">Available Analyses</div>
-                    <div class="stat-value text-primary">12 / 15</div>
-                    <div class="stat-desc">Renewal on March 15</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-title">Overall Status</div>
-                    <div class="stat-value text-success text-2xl">All up to date</div>
-                    <div class="stat-desc font-bold">1 analysis pending validation</div>
-                </div>
-            </div>
-            
-            {{-- Tableau des analyses --}}
-            <div class="card bg-base-100 shadow-xl border border-base-200 mt-6">
-                <div class="card-body">
-                    <h2 class="card-title justify-between">
-                        My Tax Analyses
-                        <a href="{{ route('tax-profile') }}" class="btn btn-primary btn-sm">+ New Analysis</a>
-                    </h2>
-                    
-                    <div class="overflow-x-auto mt-4">
-                        <table class="table w-full">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                    <th>AI Score</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($taxProfiles as $profile)
-                                <tr>
-                                    <td>26 Feb 2026</td>
-                                    <td>Crypto Income</td>
-                                    <td><span class="badge badge-warning">Human Validation</span></td>
-                                    <td><progress class="progress progress-primary w-20" value="{{$profile->score}}" max="100"></progress> {{$profile->score}}%</td>
-                                    <td><button class="btn btn-ghost btn-xs" disabled>Pending</button></td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Timeline / Suivi --}}
-            <div class="card bg-base-100 shadow-xl border border-base-200 mt-8">
-                <div class="card-body">
-                    <h2 class="card-title text-lg mb-4">Tracking your analysis #TX-882</h2>
-                    
-                    <ul class="timeline timeline-vertical">
-                        <li>
-                            <div class="timeline-start">Feb 26.</div>
-                            <div class="timeline-middle">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-success"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
-                            </div>
-                            <div class="timeline-end timeline-box">Profile completed and secured</div>
-                            <hr class="bg-success"/>
-                        </li>
-                        <li>
-                            <hr class="bg-success"/>
-                            <div class="timeline-start">Feb 26.</div>
-                            <div class="timeline-middle">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-success"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
-                            </div>
-                            <div class="timeline-end timeline-box">AI analysis performed (92% Confidence)</div>
-                            <hr class="bg-primary"/>
-                        </li>
-                        <li>
-                            <hr class="bg-primary"/>
-                            <div class="timeline-start">Pending</div>
-                            <div class="timeline-middle">
-                                <span class="loading loading-spinner loading-sm text-primary"></span>
-                            </div>
-                            <div class="timeline-end timeline-box italic">Validation by a tax expert</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        @endif
-
-    </div>
+    <section class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div class="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white py-10 text-center dark:border-slate-800 dark:bg-slate-900">
+        <span class="mb-1 text-4xl font-black">2/5</span>
+        <span class="text-sm text-slate-500 dark:text-slate-400">Free videos used</span>
+      </div>
+      <div class="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white py-10 text-center dark:border-slate-800 dark:bg-slate-900">
+        <span class="mb-1 text-4xl font-black">4/10</span>
+        <span class="text-sm text-slate-500 dark:text-slate-400">Free docs used</span>
+      </div>
+      <div class="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white py-10 text-center dark:border-slate-800 dark:bg-slate-900">
+        <span class="mb-1 text-4xl font-black">3/5</span>
+        <span class="text-sm text-slate-500 dark:text-slate-400">AI questions today</span>
+      </div>
+    </section>
+  </div>
+</div>
 </x-app-layout>

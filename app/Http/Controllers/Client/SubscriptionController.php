@@ -18,4 +18,5 @@ class SubscriptionController extends Controller
     public function success () {
         return view("subscription.success");
     }
+    
 }
