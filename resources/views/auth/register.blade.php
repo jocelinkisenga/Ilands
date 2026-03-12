@@ -52,7 +52,8 @@
                                 <span class="bg-white p-2 text-gray-400 sm:px-5 sm:py-2 dark:bg-gray-900">Or</span>
                             </div>
                         </div>
-                        <form>
+                        <form action="{{route('register')}}" method="POST">
+                            @csrf
                             <div class="space-y-5">
                                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
                                     <!-- First Name -->
@@ -60,7 +61,7 @@
                                         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                                             First Name<span class="text-error-500">*</span>
                                         </label>
-                                        <input type="text" id="fname" name="fname"
+                                        <input type="text" id="fname" name="name"
                                             placeholder="Enter your first name"
                                             class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" />
                                     </div>
@@ -154,9 +155,16 @@
                     <!-- ===== Common Grid Shape Start ===== -->
                     <x-common.common-grid-shape />
                     <div class="flex max-w-xs flex-col items-center">
-                        <a href="/" class="mb-4 block">
-                            <img src="./images/logo/auth-logo.svg" alt="Logo" />
-                        </a>
+                        <div>
+            <h3 class="text-xl md:text-xl font-bold leading-tight">
+                Tax Education Made Simple
+                <span class="text-emerald-400"> Without Expensive CPAs.</span>
+            </h3>
+
+            <div class="mt-6 text-sm text-white/50">
+                IRS Enrolled Agents • EU Tax Advisors • GDPR Compliant
+            </div>
+        </div>
                     </div>
                 </div>
             </div>

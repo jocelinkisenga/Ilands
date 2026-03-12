@@ -1,6 +1,6 @@
 <x-guest-layout>
 
-<div x-data="app()" x-init="init()" class="bg-black text-white scroll-smooth">
+<div x-data="app()" x-init="init()" class="bg-white-100 dark:bg-gray-900 text-white scroll-smooth">
 
 <!-- ================= HERO ================= -->
 <section class="pt-15 pb-32 relative overflow-hidden">
@@ -11,7 +11,7 @@
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center relative">
 
         <div>
-            <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+            <h1 class="text-4xl md:text-6xl font-bold text-black dark:text-white leading-tight">
                 Tax Education Made Simple
                 <span class="text-emerald-400"> Without Expensive CPAs.</span>
             </h1>
@@ -27,18 +27,18 @@
                 </a>
 
                 <a href="#how"
-                   class="border border-white/20 px-8 py-4 rounded-2xl text-white/80 hover:border-white/40 transition">
+                   class="border text-black font-bold border-black/60 dark:border-white/20 px-8 py-4 rounded-2xl dark:text-white/80 hover:border-white/40 transition">
                     Learn More
                 </a>
             </div>
 
-            <div class="mt-6 text-sm text-white/50">
+            <div class="mt-6 text-sm text-black dark:text-white/50">
                 IRS Enrolled Agents • EU Tax Advisors • GDPR Compliant
             </div>
         </div>
 
         <!-- Glass Card -->
-        <div class="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 shadow-2xl">
+        <div class="bg-black backdrop-blur-2xl border-green/10  dark:bg-white/5 dark:backdrop-blur-2xl border dark:border-white/10 rounded-3xl p-8 shadow-2xl">
             <h3 class="text-white/70 text-sm uppercase tracking-widest mb-6">
                 Optimization Preview
             </h3>
@@ -63,8 +63,8 @@
     </div>
 </section>
 <!-- ================= TRUST STRIP ================= -->
-<section class="py-16 border-t border-b border-white/5 bg-white/5">
-    <div class="max-w-6xl mx-auto px-6 text-center text-white/60 text-sm tracking-wide">
+<section class="py-8 border-t border-b border-white/5 bg-white/5">
+    <div class="max-w-6xl mx-auto px-6 text-center text-black dark:text-white/60 text-sm tracking-wide">
         Built with IRS Enrolled Agents (US) • EU-Certified Tax Advisors • GDPR Compliant
     </div>
 </section>
@@ -72,31 +72,31 @@
 
 
 <!-- ================= BENEFITS ================= -->
-<section class="py-16">
+<section class="py-4">
     <div class="max-w-7xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold mb-16">Professional Advisory. Intelligent Execution.</h2>
+        <h2 class="text-4xl font-bold text-emerald-400 mb-16">Professional Advisory. Intelligent Execution.</h2>
 
         <div class="grid md:grid-cols-3 gap-10">
 
-            <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl hover:border-emerald-400/40 transition">
+            <div class="bg-white/5 backdrop-blur-xl border border-emerald-400/50 dark:border-white/10 p-8 rounded-3xl hover:border-emerald-400/40 transition">
                 <h3 class="text-xl font-semibold mb-4 text-emerald-400">Save More</h3>
-                <p class="text-white/70">
+                <p class="text-black dark:text-white/70">
                     Identify deductions specific to freelancers, remote workers and expats
                     often missed by generic software.
                 </p>
             </div>
 
-            <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl hover:border-emerald-400/40 transition">
+            <div class="bg-white/5 backdrop-blur-xl border border-emerald-400/50 dark:border-white/10  p-8 rounded-3xl hover:border-emerald-400/40 transition">
                 <h3 class="text-xl font-semibold mb-4 text-emerald-400">Save Time</h3>
-                <p class="text-white/70">
+                <p class="text-black dark:text-white/70">
                     Receive a structured tax optimization summary in minutes,
                     not days.
                 </p>
             </div>
 
-            <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl hover:border-emerald-400/40 transition">
+            <div class="bg-white/5 backdrop-blur-xl border border-emerald-400/50 dark:border-white/10  p-8 rounded-3xl hover:border-emerald-400/40 transition">
                 <h3 class="text-xl font-semibold mb-4 text-emerald-400">Stay Compliant</h3>
-                <p class="text-white/70">
+                <p class="text-black dark:text-white/70">
                     Region-aware insights aligned with US and EU regulatory frameworks.
                 </p>
             </div>
@@ -108,26 +108,26 @@
 <!-- ================= HOW IT WORKS ================= -->
 <section id="how" class="py-16 bg-white/5">
     <div class="max-w-6xl mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold mb-16">How It Works</h2>
+        <h2 class="text-4xl font-bold mb-16 text-emerald-400">How It Works</h2>
 
         <div class="grid md:grid-cols-3 gap-12 text-left">
 
             <div>
                 <div class="text-emerald-400 text-3xl font-bold mb-4">01</div>
-                <h3 class="font-semibold text-lg mb-3">Smart Assessment</h3>
-                <p class="text-white/70">Answer adaptive questions based on your income type and residency.</p>
+                <h3 class="font-semibold text-lg mb-3 text-emerald-400">Smart Assessment</h3>
+                <p class="text-black dark:text-white/70">Answer adaptive questions based on your income type and residency.</p>
             </div>
 
             <div>
                 <div class="text-emerald-400 text-3xl font-bold mb-4">02</div>
-                <h3 class="font-semibold text-lg mb-3">AI Optimization Engine</h3>
-                <p class="text-white/70">Our AI analyzes deduction patterns and cross-border scenarios.</p>
+                <h3 class="font-semibold text-lg mb-3 text-emerald-400">AI Optimization Engine</h3>
+                <p class="text-black dark:text-white/70">Our AI analyzes deduction patterns and cross-border scenarios.</p>
             </div>
 
             <div>
                 <div class="text-emerald-400 text-3xl font-bold mb-4">03</div>
-                <h3 class="font-semibold text-lg mb-3">Professional Summary</h3>
-                <p class="text-white/70">Download your structured advisory summary or share with your accountant.</p>
+                <h3 class="font-semibold text-lg mb-3 text-emerald-400">Professional Summary</h3>
+                <p class="text-black dark:text-white/70">Download your structured advisory summary or share with your accountant.</p>
             </div>
 
         </div>

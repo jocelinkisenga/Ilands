@@ -64,7 +64,8 @@
                                     <span class="bg-white p-2 text-gray-400 sm:px-5 sm:py-2 dark:bg-gray-900">Or</span>
                                 </div>
                             </div>
-                            <form>
+                            <form action="{{route('login')}}" method="POST">
+                                @csrf
                                 <div class="space-y-5">
                                     <!-- Email -->
                                     <div>
@@ -82,7 +83,8 @@
                                         <div x-data="{ showPassword: false }" class="relative">
                                             <input :type="showPassword ? 'text' : 'password'"
                                                 placeholder="Enter your password"
-                                                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" />
+                                                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                                                name="password" />
                                             <span @click="showPassword = !showPassword"
                                                 class="absolute top-1/2 right-4 z-30 -translate-y-1/2 cursor-pointer text-gray-500 dark:text-gray-400">
                                                 <svg x-show="!showPassword" class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,7 +124,7 @@
                                     </div>
                                     <!-- Button -->
                                     <div>
-                                        <button
+                                        <button type="submit" 
                                             class="bg-brand-500 shadow-theme-xs hover:bg-brand-600 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium text-white transition">
                                             Sign In
                                         </button>
@@ -146,10 +148,20 @@
                     <x-common.common-grid-shape/>
                     <div class="flex max-w-xs flex-col items-center">
                         <a href="/" class="mb-4 block">
-                            <img src="./images/logo/auth-logo.svg" alt="Logo" />
+                            
                         </a>
                         <p class="text-center text-gray-400 dark:text-white/60">
-                            Free and Open-Source Tailwind CSS Admin Dashboard Template
+                            
+        <div>
+            <h3 class="text-xl md:text-xl font-bold leading-tight">
+                Tax Education Made Simple
+                <span class="text-emerald-400"> Without Expensive CPAs.</span>
+            </h3>
+
+            <div class="mt-6 text-sm text-white/50">
+                IRS Enrolled Agents • EU Tax Advisors • GDPR Compliant
+            </div>
+        </div>
                         </p>
                     </div>
                 </div>

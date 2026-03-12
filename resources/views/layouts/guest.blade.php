@@ -129,11 +129,12 @@
             }
         })();
     </script>
+   {{--  x-data="{ dark: true }"
+    :class="dark ? 'dark bg-black text-white' : 'bg-gray-100 text-gray-900'"      
+    class="transition duration-500" --}}
         @livewireStyles
     </head>
-    <body     x-data="{ dark: true }"
-    :class="dark ? 'dark bg-black text-white' : 'bg-gray-100 text-gray-900'"      
-    class="transition duration-500">
+    <body  class=" bg-white dark:bg-gray-900" >
       @include('components.navbar')
                {{ $slot }}
          

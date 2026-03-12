@@ -12,20 +12,20 @@
 
             <div class="hidden lg:flex items-center space-x-6">
  
-                <a href="/services" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">Services</a>
-                <a href="/about" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">About Us</a>
-                <a href="/contact" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">Contact</a>
+                <a href="/services" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">Services</a>
+                <a href="/about" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">About Us</a>
+                <a href="/contact" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">Contact</a>
                 
                 <div class="h-6 w-[1px] bg-slate-200 dark:bg-white/10 mx-2"></div>
 
                 @auth
-                    <a href="/dashboard" class="text-xs font-bold uppercase tracking-widest text-green-600 dark:text-green-500 transition">My Account</a>
+                    <a href="/dashboard" class="text-xs font-bold uppercase tracking-widest text-green-600 text-black dark:text-green-500 transition">My Account</a>
                     <form method="POST" action="{{ route('logout') }}" class="inline">
                         @csrf
                         <button type="submit" class="text-xs font-bold uppercase tracking-widest text-red-500 hover:text-red-400 transition">Logout</button>
                     </form>
                 @else
-                    <a href="/login" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 dark:hover:text-green-500 transition">Login</a>
+                    <a href="/login" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 text-black dark:hover:text-green-500 transition">Login</a>
                     <a href="/tax-screener" class="bg-green-600 dark:bg-green-500 text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:brightness-110 transition shadow-lg">
                         Get your free tax screener
                     </a>
