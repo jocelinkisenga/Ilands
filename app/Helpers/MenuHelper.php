@@ -28,7 +28,7 @@ class MenuHelper
             [
                 'icon' => 'chat',
                 'name' => 'Chat',
-                'path' => '/library',
+                'path' => '/chat',
             ],
 
             [

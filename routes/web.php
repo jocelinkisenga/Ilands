@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\Client\ChatController;
 use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\Client\CheckoutContoller;
 use App\Http\Controllers\ServiceController;
@@ -57,6 +58,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/subscribe', [SubscriptionController::class, 'index'])
             ->middleware('auth')
             ->name('subscribe');
+
+        Route::get('chat', [ChatController::class, 'index'])->name('chat');
 
         // Routes requiring an Active Subscription
         Route::middleware('subscribed')->group(function () {
