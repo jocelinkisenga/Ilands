@@ -265,21 +265,82 @@
             </section>
 
 
+<section class="py-16 bg-gray-50 dark:bg-gray-900 flex justify-center">
+  <div class="max-w-3xl w-full bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8">
+    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white text-center mb-6">
+      Advisory vs. Tax Preparation
+    </h2>
+    <p class="text-gray-600 dark:text-gray-300 text-center mb-8">
+      We provide: Tax education, strategic guidance, deduction identification, and personalized advisory services.
+    </p>
 
+    <div class="space-y-6">
 
+      <!-- Positive Options -->
+      <div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">✔ What We Provide</h3>
+        <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+          <li class="flex items-center gap-3">
+            <!-- Check Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Tax education
+          </li>
+          <li class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Strategic guidance
+          </li>
+          <li class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Deduction identification
+          </li>
+          <li class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Personalized advisory services
+          </li>
+        </ul>
+      </div>
 
+      <!-- Negative Options -->
+      <div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">✕ What We Do NOT Provide</h3>
+        <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+          <li class="flex items-center gap-3">
+            <!-- Cross Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 dark:text-red-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            Prepare tax returns
+          </li>
+          <li class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 dark:text-red-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            File taxes on your behalf
+          </li>
+          <li class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-600 dark:text-red-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            Provide legal tax advice for specific situations
+          </li>
+        </ul>
+      </div>
 
+      <p class="mt-6 text-gray-600 dark:text-gray-300 text-center">
+        This focus allows us to serve thousands of clients affordably while maintaining the highest quality of personalized guidance.
+      </p>
 
-            <!-- Advisory vs Tax Preparation -->
-            <section class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors space-y-4">
-                <h3 class="text-xl font-semibold text-green-600 dark:text-emerald-400">Advisory vs. Tax Preparation</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">
-                    We provide: Tax education, strategic guidance, deduction identification, and personalized advisory services.
-                </p>
-                <p class="text-gray-600 dark:text-gray-300 text-sm">
-                    ✕ We do NOT: Prepare tax returns, file taxes on your behalf, or provide legal tax advice for specific situations.
-                </p>
-            </section>
+    </div>
+  </div>
+</section>
 
         </div>
     </div>
