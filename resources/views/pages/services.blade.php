@@ -18,7 +18,7 @@
 
 
     <!-- THREE TIER CARDS -->
-    <section class="pb-24">
+{{--     <section class="pb-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-3 gap-8">
 
@@ -104,7 +104,8 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
+    @include("components.pricing")
 
 
 

@@ -25,13 +25,10 @@
             <!-- 1 Credentials -->
             <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
                 <h3 class="text-xl font-semibold text-green-500 mb-4">
-                    Is Shabani a licensed tax professional?
+                   What's included in the free tier?
                 </h3>
                 <p class="text-gray-300 leading-relaxed">
-                    Yes. Shabani is a federally licensed Enrolled Agent (EA) authorized
-                    by the U.S. Treasury to represent taxpayers before the IRS.
-                    This credential grants unlimited representation rights for individuals
-                    and businesses.
+                   You get access to 5 hand-picked educational videos, 10 essential tax documents, and 5 AI chat questions per day. It's a great way to explore the platform risk-free.
                 </p>
             </div>
 
@@ -39,12 +36,29 @@
             <!-- 2 Security -->
             <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
                 <h3 class="text-xl font-semibold text-green-500 mb-4">
-                    How is my financial data secured?
+                    Can I cancel my Pro subscription anytime?
                 </h3>
                 <p class="text-gray-300 leading-relaxed">
-                    We apply enterprise-level security standards, encrypted document exchange,
-                    limited access protocols, and secure storage practices.
-                    Client data is never sold, shared, or used for marketing purposes.
+                    Yes! You can cancel your Pro subscription at any time. You'll continue to have access until the end of your billing period.
+                </p>
+            </div>
+
+                        <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-green-500 mb-4">
+                    What is Priority Match?
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Priority Match is a one-time service that connects you with a vetted CPA or Enrolled Agent based on your specific tax situation. The $19 fee covers the matching service and initial consultation.
+                </p>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-green-500 mb-4">
+                    Is this tax preparation or legal advice?
+
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                    No. ILANDS Solutions provides tax education only. We help you understand tax concepts so you can make informed decisions, but we don't prepare taxes or provide legal advice.
                 </p>
             </div>
 

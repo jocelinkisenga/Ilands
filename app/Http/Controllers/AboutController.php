@@ -11,6 +11,6 @@ class AboutController extends Controller
     }
 
     public function trust() {
-        return view('pages.trust')
+        return view('pages.trust');
     }
 }

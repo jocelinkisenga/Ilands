@@ -132,8 +132,9 @@
 
     </div>
   @livewireScripts
+  @stack('scripts')
 </body>
 
-@stack('scripts')
+
 
 </html>
