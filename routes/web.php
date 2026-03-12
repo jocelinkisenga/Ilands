@@ -19,6 +19,7 @@ use App\Http\Controllers\Client\DocumentController;
 use App\Http\Controllers\Client\UserController;
 use App\Http\Controllers\Client\VideoController;
 use App\Livewire\AiChatBot;
+use App\Http\Controllers\Auth\SocialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,5 +79,10 @@ Route::middleware('auth')->group(function () {
         });
     });
 });
+
+
+
+Route::get('auth/{provider}', [SocialController::class, 'redirect'])->name('social.redirect');
+Route::get('auth/{provider}/callback', [SocialController::class, 'callback'])->name('social.callback');
 
 require __DIR__.'/auth.php';

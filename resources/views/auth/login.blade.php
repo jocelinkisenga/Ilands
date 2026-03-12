@@ -11,8 +11,7 @@
                         <svg class="stroke-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M12.7083 5L7.5 10.2083L12.7083 15.4167" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        Back to dashboard
-                    </a>
+                        Back to dashboard>
                 </div>
                 <div class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
                     <div>
@@ -26,7 +25,7 @@
                         </div>
                         <div>
                             <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
-                                <button
+                                <a href="{{ route('social.redirect', 'google') }}" 
                                     class="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +43,7 @@
                                             fill="#EB4335" />
                                     </svg>
                                     Sign in with Google
-                                </button>
+                                </a>
                                 <button
                                     class="inline-flex items-center justify-center gap-3 rounded-lg bg-gray-100 px-7 py-3 text-sm font-normal text-gray-700 transition-colors hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                                     <svg width="21" class="fill-current" height="20" viewBox="0 0 21 20"
@@ -118,7 +117,7 @@
                                                 Keep me logged in
                                             </label>
                                         </div>
-                                        <a href="/reset-password" class="text-brand-500 hover:text-brand-600 dark:text-brand-400 text-sm">
+                                        <a href="{{ route('password.request') }}" class="text-brand-500 hover:text-brand-600 dark:text-brand-400 text-sm">
                                             Forgot password?
                                         </a>
                                     </div>
@@ -134,7 +133,7 @@
                             <div class="mt-5">
                                 <p class="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
                                     Don't have an account?
-                                    <a href="/signup" class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Sign Up</a>
+                                    <a href="/register" class="text-brand-500 hover:text-brand-600 dark:text-brand-400">Sign Up</a>
                                 </p>
                             </div>
                         </div>

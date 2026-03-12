@@ -26,7 +26,7 @@
                         <button type="submit" class="text-xs font-bold uppercase tracking-widest text-red-500 hover:text-red-400 transition">Logout</button>
                     </form>
                 @else
-                    <a href="/login" class="text-xs font-bold uppercase tracking-widest hover:text-green-600 text-black dark:hover:text-green-500 transition">Login</a>
+                    <a href="/login" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">Login</a>
                     <a href="/tax-screener" class="bg-green-600 dark:bg-green-500 text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:brightness-110 transition shadow-lg">
                         Get your free tax screener
                     </a>
