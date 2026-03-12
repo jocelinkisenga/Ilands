@@ -4,7 +4,10 @@ namespace App\Livewire;
 
 use App\Models\Lead;
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
+
+#[Layout('layouts.guest')]
 class TaxScreener extends Component
 {
     public $step = 1;

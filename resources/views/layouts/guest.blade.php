@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data :class="$store.theme.theme === 'dark' ? 'dark' : ''">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -134,7 +134,7 @@
     class="transition duration-500" --}}
         @livewireStyles
     </head>
-    <body  class=" bg-white dark:bg-gray-900" >
+    <body  class=" bg-white text-gray-900 dark:bg-black dark:text-white transition-colors duration-300" >
       @include('components.navbar')
                {{ $slot }}
          

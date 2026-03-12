@@ -15,7 +15,6 @@
                 <a href="/services" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">Services</a>
                 <a href="/trust" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">Trust</a>
                 <a href="/blog" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">blog</a>
-                <a href="/about" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">About Us</a>
                 <a href="/contact" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">Contact</a>
                 
                 <div class="h-6 w-[1px] bg-slate-200 dark:bg-white/10 mx-2"></div>

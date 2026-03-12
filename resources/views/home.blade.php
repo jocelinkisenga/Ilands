@@ -1,6 +1,6 @@
 <x-guest-layout>
 
-<div x-data="app()" x-init="init()" class="bg-white-100 dark:bg-gray-900 text-white scroll-smooth">
+<div x-data="app()" x-init="init()" >
 
 <!-- ================= HERO ================= -->
 <section class="pt-15 pb-32 relative overflow-hidden">
@@ -26,9 +26,9 @@
                     Start free
                 </a>
 
-                <a href="#how"
+                <a href="/pricing"
                    class="border text-black font-bold border-black/60 dark:border-white/20 px-8 py-4 rounded-2xl dark:text-white/80 hover:border-white/40 transition">
-                    Learn More
+                    view pricing
                 </a>
             </div>
 

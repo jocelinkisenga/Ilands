@@ -1,20 +1,21 @@
 <x-guest-layout>
-<div class="bg-black text-white min-h-screen">
+<div class="min-h-screen bg-white text-gray-900 dark:bg-black dark:text-white transition-colors">
 
     <!-- HERO -->
-    <section class="relative py-24 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-green-600/20 via-black to-black"></div>
+<section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-green-600/20 via-white to-white dark:via-black dark:to-black"></div>
 
-        <div class="relative max-w-6xl mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold">
-                Strategic Advisory Plans
-            </h1>
-            <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
-                Choose the level of tax intelligence and advisory support
-                aligned with your financial complexity and growth ambition.
-            </p>
-        </div>
-    </section>
+    <div class="relative max-w-6xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold">
+            Strategic Advisory Plans
+        </h1>
+
+        <p class="mt-6 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
+            Choose the level of tax intelligence and advisory support
+            aligned with your financial complexity and growth ambition.
+        </p>
+    </div>
+</section>
 
 
     <!-- THREE TIER CARDS -->
@@ -108,67 +109,6 @@
     @include("components.pricing")
 
 
-
-    <!-- COMPARISON TABLE -->
-    <section class="py-16 border-t border-green-500/10">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-16">
-                Plan Comparison
-            </h2>
-
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left border-collapse">
-                    <thead>
-                        <tr class="border-b border-green-500/20 text-gray-400">
-                            <th class="py-4">Features</th>
-                            <th class="py-4 text-center">Foundation</th>
-                            <th class="py-4 text-center">Growth</th>
-                            <th class="py-4 text-center">Elite</th>
-                        </tr>
-                    </thead>
-
-                    <tbody class="text-gray-300">
-
-                        <tr class="border-b border-green-500/10">
-                            <td class="py-4">Annual Tax Review</td>
-                            <td class="text-center">✔</td>
-                            <td class="text-center">✔</td>
-                            <td class="text-center">✔</td>
-                        </tr>
-
-                        <tr class="border-b border-green-500/10">
-                            <td class="py-4">Quarterly Strategy Sessions</td>
-                            <td class="text-center">—</td>
-                            <td class="text-center">✔</td>
-                            <td class="text-center">✔</td>
-                        </tr>
-
-                        <tr class="border-b border-green-500/10">
-                            <td class="py-4">AI Tax Modeling</td>
-                            <td class="text-center">Basic</td>
-                            <td class="text-center">Advanced</td>
-                            <td class="text-center">Enterprise</td>
-                        </tr>
-
-                        <tr class="border-b border-green-500/10">
-                            <td class="py-4">IRS Representation</td>
-                            <td class="text-center">Limited</td>
-                            <td class="text-center">Included</td>
-                            <td class="text-center">Priority</td>
-                        </tr>
-
-                        <tr>
-                            <td class="py-4">Dedicated Advisory Access</td>
-                            <td class="text-center">—</td>
-                            <td class="text-center">—</td>
-                            <td class="text-center">✔</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
 
 
 

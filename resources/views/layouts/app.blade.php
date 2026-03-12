@@ -11,10 +11,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Alpine.js -->
-    {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
 
-    <!-- Theme Store -->
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.store('theme', {
@@ -73,6 +70,12 @@
                 }
             });
         });
+
+
+        $nextTick(() => {
+    const chat = document.querySelector('#chat');
+    chat.scrollTop = chat.scrollHeight;
+});
     </script>
 
     <!-- Apply dark mode immediately to prevent flash -->

@@ -8,6 +8,10 @@ use Livewire\Component;
 use Nnjeim\World\World;
 use Livewire\Attributes\Validate;
 
+use Livewire\Attributes\Layout;
+
+
+#[Layout('layouts.guest')]
 class Blog extends Component
 {
 public $articles = [

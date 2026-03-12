@@ -6,16 +6,18 @@
             <div class="grid md:grid-cols-3 gap-8">
 
                 <!-- STARTER -->
-                <div class="bg-white/5 backdrop-blur-xl border border-green-500/10 rounded-2xl p-8">
-                    <h3 class="text-xl font-semibold text-emerald-400 dark:text-gray-200">Free</h3>
-                    <p class="text-gray-400 mt-2 text-sm">Get started with essential content</p>
+                <div class="bg-white/5 dark:bg-gray-800/50 backdrop-blur-xl 
+            border border-gray-500 dark:border-green-500/30 
+            rounded-2xl  p-8 transition-colors">
+                    <h3 class="text-xl font-semibold text-emerald-500 dark:text-emerald-400">Free</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mt-2 text-sm">Get started with essential content</p>
 
                     <div class="mt-8 text-4xl font-bold text-green-500">
                         $0
                         <span class="text-sm text-gray-400 font-normal">/ engagement</span>
                     </div>
 
-                    <ul class="mt-8 space-y-3 text-gray-400 text-sm">
+                    <ul class="mt-8 space-y-3 text-gray-600 dark:text-gray-300 text-sm">
                         <li>• 5 curated videos </li>
                         <li>• 10 documents</li>
                         <li>• Limited AI chat</li>
@@ -28,7 +30,7 @@
 
 
                 <!-- GROWTH (Highlighted) -->
-                <div class="bg-gradient-to-br from-green-600/20 to-black backdrop-blur-xl border border-green-500/30 rounded-2xl p-10 shadow-2xl scale-105">
+                <div class="bg-gradient-to-br from-green-600/20 to-white dark:to-black dark:from-green-600/20 backdrop-blur-xl border border-gray-500 dark:border-green-500/30 rounded-2xl p-10 shadow-2xl scale-105 transition-colors">
                     <div class="text-center mb-4">
                         <span class="text-xs bg-green-600 px-3 py-1 rounded-full uppercase tracking-wider">
                             Most Popular
@@ -48,7 +50,7 @@
                         <span class="text-sm text-gray-400 font-normal">/ month</span>
                     </div>
 
-                    <ul class="mt-8 space-y-3 text-gray-200 text-sm">
+                    <ul class="mt-8 space-y-3 text-gray-600 dark:text-gray-300 text-sm">
                         <li>• All videos & documents</li>
                         <li>• Unlimited AI chat</li>
                         <li>• AIssue packs included</li>
@@ -62,7 +64,7 @@
 
 
                 <!-- ELITE -->
-                <div class="bg-white/5 backdrop-blur-xl border border-green-500/10 rounded-2xl p-8">
+                <div class="bg-white/5 backdrop-blur-xl border border-gray-500 dark:border-green-500/30 rounded-2xl p-8">
                     <h3 class="text-xl font-semibold text-gray-200">Priority Match</h3>
                     <p class="text-gray-400 mt-2 text-sm">One-time professional connection</p>
 
@@ -70,7 +72,7 @@
                         Custom
                     </div>
 
-                    <ul class="mt-8 space-y-3 text-gray-400 text-sm">
+                    <ul class="mt-8 space-y-3 text-gray-600 dark:text-gray-300 text-sm">
                         <li>• Matched with CPA/EA</li>
                         <li>• Initial consultation</li>
                         <li>• Issue-specific matching</li>

@@ -1,8 +1,8 @@
 <x-guest-layout>
-<div class="max-w-4xl mx-auto bg-white p-8 shadow-2xl rounded-2xl border border-gray-200">
+<div class="max-w-4xl mx-auto p-8 shadow-2xl rounded-2xl border border-gray-200   bg-gradient-to-br from-green-600/20 via-white to-white dark:via-black dark:to-black">
     <div class="border-b-2 border-black pb-6 mb-8">
-        <h2 class="text-3xl font-extrabold text-black uppercase tracking-tighter">Trust & Safety</h2>
-        <p class="text-lg text-black mt-2 font-medium">Your trust is our foundation. Learn about our commitment to providing honest, secure tax education.</p>
+        <h2 class="text-3xl font-extrabold text-black dark:text-white uppercase tracking-tighter">Trust & Safety</h2>
+        <p class="text-lg text-black dark:text-gray-500 mt-2 font-medium">Your trust is our foundation. Learn about our commitment to providing honest, secure tax education.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -47,13 +47,13 @@
         <p class="mt-4 text-xs text-black italic">Always consult with a CPA, Enrolled Agent, or tax attorney for advice specific to your situation.</p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8 mb-8 border-t pt-8">
+    <div class="grid md:grid-cols-2 gap-8 mb-8 border-t pt-8 bg-gradient-to-br">
         <div>
-            <h4 class="text-black font-bold text-lg mb-4 underline decoration-2">Privacy Summary</h4>
+            <h4 class="text-black dark:text-gray-500 font-bold text-lg mb-4 underline decoration-2">Privacy Summary</h4>
             <div class="space-y-4 text-black text-sm">
-                <p><strong>What We Collect:</strong> Email, name, and onboarding data.</p>
-                <p><strong>How We Use It:</strong> To personalize your experience. We never sell your data.</p>
-                <p><strong>Retention:</strong> While active. Request deletion anytime.</p>
+                <p class="text-black dark:text-white"><strong>What We Collect:</strong> Email, name, and onboarding data.</p>
+                <p class="text-black dark:text-white"><strong>How We Use It:</strong> To personalize your experience. We never sell your data.</p>
+                <p class="text-black dark:text-white"><strong>Retention:</strong> While active. Request deletion anytime.</p>
             </div>
         </div>
         <div>

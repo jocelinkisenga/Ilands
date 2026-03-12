@@ -3,7 +3,10 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
+
+#[Layout('layouts.guest')]
 class Contact extends Component
 {
     public $name, $email, $subject = 'general', $message;

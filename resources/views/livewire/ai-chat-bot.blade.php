@@ -19,18 +19,23 @@
         {{-- <form class="relative"> --}}
             <div class="relative">
             <textarea 
-                wire:model="prompt"
+                wire:model.live="prompt"
+                wire:keydown.enter.prevent="sendMessage"
                 maxlength="200"
                 placeholder="Ask your question (max 200 car.)..."
                 class="w-full p-3 pr-12 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none text-sm"
                 rows="2"
             ></textarea>
             
-            <div class="absolute bottom-2 left-3 text-[10px] {{ strlen($prompt) >= 200 ? 'text-red-500 font-bold' : 'text-gray-400' }}">
-                {{ strlen($prompt) }}/200
+            <div class="absolute bottom-2 left-3 text-[10px] {{ strlen($prompt ?? '') >= 200 ? 'text-red-500 font-bold' : 'text-gray-400' }}">
+               {{ strlen($prompt ?? '') }}/200
             </div>
 
-            <button wire:click="sendMessage"   class="absolute bottom-2 right-2 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50" wire:loading.attr="disabled">
+            <button type="button"
+    wire:click="sendMessage"
+    wire:loading.attr="disabled"
+    class="absolute bottom-2 right-2 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+    wire:loading.attr="disabled">
                 <svg wire:loading.remove xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                 </svg>
