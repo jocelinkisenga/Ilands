@@ -23,7 +23,7 @@
             <div class="mt-10 flex flex-col sm:flex-row gap-4">
                 <a href="{{route('tax-screener')}}" 
                         class="bg-emerald-500 snd__button hover:bg-emerald-600 text-black font-semibold px-8 py-4 rounded-2xl shadow-xl shadow-emerald-500/20 transition">
-                    Get Your Free Tax Screener →
+                    Start free
                 </a>
 
                 <a href="#how"
@@ -65,7 +65,7 @@
 <!-- ================= TRUST STRIP ================= -->
 <section class="py-8 border-t border-b border-white/5 bg-white/5">
     <div class="max-w-6xl mx-auto px-6 text-center text-black dark:text-white/60 text-sm tracking-wide">
-        Built with IRS Enrolled Agents (US) • EU-Certified Tax Advisors • GDPR Compliant
+        No credit card required. 5 free videos + 10 documents included.
     </div>
 </section>
 
@@ -79,25 +79,23 @@
         <div class="grid md:grid-cols-3 gap-10">
 
             <div class="bg-white/5 backdrop-blur-xl border border-emerald-400/50 dark:border-white/10 p-8 rounded-3xl hover:border-emerald-400/40 transition">
-                <h3 class="text-xl font-semibold mb-4 text-emerald-400">Save More</h3>
+                <h3 class="text-xl font-semibold mb-4 text-emerald-400">Expart curated Library</h3>
                 <p class="text-black dark:text-white/70">
-                    Identify deductions specific to freelancers, remote workers and expats
-                    often missed by generic software.
+                    Access videos and documents covering essential tax topics, from deductions to filing strategies.
                 </p>
             </div>
 
             <div class="bg-white/5 backdrop-blur-xl border border-emerald-400/50 dark:border-white/10  p-8 rounded-3xl hover:border-emerald-400/40 transition">
-                <h3 class="text-xl font-semibold mb-4 text-emerald-400">Save Time</h3>
+                <h3 class="text-xl font-semibold mb-4 text-emerald-400">AI Tax Assistant</h3>
                 <p class="text-black dark:text-white/70">
-                    Receive a structured tax optimization summary in minutes,
-                    not days.
+                    Get instant answers to your tax questions with our intelligent chatbot, available 24/7.
                 </p>
             </div>
 
             <div class="bg-white/5 backdrop-blur-xl border border-emerald-400/50 dark:border-white/10  p-8 rounded-3xl hover:border-emerald-400/40 transition">
-                <h3 class="text-xl font-semibold mb-4 text-emerald-400">Stay Compliant</h3>
+                <h3 class="text-xl font-semibold mb-4 text-emerald-400">Priority Match</h3>
                 <p class="text-black dark:text-white/70">
-                    Region-aware insights aligned with US and EU regulatory frameworks.
+                   Connect with vetted CPAs and Enrolled Agents when you need professional guidance.
                 </p>
             </div>
 

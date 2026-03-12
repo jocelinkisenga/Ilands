@@ -90,7 +90,7 @@
             }
         })();
     </script>
-    
+      @livewireStyles
 </head>
 
 <body
@@ -131,7 +131,7 @@
         </div>
 
     </div>
-
+  @livewireScripts
 </body>
 
 @stack('scripts')

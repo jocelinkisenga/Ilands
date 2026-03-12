@@ -18,6 +18,7 @@ use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\Client\DocumentController;
 use App\Http\Controllers\Client\UserController;
 use App\Http\Controllers\Client\VideoController;
+use App\Livewire\AiChatBot;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::get('/terms', [LegalController::class, 'terms'])->name('terms');
 Route::get('/privacy', [LegalController::class, 'privacy'])->name('privacy');
 Route::livewire('/blog', Blog::class)->name('blog');
 Route::get('/contact', Contact::class)->name('contact');
-
+Route::get('/trust', [AboutController::class, 'trust'])->name('trust');
 /*
 |--------------------------------------------------------------------------
 | Authenticated Routes
@@ -65,7 +66,9 @@ Route::middleware('auth')->group(function () {
             ->middleware('auth')
             ->name('subscribe');
 
-        Route::get('chat', [ChatController::class, 'index'])->name('chat');
+        Route::get('/chat', AiChatBot::class)->name('chat');
+
+        //Route::get('chat', [ChatController::class, 'index'])->name('chat');
 
         // Routes requiring an Active Subscription
         Route::middleware('subscribed')->group(function () {

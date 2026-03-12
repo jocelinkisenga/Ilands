@@ -8,6 +8,8 @@
     "require": {
         "php": "^8.2",
         "filament/filament": "^5.2",
+        "google-gemini-php/laravel": "^2.0",
+        "laravel/ai": "^0.2.8",
         "laravel/cashier": "^16.2",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
