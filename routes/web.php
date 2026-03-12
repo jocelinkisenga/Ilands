@@ -16,6 +16,7 @@ use App\Livewire\Contact;
 use App\Livewire\TaxScreener;
 use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\Client\UserController;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/', [DashboardController::class, 'index'])->name('dashboard');
         Route::livewire('/tax-screener', TaxScreener::class)->name('tax-screener');
        Route::get('/library', [UserController::class, 'library'])->name('library');
+       Route::get('documents', [DocumentController::class, 'index'])->name('documents');
+
         Route::get('/subscribe', [SubscriptionController::class, 'index'])
             ->middleware('auth')
             ->name('subscribe');
