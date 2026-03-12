@@ -34,7 +34,28 @@ class MenuHelper
             [
                 'icon' => 'book',
                 'name' => 'Document',
-                'path' => '/library',
+                'path' => '/documents',
+            ],
+                        [
+                'icon' => 'movie',
+                'name' => 'Videos',
+                'path' => '/videos',
+            ],
+
+            [
+                'icon' => 'reports',
+                'name' => 'Reports',
+                'path' => '/videos',
+            ],
+            [
+                'icon' => 'subscription',
+                'name' => 'Subscription',
+                'path' => '/videos',
+            ],
+            [
+                'icon' => 'logs',
+                'name' => 'Activity logs',
+                'path' => '/videos',
             ],
             [
                 'icon' => 'user-profile',
