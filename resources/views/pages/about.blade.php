@@ -61,21 +61,169 @@
                 </div>
             </section>
 
-            <!-- Features / What Makes Us Different -->
-            <section class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors space-y-2">
-                    <h4 class="font-semibold text-green-600 dark:text-emerald-400">Advisory Focus</h4>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">We educate and guide, not file returns. Our focus is empowering you with knowledge.</p>
-                </div>
-                <div class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors space-y-2">
-                    <h4 class="font-semibold text-green-600 dark:text-emerald-400">AI-Powered</h4>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">Technology meets expertise for personalized guidance at scale without sacrificing quality.</p>
-                </div>
-                <div class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors space-y-2">
-                    <h4 class="font-semibold text-green-600 dark:text-emerald-400">Licensed Expertise</h4>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm">All guidance backed by Enrolled Agent credentials with IRS representation rights.</p>
-                </div>
-            </section>
+
+
+            <section class="py-16 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">What Makes Us Different</h2>
+    <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+      We're not your typical tax service. Here's why clients choose ILANDS.
+    </p>
+
+    <div class="mt-12 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+      
+      <!-- Advisory Focus Card -->
+      <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6 flex flex-col items-center text-center hover:scale-105 transform transition">
+        <div class="bg-green-100 dark:bg-green-800 text-green-600 dark:text-green-300 p-4 rounded-full mb-4">
+          <!-- Heroicon: academic-cap -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.75 12.083 12.083 0 015.84 10.578L12 14z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Advisory Focus</h3>
+        <p class="text-gray-600 dark:text-gray-300">We educate and guide, not file returns. Our focus is empowering you with knowledge.</p>
+      </div>
+
+      <!-- AI-Powered Card -->
+      <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6 flex flex-col items-center text-center hover:scale-105 transform transition">
+        <div class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300 p-4 rounded-full mb-4">
+          <!-- Heroicon: cpu-chip -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 2h6v2H9V2zM3 9h2v6H3V9zm16 0h2v6h-2V9zM9 20h6v2H9v-2zM5.636 5.636l1.414 1.414M16.95 16.95l1.414 1.414M16.95 7.05l1.414-1.414M5.636 18.364l1.414-1.414" />
+            <rect x="9" y="9" width="6" height="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">AI-Powered</h3>
+        <p class="text-gray-600 dark:text-gray-300">Technology meets expertise for personalized guidance at scale without sacrificing quality.</p>
+      </div>
+
+      <!-- Licensed Expertise Card -->
+      <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6 flex flex-col items-center text-center hover:scale-105 transform transition">
+        <div class="bg-yellow-100 dark:bg-yellow-800 text-yellow-600 dark:text-yellow-300 p-4 rounded-full mb-4">
+          <!-- Heroicon: badge-check -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M12 2a10 10 0 100 20 10 10 0 000-20z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Licensed Expertise</h3>
+        <p class="text-gray-600 dark:text-gray-300">All guidance backed by Enrolled Agent credentials with IRS representation rights.</p>
+      </div>
+
+      <!-- 100% Remote Card -->
+      <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6 flex flex-col items-center text-center hover:scale-105 transform transition">
+        <div class="bg-purple-100 dark:bg-purple-800 text-purple-600 dark:text-purple-300 p-4 rounded-full mb-4">
+          <!-- Heroicon: globe-alt -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v20m-8-10h16" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">100% Remote</h3>
+        <p class="text-gray-600 dark:text-gray-300">Serve clients nationwide and worldwide from anywhere. No geographic limitations.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">Who We Serve</h2>
+    <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+      We specialize in two underserved communities that need specialized tax guidance.
+    </p>
+
+    <div class="mt-12 grid gap-8 grid-cols-1 md:grid-cols-2">
+      
+      <!-- Gig Economy Workers Card -->
+      <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-8 hover:scale-105 transform transition">
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <!-- Heroicon: users -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-green-600 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m0-2.13a4 4 0 100-8 4 4 0 000 8zm8 0a4 4 0 100-8 4 4 0 000 8z" />
+          </svg>
+          Gig Economy Workers
+        </h3>
+        <ul class="space-y-3 text-gray-600 dark:text-gray-300 text-left">
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Uber, Lyft, DoorDash drivers
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Freelancers and contractors
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Side hustle entrepreneurs
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Etsy sellers and creators
+          </li>
+          <li class="flex items-center gap-2 font-semibold text-green-700 dark:text-green-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-700 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Learn about gig worker deductions
+          </li>
+        </ul>
+      </div>
+
+      <!-- American Expats Card -->
+      <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-8 hover:scale-105 transform transition">
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <!-- Heroicon: globe-alt -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-purple-600 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v20m-8-10h16" />
+          </svg>
+          American Expats
+        </h3>
+        <ul class="space-y-3 text-gray-600 dark:text-gray-300 text-left">
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            US citizens living abroad
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Digital nomads
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            International professionals
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Foreign income earners
+          </li>
+          <li class="flex items-center gap-2 font-semibold text-purple-700 dark:text-purple-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-700 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Learn about expat tax obligations
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
 
             <!-- Our Approach -->
             <section class="space-y-8">
@@ -115,6 +263,12 @@
                     <li>• Continuing Education — 72 hours every 3 years</li>
                 </ul>
             </section>
+
+
+
+
+
+
 
             <!-- Advisory vs Tax Preparation -->
             <section class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors space-y-4">
