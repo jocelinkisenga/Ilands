@@ -12,10 +12,13 @@
 
             <div class="hidden lg:flex items-center space-x-6">
  
-                <a href="/services" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">Services</a>
-                <a href="/trust" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">Trust</a>
-                <a href="/blog" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">blog</a>
-                <a href="/contact" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">Contact</a>
+                <a href="/services" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('Services')}}</a>
+                <a href="/trust" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('Trust')}}</a>
+                <a href="/blog" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('blog')}}</a>
+                <a href="/contact" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('Contact')}}</a>
+                <div class="ml-auto">
+        <livewire:language-switcher />
+    </div>
                 
                 <div class="h-6 w-[1px] bg-slate-200 dark:bg-white/10 mx-2"></div>
 
@@ -26,10 +29,10 @@
                         <button type="submit" class="text-xs font-bold uppercase tracking-widest text-red-500 hover:text-red-400 transition">Logout</button>
                     </form>
                 @else
-                    <a href="/login" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">Login</a>
-                    <a href="/tax-screener" class="bg-green-600 dark:bg-green-500 text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:brightness-110 transition shadow-lg">
-                        Get your free tax screener
-                    </a>
+                    <a href="/login" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{ __('Login') }}</a>
+{{--                     <a href="/tax-screener" class="bg-green-600 dark:bg-green-500 text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:brightness-110 transition shadow-lg">
+                       {{ __('Get your free tax screener') }}
+                    </a> --}}
                 @endauth
 
                 <button @click.prevent="$store.theme.toggle()" class="ml-4 p-2 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-white transition">
@@ -62,11 +65,10 @@
          x-transition:enter-end="opacity-100 translate-y-0"
          class="lg:hidden bg-white dark:bg-black border-b border-slate-200 dark:border-white/10 px-6 pt-2 pb-8 space-y-4 shadow-2xl"
          style="display: none;">
-        
-        <a href="/" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Simulation</a>
-        <a href="/services" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Services</a>
+                 <a href="/services" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Services</a>
         <a href="/about" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">About Us</a>
         <a href="/contact" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Contact</a>
+         <livewire:language-switcher />
         
         <div class="pt-4 space-y-4">
             @auth

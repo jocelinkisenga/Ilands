@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
      //   $middleware->append(AdminMiddleware::class);
         $middleware->alias([
         'subscribed' => \App\Http\Middleware\Subscribed::class,
+        \App\Http\Middleware\SetLocale::class,
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
