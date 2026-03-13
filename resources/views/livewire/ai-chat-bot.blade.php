@@ -1,6 +1,6 @@
 <div class="flex flex-col h-[500px] w-full max-w-lg mx-auto border rounded-lg bg-white shadow-lg">
-    <div class="p-4 border-b bg-blue-600 text-white rounded-t-lg">
-        <h3 class="font-bold"> Assistant AI</h3>
+    <div class="p-4 border-b bg-green-600 text-white rounded-t-lg">
+        <h3 class="font-bold"> Your best assistant AI</h3>
     </div>
 
     <div class="flex-1 bg-white dark:bg-black  overflow-y-auto p-4 space-y-4 bg-gray-50">
@@ -23,7 +23,7 @@
                 wire:keydown.enter.prevent="sendMessage"
                 maxlength="200"
                 placeholder="Ask your question (max 200 car.)..."
-                class="w-full p-3 pr-12 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none text-sm"
+                class="w-full p-3 pr-12 text-black dark:text-white border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none text-sm"
                 rows="2"
             ></textarea>
             
@@ -34,7 +34,7 @@
             <button type="button"
     wire:click="sendMessage"
     wire:loading.attr="disabled"
-    class="absolute bottom-2 right-2 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+    class="absolute bottom-2 right-2 p-2 bg-blue-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
     wire:loading.attr="disabled">
                 <svg wire:loading.remove xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
