@@ -12,7 +12,16 @@ class DashboardController extends Controller
         {
                 
         }
-        public function index () {
-        return view('profile.dashboard',['taxProfiles' => $this->tax_profile_service->getAllTaxProfiles()]);
+        public function index()
+{
+    $user = auth()->user();
+
+    if ($user->role === 'admin') {
+        return view('admin.dashboard');
     }
+
+    return view('profile.dashboard', [
+        'taxProfiles' => $this->tax_profile_service->getAllTaxProfiles()
+    ]);
+}
 }
