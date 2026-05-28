@@ -3,97 +3,155 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Gemini\Laravel\Facades\Gemini;
-use Illuminate\Support\Facades\Log;
+
+use Prism\Prism\Facades\Prism;
+
+use Prism\Prism\ValueObjects\Messages\UserMessage;
+use Prism\Prism\ValueObjects\Messages\AssistantMessage;
 
 class AiChatBot extends Component
 {
-    public string $prompt = '';
+    public $prompt = '';
 
-    public array $messages = [];
+    public $messages = [];
 
-    public bool $isStreaming = false;
-
-    public function sendMessage(): void
+    public function mount()
     {
-        // Prevent duplicate requests
-        if ($this->isStreaming) {
+        $this->messages = auth()->user()
+            ->chatMessages()
+            ->latest()
+            ->limit(20)
+            ->get()
+            ->reverse()
+            ->map(fn ($message) => [
+                'role' => $message->role,
+                'content' => $message->message,
+            ])
+            ->toArray();
+
+        if (count($this->messages) === 0) {
+
+            $this->messages[] = [
+                'role' => 'assistant',
+                'content' => 'Hello 👋 I am ILANDS AI assistant. How can I help you today?',
+            ];
+        }
+    }
+
+    public function sendMessage()
+    {
+        if (empty(trim($this->prompt))) {
             return;
         }
 
-        // Trim prompt
-        $this->prompt = trim($this->prompt);
+        $userMessage = trim($this->prompt);
 
-        // Prevent empty messages
-        if ($this->prompt === '') {
-            return;
-        }
+        /*
+        |--------------------------------------------------------------------------
+        | ADD USER MESSAGE
+        |--------------------------------------------------------------------------
+        */
 
-        // Limit characters (avoid abuse)
-        if (strlen($this->prompt) > 200) {
-            $this->prompt = substr($this->prompt, 0, 200);
-        }
+        $this->messages[] = [
+            'role' => 'user',
+            'content' => $userMessage,
+        ];
 
-        $this->isStreaming = true;
+        auth()->user()->chatMessages()->create([
+            'role' => 'user',
+            'message' => $userMessage,
+        ]);
+
+        $this->prompt = '';
+
+        $this->dispatch('message-sent');
 
         try {
 
-            // Save user message
-            $this->messages[] = [
-                'role' => 'user',
-                'content' => $this->prompt
-            ];
+            /*
+            |--------------------------------------------------------------------------
+            | SYSTEM PROMPT
+            |--------------------------------------------------------------------------
+            */
 
-            $userPrompt = $this->prompt;
+            $systemPrompt = "
+                You are ILANDS AI assistant.
 
-            // Reset input
-            $this->prompt = '';
+                You help users with:
+                - taxes
+                - business
+                - finance
+                - entrepreneurship
+                - startup growth
+                - AI assistance
 
-            // Create AI message placeholder
-            $messageIndex = count($this->messages);
+                Keep responses concise, professional and modern.
+            ";
 
-            $this->messages[$messageIndex] = [
-                'role' => 'ai',
-                'content' => ''
-            ];
+            /*
+            |--------------------------------------------------------------------------
+            | BUILD CONVERSATION
+            |--------------------------------------------------------------------------
+            */
 
-            // Gemini streaming
-            $stream = Gemini::generativeModel(
-                model: 'gemini-2.0-flash'
-            )->streamGenerateContent($userPrompt);
+            $conversation = [];
 
-            foreach ($stream as $response) {
+            foreach ($this->messages as $message) {
 
-                $chunk = $response->text();
+                if ($message['role'] === 'assistant') {
 
-                if (!$chunk) {
-                    continue;
+                    $conversation[] = new AssistantMessage(
+                        $message['content']
+                    );
+
+                } else {
+
+                    $conversation[] = new UserMessage(
+                        $message['content']
+                    );
                 }
-
-                $this->messages[$messageIndex]['content'] .= $chunk;
-
-                // Stream chunk to frontend
-                $this->stream(
-                    to: "ai-response-{$messageIndex}",
-                    content: $chunk,
-                    replace: false
-                );
             }
+
+            /*
+            |--------------------------------------------------------------------------
+            | GEMINI REQUEST
+            |--------------------------------------------------------------------------
+            */
+
+            $response = Prism::text()
+                ->using('gemini', 'gemini-2.0-flash')
+                ->withSystemPrompt($systemPrompt)
+                ->withMessages($conversation)
+                ->generate();
+
+            $assistantMessage = $response->text;
+
+            /*
+            |--------------------------------------------------------------------------
+            | ADD AI RESPONSE
+            |--------------------------------------------------------------------------
+            */
+
+            $this->messages[] = [
+                'role' => 'assistant',
+                'content' => $assistantMessage,
+            ];
+
+            auth()->user()->chatMessages()->create([
+                'role' => 'assistant',
+                'message' => $assistantMessage,
+            ]);
+
+            $this->dispatch('message-sent');
 
         } catch (\Throwable $e) {
 
-            Log::error('Gemini Error', [
-                'message' => $e->getMessage()
-            ]);
+            report($e);
 
             $this->messages[] = [
-                'role' => 'ai',
-                'content' => '⚠️ AI service is currently unavailable. Please try again later.'
+                'role' => 'assistant',
+                'content' => 'AI service temporarily unavailable.',
             ];
-
-        } finally {
-
-            $this->isStreaming = false;
         }
     }
 

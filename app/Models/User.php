@@ -54,7 +54,10 @@ class User extends Authenticatable
              'trial_ends_at'
         ];
     }
-
+public function chatMessages()
+    {
+        return $this->hasMany(ChatMessage::class);
+    }
     public function isAdmin(): bool
     {
         return $this->role === RoleEnum::ADMIN;
