@@ -74,4 +74,39 @@ class User extends Authenticatable
     public function taxe_profiles () {
         return $this->hasMany(TaxProfile::class);
     }
+    
+    
+    public function hasAccessTo(Content $content): bool
+{
+    if ($content->access_level === 'free') {
+        return true;
+    }
+
+    if (!$this->subscribed()) {
+        return false;
+    }
+
+    return match ($content->access_level) {
+        'pro' => $this->plan === 'pro',
+        'premium' => in_array($this->plan, ['premium']),
+        default => false,
+    };
+}
+
+public function savedContents()
+{
+    return $this->belongsToMany(
+        Content::class,
+        'saved_contents'
+    )->withTimestamps();
+}
+
+protected static function booted()
+{
+    static::creating(function ($user) {
+        if (User::count() === 0) {
+            $user->role = RoleEnum::ADMIN;
+        }
+    });
+}
 }

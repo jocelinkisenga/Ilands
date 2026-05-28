@@ -16,7 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
      //   $middleware->append(AdminMiddleware::class);
         $middleware->alias([
-        'subscribed' => \App\Http\Middleware\Subscribed::class,
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'subscribed' => \App\Http\Middleware\SubscriptionMiddleware::class,
+        'content.access' => \App\Http\Middleware\ContentAccessMiddleware::class,
         \App\Http\Middleware\SetLocale::class,
     ]);
     })

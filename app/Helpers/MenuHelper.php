@@ -1,117 +1,145 @@
 <?php
 
 namespace App\Helpers;
-
+use Illuminate\Support\Facades\Auth;
 class MenuHelper
 {
     public static function getMainNavItems()
-    {
-        return [
-            [
-                'icon' => 'dashboard',
-                'name' => 'Dashboard',
-                'subItems' => [
-                    ['name' => 'dashboard', 'path' => '/dashboard'],
-                ],
+{
+    return [
+        [
+            'icon' => 'dashboard',
+            'name' => 'Dashboard',
+            'roles' => ['admin', 'user'],
+            'subItems' => [
+                ['name' => 'dashboard', 'path' => '/dashboard'],
             ],
-                [
-                'icon' => 'profile',
-                'name' => 'Tax profile',
-                'path' => '/tax-profile',
-            ],
-            [
-                'icon' => 'book',
-                'name' => 'Library',
-                'path' => '/library',
-            ],
-
-            [
-                'icon' => 'chat',
-                'name' => 'Chat',
-                'path' => '/chat',
-            ],
-
-            [
-                'icon' => 'book',
-                'name' => 'Document',
-                'path' => '/documents',
-            ],
-                        [
-                'icon' => 'movie',
-                'name' => 'Videos',
-                'path' => '/videos',
-            ],
-
-            [
-                'icon' => 'reports',
-                'name' => 'Reports',
-                'path' => '/videos',
-            ],
-            [
-                'icon' => 'subscription',
-                'name' => 'Subscription',
-                'path' => '/videos',
-            ],
-            [
-                'icon' => 'logs',
-                'name' => 'Activity logs',
-                'path' => '/videos',
-            ],
-            [
-                'icon' => 'user-profile',
-                'name' => 'User Profile',
-                'path' => '/profile',
-            ],
-        ];
-    }
+        ],
+        [
+            'icon' => 'profile',
+            'name' => 'Tax profile',
+            'roles' => ['user'],
+            'path' => '/tax-profile',
+        ],
+        [
+            'icon' => 'book',
+            'name' => 'Library',
+            'roles' => ['user', 'admin'],
+            'path' => '/library',
+        ],
+        [
+            'icon' => 'chat',
+            'name' => 'Chat',
+            'roles' => ['user', 'admin'],
+            'path' => '/chat',
+        ],
+        [
+            'icon' => 'book',
+            'name' => 'Document',
+            'roles' => ['user', 'admin'],
+            'path' => '/documents',
+        ],
+        [
+            'icon' => 'movie',
+            'name' => 'Videos',
+            'roles' => ['user', 'admin'],
+            'path' => '/videos',
+        ],
+        [
+            'icon' => 'reports',
+            'name' => 'Reports',
+            'roles' => ['admin'], // 🔥 admin only
+            'path' => '/reports',
+        ],
+        [
+            'icon' => 'subscription',
+            'name' => 'Subscription',
+            'roles' => ['admin'], // 🔥 admin only
+            'path' => '/subscription',
+        ],
+        [
+            'icon' => 'logs',
+            'name' => 'Activity logs',
+            'roles' => ['admin'], // 🔥 admin only
+            'path' => '/logs',
+        ],
+        [
+            'icon' => 'user-profile',
+            'name' => 'User Profile',
+            'roles' => ['user', 'admin'],
+            'path' => '/profile',
+        ],
+    ];
+}
 
     public static function getOthersItems()
-    {
-        return [
-            [
-                'icon' => 'charts',
-                'name' => 'Charts',
-                'subItems' => [
-                    ['name' => 'Line Chart', 'path' => '/line-chart', 'pro' => false],
-                    ['name' => 'Bar Chart', 'path' => '/bar-chart', 'pro' => false]
-                ],
+{
+    return [
+        [
+            'icon' => 'charts',
+            'name' => 'Charts',
+            'roles' => ['admin'],
+            'subItems' => [
+                ['name' => 'Line Chart', 'path' => '/line-chart', 'pro' => false],
+                ['name' => 'Bar Chart', 'path' => '/bar-chart', 'pro' => false]
             ],
-            [
-                'icon' => 'ui-elements',
-                'name' => 'UI Elements',
-                'subItems' => [
-                    ['name' => 'Alerts', 'path' => '/alerts', 'pro' => false],
-                    ['name' => 'Avatar', 'path' => '/avatars', 'pro' => false],
-                    ['name' => 'Badge', 'path' => '/badge', 'pro' => false],
-                    ['name' => 'Buttons', 'path' => '/buttons', 'pro' => false],
-                    ['name' => 'Images', 'path' => '/image', 'pro' => false],
-                    ['name' => 'Videos', 'path' => '/videos', 'pro' => false],
-                ],
+        ],
+        [
+            'icon' => 'ui-elements',
+            'name' => 'UI Elements',
+            'roles' => ['admin'],
+            'subItems' => [
+                ['name' => 'Alerts', 'path' => '/alerts', 'pro' => false],
+                ['name' => 'Avatar', 'path' => '/avatars', 'pro' => false],
+                ['name' => 'Badge', 'path' => '/badge', 'pro' => false],
+                ['name' => 'Buttons', 'path' => '/buttons', 'pro' => false],
+                ['name' => 'Images', 'path' => '/image', 'pro' => false],
+                ['name' => 'Videos', 'path' => '/videos', 'pro' => false],
             ],
-            [
-                'icon' => 'authentication',
-                'name' => 'Authentication',
-                'subItems' => [
-                    ['name' => 'Sign In', 'path' => '/signin', 'pro' => false],
-                    ['name' => 'Sign Up', 'path' => '/signup', 'pro' => false],
-                ],
+        ],
+        [
+            'icon' => 'authentication',
+            'name' => 'Authentication',
+            'roles' => ['guest'], // optionnel
+            'subItems' => [
+                ['name' => 'Sign In', 'path' => '/signin', 'pro' => false],
+                ['name' => 'Sign Up', 'path' => '/signup', 'pro' => false],
             ],
-        ];
+        ],
+    ];
+}
+
+    
+
+public static function getMenuGroups()
+{
+    $role = Auth::user()?->role ?? 'admin';
+
+    $groups = [
+        [
+            'title' => 'Menu',
+            'items' => self::getMainNavItems()
+        ],
+        [
+            'title' => 'Others',
+            'items' => self::getOthersItems()
+        ]
+    ];
+
+    // 🔥 FILTER ROLE-BASED
+    foreach ($groups as &$group) {
+        $group['items'] = array_values(array_filter($group['items'], function ($item) use ($role) {
+
+            if (!isset($item['roles'])) {
+                return true; // fallback safe
+            }
+
+            return in_array($role, $item['roles']);
+        }));
     }
 
-    public static function getMenuGroups()
-    {
-        return [
-            [
-                'title' => 'Menu',
-                'items' => self::getMainNavItems()
-            ],
-            [
-                'title' => 'Others',
-                'items' => self::getOthersItems()
-            ]
-        ];
-    }
+    return $groups;
+}
 
     public static function isActive($path)
     {
