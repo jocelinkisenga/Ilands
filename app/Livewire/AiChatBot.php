@@ -3,24 +3,32 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-
 use Prism\Prism\Facades\Prism;
-
 use Prism\Prism\ValueObjects\Messages\UserMessage;
 use Prism\Prism\ValueObjects\Messages\AssistantMessage;
 
 class AiChatBot extends Component
 {
-    public $prompt = '';
+    public bool $isLoading = false;
+    public string $prompt = '';
+    public array $messages = [];
 
-    public $messages = [];
+    /**
+     * Limit chat history to reduce token usage
+     */
+    private int $maxHistory = 10;
+
+    /**
+     * Prevent very long prompts (cost control)
+     */
+    private int $maxPromptLength = 800;
 
     public function mount()
     {
         $this->messages = auth()->user()
             ->chatMessages()
             ->latest()
-            ->limit(20)
+            ->limit($this->maxHistory)
             ->get()
             ->reverse()
             ->map(fn ($message) => [
@@ -29,8 +37,8 @@ class AiChatBot extends Component
             ])
             ->toArray();
 
-        if (count($this->messages) === 0) {
-
+        // Default message only if empty
+        if (empty($this->messages)) {
             $this->messages[] = [
                 'role' => 'assistant',
                 'content' => 'Hello 👋 I am ILANDS AI assistant. How can I help you today?',
@@ -40,29 +48,45 @@ class AiChatBot extends Component
 
     public function sendMessage()
     {
-        if (empty(trim($this->prompt))) {
-            return;
-        }
-
-        $userMessage = trim($this->prompt);
+        $this->prompt = trim($this->prompt);
 
         /*
         |--------------------------------------------------------------------------
-        | ADD USER MESSAGE
+        | VALIDATION (COST CONTROL)
         |--------------------------------------------------------------------------
         */
 
-        $this->messages[] = [
-            'role' => 'user',
-            'content' => $userMessage,
-        ];
+        if ($this->prompt === '') {
+            return;
+        }
 
-        auth()->user()->chatMessages()->create([
-            'role' => 'user',
-            'message' => $userMessage,
-        ]);
+        if (strlen($this->prompt) > $this->maxPromptLength) {
+
+            $this->messages[] = [
+                'role' => 'assistant',
+                'content' => '⚠️ Message too long. Please shorten your request.',
+            ];
+
+            return;
+        }
+
+        if ($this->isLoading) {
+            return; // prevent double spam clicks
+        }
+
+        $this->isLoading = true;
+
+        $userMessage = $this->prompt;
 
         $this->prompt = '';
+
+        /*
+        |--------------------------------------------------------------------------
+        | STORE USER MESSAGE
+        |--------------------------------------------------------------------------
+        */
+
+        $this->addMessage('user', $userMessage);
 
         $this->dispatch('message-sent');
 
@@ -70,89 +94,99 @@ class AiChatBot extends Component
 
             /*
             |--------------------------------------------------------------------------
-            | SYSTEM PROMPT
+            | SYSTEM PROMPT (OPTIMIZED = LESS TOKENS)
             |--------------------------------------------------------------------------
             */
 
-            $systemPrompt = "
-                You are ILANDS AI assistant.
-
-                You help users with:
-                - taxes
-                - business
-                - finance
-                - entrepreneurship
-                - startup growth
-                - AI assistance
-
-                Keep responses concise, professional and modern.
-            ";
+            $systemPrompt = "You are ILANDS AI. Be concise, practical, and professional.";
 
             /*
             |--------------------------------------------------------------------------
-            | BUILD CONVERSATION
+            | BUILD REDUCED CONTEXT (IMPORTANT FOR COST)
             |--------------------------------------------------------------------------
             */
 
             $conversation = [];
 
-            foreach ($this->messages as $message) {
+            foreach (array_slice($this->messages, -$this->maxHistory) as $message) {
 
-                if ($message['role'] === 'assistant') {
+                if (empty($message['content'])) continue;
 
-                    $conversation[] = new AssistantMessage(
-                        $message['content']
-                    );
-
-                } else {
-
-                    $conversation[] = new UserMessage(
-                        $message['content']
-                    );
-                }
+                $conversation[] = $message['role'] === 'assistant'
+                    ? new AssistantMessage($message['content'])
+                    : new UserMessage($message['content']);
             }
 
             /*
             |--------------------------------------------------------------------------
-            | GEMINI REQUEST
+            | GEMINI REQUEST (FLASH MODEL = CHEAPER & STABLE)
             |--------------------------------------------------------------------------
             */
 
             $response = Prism::text()
-                ->using('gemini', 'gemini-2.0-flash')
+                ->using('gemini', 'gemini-flash-latest') // safer & cheaper than latest overload
                 ->withSystemPrompt($systemPrompt)
                 ->withMessages($conversation)
                 ->generate();
 
-            $assistantMessage = $response->text;
+            $assistantMessage = trim($response->text ?? '');
+
+            if ($assistantMessage === '') {
+                $assistantMessage = "I couldn't generate a response. Try again.";
+            }
 
             /*
             |--------------------------------------------------------------------------
-            | ADD AI RESPONSE
+            | STORE AI RESPONSE
             |--------------------------------------------------------------------------
             */
 
-            $this->messages[] = [
-                'role' => 'assistant',
-                'content' => $assistantMessage,
-            ];
+            $this->addMessage('assistant', $assistantMessage);
 
-            auth()->user()->chatMessages()->create([
-                'role' => 'assistant',
-                'message' => $assistantMessage,
-            ]);
+        } catch (\Exception $e) {
 
-            $this->dispatch('message-sent');
+            logger()->error('AI ERROR: ' . $e->getMessage());
 
-        } catch (\Throwable $e) {
+            $msg = strtolower($e->getMessage());
 
-            report($e);
+            /*
+            |--------------------------------------------------------------------------
+            | SMART ERROR HANDLING
+            |--------------------------------------------------------------------------
+            */
 
-            $this->messages[] = [
-                'role' => 'assistant',
-                'content' => 'AI service temporarily unavailable.',
-            ];
+            if (str_contains($msg, 'rate limit')) {
+                $error = "⚠️ Too many requests. Please wait a moment.";
+            } elseif (str_contains($msg, 'overloaded')) {
+                $error = "⚠️ AI server is busy. Retry in a few seconds.";
+            } else {
+                $error = "⚠️ AI temporarily unavailable.";
+            }
+
+            $this->addMessage('assistant', $error);
         }
+
+        $this->isLoading = false;
+
+        $this->dispatch('message-sent');
+    }
+
+    /**
+     * Centralized message handler (clean + reusable)
+     */
+    private function addMessage(string $role, string $content): void
+    {
+        $this->messages[] = [
+            'role' => $role,
+            'content' => $content,
+        ];
+
+        if (!auth()->check()) return;
+
+        auth()->user()->chatMessages()->create([
+            'role' => $role,
+            'message' => $content,
+        ]);
     }
 
     public function render()

@@ -245,9 +245,9 @@
   <div class="relative">
 
    <textarea
-    wire:model.live="prompt"
-    wire:keydown.enter.prevent="sendMessage"
-    maxlength="1000"
+    wire:model.defer="prompt"
+wire:keydown.enter.prevent="!$wire.isLoading && $wire.sendMessage()"
+maxlength="1000"
     rows="1"
     placeholder="Ask ILANDS AI anything..."
     class="w-full rounded-3xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 px-6 py-5 pr-36 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 focus:border-gray-500 focus:ring-4 focus:ring-gray-500/10 dark:focus:border-gray-400 dark:focus:ring-gray-400/10 resize-none transition"
