@@ -39,10 +39,7 @@ $table->foreignId('plan_id')->nullable();
 
     $table->boolean('featured')->default(false);
 
-    $table->foreignId('category_id')
-        ->nullable()
-        ->constrained()
-        ->nullOnDelete();
+   
 
     $table->foreignId('created_by')
         ->nullable()
