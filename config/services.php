@@ -48,5 +48,15 @@ return [
 'gemini' => [
     'key' => env('GEMINI_API_KEY'),
 ],
+// config/services.php
+
+'stripe' => [
+    'key' => env('STRIPE_KEY'),
+    'secret' => env('STRIPE_SECRET'),
+    'prices' => [
+        'premium' => env('STRIPE_PRICE_PREMIUM'),
+        'pro'     => env('STRIPE_PRICE_PRO'),
+    ],
+],
 
 ];

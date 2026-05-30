@@ -30,7 +30,7 @@ return new class extends Migration
 
     $table->string('access_level')->default('free');
     // free | pro | premium
-
+$table->foreignId('plan_id')->nullable();
     $table->string('visibility')->default('public');
     // public | private
 
