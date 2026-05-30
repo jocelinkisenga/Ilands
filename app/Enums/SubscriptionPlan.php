@@ -1,5 +1,6 @@
-namespace App\Enums;
 <?php
+
+namespace App\Enums;
 enum SubscriptionPlan: string
 {
     case FREE = 'free';
