@@ -14,6 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
      //   $middleware->append(AdminMiddleware::class);
+     $middleware->validateCsrfTokens(except: [
+        'stripe/webhook',
+    ]);
         $middleware->alias([
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'subscribed'=>
