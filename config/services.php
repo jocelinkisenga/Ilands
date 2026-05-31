@@ -57,6 +57,10 @@ return [
         'premium' => env('STRIPE_PRICE_PREMIUM'),
         'pro'     => env('STRIPE_PRICE_PRO'),
     ],
+    'webhook' => [
+        'secret' => env('STRIPE_WEBHOOK_SECRET'),
+    ],
+],
 ],
 
 ];

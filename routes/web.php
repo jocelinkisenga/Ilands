@@ -38,6 +38,7 @@ use App\Livewire\TaxProfile;
 | LIBRARY (CONTENT SYSTEM)
 |--------------------------------------------------------------------------
 */
+use Laravel\Cashier\Http\Controllers\WebhookController;
 
 use App\Livewire\User\Library\LibraryIndex;
 use App\Livewire\User\Library\ContentShow;
@@ -90,6 +91,7 @@ Route::get('auth/{provider}/callback', [SocialController::class, 'callback'])->n
 |--------------------------------------------------------------------------
 */
 
+Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook']);
 Route::middleware('auth')->group(function () {
 
     /*
