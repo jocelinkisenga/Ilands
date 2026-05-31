@@ -15,9 +15,9 @@ class SubscriptionMiddleWare
             return redirect()->route('login');
         }
 
-        if (!$user->subscription_active) {
-            return redirect()->route('pricing');
-        }
+        if (! $user->subscribed('default')) {
+        return redirect()->route('pricing');
+    }
 
         return $next($request);
     }
