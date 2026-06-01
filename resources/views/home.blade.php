@@ -13,7 +13,7 @@
         <div>
             <h1 class="text-4xl md:text-6xl font-bold text-black dark:text-white leading-tight">
                 Tax Education Made Simple
-                <span class="text-emerald-400"> Without Expensive CPAs.</span>
+                <span class="text-emerald-400"> Without Expensive CPA.</span>
             </h1>
 
             <p class="mt-6 text-lg text-white/70 leading-relaxed">
