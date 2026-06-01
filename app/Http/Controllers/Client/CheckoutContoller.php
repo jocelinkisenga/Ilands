@@ -12,6 +12,21 @@ class CheckoutContoller extends Controller
      */
     public function __invoke(Request $request, string $plan)
 {
+$subscription = $request->user()
+    ->subscription('default');
+
+if (
+    $subscription &&
+    $subscription->active()
+) {
+
+    return redirect()
+        ->route('dashboard')
+        ->with(
+            'info',
+            'Manage your subscription from your account settings.'
+        );
+}
     $plan = SubscriptionPlan::tryFrom($plan);
 
     if (!$plan) {
