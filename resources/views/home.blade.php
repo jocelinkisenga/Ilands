@@ -16,7 +16,7 @@
                 <span class="text-emerald-400"> Without Expensive CPA.</span>
             </h1>
 
-            <p class="mt-6 text-lg text-white/70 leading-relaxed">
+            <p class="mt-6 text-lg text-black dark:text-white/70 leading-relaxed">
                 Understand your taxes with expert guidance. Learn through videos, documents, and AI-powered Q&A — at your own pace.
             </p>
 
@@ -38,7 +38,7 @@
         </div>
 
         <!-- Glass Card -->
-        <div class="bg-black backdrop-blur-2xl border-green/10  dark:bg-white/5 dark:backdrop-blur-2xl border dark:border-white/10 rounded-3xl p-8 shadow-2xl">
+        <div class="bg-black text-white backdrop-blur-2xl border-green/10  dark:bg-white/5 dark:backdrop-blur-2xl border dark:border-white/10 rounded-3xl p-8 shadow-2xl">
             <h3 class="text-white/70 text-sm uppercase tracking-widest mb-6">
                 Optimization Preview
             </h3>

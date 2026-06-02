@@ -85,7 +85,7 @@ class ContentCreate extends Component
         );
 
         return redirect()
-            ->route('admin.content.index');
+            ->to('/admin/dashboard');
     }
 
     public function render()
