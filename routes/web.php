@@ -131,6 +131,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/documents', [DocumentController::class, 'index'])->name('documents');
     Route::get('/videos', [VideoController::class, 'index'])->name('videos');
+    Route::get('/hystory', [DocumentController::class, 'hystory'])->name('hystory');
 
     /*
     |------------------------------
