@@ -17,4 +17,8 @@ class Chat extends Model
     {
         return $this->hasMany(ChatMessage::class);
     }
+    public function reports()
+{
+    return $this->hasMany(AiReport::class);
+}
 }

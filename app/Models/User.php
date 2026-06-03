@@ -109,6 +109,10 @@ public function savedContents()
         'saved_contents'
     )->withTimestamps();
 }
+public function reports()
+{
+    return $this->hasMany(AiReport::class);
+}
 
 protected static function booted()
 {

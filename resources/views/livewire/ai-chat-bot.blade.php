@@ -34,14 +34,34 @@
      </p>
     </div>
    </div>
+   <div class="flex items-center gap-2">
 
-   <div class="hidden md:flex items-center gap-2">
-    <button class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white text-sm transition">
-     New Chat
-    </button>
-    <button class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition flex items-center justify-center">
-     ⋮
-    </button>
+    {{-- Desktop --}}
+    <div class="hidden md:flex items-center gap-2">
+     <a href="{{route("chat")}}"
+      class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white text-sm">
+      New Chat
+     </a>
+
+     <button wire:click="generateReport"
+      class="px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-400/20 text-emerald-300 text-sm">
+      Report
+     </button>
+    </div>
+
+    {{-- Mobile --}}
+    <div class="flex md:hidden items-center gap-2">
+     <a href="{{route("chat")}}"
+      class="w-10 h-10 rounded-xl bg-white/10 border border-white/10 text-white flex items-center justify-center">
+      ➕
+     </a>
+
+     <button wire:click="generateReport"
+      class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-400/20 text-emerald-300 flex items-center justify-center">
+      📊
+     </button>
+    </div>
+
    </div>
   </div>
  </div>
@@ -96,7 +116,7 @@
    <div class="max-w-[90%] md:max-w-[75%]">
     <div class="px-4 py-3 md:px-5 md:py-4 rounded-3xl shadow-sm border {{ $msg['role'] === 'user' ? 'bg-gray-900 dark:bg-gray-800 text-white border-gray-900 dark:border-gray-700 rounded-br-md' : 'bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-800 rounded-bl-md' }}">
      <div id="ai-response-{{ $index }}" class="text-sm leading-6 md:leading-7 whitespace-pre-line break-words">
-     
+
 
       {!! $this->markdown($msg['content']) !!}
      </div>
@@ -231,4 +251,5 @@
   </div>
  </div>
 </div>
+
 </div>
