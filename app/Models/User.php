@@ -54,6 +54,12 @@ class User extends Authenticatable
              'trial_ends_at'
         ];
     }
+    
+ public function chats()
+{
+    return $this->hasMany(Chat::class);
+}
+
 public function chatMessages()
     {
         return $this->hasMany(ChatMessage::class);

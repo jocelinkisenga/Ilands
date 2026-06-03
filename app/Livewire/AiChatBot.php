@@ -6,6 +6,8 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Services\AI\TaxAdvisoryService;
 use League\CommonMark\CommonMarkConverter;
+use App\Models\Chat;
+use Illuminate\Support\Str;
 
 class AiChatBot extends Component
 {
@@ -15,34 +17,77 @@ class AiChatBot extends Component
     public string $prompt = '';
     public array $messages = [];
     public $document = null; 
-
-    private int $maxHistory = 5;
-    private int $maxPromptLength = 500; // Laissé large pour les prompts de contexte complexes
+    
+    private int $maxHistory = 20; // Augmenté car contextualisé par Chat unique maintenant
+    private int $maxPromptLength = 500;
     public ?array $documentPreview = null;
+    public ?int $chatId = null;
 
-    public function mount(): void
+
+    // Écouteur pour changer de chat depuis une barre latérale par exemple
+    protected $listeners = ['loadChat'];
+
+    public function mount($chatId = null): void
     {
-        $this->messages = auth()->user()
-            ? auth()->user()->chatMessages()
-                ->latest()
-                ->limit($this->maxHistory)
-                ->get()
-                ->reverse()
-                ->map(fn ($message) => [
-                    'role' => $message->role,
-                    'content' => $message->message,
-                    'file_name' => $message->file_name,
-                ])
-                ->toArray()
-            : [];
+    
+    
+        if ($chatId) {
+            $this->loadChat($chatId);
+        } else {
+            $this->initNewChat();
+        }
+    }
+
+    public function loadChat(int $chatId): void
+    {
+        if (!auth()->check()) {
+            return;
+        }
+
+        // Vérification de sécurité pour s'assurer que le chat appartient à l'utilisateur
+        $chat = auth()->user()->chats()->find($chatId);
+
+        if (!$chat) {
+            $this->initNewChat();
+            return;
+        }
+
+        $this->chatId = $chat->id;
+        
+        $this->messages = $chat->messages()
+            ->oldest() // Changé en oldest pour récupérer l'ordre chronologique direct
+            ->limit($this->maxHistory)
+            ->get()
+            ->map(fn ($message) => [
+                'role' => $message->role,
+                'content' => $message->message,
+                'file_name' => $message->file_name,
+                'file_path' => $message->file_path,
+                'file_type' => $message->file_type,
+            ])
+            ->toArray();
 
         if (empty($this->messages)) {
-            $this->messages[] = [
-                'role' => 'assistant',
-                'content' => 'Hello 👋 I am ILANDS AI assistant. How can I help you today?',
-                'file_name' => null,
-            ];
+            $this->setDefaultWelcomeMessage();
         }
+    }
+
+    public function initNewChat(): void
+    {
+        $this->chatId = null;
+        $this->messages = [];
+        $this->setDefaultWelcomeMessage();
+    }
+
+    private function setDefaultWelcomeMessage(): void
+    {
+        $this->messages[] = [
+            'role' => 'assistant',
+            'content' => 'Hello 👋 I am ILANDS AI assistant. How can I help you today?',
+            'file_name' => null,
+            'file_path' => null,
+            'file_type' => null,
+        ];
     }
 
     public function sendMessage(TaxAdvisoryService $ai): void
@@ -61,22 +106,33 @@ class AiChatBot extends Component
             $originalName = null;
             $mimeType = null;
 
-            // 1. Persistance physique immédiate du fichier
+            // 1. Initialisation automatique du Chat en BDD s'il s'agit du premier message d'une nouvelle session
+            if (auth()->check() && !$this->chatId) {
+                $title = !empty($userMessage) ? Str::limit($userMessage, 40) : 'New Document Analysis';
+                $newChat = auth()->user()->chats()->create([
+                    'title' => $title
+                ]);
+                $this->chatId = $newChat->id;
+                
+                // Optionnel : Notifier un composant de liste latérale (sidebar) pour se rafraîchir
+                $this->dispatch('chat-created', chatId: $this->chatId);
+            }
+
+            // 2. Persistance physique du fichier
             if ($this->document) {
                 $originalName = $this->document->getClientOriginalName();
                 $mimeType = $this->document->getMimeType();
                 $storedFilePath = $this->document->store(path: 'ai_documents', options: 'local');
             }
 
-            // 2. On clone l'historique existant AVANT d'ajouter le nouveau message en local
-            // Cela évite la redondance dans le traitement du service
+            // 3. On clone l'historique existant AVANT d'ajouter le nouveau message en local
             $historyBeforeSending = $this->messages;
 
-            // 3. Sauvegarde immédiate en BDD et mise à jour de l'UI pour l'utilisateur
+            // 4. Sauvegarde immédiate en BDD (liée au chatId) et mise à jour de l'UI
             $this->storeUserMessage($userMessage, $storedFilePath, $originalName, $mimeType);
             $this->dispatch('message-sent');
 
-            // 4. Appel du service avec l'historique propre et le nouveau document explicite
+            // 5. Appel du service avec l'historique propre et le nouveau document explicite
             $assistantMessage = $ai->generate(
                 $historyBeforeSending,
                 $userMessage,
@@ -89,10 +145,10 @@ class AiChatBot extends Component
                 $assistantMessage = "I couldn't generate a response.";
             }
 
-            // 5. Sauvegarde de la réponse de l'assistant
+            // 6. Sauvegarde de la réponse de l'assistant (liée au chatId)
             $this->storeAssistantMessage($assistantMessage);
 
-            // 6. Reset de l'état de l'input et du fichier uploadé
+            // 7. Reset de l'état de l'input et du fichier uploadé
             $this->reset(['prompt', 'document', 'documentPreview']);
 
         } catch (\Exception $e) {
@@ -141,9 +197,11 @@ class AiChatBot extends Component
             return;
         }
 
+        // Insertion rigoureuse incluant l'identifiant du Chat lié
         auth()->user()->chatMessages()->create([
-            'role' => $role,
-            'message' => $content,
+            'chatId'   => $this->chatId,
+            'role'      => $role,
+            'message'   => $content,
             'file_path' => $filePath,
             'file_name' => $fileName,
             'file_type' => $fileType,

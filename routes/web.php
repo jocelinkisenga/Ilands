@@ -110,7 +110,7 @@ Route::middleware('auth')->group(function () {
     |------------------------------
     */
 
-    Route::get('/chat', AiChatBot::class)->name('chat');
+    Route::get('/chat/{chatId?}', AiChatBot::class)->name('chat');
     Route::get('/checkout-success', [SubscriptionController::class, 'success'])->name('checkout-success');
 
     /*

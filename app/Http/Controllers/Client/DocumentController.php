@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\ChatMessage;
+use App\Models\Chat;
 class DocumentController extends Controller
 {
     public function index () {
@@ -29,11 +29,11 @@ class DocumentController extends Controller
     
         public function hystory()
     {
-        // On récupère les messages. 
-        // Si tu as un système d'authentification, tu peux ajouter : ->where('user_id', auth()->id())
-        $chats = ChatMessage::latest()->get();
+        
+$chats = Chat::where('user_id', auth()->id())->latest()->get();
 
-        $formattedChats = $chats->map(function ($chat) {
+
+     /*   $formattedChats = $chats->map(function ($chat) {
             return [
                 'id'         => $chat->id,
                 'role'       => $chat->role,
@@ -41,10 +41,10 @@ class DocumentController extends Controller
                 'created_at' => $chat->created_at->format('d/m/Y H:i'),
                 'updated_at' => $chat->updated_at->format('d/m/Y H:i'),
             ];
-        });
+        }); */
         
         return view('pages.hystory.hystory', [
-            'chats' => $formattedChats
+            'chats' => $chats
         ]);
     }
 
