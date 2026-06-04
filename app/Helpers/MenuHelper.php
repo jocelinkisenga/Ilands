@@ -48,6 +48,13 @@ class MenuHelper
                 'path' => '/hystory',
                 'route_name' => 'hystory',
             ],
+                                    [
+                'icon' => 'reports',
+                'name' => 'My reports ',
+                'roles' => ['client'],
+                'path' => '/reports',
+                'route_name' => 'reports',
+            ],
                  
             [
                 'icon' => 'movie',
@@ -169,6 +176,40 @@ class MenuHelper
     <path d="M12 7v5l4 2" />
 </svg>
 ',
+'reports' => '<svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="1.8"
+    class="w-6 h-6"
+>
+    <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M7 3h7l5 5v13a1 1 0 01-1 1H7a2 2 0 01-2-2V5a2 2 0 012-2z"
+    />
+
+    <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M14 3v5h5"
+    />
+
+    <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M9 14h6M9 18h3"
+    />
+
+    <circle cx="17" cy="16" r="3" />
+
+    <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M19 18l2 2"
+    />
+</svg>',
         ];
 
         return $icons[$iconName] ?? '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/></svg>';

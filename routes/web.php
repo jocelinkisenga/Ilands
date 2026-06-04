@@ -19,6 +19,8 @@ use App\Http\Controllers\Client\SubscriptionController;
 use App\Http\Controllers\Client\DocumentController;
 use App\Http\Controllers\Client\VideoController;
 use App\Http\Controllers\Client\UserController;
+use App\Http\Controllers\Report\ReportController;
+
 use App\Http\Controllers\Auth\SocialController;
 
 /*
@@ -32,6 +34,7 @@ use App\Livewire\Contact;
 use App\Livewire\AiChatBot;
 use App\Livewire\TaxScreener;
 use App\Livewire\TaxProfile;
+use App\Livewire\Report\ReportAi;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,7 +125,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/library', LibraryIndex::class)->name('library.index');
     Route::get('/library/{slug}', ContentShow::class)->name('library.show');
     Route::get('/library/saved', SavedContent::class)->name('library.saved');
-
+Route::get('report/{reportId}', [ReportController::class,'show'])->name('report.show');
     /*
     |------------------------------
     | USER RESOURCES
@@ -146,6 +149,8 @@ Route::middleware('auth')->group(function () {
 
         Route::livewire('/tax-screener', TaxScreener::class)
             ->name('tax-screener');
+            Route::livewire('/reports', ReportAi::class)
+            ->name('reports');
 
         Route::get('/checkout/{plan?}', CheckoutContoller::class)
             ->name('checkout');
