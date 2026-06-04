@@ -19,9 +19,9 @@ return new class extends Migration
     $table->text('message');
 
     $table->enum('role', ['user', 'assistant']);
-    $table->string('file_path')->nullable()->after('message');
-    $table->string('file_name')->nullable()->after('file_path');
-    $table->string('file_type')->nullable()->after('file_name');
+    $table->string('file_path')->nullable();
+    $table->string('file_name')->nullable();
+    $table->string('file_type')->nullable();
             $table->timestamps();
         });
     }
