@@ -116,7 +116,7 @@ class AiChatBot extends Component
 
             $this->addMessage('user', $this->prompt, $filePath, $fileName, $fileType);
 
-            $assistant = $ai->generate($history, $this->chat_id, $filePath, $fileName);
+            $assistant = $ai->generate($history,$this->prompt, $this->chat_id, $filePath, $fileName);
 
             $this->addMessage('assistant', $assistant ?: "No response");
 

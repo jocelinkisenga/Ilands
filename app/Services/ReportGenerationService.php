@@ -10,9 +10,11 @@ use Prism\Prism\Facades\Prism;
 use Prism\Prism\ValueObjects\Messages\UserMessage;
 use Prism\Prism\ValueObjects\Messages\AssistantMessage;
 use Prism\Prism\ValueObjects\Media\Document;
-
+use App\Actions\StoreAiLog;
 class ReportGenerationService
 {
+
+public function __construct(public StoreAiLog $storeAiLog){}
     /**
      * Génère un rapport complet et le sauvegarde en base de données.
      */
@@ -68,7 +70,8 @@ class ReportGenerationService
         if (empty($context)) {
             throw new \Exception("L'API Gemini a retourné une réponse vide pour le rapport.");
         }
-
+    $usage = $response->usage;
+      $this->storeAiLog->handler($chatId, $usage);
         // 5. Persistance en Base de données
         return AiReport::create([
             'user_id'     => $user->id,

@@ -1,4 +1,4 @@
-<div class="space-y-6 p-6 max-w-[1600px] mx-auto text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
+<div class="space-y-6 p-6 max-w-[1600px] mx-auto bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
     
     <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
         <div>
@@ -6,12 +6,12 @@
                 <span>🛡️</span> ILANDS Solutions — Administration Master
             </h1>
             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                [span_4](start_span)[span_5](start_span)Suivi stratégique en temps réel du MVP — Vision Executive (Shabani & Jocelin)[span_4](end_span)[span_5](end_span).
+                Suivi stratégique en temps réel du MVP — Vision Executive (Shabani & Jocelin).
             </p>
         </div>
         
         <div class="flex items-center space-x-3">
-            <select wire:model.live="timePeriod" class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-boxdark px-4 py-2 text-sm font-medium shadow-sm outline-none focus:border-primary">
+            <select wire:model.live="timePeriod" class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-boxdark px-4 py-2 text-sm font-medium shadow-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary dark:text-white">
                 <option value="7_days">7 derniers jours</option>
                 <option value="30_days">30 derniers jours</option>
                 <option value="this_month">Ce mois-ci</option>
@@ -30,7 +30,7 @@
                 <span class="text-3xl font-bold tracking-tight text-gray-950 dark:text-white">${{ number_format($revenueTotal, 2) }}</span>
                 <span class="text-xs font-semibold text-green-600 bg-green-50 dark:bg-green-950/30 dark:text-green-400 px-1.5 py-0.5 rounded">+12.5%</span>
             </div>
-            [span_6](start_span)<p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Abonnements Stripe & Analyses unitaires ($49)[span_6](end_span).</p>
+            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Abonnements Stripe & Analyses unitaires ($49).</p>
         </div>
 
         <div class="relative overflow-hidden rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-boxdark p-6 shadow-sm transition hover:shadow-md">
@@ -42,7 +42,7 @@
                 <span class="text-3xl font-bold tracking-tight text-gray-950 dark:text-white">{{ $totalUsers }}</span>
                 <span class="text-xs font-semibold text-blue-600 bg-blue-50 dark:bg-blue-950/30 dark:text-blue-400 px-1.5 py-0.5 rounded">Actifs</span>
             </div>
-            [span_7](start_span)[span_8](start_span)<p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Inscriptions via le Member Portal complet[span_7](end_span)[span_8](end_span).</p>
+            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Inscriptions via le Member Portal complet.</p>
         </div>
 
         <div class="relative overflow-hidden rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-boxdark p-6 shadow-sm transition hover:shadow-md">
@@ -54,7 +54,7 @@
                 <span class="text-3xl font-bold tracking-tight text-gray-950 dark:text-white">{{ $activeChats }}</span>
                 <span class="text-xs font-semibold text-purple-600 bg-purple-50 dark:bg-purple-950/30 dark:text-purple-400 px-1.5 py-0.5 rounded">Sessions</span>
             </div>
-            [span_9](start_span)<p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Canaux temps réel gérés par Laravel Reverb[span_9](end_span).</p>
+            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Canaux temps réel gérés par Laravel Reverb.</p>
         </div>
 
         <div class="relative overflow-hidden rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-boxdark p-6 shadow-sm transition hover:shadow-md">
@@ -66,7 +66,7 @@
                 <span class="text-3xl font-bold tracking-tight text-gray-950 dark:text-white">{{ $generatedReports }}</span>
                 <span class="text-xs font-semibold text-amber-600 bg-amber-50 dark:bg-amber-950/30 dark:text-amber-400 px-1.5 py-0.5 rounded">Browsershot</span>
             </div>
-            [span_10](start_span)[span_11](start_span)<p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Fichiers structurés extraits par le Tax Engine[span_10](end_span)[span_11](end_span).</p>
+            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Fichiers structurés extraits par le Tax Engine.</p>
         </div>
     </div>
 
@@ -135,8 +135,19 @@
                             maintainAspectRatio: false,
                             plugins: { legend: { display: false } },
                             scales: {
-                                y: { grid: { display: false } },
-                                y1: { position: 'right', grid: { display: false } }
+                                x: { 
+                                    ticks: { color: '#9CA3AF' },
+                                    grid: { display: false } 
+                                },
+                                y: { 
+                                    ticks: { color: '#9CA3AF' },
+                                    grid: { display: false } 
+                                },
+                                y1: { 
+                                    position: 'right', 
+                                    ticks: { color: '#9CA3AF' },
+                                    grid: { display: false } 
+                                }
                             }
                         }
                     });
@@ -149,7 +160,7 @@
         <div class="rounded-xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-boxdark p-6 shadow-sm flex flex-col justify-between">
             <div>
                 <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Dernières Soumissions (MVP)</h3>
-                [span_12](start_span)<p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Suivi direct de l'utilisation de la bibliothèque utilisateur[span_12](end_span).</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Suivi direct de l'utilisation de la bibliothèque utilisateur.</p>
                 
                 <div class="flow-root">
                     <ul class="-my-4 divide-y divide-gray-100 dark:divide-gray-800">
@@ -173,7 +184,7 @@
                             </li>
                         @empty
                             <li class="py-8 text-center text-xs text-gray-400 italic">
-                                [span_13](start_span)En attente de téléversements utilisateurs[span_13](end_span).
+                                En attente de téléversements utilisateurs.
                             </li>
                         @endforelse
                     </ul>
@@ -190,4 +201,3 @@
 @push('js')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @endpush
-
