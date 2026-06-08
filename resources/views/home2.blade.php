@@ -1,7 +1,6 @@
 @extends('layouts.guest')
 
 @section('content')
-
 <!-- ================= NAVBAR ================= -->
 <header class="fixed w-full z-50 bg-black/70 backdrop-blur-xl border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6">

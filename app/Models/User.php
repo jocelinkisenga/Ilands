@@ -55,6 +55,9 @@ class User extends Authenticatable
         ];
     }
     
+   public function aiReports() {
+   $this->hasMany(AiReport::class);
+   }
  public function chats()
 {
     return $this->hasMany(Chat::class);
