@@ -19,8 +19,8 @@
                 <input
                     type="text"
                     wire:model="title"
-                    placeholder="Ex: Les Fondations Laravel..."
-                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500"
+                    placeholder="Ex: How to ..."
+                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
                 >
             </div>
 
@@ -32,7 +32,7 @@
                     </label>
                     <select
                         wire:model="type"
-                        class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                        class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 px-5 py-3 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
                     >
                         <option value="blog">Blog</option>
                         <option value="video">Video</option>
@@ -47,7 +47,7 @@
                     </label>
                     <select
                         wire:model="access_level"
-                        class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+                        class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors px-5 py-3"
                     >
                         <option value="free">Free</option>
                         <option value="pro">Pro</option>
