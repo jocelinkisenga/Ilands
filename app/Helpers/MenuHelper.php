@@ -70,7 +70,7 @@ class MenuHelper
         "path" => "/tax-profile",
         "route_name" => "tax-profile",
       ],
-     [
+      [
         "icon" => "subscription",
         "name" => "Subscription",
         "roles" => ["client"],
@@ -84,7 +84,6 @@ class MenuHelper
         "path" => "/profile",
         "route_name" => "profile.edit",
       ],
-      
     ];
   }
 
