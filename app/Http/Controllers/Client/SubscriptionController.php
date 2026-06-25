@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Client;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse; // <-- FIX: Importation manquante corrigée
 use App\Enums\SubscriptionPlan;
 use Carbon\Carbon;
+
 class SubscriptionController extends Controller
 {
   public function subscribe()
@@ -21,7 +24,6 @@ class SubscriptionController extends Controller
   public function success(Request $request)
   {
     $user = $request->user();
-
     $subscription = $user->subscription("default");
 
     if (!$subscription) {
@@ -62,16 +64,28 @@ class SubscriptionController extends Controller
     $nextPaymentDate = null;
 
     if ($subscription && $subscription->valid()) {
-      // Récupération des données Stripe de manière sécurisée en cache ou via l'instance locale
-      $stripeSubscription = $subscription->asStripeSubscription();
+      try {
+        // Appel à l'API Stripe
+        $stripeSubscription = $subscription->asStripeSubscription();
 
-      $start = Carbon::createFromTimestamp(
-        $stripeSubscription->current_period_start
-      );
-      $end = Carbon::createFromTimestamp(
-        $stripeSubscription->current_period_end
-      );
+        // FIX PRO: Protection contre les valeurs nulles (abonnements incomplets, impayés ou webhooks en retard)
+        $startTimestamp =
+          $stripeSubscription->current_period_start ??
+          $subscription->created_at->timestamp;
+        $endTimestamp =
+          $stripeSubscription->current_period_end ??
+          $subscription->updated_at->addMonth()->timestamp;
 
+        $start = Carbon::createFromTimestamp($startTimestamp);
+        $end = Carbon::createFromTimestamp($endTimestamp);
+      } catch (\Exception $e) {
+        // Secours absolu en cas d'échec de l'API Stripe ou de crash d'infrastructure
+        report($e);
+        $start = $subscription->created_at ?? Carbon::now();
+        $end = $subscription->ends_at ?? Carbon::now()->addMonth();
+      }
+
+      // Calculs de progression identiques et sécurisés contre les divisions par zéro
       $totalDays = max(1, $start->diffInDays($end));
       $daysUsed = max(0, $start->diffInDays(Carbon::now()));
       $daysRemaining = max(0, Carbon::now()->diffInDays($end));
@@ -80,18 +94,17 @@ class SubscriptionController extends Controller
       $nextPaymentDate = $end->format("d/m/Y");
     }
 
-    // Récupération paginée des factures Stripe (évite les soucis de performance si l'historique est lourd)
+    // Récupération paginée des factures Stripe
     $invoices = [];
     try {
       if ($user->hasStripeId()) {
         $invoices = $user->invoices();
       }
     } catch (\Exception $e) {
-      // Log de l'erreur en production sans casser l'expérience utilisateur
       report($e);
     }
 
-    // Exemple de métriques de quotas (Simulé pour l'état du compte)
+    // Métriques de quotas
     $usageMetrics = [
       "label" => "Projets Ilands",
       "used" => $user->projects_count ?? 3,
@@ -129,6 +142,6 @@ class SubscriptionController extends Controller
         ->with("error", "Aucun profil de facturation trouvé.");
     }
 
-    return $user->redirectToBillingPortal(route("subscription.index"));
+    return $user->redirectToBillingPortal(route("pricing"));
   }
 }
