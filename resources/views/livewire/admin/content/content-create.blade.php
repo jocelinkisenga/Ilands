@@ -111,24 +111,41 @@
                 </div>
 
                 <!-- PDF Document -->
-                <div>
-                    <label class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                        PDF Document
-                    </label>
-                    <input
-                        type="file"
-                        wire:model="document"
-                        accept=".pdf"
-                        class="block w-full text-sm text-gray-500 dark:text-gray-400
-                            file:mr-4 file:py-2.5 file:px-4
-                            file:rounded-xl file:border-0
-                            file:text-sm file:font-bold file:tracking-wide
-                            file:bg-emerald-50 file:text-emerald-700
-                            hover:file:bg-emerald-100
-                            dark:file:bg-emerald-500/10 dark:file:text-emerald-400 dark:hover:file:bg-emerald-500/20
-                            transition cursor-pointer"
-                    >
-                </div>
+<div>
+    @if($type === 'document')
+        <label class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+            PDF Document
+        </label>
+        <input
+            type="file"
+            wire:model="document"
+            accept=".pdf"
+            class="block w-full text-sm text-gray-500 dark:text-gray-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-bold file:tracking-wide file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 transition cursor-pointer"
+        >
+        @error('document') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+
+    @elseif($type === 'video')
+        <label class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+            Video File (MP4, AVI)
+        </label>
+        <input
+            type="file"
+            wire:model="video"
+            accept="video/*"
+            class="block w-full text-sm text-gray-500 dark:text-gray-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-bold file:tracking-wide file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition cursor-pointer"
+        >
+        <p class="text-xs text-gray-400 mt-2">Taille maximale : 50 Mo.</p>
+        @error('video') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
+        
+        <div wire:loading wire:target="video" class="text-sm text-blue-500 mt-2">
+            Upload en cours, veuillez patienter...
+        </div>
+    @else
+        <div class="text-sm text-gray-500 dark:text-gray-400 italic py-2">
+            Aucun fichier additionnel requis pour ce type de contenu.
+        </div>
+    @endif
+</div>
             </div>
 
             <!-- Actions (Bouton aligné à droite sur PC, pleine largeur sur Mobile) -->

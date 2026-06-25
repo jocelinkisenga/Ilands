@@ -120,10 +120,10 @@
 
                 @if($content->type === 'video' && $content->video_url)
 
-                    <div class="mt-10 overflow-hidden rounded-3xl border border-gray-200 dark:border-gray-800">
+                    <div class="mt-10 overflow-hidden rounded-3xl border border-gray-200 dark:border-gray-800" oncontextmenu="return false;">
 
-                        <iframe
-                            src="{{ $content->video_url }}"
+                        <iframe controlsList="nodownload" sandbox="allow-scripts allow-same-origin allow-presentation"
+                            src="{{ asset('storage/' . $content->video_url) }}"
                             class="w-full h-[500px]"
                             allowfullscreen
                         ></iframe>
