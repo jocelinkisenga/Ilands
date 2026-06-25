@@ -65,19 +65,21 @@ use App\Livewire\Admin\Content\ContentEdit;
 |--------------------------------------------------------------------------
 */
 
-Route::view('/', 'home')->name('home');
+Route::view("/", "home")->name("home");
 
-Route::get('/about', [AboutController::class, 'index'])->name('about');
-Route::get('/services', [ServiceController::class, 'index'])->name('services');
-Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+Route::get("/about", [AboutController::class, "index"])->name("about");
+Route::get("/services", [ServiceController::class, "index"])->name("services");
+Route::get("/faq", [FaqController::class, "index"])->name("faq");
 
-Route::get('/pricing', [SubscriptionController::class, 'pricing'])->name('pricing');
+Route::get("/pricing", [SubscriptionController::class, "pricing"])->name(
+  "pricing"
+);
 
-Route::get('/terms', [LegalController::class, 'terms'])->name('terms');
-Route::get('/privacy', [LegalController::class, 'privacy'])->name('privacy');
+Route::get("/terms", [LegalController::class, "terms"])->name("terms");
+Route::get("/privacy", [LegalController::class, "privacy"])->name("privacy");
 
-Route::livewire('/blog', Blog::class)->name('blog');
-Route::get('/contact', Contact::class)->name('contact');
+Route::livewire("/blog", Blog::class)->name("blog");
+Route::get("/contact", Contact::class)->name("contact");
 
 /*
 |--------------------------------------------------------------------------
@@ -85,8 +87,13 @@ Route::get('/contact', Contact::class)->name('contact');
 |--------------------------------------------------------------------------
 */
 
-Route::get('auth/{provider}', [SocialController::class, 'redirect'])->name('social.redirect');
-Route::get('auth/{provider}/callback', [SocialController::class, 'callback'])->name('social.callback');
+Route::get("auth/{provider}", [SocialController::class, "redirect"])->name(
+  "social.redirect"
+);
+Route::get("auth/{provider}/callback", [
+  SocialController::class,
+  "callback",
+])->name("social.callback");
 
 /*
 |--------------------------------------------------------------------------
@@ -94,82 +101,102 @@ Route::get('auth/{provider}/callback', [SocialController::class, 'callback'])->n
 |--------------------------------------------------------------------------
 */
 
-Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook']);
-Route::middleware('auth')->group(function () {
-
-    /*
+Route::post("/stripe/webhook", [WebhookController::class, "handleWebhook"]);
+Route::middleware("auth")->group(function () {
+  /*
     |------------------------------
     | PROFILE
     |------------------------------
     */
 
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+  Route::get("/profile", [ProfileController::class, "edit"])->name(
+    "profile.edit"
+  );
+  Route::patch("/profile", [ProfileController::class, "update"])->name(
+    "profile.update"
+  );
+  Route::delete("/profile", [ProfileController::class, "destroy"])->name(
+    "profile.destroy"
+  );
 
-    /*
+  /*
     |------------------------------
     | BASIC AUTH FEATURES
     |------------------------------
     */
 
-    Route::get('/chat/{chatId?}', AiChatBot::class)->name('chat');
-    Route::get('/checkout-success', [SubscriptionController::class, 'success'])->name('checkout-success');
+  Route::get("/chat/{chatId?}", AiChatBot::class)->name("chat");
+  Route::get("/checkout-success", [
+    SubscriptionController::class,
+    "success",
+  ])->name("checkout-success");
 
-    /*
+  /*
     |------------------------------
     | LIBRARY (CONTENT SYSTEM)
     |------------------------------
     */
 
-    Route::get('/library', LibraryIndex::class)->name('library.index');
-    Route::get('/library/{slug}', ContentShow::class)->name('library.show');
-    Route::get('/library/saved', SavedContent::class)->name('library.saved');
-Route::get('report/{reportId}', [ReportController::class,'show'])->name('report.show');
-    /*
+  Route::get("/library", LibraryIndex::class)->name("library.index");
+  Route::get("/library/{slug}", ContentShow::class)->name("library.show");
+  Route::get("/library/saved", SavedContent::class)->name("library.saved");
+  Route::get("report/{reportId}", [ReportController::class, "show"])->name(
+    "report.show"
+  );
+  /*
     |------------------------------
     | USER RESOURCES
     |------------------------------
     */
 
-    Route::get('/documents', [DocumentController::class, 'index'])->name('documents');
-    Route::get('/videos', [VideoController::class, 'index'])->name('videos');
-    Route::get('/hystory', [DocumentController::class, 'hystory'])->name('hystory');
+  Route::get("/documents", [DocumentController::class, "index"])->name(
+    "documents"
+  );
+  Route::get("/videos", [VideoController::class, "index"])->name("videos");
+  Route::get("/hystory", [DocumentController::class, "hystory"])->name(
+    "hystory"
+  );
 
-    /*
+  /*
     |------------------------------
     | VERIFIED USERS ONLY
     |------------------------------
     */
 
-    Route::middleware('auth')->group(function () {
+  Route::middleware("auth")->group(function () {
+    Route::get("/dashboard", [DashboardController::class, "index"])->name(
+      "dashboard"
+    );
 
-        Route::get('/dashboard', [DashboardController::class, 'index'])
-            ->name('dashboard');
+    Route::livewire("/tax-screener", TaxScreener::class)->name("tax-screener");
+    Route::livewire("/reports", ReportAi::class)->name("reports");
 
-        Route::livewire('/tax-screener', TaxScreener::class)
-            ->name('tax-screener');
-            Route::livewire('/reports', ReportAi::class)
-            ->name('reports');
+    Route::get("/checkout/{plan?}", CheckoutContoller::class)->name("checkout");
 
-        Route::get('/checkout/{plan?}', CheckoutContoller::class)
-            ->name('checkout');
+    Route::get("/subscribe", [SubscriptionController::class, "index"])->name(
+      "subscribe"
+    );
 
-        Route::get('/subscribe', [SubscriptionController::class, 'index'])
-            ->name('subscribe');
+    //subscription ROUTES
 
-        /*
+    Route::get("/subscription", [SubscriptionController::class, "subscription"])->name(
+      "subscription.index"
+    );
+    Route::get("/subscription/billing", [
+      SubscriptionController::class,
+      "billingPortal",
+    ])->name("subscription.billing");
+
+    /*
         |--------------------------
         | SUBSCRIPTION REQUIRED
         |--------------------------
         */
 
-        Route::middleware('subscribed')->group(function () {
-
-            Route::livewire('/tax-profile', TaxProfile::class)
-                ->name('tax-profile');
-        });
+    Route::middleware("subscribed")->group(function () {
+      Route::livewire("/tax-profile", TaxProfile::class)->name("tax-profile");
     });
+  });
 });
 
 /*
@@ -178,21 +205,22 @@ Route::get('report/{reportId}', [ReportController::class,'show'])->name('report.
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth', 'admin'])
-    ->prefix('admin')->group(function () {
-Route::get('/dashboard',[AdminController::class,'index'])->name('admin.dashboard');
-        Route::get('/users', UsersIndex::class)
-            ->name('users.index');
+Route::middleware(["auth", "admin"])
+  ->prefix("admin")
+  ->group(function () {
+    Route::get("/dashboard", [AdminController::class, "index"])->name(
+      "admin.dashboard"
+    );
+    Route::get("/users", UsersIndex::class)->name("users.index");
 
-        Route::get('/content', ContentIndex::class)
-            ->name('content.index');
+    Route::get("/content", ContentIndex::class)->name("content.index");
 
-        Route::get('/content/create', ContentCreate::class)
-            ->name('content.create');
+    Route::get("/content/create", ContentCreate::class)->name("content.create");
 
-        Route::get('/content/{content}/edit', ContentEdit::class)
-            ->name('content.edit');
-    });
+    Route::get("/content/{content}/edit", ContentEdit::class)->name(
+      "content.edit"
+    );
+  });
 
 /*
 |--------------------------------------------------------------------------
@@ -200,4 +228,4 @@ Route::get('/dashboard',[AdminController::class,'index'])->name('admin.dashboard
 |--------------------------------------------------------------------------
 */
 
-require __DIR__.'/auth.php';
+require __DIR__ . "/auth.php";

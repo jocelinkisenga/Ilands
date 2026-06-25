@@ -16,14 +16,7 @@
    {{-- Left --}}
    <div>
 
-    <div
-     class="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-400">
-
-     <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
-
-     AI Platform Online
-
-    </div>
+    
 
     <h1
      class="max-w-3xl text-3xl font-black tracking-tight text-slate-900 dark:text-white md:text-5xl">
@@ -34,7 +27,7 @@
     </h1>
 
     <p
-     class="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-400 md:text-lg">
+     class="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-900 md:text-lg">
 
      Manage your tax intelligence, financial reports,
      document analysis and AI conversations from a single dashboard.
@@ -58,7 +51,7 @@
      </p>
 
      <h3
-      class="mt-2 text-2xl font-black">
+      class="mt-2 text-2xl font-black text-black dark:text-white">
 
       {{auth()->user()->reports()->count()}}
 
@@ -77,7 +70,7 @@
      </p>
 
      <h3
-      class="mt-2 text-2xl font-black">
+      class="mt-2 text-2xl font-black text-black dark:text-white">
 
       {{$documentsCount}}
 
@@ -96,7 +89,7 @@
      </p>
 
      <h3
-      class="mt-2 text-2xl font-black">
+      class="mt-2 text-2xl font-black text-black dark:text-white">
 
                               {{auth()->user()->chats()->count()}}
 

@@ -54,7 +54,7 @@
                         <p
                             class="mt-2 line-clamp-2 text-sm text-slate-500 dark:text-slate-400">
 
-                            {{ $report->summary }}
+                            {!! $report->summary !!}
 
                         </p>
 
