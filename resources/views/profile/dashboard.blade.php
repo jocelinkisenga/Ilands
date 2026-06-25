@@ -3,6 +3,7 @@
  <div class="space-y-8">
 
   <x-dashboard.hero />
+     <x-dashboard.usedtokens />
 
   <x-dashboard.quick-actions />
 
