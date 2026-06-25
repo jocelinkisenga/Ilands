@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ai_logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('report_id')->constrained()->cascadeOnDelete();
+            
             $table->string('prompt_version')->nullable();
             $table->bigInteger('tokens_used')->nullable();
             $table->bigInteger('response_time_ms')->nullable();

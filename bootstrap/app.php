@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Middleware\AdminMiddleware;
-use App\Http\Middleware\Subscribed;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -15,9 +14,13 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
      //   $middleware->append(AdminMiddleware::class);
+     $middleware->validateCsrfTokens(except: [
+        'stripe/webhook',
+    ]);
         $middleware->alias([
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
-        'subscribed' => \App\Http\Middleware\SubscriptionMiddleware::class,
+        'subscribed'=>
+        \App\Http\Middleware\SubscriptionMiddleWare::class,
         'content.access' => \App\Http\Middleware\ContentAccessMiddleware::class,
         \App\Http\Middleware\SetLocale::class,
     ]);

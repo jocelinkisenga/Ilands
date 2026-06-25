@@ -94,6 +94,7 @@
         })();
     </script>
       @livewireStyles
+      @stack("js")
 </head>
 
 <body
