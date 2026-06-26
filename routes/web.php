@@ -59,6 +59,7 @@ use App\Livewire\Admin\Users\UsersIndex;
 use App\Livewire\Admin\Content\ContentIndex;
 use App\Livewire\Admin\Content\ContentCreate;
 use App\Livewire\Admin\Content\ContentEdit;
+use App\Livewire\Admin\Plans\Plan;
 
 /*
 |--------------------------------------------------------------------------
@@ -225,6 +226,7 @@ Route::middleware(["auth", "admin"])
     );
     Route::post("/ckeditor", [BlogController::class,'ckeditor'])->name("ckeditor.upload");
   });
+  Route::livewire("admin/plans", Plan::class)->name("admin.plans");
 
 /*
 |--------------------------------------------------------------------------

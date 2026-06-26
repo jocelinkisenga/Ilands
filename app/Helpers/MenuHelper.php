@@ -101,15 +101,15 @@ class MenuHelper
         "route_name" => "admin.dashboard",
       ],
       [
-        "icon" => "user-profile", // Utilise l'icône profil pour la gestion des utilisateurs
-        "name" => "Utilisateurs",
+        "icon" => "user-profile",
+        "name" => "clients",
         "roles" => ["admin"],
         "path" => "/admin/users",
         "route_name" => "users.index",
       ],
       [
         "icon" => "pages",
-        "name" => "Gestion Contenu",
+        "name" => "Content Management",
         "roles" => ["admin"],
         "path" => "/admin/content",
         "route_name" => "content.index",
@@ -125,6 +125,13 @@ class MenuHelper
             "route_name" => "content.create",
           ],
         ],
+      ],
+      [
+        "icon" => "subscription", 
+        "name" => "Plans",
+        "roles" => ["admin"],
+        "path" => "/admin/plans",
+        "route_name" => "admin.plans",
       ],
     ];
   }
