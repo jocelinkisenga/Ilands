@@ -12,7 +12,7 @@
 
             <div class="hidden lg:flex items-center space-x-6">
  
-                <a href="/services" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('Services')}}</a>
+                <a href="/services" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('Pricing')}}</a>
                 <a href="/trust" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('Trust')}}</a>
                 <a href="/blog" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('blog')}}</a>
                 <a href="/contact" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('Contact')}}</a>
@@ -65,7 +65,7 @@
          x-transition:enter-end="opacity-100 translate-y-0"
          class="lg:hidden bg-white dark:bg-black border-b border-slate-200 dark:border-white/10 px-6 pt-2 pb-8 space-y-4 shadow-2xl"
          style="display: none;">
-                 <a href="/services" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Services</a>
+                 <a href="/services" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Pricing</a>
         <a href="/about" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">About Us</a>
         <a href="/contact" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Contact</a>
          <livewire:language-switcher />
