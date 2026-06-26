@@ -4,14 +4,14 @@
         
         <div class="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs transition-all duration-200 hover:scale-[1.02]">
             <div class="flex items-center justify-between">
-                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Chiffre d'Affaires total</span>
-                <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400 text-lg">💰</span>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Tokens</span>
+                <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400 text-lg"></span>
             </div>
             <div class="mt-4 flex items-baseline space-x-2">
-                <span class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">${{ number_format($revenueTotal, 2) }}</span>
+                <span class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{{ number_format($tokensRemaining + $tokensUsed) }}</span>
                 <span class="text-xs font-semibold text-green-600 bg-green-50 dark:bg-green-950/40 dark:text-green-400 px-1.5 py-0.5 rounded">+12.5%</span>
             </div>
-            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Abonnements Stripe & Analyses unitaires ($49).</p>
+            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500"></p>
         </div>
 
         <div class="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs transition-all duration-200 hover:scale-[1.02]">
@@ -23,7 +23,7 @@
                 <span class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $totalUsers }}</span>
                 <span class="text-xs font-semibold text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 px-1.5 py-0.5 rounded">Actifs</span>
             </div>
-            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Inscriptions via le Member Portal complet.</p>
+            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500"></p>
         </div>
 
         <div class="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs transition-all duration-200 hover:scale-[1.02]">
@@ -35,19 +35,19 @@
                 <span class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $activeChats }}</span>
                 <span class="text-xs font-semibold text-purple-600 bg-purple-50 dark:bg-purple-950/40 dark:text-purple-400 px-1.5 py-0.5 rounded">Sessions</span>
             </div>
-            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Canaux temps réel gérés par Laravel Reverb.</p>
+            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500"></p>
         </div>
 
         <div class="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs transition-all duration-200 hover:scale-[1.02]">
             <div class="flex items-center justify-between">
-                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Rapports PDF générés</span>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Rapports  générés</span>
                 <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-50 dark:bg-amber-950/30 text-amber-600 dark:text-amber-400 text-lg">📄</span>
             </div>
             <div class="mt-4 flex items-baseline space-x-2">
                 <span class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $generatedReports }}</span>
-                <span class="text-xs font-semibold text-amber-600 bg-amber-50 dark:bg-amber-950/40 dark:text-amber-400 px-1.5 py-0.5 rounded">Browsershot</span>
+                <span class="text-xs font-semibold text-amber-600 bg-amber-50 dark:bg-amber-950/40 dark:text-amber-400 px-1.5 py-0.5 rounded"></span>
             </div>
-            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">Fichiers structurés extraits par le Tax Engine.</p>
+            <p class="mt-1 text-xs text-gray-400 dark:text-gray-500"></p>
         </div>
     </div>
 
@@ -55,9 +55,9 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 mb-4">
             <div>
                 <h3 class="text-base font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-                    ⚡ Moniteur d'Infrastructure API Gemini (v1beta)
+                    ⚡ Moniteur d'Infrastructure 
                 </h3>
-                <p class="text-xs text-gray-500 dark:text-gray-400">Consommation du quota mensuel pour prélever les surcharges de requêtes.</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400"></p>
             </div>
             <div class="flex space-x-6 text-xs font-mono">
                 <div><span class="text-gray-400">Consommés:</span> <strong class="text-gray-900 dark:text-white">{{ number_format($tokensUsed) }}</strong></div>
@@ -79,8 +79,8 @@
         
         <div class="lg:col-span-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs flex flex-col justify-between">
             <div class="mb-4">
-                <h3 class="text-base font-semibold text-gray-900 dark:text-white">Performance Croisée & Appels API</h3>
-                <p class="text-xs text-gray-500 dark:text-gray-400">Flux combiné des revenus ($) encaissés vis-à-vis de l'activité volumétrique de l'IA.</p>
+                <h3 class="text-base font-semibold text-gray-900 dark:text-white">Performance Croisée </h3>
+                <p class="text-xs text-gray-500 dark:text-gray-400"></p>
             </div>
             
             <div class="h-64 relative w-full" x-data="{
@@ -145,7 +145,7 @@
         <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs flex flex-col justify-between">
             <div>
                 <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Dernières Soumissions (MVP)</h3>
-                <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Suivi direct de l'utilisation de la bibliothèque utilisateur.</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-4"></p>
                 
                 <div class="flow-root">
                     <ul class="-my-4 divide-y divide-gray-100 dark:divide-gray-800/60">

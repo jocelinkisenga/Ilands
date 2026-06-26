@@ -140,6 +140,13 @@ class MenuHelper
         "path" => "/admin/plans",
         "route_name" => "admin.plans",
       ],
+            [
+        "icon" => "user-profile",
+        "name" => "Mon Profil",
+        "roles" => ["admin"],
+        "path" => "/profile",
+        "route_name" => "profile.edit",
+      ],
     ];
   }
 
