@@ -7,7 +7,7 @@
         <div class="relative max-w-5xl mx-auto px-6 text-center">
             <span class="text-green-500 font-mono tracking-widest uppercase text-sm">Expert Insights</span>
             <h1 class="text-4xl md:text-6xl font-extrabold mt-4">
-                ILANDS <span class="text-green-500">Tax Intelligence</span> Blog
+                 <span class="text-green-500">BLOG</span> 
             </h1>
             <p class="mt-6 text-gray-400 text-lg max-w-2xl mx-auto">
                 Strategies and compliance guides for entrepreneurs and expats, powered by AI and verified by licensed professionals.
@@ -60,7 +60,7 @@
 
     <section class="py-20">
         <div class="max-w-4xl mx-auto px-6">
-            <div class="bg-gradient-to-r from-green-900/20 to-black border border-green-500/30 rounded-3xl p-10 text-center">
+            <div class="bg-black text-white border border-green-500/30 rounded-3xl p-10 text-center">
                 <h2 class="text-2xl font-bold mb-4">Subscribe to Tax Alerts</h2>
                 <p class="text-gray-400 mb-8 italic">Stay updated with AI-driven tax optimization strategies.</p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">

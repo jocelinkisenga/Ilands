@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="bg-black text-white min-h-screen py-16">
+    <div class="bg-white text-gray-900 dark:bg-black dark:text-white min-h-screen py-16">
         <article class="max-w-4xl mx-auto px-6">
             
             <!-- Header de l'article -->

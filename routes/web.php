@@ -83,6 +83,7 @@ Route::get("/blog", [BlogController::class,'index'])->name("blog");
 Route::get("/blog/{slug}", [BlogController::class,'show'])->name("blog.show");
 Route::get("/contact", Contact::class)->name("contact");
 
+
 /*
 |--------------------------------------------------------------------------
 | SOCIAL AUTH
@@ -222,6 +223,7 @@ Route::middleware(["auth", "admin"])
     Route::get("/content/{content}/edit", ContentEdit::class)->name(
       "content.edit"
     );
+    Route::post("/ckeditor", [BlogController::class,'ckeditor'])->name("ckeditor.upload");
   });
 
 /*
