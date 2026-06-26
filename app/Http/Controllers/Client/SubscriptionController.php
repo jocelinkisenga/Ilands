@@ -115,7 +115,7 @@ class SubscriptionController extends Controller
       round(($usageMetrics["used"] / $usageMetrics["total"]) * 100)
     );
 
-    return view("pages.subscription.index", [
+    return view("client.subscription.index", [
       "user" => $user,
       "subscription" => $subscription,
       "invoices" => $invoices,

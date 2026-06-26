@@ -127,20 +127,20 @@ class MenuHelper
         ],
       ],
       [
-        "icon" => "subscription", 
+        "icon" => "subscription",
         "name" => "Tokens",
         "roles" => ["admin"],
         "path" => "/admin/tokens",
         "route_name" => "admin.tokens",
       ],
       [
-        "icon" => "subscription", 
+        "icon" => "subscription",
         "name" => "Plans",
         "roles" => ["admin"],
         "path" => "/admin/plans",
         "route_name" => "admin.plans",
       ],
-            [
+      [
         "icon" => "user-profile",
         "name" => "Mon Profil",
         "roles" => ["admin"],
