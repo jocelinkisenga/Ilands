@@ -18,9 +18,9 @@ class ContentCreate extends Component
     
     public $thumbnail;
     public $document;
-    public $video; // Nouvelle propriété pour la vidéo
+    public $video; 
 
-    // Validation dynamique
+    
     protected function rules()
     {
         $rules = [
@@ -30,11 +30,11 @@ class ContentCreate extends Component
             'thumbnail' => 'nullable|image|max:2048',
         ];
 
-        // On adapte les règles selon le type sélectionné
+        
         if ($this->type === 'document') {
-            $rules['document'] = 'nullable|mimes:pdf|max:10240'; // 10MB max
+            $rules['document'] = 'nullable|mimes:pdf|max:10240'; 
         } elseif ($this->type === 'video') {
-            $rules['video'] = 'nullable|mimes:mp4,mov,avi|max:51200'; // 50MB max (exemple)
+            $rules['video'] = 'nullable|mimes:mp4,mov,avi|max:51200';
         }
 
         return $rules;
@@ -68,7 +68,7 @@ class ContentCreate extends Component
         ]);
 
         session()->flash('success', 'Content created successfully.');
-        return redirect()->to('/admin/dashboard');
+        return redirect()->to('/admin/content');
     }
 
     public function render()
