@@ -58,4 +58,17 @@ class Content extends Model
         'saved_contents'
     )->withTimestamps();
 }
+
+public function getReadTimeAttribute()
+{
+    $text = strip_tags($this->content);
+    $wordCount = str_word_count($text);
+    $minutes = $wordCount / 200;
+    
+    
+    $imageCount = substr_count($this->content, '<img');
+    $minutes += ($imageCount * 0.2);
+    
+    return ceil($minutes) . ' min';
+}
 }
