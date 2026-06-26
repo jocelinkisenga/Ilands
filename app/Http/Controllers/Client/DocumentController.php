@@ -24,7 +24,7 @@ class DocumentController extends Controller
                     'context_prompt' => $message->message,
                 ];
             });
-        return view("pages.documents.documents", compact('documents'));
+        return view("client.documents.documents", compact('documents'));
     }
     
         public function hystory()
@@ -34,7 +34,7 @@ class DocumentController extends Controller
 
 
 
-        return view('pages.hystory.hystory', [
+        return view('client.chats.chatHistory', [
             'chats' => $chats
         ]);
     }

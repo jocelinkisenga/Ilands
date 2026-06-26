@@ -25,7 +25,7 @@ class DashboardController extends Controller
         return view('admin.dashboard');
     }
 
-    return view('profile.dashboard', [
+    return view('client.dashboard', [
         'taxProfiles' => $this->tax_profile_service->getAllTaxProfiles()
     , "recentReports" =>$recentReports,]);
 }
