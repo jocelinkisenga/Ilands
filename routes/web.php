@@ -22,6 +22,8 @@ use App\Http\Controllers\Client\UserController;
 use App\Http\Controllers\Report\ReportController;
 
 use App\Http\Controllers\Auth\SocialController;
+use App\Http\Controllers\BlogController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +31,6 @@ use App\Http\Controllers\Auth\SocialController;
 |--------------------------------------------------------------------------
 */
 
-use App\Livewire\Blog;
 use App\Livewire\Contact;
 use App\Livewire\AiChatBot;
 use App\Livewire\TaxScreener;
@@ -78,7 +79,7 @@ Route::get("/pricing", [SubscriptionController::class, "pricing"])->name(
 Route::get("/terms", [LegalController::class, "terms"])->name("terms");
 Route::get("/privacy", [LegalController::class, "privacy"])->name("privacy");
 
-Route::livewire("/blog", Blog::class)->name("blog");
+Route::get("/blog", [BlogController::class,'index'])->name("blog");
 Route::get("/contact", Contact::class)->name("contact");
 
 /*

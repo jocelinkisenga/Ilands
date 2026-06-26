@@ -1,12 +1,12 @@
 <div
- class="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:p-8">
+ class="relative overflow-hidden bg-white text-gray-900 dark:bg-black dark:text-white rounded-3xl border border-slate-200 p-6 shadow-sm dark:border-slate-800 md:p-8">
  @php
  $documentsCount = auth()->user()->chatMessages()->whereNotNull('file_path')->where('role', 'user')->count();
  @endphp
 
  {{-- Background --}}
  <div
-  class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
+  class="absolute inset-0 bg-white text-gray-900 dark:bg-black dark:text-white">
  </div>
 
  <div class="relative z-10">

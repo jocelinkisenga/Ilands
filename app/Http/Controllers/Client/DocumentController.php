@@ -30,28 +30,16 @@ class DocumentController extends Controller
         public function hystory()
     {
         
-$chats = Chat::where('user_id', auth()->id())->latest()->get();
+    $chats = Chat::where('user_id', auth()->id())->latest()->get();
 
 
-     /*   $formattedChats = $chats->map(function ($chat) {
-            return [
-                'id'         => $chat->id,
-                'role'       => $chat->role,
-                'message'    => $chat->message,
-                'created_at' => $chat->created_at->format('d/m/Y H:i'),
-                'updated_at' => $chat->updated_at->format('d/m/Y H:i'),
-            ];
-        }); */
-        
+
         return view('pages.hystory.hystory', [
             'chats' => $chats
         ]);
     }
 
-       /**
-     * Calcule et formate de façon propre la taille du fichier stocké sur le disque.
-     */
-    private function formatFileSize(?string $filePath): string
+           private function formatFileSize(?string $filePath): string
     {
         if (!$filePath || !\Storage::disk('local')->exists($filePath)) {
             return 'N/A';

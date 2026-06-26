@@ -19,12 +19,12 @@
    wire:model.live="search"
    type="text"
    placeholder="Search reports..."
-   class="rounded-xl border px-4 py-2 bg-white dark:bg-gray-900"
+   class="rounded-xl border px-4 py-2 bg-white dark:text-white dark:bg-gray-900"
    >
 
    <select
     wire:model.live="type"
-    class="rounded-xl border px-4 py-2 bg-white dark:bg-gray-900"
+    class="rounded-xl border px-4 py-2 bg-white dark:text-white dark:bg-gray-900"
     >
     <option value="">All Types</option>
     <option value="tax">Tax</option>
@@ -43,7 +43,7 @@
   @forelse($reports as $report)
 
   <div
-   class="bg-white dark:bg-gray-900
+   class="bg-white dark:bg-gray-900 dark:text-white
    border border-gray-200 dark:border-gray-800
    rounded-3xl p-5 shadow-sm"
    >

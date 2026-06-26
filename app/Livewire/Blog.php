@@ -11,15 +11,15 @@ use App\Models\Content;
 use Livewire\Attributes\Layout;
 
 
-#[Layout('layouts.guest')]
+
 class Blog extends Component
 {
-public $articles;
+public $articles = [];
 
     
     public function render()
     { 
-        $this->articles = Content::where("type" ,"=", "blog")->get();
-        return view('livewire.blog');
+        // $this->articles = Content::where("type" ,"=", "blog")->get();
+        // return view('livewire.blog');
     }
 }

@@ -21,7 +21,7 @@
 
   <x-dashboard.deadlines /> --}}
 
-  <x-dashboard.documents-center />
+  {{-- <x-dashboard.documents-center /> --}}
 
   <x-dashboard.learning-center />
 
