@@ -1,8 +1,8 @@
 <div class="space-y-6 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Plan Management</h1>
-        <a href="{{ route('admin.create.plan') }}" class="inline-flex justify-center items-center px-5 py-3 rounded-xl bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 text-sm font-semibold transition shadow-sm">
-            + Add plan
+        <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Token Management</h1>
+        <a href="{{ route('admin.create.token') }}" class="inline-flex justify-center items-center px-5 py-3 rounded-xl bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 text-sm font-semibold transition shadow-sm">
+            + Add Token
         </a>
     </div>
 
@@ -40,23 +40,23 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100 dark:divide-white/[0.05]">
-                @foreach ($plans as $plan)
+                @foreach ($tokens as $token)
                     <tr>
                         <td class="px-6 py-3.5">
                             <div class="flex items-center">
                                 <p class="font-medium text-gray-800 text-theme-sm dark:text-white/90">
-                                    {{ $plan->name }}
+                                    {{ $token->entry_tokens }}
                                 </p>
                             </div>
                         </td>
                         <td class="px-6 py-3.5">
                             <div class="flex items-center">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $plan->price }}</p>
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $token->price }}</p>
                             </div>
                         </td>
                         <td class="px-6 py-3.5">
                             <div class="flex items-center">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $plan->analysis_quota }}</p>
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $token->supplier }}</p>
                             </div>
                         </td>
                         <td class="px-6 py-3.5">
@@ -78,16 +78,16 @@
         </div>
 
         <div class="grid grid-cols-1 divide-y divide-gray-100 dark:divide-gray-800 md:hidden">
-            @foreach($plans as $plan)
+            @foreach($tokens as $token)
             <div class="p-5 flex flex-col gap-4 bg-white dark:bg-gray-900">
                 
                 <div class="flex items-start justify-between gap-2">
                     <div class="truncate">
-                        <h4 class="font-bold text-base text-gray-900 dark:text-white truncate">{{$plan->name}}</h4>
-                        <p class="text-xs text-gray-400 dark:text-gray-500 font-mono truncate mt-0.5">{{$plan->analysis_quota}} Tokens</p>
+                        <h4 class="font-bold text-base text-gray-900 dark:text-white truncate">{{$token->supplier}}</h4>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 font-mono truncate mt-0.5">{{$token->entry_tokens}} Tokens</p>
                     </div>
                     <span class="text-[10px] font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">
-                       $ {{$plan->price}}
+                       $ {{$token->price}}
                     </span>
                 </div>
 

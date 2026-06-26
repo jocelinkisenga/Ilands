@@ -128,6 +128,13 @@ class MenuHelper
       ],
       [
         "icon" => "subscription", 
+        "name" => "Tokens",
+        "roles" => ["admin"],
+        "path" => "/admin/tokens",
+        "route_name" => "admin.tokens",
+      ],
+      [
+        "icon" => "subscription", 
         "name" => "Plans",
         "roles" => ["admin"],
         "path" => "/admin/plans",

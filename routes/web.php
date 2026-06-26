@@ -61,6 +61,8 @@ use App\Livewire\Admin\Content\ContentCreate;
 use App\Livewire\Admin\Content\ContentEdit;
 use App\Livewire\Admin\Plans\Plan;
 use App\Livewire\Admin\Plans\CreatePlan;
+use App\Livewire\Admin\Tokens\CreateToken;
+use App\Livewire\Admin\Tokens\Token;
 
 /*
 |--------------------------------------------------------------------------
@@ -229,7 +231,8 @@ Route::middleware(["auth", "admin"])
   });
   Route::livewire("admin/plans", Plan::class)->name("admin.plans");
   Route::livewire("admin/plan", CreatePlan::class)->name("admin.create.plan");
-
+  Route::livewire("admin/tokens", Token::class)->name("admin.tokens");
+Route::livewire("admin/token", CreateToken::class)->name("admin.create.token");
 /*
 |--------------------------------------------------------------------------
 | AUTH SYSTEM

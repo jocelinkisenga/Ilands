@@ -1,13 +1,14 @@
 <x-app-layout>
+
  <div class="space-y-6 p-6 max-w-[1600px] mx-auto bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-200">
     
     <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
         <div>
             <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
-                <span>🛡️</span> ILANDS Solutions — Administration Master
+                <span>🛡️</span> ILANDS Solutions — Administration Board
             </h1>
             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                Suivi stratégique en temps réel du MVP — Vision Executive (Shabani & Jocelin).
+                
             </p>
         </div>
     </div>
@@ -22,7 +23,7 @@
                 {{ number_format($revenueMtd, 2, ',', ' ') }} €
             </span>
         </div>
-        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Mis à jour toutes les 4h (Net de remboursements)</p>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2"></p>
     </div>
 
     <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-6 rounded-2xl shadow-xs">
