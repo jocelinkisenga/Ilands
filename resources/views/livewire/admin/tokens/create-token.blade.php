@@ -29,9 +29,9 @@
 
         <div class="mb-8 border-b border-gray-100 dark:border-gray-800 pb-5">
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-                Create Content
+                Add tokens
             </h1>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Remplissez les informations ci-dessous pour publier un nouveau contenu.</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1"></p>
         </div>
 
         <div class="space-y-6">
