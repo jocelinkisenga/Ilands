@@ -115,12 +115,12 @@ class MenuHelper
         "route_name" => "content.index",
         "subItems" => [
           [
-            "name" => "Tous les contenus",
+            "name" => "Contents",
             "path" => "/admin/content",
             "route_name" => "content.index",
           ],
           [
-            "name" => "Ajouter un contenu",
+            "name" => "Add Content",
             "path" => "/admin/content/create",
             "route_name" => "content.create",
           ],
