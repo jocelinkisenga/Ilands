@@ -141,7 +141,7 @@
                 </p>
             </div>
 
-            <button class="rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700 transition">
+            <button class="rounded-xl bg-black dark:text-black dark:bg-white bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700 transition">
                 Start Learning
             </button>
 

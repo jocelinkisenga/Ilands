@@ -27,17 +27,17 @@
 
     <div>
      <h2 class="text-base md:text-lg font-bold text-white tracking-tight">
-      ILANDS AI Assistant
+      ILANDS AI Assistant <span class="text-red-500">(for educational guidance only !)</span>
      </h2>
      <p class="text-[10px] md:text-xs text-gray-400 mt-0.5">
-      Powered by Gemini • Online
+      
      </p>
     </div>
    </div>
    <div class="flex items-center gap-2">
 
     {{-- Desktop --}}
-    <div class="hidden md:flex items-center gap-2">
+{{--     <div class="hidden md:flex items-center gap-2">
      <a href="{{route("chat")}}"
       class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white text-sm">
       New Chat
@@ -47,17 +47,17 @@
       class="px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-400/20 text-emerald-300 text-sm">
       Report
      </button>
-    </div>
+    </div> --}}
 
     {{-- Mobile --}}
     <div class="flex md:hidden items-center gap-2">
      <a href="{{route("chat")}}"
-      class="w-10 h-10 rounded-xl bg-white/10 border border-white/10 text-white flex items-center justify-center">
+      class="w-10 h-10 rounded-xl bg-white/10 border border-white/10 text-white flex items-center justify-center" title="start new conversation">
       ➕
      </a>
 
      <button wire:click="generateReport"
-      class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-400/20 text-emerald-300 flex items-center justify-center">
+      class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-400/20 text-emerald-300 flex items-center justify-center" title="generate report">
       📊
      </button>
     </div>

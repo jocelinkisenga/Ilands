@@ -14,14 +14,14 @@
             <div class="p-6 border-b border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gray-50/50 dark:bg-gray-900/50">
                 <div>
                     <h2 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                        <span>📂</span> Mes Documents Uploadés
+                        <span>📂</span> Uploaded documents
                     </h2>
                     <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                        Historique centralisé de tous les fichiers partagés avec l'IA pour traitement et analyses fiscales.
+                        
                     </p>
                 </div>
                 <span class="bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap border border-blue-100 dark:border-blue-800/50">
-                    {{ $documents->count() }} document(s) au total
+                    {{ $documents->count() }} total document(s)  
                 </span>
             </div>
 
@@ -30,10 +30,10 @@
                 <div class="p-12 text-center text-gray-400 dark:text-gray-500 bg-white dark:bg-gray-900">
                     <div class="text-5xl mb-4 opacity-50 grayscale">📁</div>
                     <p class="text-sm font-bold text-gray-600 dark:text-gray-300">
-                        Votre bibliothèque est vide
+                        Your library is empty
                     </p>
                     <p class="text-xs text-gray-400 dark:text-gray-500 mt-1.5 max-w-sm mx-auto">
-                        Les documents que vous soumettez dans l'onglet Chat s'ajouteront ici automatiquement.
+                        All documents submitted from the chat will show up here.
                     </p>
                 </div>
             @else
@@ -43,11 +43,11 @@
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-gray-50/70 dark:bg-gray-800/40 border-b border-gray-100 dark:border-gray-800 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                                <th class="p-4 pl-6">Nom du document</th>
-                                <th class="p-4">Taille</th>
+                                <th class="p-4 pl-6">Name</th>
+                                <th class="p-4">size</th>
                                 <th class="p-4">Format</th>
-                                <th class="p-4">Date d'importation</th>
-                                <th class="p-4 w-1/3">Prompt de contexte</th>
+                                <th class="p-4">submitted date</th>
+                                <th class="p-4 w-1/3">Prompt context</th>
                                 <th class="p-4 pr-6 text-center">Traitement</th>
                             </tr>
                         </thead>
@@ -84,7 +84,7 @@
                                 <td class="p-4 pr-6 text-center whitespace-nowrap">
                                     <span class="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
                                         <span class="w-1.5 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full mr-1.5"></span>
-                                        Indexé & Traité
+                                        Traited
                                     </span>
                                 </td>
                             </tr>
@@ -129,7 +129,7 @@
                         <div class="flex justify-end mt-1">
                             <span class="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
                                 <span class="w-1.5 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full mr-1.5 animate-pulse"></span>
-                                Indexé & Traité
+                                Traited
                             </span>
                         </div>
 

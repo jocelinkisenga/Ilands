@@ -25,7 +25,7 @@
 
     {{-- Actions Grid --}}
     <div
-        class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        class="grid grid-cols-2 gap-4 lg:grid-cols-3">
 
         {{-- New Chat --}}
         <a
@@ -145,7 +145,7 @@
         </a>
 
         {{-- Tax Profile --}}
-        <a
+{{--         <a
             href=""
             class="group rounded-3xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
 
@@ -181,7 +181,7 @@
 
             </p>
 
-        </a>
+        </a> --}}
 
     </div>
 

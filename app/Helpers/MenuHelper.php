@@ -63,13 +63,13 @@ class MenuHelper
         "path" => "/videos",
         "route_name" => "videos",
       ],
-      [
-        "icon" => "profile",
-        "name" => "Tax profile",
-        "roles" => ["client"],
-        "path" => "/tax-profile",
-        "route_name" => "tax-profile",
-      ],
+      // [
+      //   "icon" => "profile",
+      //   "name" => "Tax profile",
+      //   "roles" => ["client"],
+      //   "path" => "/tax-profile",
+      //   "route_name" => "tax-profile",
+      // ],
       [
         "icon" => "subscription",
         "name" => "Subscription",

@@ -25,9 +25,9 @@
 
   <x-dashboard.learning-center />
 
-  <x-dashboard.subscription-usage />
+  {{-- <x-dashboard.subscription-usage /> --}}
 
-  <x-dashboard.financial-health />
+  {{-- <x-dashboard.financial-health /> --}}
 
  </div>
 

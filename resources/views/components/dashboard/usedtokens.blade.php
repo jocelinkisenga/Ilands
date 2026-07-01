@@ -12,10 +12,10 @@
             </div>
             <div>
                 <h3 class="text-sm font-semibold text-gray-900 dark:text-white">
-                    Consommation de Tokens IA
+                    Used Tokens
                 </h3>
                 <p class="text-xs text-gray-500 dark:text-gray-400">
-                    Volume utilisé sur le mois en cours
+                    Used volume for this month
                 </p>
             </div>
         </div>
@@ -46,14 +46,14 @@
         <div class="flex items-center gap-1">
             @if($usagePercentage >= 80)
                 <span class="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                <span class="text-amber-600 dark:text-amber-400 font-semibold">Seuil d'alerte atteint</span>
+                <span class="text-amber-600 dark:text-amber-400 font-semibold">Used all tokens</span>
             @else
                 <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span>Quota sous contrôle</span>
+                <span>Quota control</span>
             @endif
         </div>
         <span class="font-mono bg-gray-50 dark:bg-gray-800/60 px-2 py-0.5 rounded border border-gray-100 dark:border-gray-800 text-gray-700 dark:text-black">
-            {{ number_format($usagePercentage, 1) }}% du forfait
+            {{ number_format($usagePercentage, 1) }}% of the offer
         </span>
     </div>
 </div>

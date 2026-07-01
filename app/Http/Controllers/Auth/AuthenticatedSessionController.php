@@ -50,4 +50,21 @@ $user = $request->user();
 
         return redirect('/');
     }
+
+    public function avatar(Request $request){
+       
+        $request->validate([
+            'avatar' => 'required|file|mimes:jpg,png,jpeg,webp|max:2048',
+        ]);
+
+        $user = Auth::user();
+
+        if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
+            $path = $request->file('avatar')->store('uploads','public');
+
+            $user->update(['avatar_path' => $path]);
+
+            return back()->with('success', 'image updated succefully! ');
+        }
+    }
 }

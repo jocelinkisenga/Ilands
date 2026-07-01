@@ -136,7 +136,7 @@
 @include("components.pricing")
 
 <!-- ================= FINAL CTA ================= -->
-<section class="py-24 bg-gradient-to-r from-emerald-500 to-emerald-600 text-black text-center">
+{{-- <section class="py-24 bg-gradient-to-r from-emerald-500 to-emerald-600 text-black text-center">
     <div class="max-w-3xl mx-auto px-6">
         <h2 class="text-4xl font-bold mb-6">
             Rebuilding Tax Advisory for the AI Era.
@@ -146,7 +146,7 @@
             SGet Your Free Tax Screener →
         </a>
     </div>
-</section>
+</section> --}}
 <!-- ================= FOOTER ================= -->
 
 

@@ -13,8 +13,13 @@
   @click.prevent="toggleDropdown()"
   type="button"
   >
+
   <span class="mr-3 overflow-hidden rounded-full h-11 w-11">
-   <img src="/images/user/owner.png" alt="User" />
+    @if(auth()->user()->avatar_path)
+   <img src="{{asset('storage/'. auth()->user()->avatar_path)}}" alt="User" />
+   @else
+    <img src="/images/user/" alt="User" />
+   @endif
  </span>
 
  <span class="block mr-1 font-medium text-theme-sm">{{auth()->user()->name}}</span>

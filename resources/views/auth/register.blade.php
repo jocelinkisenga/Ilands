@@ -141,13 +141,19 @@
     </div>
     <p class="inline-block font-normal text-gray-500 dark:text-gray-400">
      By creating an account means you agree to the
-     <span class="text-gray-800 dark:text-white/90">
+     <a href="terms">
+         <span class="text-gray-800 dark:text-white/90">
       Terms and Conditions,
      </span>
+     </a>
+     
      and our
-     <span class="text-gray-800 dark:text-white">
+     <a href="privacy">
+              <span class="text-gray-800 dark:text-white">
       Privacy Policy
      </span>
+     </a>
+
     </p>
    </label>
   </div>

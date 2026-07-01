@@ -55,13 +55,13 @@
         <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 mb-4">
             <div>
                 <h3 class="text-base font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-                    ⚡ Moniteur d'Infrastructure 
+                    ⚡ Infrastructure Monitor
                 </h3>
                 <p class="text-xs text-gray-500 dark:text-gray-400"></p>
             </div>
             <div class="flex space-x-6 text-xs font-mono">
-                <div><span class="text-gray-400">Consommés:</span> <strong class="text-gray-900 dark:text-white">{{ number_format($tokensUsed) }}</strong></div>
-                <div><span class="text-gray-400">Restants:</span> <strong class="text-indigo-600 dark:text-indigo-400">{{ number_format($tokensRemaining) }}</strong></div>
+                <div><span class="text-gray-400">Used tokens:</span> <strong class="text-gray-900 dark:text-white">{{ number_format($tokensUsed) }}</strong></div>
+                <div><span class="text-gray-400">Remaining:</span> <strong class="text-indigo-600 dark:text-indigo-400">{{ number_format($tokensRemaining) }}</strong></div>
             </div>
         </div>
 
@@ -70,8 +70,8 @@
                  style="width: {{ $tokensUsagePercentage }}%"></div>
         </div>
         <div class="flex justify-between items-center mt-2 text-[11px] text-gray-400 dark:text-gray-500">
-            <span>Seuil d'alerte : 80%</span>
-            <span class="font-semibold text-gray-700 dark:text-gray-300">{{ number_format($tokensUsagePercentage, 1) }}% consommés</span>
+            <span>alert : 80%</span>
+            <span class="font-semibold text-gray-700 dark:text-gray-300">{{ number_format($tokensUsagePercentage, 1) }}% used</span>
         </div>
     </div>
 
@@ -79,7 +79,7 @@
         
         <div class="lg:col-span-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs flex flex-col justify-between">
             <div class="mb-4">
-                <h3 class="text-base font-semibold text-gray-900 dark:text-white">Performance Croisée </h3>
+                <h3 class="text-base font-semibold text-gray-900 dark:text-white">Performances </h3>
                 <p class="text-xs text-gray-500 dark:text-gray-400"></p>
             </div>
             
@@ -142,7 +142,7 @@
             </div>
         </div>
 
-        <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs flex flex-col justify-between">
+ {{--        <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs flex flex-col justify-between">
             <div>
                 <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Dernières Soumissions (MVP)</h3>
                 <p class="text-xs text-gray-500 dark:text-gray-400 mb-4"></p>
@@ -179,7 +179,7 @@
             <a href="#" class="mt-4 block text-center rounded-lg bg-gray-50 dark:bg-gray-800 px-3 py-2 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
                 Voir toute la bibliothèque →
             </a>
-        </div>
+        </div> --}}
     </div>
 </div>
 
