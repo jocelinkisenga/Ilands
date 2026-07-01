@@ -5,143 +5,194 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse; // <-- FIX: Importation manquante corrigée
+use Illuminate\Http\RedirectResponse;
 use App\Enums\SubscriptionPlan;
 use Carbon\Carbon;
 
 class SubscriptionController extends Controller
 {
-  public function subscribe()
-  {
-    dd("subscribed");
-  }
-
-  public function pricing(): View
-  {
-    return view("pages.pricing");
-  }
-
-  public function success(Request $request)
-  {
-    $user = $request->user();
-    $subscription = $user->subscription("default");
-
-    if (!$subscription) {
-      return redirect()->route("dashboard");
+    /**
+     * Affiche la page des tarifs.
+     */
+    public function pricing(): View
+    {
+        return view("pages.pricing");
     }
 
-    $priceId = $subscription->stripe_price;
+    /**
+     * Affiche l'interface de paiement Stripe Elements embarquée.
+     */
+    public function showPaymentPage(Request $request): View
+    {
+        /** @var \App\Models\User $user */
+        $user = $request->user();
+        
+        // Génération du SetupIntent indispensable pour l'Iframe Stripe Elements
+        $intent = $user->createSetupIntent();
 
-    if ($priceId === config("services.stripe.prices.pro")) {
-      $user->update([
-        "plan" => SubscriptionPlan::PRO->value,
-      ]);
-    } elseif ($priceId === config("services.stripe.prices.premium")) {
-      $user->update([
-        "plan" => SubscriptionPlan::PREMIUM->value,
-      ]);
+        return view('subscription.subscribe', [
+            'intent' => $intent
+        ]);
     }
 
-    return view("subscription.success");
-  }
+    /**
+     * Traite la création de l'abonnement de manière dynamique et sécurisée.
+     */
+    public function processSubscription(Request $request): RedirectResponse
+    {
+        // Validation stricte des intrants
+        $request->validate([
+            'payment_method' => 'required|string',
+            'plan'           => 'required|in:pro,premium',
+        ]);
 
-  /**
-   * Affiche l'état de l'abonnement de l'utilisateur, l'historique et la consommation.
-   */
-  public function subscription(Request $request): View
-  {
-    /** @var \App\Models\User $user */
-    $user = $request->user();
+        /** @var \App\Models\User $user */
+        $user = $request->user();
+        $planChosen = $request->plan;
+        
+        // Résolution dynamique du Price ID depuis config/services.php
+        $stripePriceId = config("services.stripe.prices.{$planChosen}");
 
-    // Récupération de l'abonnement par défaut (Laravel Cashier)
-    $subscription = $user->subscription("default");
+        try {
+            // Création de l'abonnement via Laravel Cashier
+            $user->newSubscription('default', $stripePriceId)->create($request->payment_method);
 
-    // Initialisation des variables du cycle de facturation
-    $cycleProgress = 0;
-    $daysUsed = 0;
-    $totalDays = 30; // Valeur par défaut
-    $daysRemaining = 0;
-    $nextPaymentDate = null;
+            // Sécurité : On synchronise immédiatement le plan en BDD locale au cas où
+            $this->syncLocalUserPlan($user, $stripePriceId);
 
-    if ($subscription && $subscription->valid()) {
-      try {
-        // Appel à l'API Stripe
-        $stripeSubscription = $subscription->asStripeSubscription();
-
-        // FIX PRO: Protection contre les valeurs nulles (abonnements incomplets, impayés ou webhooks en retard)
-        $startTimestamp =
-          $stripeSubscription->current_period_start ??
-          $subscription->created_at->timestamp;
-        $endTimestamp =
-          $stripeSubscription->current_period_end ??
-          $subscription->updated_at->addMonth()->timestamp;
-
-        $start = Carbon::createFromTimestamp($startTimestamp);
-        $end = Carbon::createFromTimestamp($endTimestamp);
-      } catch (\Exception $e) {
-        // Secours absolu en cas d'échec de l'API Stripe ou de crash d'infrastructure
-        report($e);
-        $start = $subscription->created_at ?? Carbon::now();
-        $end = $subscription->ends_at ?? Carbon::now()->addMonth();
-      }
-
-      // Calculs de progression identiques et sécurisés contre les divisions par zéro
-      $totalDays = max(1, $start->diffInDays($end));
-      $daysUsed = max(0, $start->diffInDays(Carbon::now()));
-      $daysRemaining = max(0, Carbon::now()->diffInDays($end));
-
-      $cycleProgress = min(100, round(($daysUsed / $totalDays) * 100));
-      $nextPaymentDate = $end->format("d/m/Y");
+            return redirect()->route('subscription.success');
+            
+        } catch (\Exception $e) {
+            report($e); // Log l'erreur en interne
+            return back()->withErrors(['error' => "Subscription failed: " . $e->getMessage()]);
+        }
     }
 
-    // Récupération paginée des factures Stripe
-    $invoices = [];
+    /**
+     * Page de retour après succès (Mise à jour et sécurité).
+     */
+    public function success(Request $request): RedirectResponse|View
+    {
+        /** @var \App\Models\User $user */
+        $user = $request->user();
+        $subscription = $user->subscription("default");
+
+        if (!$subscription || !$subscription->valid()) {
+            return redirect()->route("dashboard");
+        }
+
+        // Filet de sécurité si le webhook ou le process d'achat a eu du lag
+        $this->syncLocalUserPlan($user, $subscription->stripe_price);
+
+        return view("subscription.success");
+    }
+
+    /**
+     * Dashboard : Affiche l'état de l'abonnement, l'historique et la consommation.
+     */
+    public function subscription(Request $request): View
+    {
+        /** @var \App\Models\User $user */
+        $user = $request->user();
+        $subscription = $user->subscription("default");
+
+        $cycleProgress = 0;
+        $daysUsed = 0;
+        $totalDays = 30; 
+        $daysRemaining = 0;
+        $nextPaymentDate = null;
+
+        if ($subscription && $subscription->valid()) {
+            try {
+                $stripeSubscription = $subscription->asStripeSubscription();
+
+                $startTimestamp = $stripeSubscription->current_period_start ?? $subscription->created_at->timestamp;
+                $endTimestamp = $stripeSubscription->current_period_end ?? $subscription->updated_at->addMonth()->timestamp;
+
+                $start = Carbon::createFromTimestamp($startTimestamp);
+                $end = Carbon::createFromTimestamp($endTimestamp);
+            } catch (\Exception $e) {
+                report($e);
+                $start = $subscription->created_at ?? Carbon::now();
+                $end = $subscription->ends_at ?? Carbon::now()->addMonth();
+            }
+
+            $totalDays = max(1, $start->diffInDays($end));
+            $daysUsed = max(0, $start->diffInDays(Carbon::now()));
+            $daysRemaining = max(0, Carbon::now()->diffInDays($end));
+
+            $cycleProgress = min(100, round(($daysUsed / $totalDays) * 100));
+            $nextPaymentDate = $end->format("d/m/Y");
+        }
+
+        $invoices = [];
+        try {
+            if ($user->hasStripeId()) {
+                $invoices = $user->invoices();
+            }
+        } catch (\Exception $e) {
+            report($e);
+        }
+
+        // Métriques de quotas
+        $usageMetrics = [
+            "label" => "Projets Ilands",
+            "used" => $user->projects_count ?? 3,
+            "total" => $subscription && $subscription->active() ? 50 : 5,
+        ];
+        $usageMetrics["percentage"] = min(100, round(($usageMetrics["used"] / $usageMetrics["total"]) * 100));
+
+        return view("client.subscription.index", compact(
+            'user', 'subscription', 'invoices', 'cycleProgress', 
+            'daysUsed', 'totalDays', 'daysRemaining', 'nextPaymentDate', 'usageMetrics'
+        ));
+    }
+
+    /**
+     * Redirige vers le portail de facturation Stripe (Billing Portal).
+     */
+    public function billingPortal(Request $request): RedirectResponse
+    {
+        /** @var \App\Models\User $user */
+        $user = $request->user();
+
+        if (!$user->hasStripeId()) {
+            return redirect()
+                ->route("subscription.index")
+                ->with("error", "Aucun profil de facturation trouvé.");
+        }
+
+        return $user->redirectToBillingPortal(route("pricing"));
+    }
+
+    /**
+     * Centralisation : Met à jour le plan local de l'utilisateur (Pattern DRY)
+     */
+    private function syncLocalUserPlan($user, ?string $stripePriceId): void
+    {
+        if (!$stripePriceId) return;
+
+        if ($stripePriceId === config("services.stripe.prices.pro")) {
+            $user->update(["plan" => SubscriptionPlan::PRO->value]);
+        } elseif ($stripePriceId === config("services.stripe.prices.premium")) {
+            $user->update(["plan" => SubscriptionPlan::PREMIUM->value]);
+        }
+    }
+
+    /**
+ * Force le téléchargement d'une facture spécifique au format PDF.
+ */
+public function downloadInvoice(Request $request, string $invoiceId): \Symfony\Component\HttpFoundation\Response
+{
     try {
-      if ($user->hasStripeId()) {
-        $invoices = $user->invoices();
-      }
+        // Sécurité : findInvoiceOrFail s'assure que la facture appartient bien à l'utilisateur connecté
+        return $request->user()->downloadInvoice($invoiceId, [
+            'vendor'  => config('app.name', 'Ilands Corp'),
+            'product' => 'Abonnement Plateforme',
+        ]);
     } catch (\Exception $e) {
-      report($e);
+        report($e);
+        return back()->withErrors(['error' => "Impossible de récupérer cette facture."]);
     }
-
-    // Métriques de quotas
-    $usageMetrics = [
-      "label" => "Projets Ilands",
-      "used" => $user->projects_count ?? 3,
-      "total" => $subscription && $subscription->active() ? 50 : 5,
-    ];
-    $usageMetrics["percentage"] = min(
-      100,
-      round(($usageMetrics["used"] / $usageMetrics["total"]) * 100)
-    );
-
-    return view("client.subscription.index", [
-      "user" => $user,
-      "subscription" => $subscription,
-      "invoices" => $invoices,
-      "cycleProgress" => $cycleProgress,
-      "daysUsed" => $daysUsed,
-      "totalDays" => $totalDays,
-      "daysRemaining" => $daysRemaining,
-      "nextPaymentDate" => $nextPaymentDate,
-      "usageMetrics" => $usageMetrics,
-    ]);
-  }
-
-  /**
-   * Redirige de manière sécurisée vers le portail de facturation Stripe (Stripe Billing Portal).
-   */
-  public function billingPortal(Request $request): RedirectResponse
-  {
-    /** @var \App\Models\User $user */
-    $user = $request->user();
-
-    if (!$user->hasStripeId()) {
-      return redirect()
-        ->route("subscription.index")
-        ->with("error", "Aucun profil de facturation trouvé.");
-    }
-
-    return $user->redirectToBillingPortal(route("pricing"));
-  }
+}
 }

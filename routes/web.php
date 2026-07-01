@@ -136,7 +136,25 @@ Route::middleware("auth")->group(function () {
   Route::get("/checkout-success", [
     SubscriptionController::class,
     "success",
-  ])->name("checkout-success");
+  ])->name("subscription.success");
+
+
+  Route::get('/subscribe', [SubscriptionController::class, 'showPaymentPage'])
+    ->middleware(['auth'])
+    ->name('subscription.page');
+
+// 2. Traiter le paiement reçu du formulaire
+Route::post('/subscription/process', [SubscriptionController::class, 'processSubscription'])
+    ->middleware(['auth'])
+    ->name('subscription.process');
+
+Route::get('/subscription/invoice/{invoice}', [SubscriptionController::class, 'downloadInvoice'])
+    ->middleware(['auth'])
+    ->name('subscription.invoice');
+    
+// Route::get('/subscription/success', function () {
+//     return view('subscription-success'); // Nom de votre vue Blade de succès
+// })->middleware(['auth'])->name('subscription.success');
 
   /*
     |------------------------------
@@ -180,9 +198,9 @@ Route::middleware("auth")->group(function () {
 
     Route::get("/checkout/{plan?}", CheckoutContoller::class)->name("checkout");
 
-    Route::get("/subscribe", [SubscriptionController::class, "index"])->name(
-      "subscribe"
-    );
+   // Route::get("/subscribe", [SubscriptionController::class, "index"])->name(
+    //  "subscribe"
+    //);
 
     //subscription ROUTES
 

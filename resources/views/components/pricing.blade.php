@@ -1,4 +1,4 @@
-<section id="pricing" class="py-16">
+<section id="pricing" class="py-8">
  <div class="max-w-6xl mx-auto px-6 text-center">
   <h2 class="text-4xl font-bold mb-16 text-emerald-400">Transparent Pricing</h2>
 

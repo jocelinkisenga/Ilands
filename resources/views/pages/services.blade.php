@@ -10,7 +10,7 @@
             Strategic Advisory Plans
         </h1>
 
-        <p class="mt-6 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
+        <p class="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
             Choose the level of tax intelligence and advisory support
             aligned with your financial complexity and growth ambition.
         </p>

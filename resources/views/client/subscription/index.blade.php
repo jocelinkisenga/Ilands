@@ -211,7 +211,7 @@
                                         <span class="text-gray-500 dark:text-gray-400">Total paid :</span>
                                         <span class="font-mono font-bold text-gray-900 dark:text-white">{{ $invoice->total() }}</span>
                                     </div>
-                                    <a href="" target="_blank" class="mt-1 w-full inline-flex justify-center items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg font-medium transition-colors text-xs" aria-label="Télécharger la facture du {{ $invoice->date()->format('d M Y') }} au format PDF">
+                                    <a href="{{ route('subscription.invoice', $invoice->id) }}" target="_blank" class="mt-1 w-full inline-flex justify-center items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 rounded-lg font-medium transition-colors text-xs" aria-label="Télécharger la facture du {{ $invoice->date()->format('d M Y') }} au format PDF">
                                         download  PDF
                                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
                                     </a>

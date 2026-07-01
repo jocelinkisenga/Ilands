@@ -53,7 +53,10 @@
                         ILANDS <span class="text-green-600 dark:text-green-500">SOLUTIONS</span>
                     </span>
                 </a>
+
+
             </div>
+
 
 {{--             <!-- Logo (mobile only) -->
             <a href="/" class="xl:hidden">
@@ -74,7 +77,7 @@
             </button>
 
             <!-- Search Bar (desktop only) -->
-            <div class="hidden xl:block">
+{{--             <div class="hidden xl:block">
                 <form>
                     <div class="relative">
                         <span class="absolute -translate-y-1/2 pointer-events-none left-4 top-1/2">
@@ -95,8 +98,21 @@
                         </button>
                     </div>
                 </form>
-            </div>
+            </div> --}}
         </div>
+
+        <!-- Badge d'avertissement compact pour Sidebar/Header -->
+<div class="mt-2 flex flex-col gap-1 max-w-[450px]">
+    <!-- Badge Principal -->
+    <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-red-500/10 border border-red-500/20 text-[10px] font-mono font-bold uppercase tracking-wider text-red-400 w-fit">
+        <span class="flex h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse"></span>
+       ⚠️ Education puporse only, no taxe preparation or legal advice
+    </div>
+    <!-- Texte secondaire discret (optionnel, tu peux le supprimer si c'est encore trop grand) -->
+    <p class="text-[9px] font-medium text-slate-500 leading-tight pl-0.5">
+        
+    </p>
+</div>
 
         <!-- Application Menu (mobile) and Right Side Actions (desktop) -->
         <div :class="isApplicationMenuOpen ? 'flex' : 'hidden'"

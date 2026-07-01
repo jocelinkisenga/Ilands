@@ -7,6 +7,7 @@
  {{-- Background --}}
  <div
   class="absolute inset-0 bg-white text-gray-900 dark:bg-black dark:text-white">
+  
  </div>
 
  <div class="relative z-10">
@@ -16,8 +17,7 @@
    {{-- Left --}}
    <div>
 
-    
-
+ 
     <h1
      class="max-w-3xl text-3xl font-black tracking-tight text-slate-900 dark:text-white md:text-5xl">
 
