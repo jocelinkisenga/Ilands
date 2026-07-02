@@ -43,7 +43,7 @@
                 <input
                     type="text"
                     wire:model="title"
-                    value="{{$singleContent->title}}"
+                    value="{{$title}}"
                     class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
                 >
             </div>
@@ -86,7 +86,7 @@
                 <textarea
                     wire:model="excerpt"
                     rows="3"
-                    value="{{$singleContent->excerpt}}"
+                    value="{{$excerpt}}"
                     class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3 resize-none"
                 ></textarea>
             </div>
