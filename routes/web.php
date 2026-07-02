@@ -145,7 +145,9 @@ Route::middleware("auth")->group(function () {
     |------------------------------
     */
 
-  Route::get("/chat/{chatId?}", AiChatBot::class)->name("chat");
+  Route::get("/chat/{chatId?}", AiChatBot::class)
+    ->middleware("checkTokenQuota")
+    ->name("chat");
   Route::get("/checkout-success", [
     SubscriptionController::class,
     "success",
