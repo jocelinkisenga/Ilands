@@ -27,7 +27,7 @@ class CheckTokenQuota
       !$subscription->current_period_end
     ) {
       return redirect()
-        ->route("subscribe")
+        ->route("pricing")
         ->with("error", "Subscription period data is missing.");
     }
 
@@ -53,7 +53,7 @@ class CheckTokenQuota
 
     if ($used >= $quota) {
       return redirect()
-        ->route("subscribe")
+        ->route("pricing")
         ->with("error", "Token quota exceeded for this billing cycle.");
     }
 
