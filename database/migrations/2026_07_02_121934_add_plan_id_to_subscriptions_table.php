@@ -16,11 +16,10 @@ return new class extends Migration {
         ->nullable()
         ->constrained("plans")
         ->nullOnDelete();
+      $table->timestamp("current_period_start")->nullable();
+
+      $table->timestamp("current_period_end")->nullable();
     });
-
-    $table->timestamp("current_period_start")->nullable();
-
-    $table->timestamp("current_period_end")->nullable();
   }
 
   /**
@@ -29,7 +28,7 @@ return new class extends Migration {
   public function down(): void
   {
     Schema::table("subscriptions", function (Blueprint $table) {
-      //
+      $table->dropColumn("plan_id");
     });
   }
 };

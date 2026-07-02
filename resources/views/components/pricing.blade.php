@@ -25,7 +25,7 @@
       <li>• Limited AI chat</li>
      </ul>
 
-     <a href="{{route('checkout',"free")}} class="mt-10 block text-center py-3 border border-green-500 rounded-lg hover:bg-green-600/10 transition">
+     <a href="{{route('subscription.page')}} class="mt-10 block text-center py-3 border border-green-500 rounded-lg hover:bg-green-600/10 transition">
       Start free
      </a>
     </div>
@@ -59,7 +59,7 @@
       <li>• Cash-flow tax forecasting</li>
      </ul>
 
-     <a href="{{route('checkout','pro')}}" class="mt-10 block text-center py-3 bg-green-600 hover:bg-green-500 rounded-lg font-semibold transition">
+     <a href="{{route('subscription.page')}}" class="mt-10 block text-center py-3 bg-green-600 hover:bg-green-500 rounded-lg font-semibold transition">
       Book Strategy Call
      </a>
     </div>
@@ -82,7 +82,7 @@
       <li>• Issue-specific matching</li>
      </ul>
 
-     <a href="{{route("checkout","premium")}}" class="mt-10 block text-center py-3 border border-green-500 rounded-lg hover:bg-green-600/10 transition">
+     <a href="{{route('subscription.page')}}" class="mt-10 block text-center py-3 border border-green-500 rounded-lg hover:bg-green-600/10 transition">
       Request Proposal
      </a>
     </div>
