@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Enums\RoleEnum;
+use App\Enums\SubscriptionPlan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,7 +22,16 @@ class User extends Authenticatable
    * @var list<string>
    */
 
-  protected $fillable = ["name", "email", "password", "role", "google_id","avatar_path","plan"];
+  protected $fillable = [
+    "name",
+    "email",
+    "password",
+    "role",
+    "google_id",
+    "avatar_path",
+    "plan",
+    "plan_id",
+  ];
 
   /**
    * The attributes that should be hidden for serialization.
@@ -43,18 +53,23 @@ class User extends Authenticatable
       "role" => RoleEnum::class,
       "stripe_id",
       "trial_ends_at",
+      "plan" => SubscriptionPlan::class,
     ];
   }
 
   public function aiReports()
   {
-    $this->hasMany(AiReport::class);
+    return $this->hasMany(AiReport::class);
   }
   public function chats()
   {
     return $this->hasMany(Chat::class);
   }
 
+  public function subscriptions()
+  {
+    return $this->hasMany(Subscription::class);
+  }
   public function chatMessages()
   {
     return $this->hasMany(ChatMessage::class);

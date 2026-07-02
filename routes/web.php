@@ -17,13 +17,13 @@ use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\Client\CheckoutContoller;
 use App\Http\Controllers\Client\SubscriptionController;
 use App\Http\Controllers\Client\DocumentController;
+use App\Http\Controllers\Client\UpgradePlanController;
 use App\Http\Controllers\Client\VideoController;
 use App\Http\Controllers\Client\UserController;
 use App\Http\Controllers\Report\ReportController;
 
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\BlogController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -84,10 +84,9 @@ Route::get("/pricing", [SubscriptionController::class, "pricing"])->name(
 Route::get("/terms", [LegalController::class, "terms"])->name("terms");
 Route::get("/privacy", [LegalController::class, "privacy"])->name("privacy");
 
-Route::get("/blog", [BlogController::class,'index'])->name("blog");
-Route::get("/blog/{slug}", [BlogController::class,'show'])->name("blog.show");
+Route::get("/blog", [BlogController::class, "index"])->name("blog");
+Route::get("/blog/{slug}", [BlogController::class, "show"])->name("blog.show");
 Route::get("/contact", Contact::class)->name("contact");
-
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +109,19 @@ Route::get("auth/{provider}/callback", [
 */
 
 Route::post("/stripe/webhook", [WebhookController::class, "handleWebhook"]);
+
+Route::middleware(["auth"])->group(function () {
+  Route::get("/subscription/upgrade", [
+    UpgradePlanController::class,
+    "index",
+  ])->name("subscription.upgrade");
+
+  Route::post("/subscription/upgrade", [
+    UpgradePlanController::class,
+    "upgrade",
+  ]);
+});
+
 Route::middleware("auth")->group(function () {
   /*
     |------------------------------
@@ -139,23 +151,28 @@ Route::middleware("auth")->group(function () {
     "success",
   ])->name("subscription.success");
 
+  Route::get("/subscribe", [SubscriptionController::class, "showPaymentPage"])
+    ->middleware(["auth"])
+    ->name("subscription.page");
 
-  Route::get('/subscribe', [SubscriptionController::class, 'showPaymentPage'])
-    ->middleware(['auth'])
-    ->name('subscription.page');
+  // 2. Traiter le paiement reçu du formulaire
+  Route::post("/subscription/process", [
+    SubscriptionController::class,
+    "processSubscription",
+  ])
+    ->middleware(["auth"])
+    ->name("subscription.process");
 
-// 2. Traiter le paiement reçu du formulaire
-Route::post('/subscription/process', [SubscriptionController::class, 'processSubscription'])
-    ->middleware(['auth'])
-    ->name('subscription.process');
+  Route::get("/subscription/invoice/{invoice}", [
+    SubscriptionController::class,
+    "downloadInvoice",
+  ])
+    ->middleware(["auth"])
+    ->name("subscription.invoice");
 
-Route::get('/subscription/invoice/{invoice}', [SubscriptionController::class, 'downloadInvoice'])
-    ->middleware(['auth'])
-    ->name('subscription.invoice');
-    
-// Route::get('/subscription/success', function () {
-//     return view('subscription-success'); // Nom de votre vue Blade de succès
-// })->middleware(['auth'])->name('subscription.success');
+  // Route::get('/subscription/success', function () {
+  //     return view('subscription-success'); // Nom de votre vue Blade de succès
+  // })->middleware(['auth'])->name('subscription.success');
 
   /*
     |------------------------------
@@ -199,15 +216,16 @@ Route::get('/subscription/invoice/{invoice}', [SubscriptionController::class, 'd
 
     Route::get("/checkout/{plan?}", CheckoutContoller::class)->name("checkout");
 
-   // Route::get("/subscribe", [SubscriptionController::class, "index"])->name(
+    // Route::get("/subscribe", [SubscriptionController::class, "index"])->name(
     //  "subscribe"
     //);
 
     //subscription ROUTES
 
-    Route::get("/subscription", [SubscriptionController::class, "subscription"])->name(
-      "subscription.index"
-    );
+    Route::get("/subscription", [
+      SubscriptionController::class,
+      "subscription",
+    ])->name("subscription.index");
     Route::get("/subscription/billing", [
       SubscriptionController::class,
       "billingPortal",
@@ -238,7 +256,9 @@ Route::middleware(["auth", "admin"])
       "admin.dashboard"
     );
 
-Route::livewire("admin/content/edit/{contentId}",ContentEdit::class)->name('content.edit');
+    Route::livewire("admin/content/edit/{contentId}", ContentEdit::class)->name(
+      "content.edit"
+    );
 
     Route::get("/users", UsersIndex::class)->name("users.index");
 
@@ -249,13 +269,17 @@ Route::livewire("admin/content/edit/{contentId}",ContentEdit::class)->name('cont
     Route::get("/content/{content}/edit", ContentEdit::class)->name(
       "content.edit"
     );
-    Route::post("/ckeditor", [BlogController::class,'ckeditor'])->name("ckeditor.upload");
+    Route::post("/ckeditor", [BlogController::class, "ckeditor"])->name(
+      "ckeditor.upload"
+    );
   });
-  Route::livewire("admin/plans", Plan::class)->name("admin.plans");
-  Route::livewire("admin/plan", CreatePlan::class)->name("admin.create.plan");
-  Route::livewire("admin/tokens", Token::class)->name("admin.tokens");
+Route::livewire("admin/plans", Plan::class)->name("admin.plans");
+Route::livewire("admin/plan", CreatePlan::class)->name("admin.create.plan");
+Route::livewire("admin/tokens", Token::class)->name("admin.tokens");
 Route::livewire("admin/token", CreateToken::class)->name("admin.create.token");
-Route::livewire("admin/token/edit/{tokenId}", EditToken::class)->name("admin.create.token.edit");
+Route::livewire("admin/token/edit/{tokenId}", EditToken::class)->name(
+  "admin.create.token.edit"
+);
 /*
 |--------------------------------------------------------------------------
 | AUTH SYSTEM
