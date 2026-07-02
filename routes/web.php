@@ -236,6 +236,9 @@ Route::middleware(["auth", "admin"])
     Route::get("/dashboard", [AdminController::class, "index"])->name(
       "admin.dashboard"
     );
+
+Route::livewire("admin/content/edit/{contentId}",ContentEdit::class)->name('content.edit');
+
     Route::get("/users", UsersIndex::class)->name("users.index");
 
     Route::get("/content", ContentIndex::class)->name("content.index");
