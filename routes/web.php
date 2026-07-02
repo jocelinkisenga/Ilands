@@ -151,7 +151,7 @@ Route::middleware("auth")->group(function () {
   Route::get("/checkout-success", [
     SubscriptionController::class,
     "success",
-  ])->name("subscription.success");
+  ])->name("checkout-success");
 
   Route::get("/subscribe", [SubscriptionController::class, "showPaymentPage"])
     ->middleware(["auth"])
