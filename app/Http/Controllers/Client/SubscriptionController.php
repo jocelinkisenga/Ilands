@@ -51,11 +51,11 @@ class SubscriptionController extends Controller
     $user = $request->user();
     $planChosen = $request->plan;
 
-    // Résolution dynamique du Price ID depuis config/services.php
+    
     $stripePriceId = config("services.stripe.prices.{$planChosen}");
 
     try {
-      // Création de l'abonnement via Laravel Cashier
+      
       $user
         ->newSubscription("default", $stripePriceId)
         ->create($request->payment_method);
@@ -63,9 +63,9 @@ class SubscriptionController extends Controller
       $user->refresh();
 
       
-      // Sécurité : On synchronise immédiatement le plan en BDD locale au cas où
+      
       $this->syncLocalUserPlan($user, $stripePriceId);
-dd($user->subscriptions);
+
       return redirect()->route("subscription.success");
     } catch (\Exception $e) {
       report($e); // Log l'erreur en interne
@@ -228,20 +228,14 @@ dd($user->subscriptions);
     try {
       $stripeSubscription = $subscription->asStripeSubscription();
 
-      $subscription->update([
-        "plan_id" => optional($plan)->id,
-        "current_period_start" => isset(
-          $stripeSubscription->current_period_start
-        )
-          ? Carbon::createFromTimestamp(
-            $stripeSubscription->current_period_start
-          )
-          : null,
+      $item = $stripeSubscription->items->data[0] ?? null;
+$subscription->update([
+    'current_period_start' => $item ? Carbon::createFromTimestamp($item->current_period_start) : null,
+    'current_period_end'   => $item ? Carbon::createFromTimestamp($item->current_period_end)   : null,
+    // ...
+]);
 
-        "current_period_end" => isset($stripeSubscription->current_period_end)
-          ? Carbon::createFromTimestamp($stripeSubscription->current_period_end)
-          : null,
-      ]);
+
     } catch (\Throwable $e) {
       report($e);
 

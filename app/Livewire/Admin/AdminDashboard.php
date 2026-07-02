@@ -21,7 +21,7 @@ class AdminDashboard extends Component
   public int $tokensRemaining = 0;
   public float $tokensUsagePercentage = 0.0;
 
-  public $totalTokens = 0;
+  public $totalTokens = 1;
   // Filtre temporel
   public string $timePeriod = "30_days";
 
@@ -48,7 +48,7 @@ class AdminDashboard extends Component
 
 
         $tokens = Token::latest("id")->first();
-        $this->totalTokens = $tokens ? $tokens->total_tokens : 0;
+        $this->totalTokens = $tokens ? $tokens->total_tokens : 1;
 
     
     $this->generatedReports = ChatMessage::whereNotNull("file_path")
@@ -56,11 +56,11 @@ class AdminDashboard extends Component
       ->count();
 
     $this->revenueTotal = $this->generatedReports * 49.0 + 1240.0;
-    $monthlyTokenLimit = $this->totalTokens; 
+    $monthlyTokenLimit = $this->totalTokens ; 
 
 
     $totalMessagesCount = ChatMessage::count();
-    $this->tokensUsed = $tokens ? $tokens->output_tokens : 0; 
+    $this->tokensUsed = $tokens ? $tokens->output_tokens : 1; 
 
     $this->tokensRemaining = max(0, $monthlyTokenLimit - $this->tokensUsed);
     $this->tokensUsagePercentage = min(
