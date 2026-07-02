@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Laravel\Cashier\Subscription as CashierSubscription;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 class Subscription extends CashierSubscription
 {
   protected $fillable = [
@@ -33,7 +35,7 @@ class Subscription extends CashierSubscription
     return $this->belongsTo(Plan::class);
   }
 
-  public function user()
+  public function user(): BelongsTo
   {
     return $this->belongsTo(User::class);
   }
