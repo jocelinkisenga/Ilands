@@ -1,17 +1,17 @@
 {{-- Learning Center --}}
 <section class="mt-10">
 
-    {{-- Header --}}
+    {{-- Header 
     <div class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between mb-6">
 
-        <div>
+      <div>
             <h3 class="text-xl font-bold text-slate-900 dark:text-white">
                 Learning Center
             </h3>
             <p class="text-sm text-slate-500 dark:text-slate-400">
                 Master US tax rules, business finance, and AI-powered insights step by step.
             </p>
-        </div>
+        </div> 
 
         <button class="hidden md:inline-flex items-center gap-2 text-sm font-medium text-indigo-600 hover:text-indigo-700 dark:text-indigo-400">
             View All Courses
@@ -21,12 +21,12 @@
             </svg>
         </button>
 
-    </div>
+    </div> 
 
-    {{-- Grid --}}
+    - Grid --
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
 
-        {{-- Course 1 --}}
+        -- Course 1 --
         <div class="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 hover:shadow-md transition">
 
             <div class="flex items-center gap-3 mb-4">
@@ -46,7 +46,7 @@
                 Learn how federal tax works, income categories, and basic deductions.
             </p>
 
-            {{-- Progress --}}
+            Progress --
             <div class="mt-4">
                 <div class="flex justify-between text-xs mb-1">
                     <span class="text-slate-500">Progress</span>
@@ -59,7 +59,7 @@
 
         </div>
 
-        {{-- Course 2 --}}
+         Course 2 --
         <div class="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 hover:shadow-md transition">
 
             <div class="flex items-center gap-3 mb-4">
@@ -79,7 +79,7 @@
                 Discover strategies to reduce taxable income legally in the US system.
             </p>
 
-            {{-- Progress --}}
+            -- Progress --
             <div class="mt-4">
                 <div class="flex justify-between text-xs mb-1">
                     <span class="text-slate-500">Progress</span>
@@ -92,7 +92,7 @@
 
         </div>
 
-        {{-- Course 3 --}}
+         Course 3 -
         <div class="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 hover:shadow-md transition">
 
             <div class="flex items-center gap-3 mb-4">
@@ -112,7 +112,7 @@
                 Use AI to predict taxes, optimize cashflow, and reduce financial risks.
             </p>
 
-            {{-- Progress --}}
+            Progress -
             <div class="mt-4">
                 <div class="flex justify-between text-xs mb-1">
                     <span class="text-slate-500">Progress</span>
@@ -125,7 +125,7 @@
 
         </div>
 
-    </div>
+    </div> --}}
 
     {{-- Bottom CTA --}}
     <div class="mt-6 rounded-2xl border border-indigo-200 bg-indigo-50 p-6 dark:border-indigo-900 dark:bg-indigo-500/10">
@@ -141,9 +141,9 @@
                 </p>
             </div>
 
-            <button class="rounded-xl bg-black dark:text-black dark:bg-white bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700 transition">
+            <a href="{{route('library.index')}}" class="rounded-xl bg-black dark:text-black dark:bg-white bg-indigo-600 px-5 py-3 text-sm font-semibold text-white hover:bg-indigo-700 transition">
                 Start Learning
-            </button>
+            </a>
 
         </div>
 

@@ -30,7 +30,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 text-sm">
                                 <div>
                                     <p class="text-gray-500 dark:text-gray-400">Plan</p>
-                                    <p class="font-medium text-base mt-0.5">{{ ucfirst($subscription->type) }}</p>
+                                    <p class="font-medium text-base mt-0.5">{{ ucfirst($subscription->type) }} : {{auth()->user()->plan}}</p>
                                 </div>
                                 <div>
                                     <p class="text-gray-500 dark:text-gray-400">Client Id</p>

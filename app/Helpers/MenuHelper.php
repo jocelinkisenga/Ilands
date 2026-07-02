@@ -20,13 +20,7 @@ class MenuHelper
         "path" => "/dashboard",
         "route_name" => "dashboard",
       ],
-      [
-        "icon" => "book",
-        "name" => "Library",
-        "roles" => ["client"],
-        "path" => "/library",
-        "route_name" => "library.index",
-      ],
+
       [
         "icon" => "chat",
         "name" => "Ask AI",
@@ -40,6 +34,13 @@ class MenuHelper
         "roles" => ["client"],
         "path" => "/documents",
         "route_name" => "documents",
+      ],
+      [
+        "icon" => "book",
+        "name" => "Tutorials",
+        "roles" => ["client"],
+        "path" => "/library",
+        "route_name" => "library.index",
       ],
       [
         "icon" => "hystory",
@@ -56,13 +57,13 @@ class MenuHelper
         "route_name" => "reports",
       ],
 
-      [
+      /* [
         "icon" => "movie",
         "name" => "My Tutorials",
         "roles" => ["client"],
         "path" => "/videos",
         "route_name" => "videos",
-      ],
+      ], */
       // [
       //   "icon" => "profile",
       //   "name" => "Tax profile",
