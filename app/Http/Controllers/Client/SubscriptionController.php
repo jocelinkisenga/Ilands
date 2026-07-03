@@ -51,8 +51,11 @@ class SubscriptionController extends Controller
     $user = $request->user();
     $planChosen = $request->plan;
 
-    
+    //test
+//$results = User::whereTypeLike('pro')->get();
+
     $stripePriceId = config("services.stripe.prices.{$planChosen}");
+
 
     try {
       
@@ -60,7 +63,7 @@ class SubscriptionController extends Controller
         ->newSubscription("default", $stripePriceId)
         ->create($request->payment_method);
 
-      $user->refresh();
+      // $user->refresh();
 
       
       
@@ -208,14 +211,14 @@ class SubscriptionController extends Controller
 
     // Détermination du plan
     if ($stripePriceId === config("services.stripe.prices.pro")) {
-      $plan = Plan::where("slug", "pro")->first();
+      $plan = Plan::whereNameLike("pro")->first();
 
       $user->update([
         "plan" => SubscriptionPlan::PRO->value,
         "plan_id" => optional($plan)->id,
       ]);
     } elseif ($stripePriceId === config("services.stripe.prices.premium")) {
-      $plan = Plan::where("slug", "premium")->first();
+      $plan = Plan::whereNameLike("premium")->first();
 
       $user->update([
         "plan" => SubscriptionPlan::PREMIUM->value,
