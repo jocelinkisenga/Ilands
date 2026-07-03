@@ -16,13 +16,7 @@ class DashboardController extends Controller
         }
         public function index(Request $request)
 {
-//test
-$user = $request->user();
-$subscription = $user->subscription("default");
 
-
-
-//end test
 
     $recentReports = AiReport::whereUser_id(auth()->user()->id)->latest()->take(5)->get();
     
