@@ -17,13 +17,17 @@
                 <a href="/blog" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('blog')}}</a>
                 <a href="/contact" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('Contact')}}</a>
                 <div class="ml-auto">
-        <livewire:language-switcher />
+        {{-- <livewire:language-switcher /> --}}
     </div>
                 
                 <div class="h-6 w-[1px] bg-slate-200 dark:bg-white/10 mx-2"></div>
 
                 @auth
-                    <a href="/dashboard" class="text-xs font-bold uppercase tracking-widest text-green-600 text-black dark:text-green-500 transition">My Account</a>
+                @if(auth()->user()->role->value === "client")
+                    <a href="/dashboard" class="text-xs font-bold uppercase tracking-widest text-green-600 text-black dark:text-green-500 transition">My dashboard</a>
+                @else
+                    <a href="{{ route('admin.dashboard') }}" class="text-xs font-bold uppercase tracking-widest text-green-600 text-black dark:text-green-500 transition">Dashboard</a>
+                @endif
                     <form method="POST" action="{{ route('logout') }}" class="inline">
                         @csrf
                         <button type="submit" class="text-xs font-bold uppercase tracking-widest text-red-500 hover:text-red-400 transition">Logout</button>
@@ -69,11 +73,15 @@
                  <a href="/blog" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('blog')}}</a>
         <a href="/about" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">About Us</a>
         <a href="/contact" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-3 border-b border-slate-100 dark:border-white/5">Contact</a>
-         <livewire:language-switcher />
+         {{-- <livewire:language-switcher /> --}}
         
         <div class="pt-4 space-y-4">
             @auth
-                <a href="/dashboard" class="block text-sm font-bold uppercase tracking-widest text-green-600 py-2">Dashboard</a>
+                @if(auth()->user()->role->value === "client")
+                <a href="/dashboard" class="block text-sm font-bold uppercase tracking-widest text-green-600 py-2">My Dashboard</a>
+                @else
+                <a href="{{ route('admin.dashboard') }}" class="block text-sm font-bold uppercase tracking-widest text-green-600 py-2">Dashboard</a>
+                @endif
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="block w-full text-left text-sm font-bold uppercase tracking-widest text-red-500 py-2">Logout</button>
