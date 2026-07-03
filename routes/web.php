@@ -78,7 +78,7 @@ Route::get("/about", [AboutController::class, "index"])->name("about");
 Route::get("/services", [ServiceController::class, "index"])->name("services");
 Route::get("/faq", [FaqController::class, "index"])->name("faq");
 
-Route::get("/pricing", [SubscriptionController::class, "pricing"])->name(
+Route::get("/pricing", [SubscriptionController::class, "pricing"])->middleware('subscribed')->name(
   "pricing"
 );
 

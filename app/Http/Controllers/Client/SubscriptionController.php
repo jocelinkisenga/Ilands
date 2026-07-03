@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Enums\SubscriptionPlan;
 use Carbon\Carbon;
 use App\Models\Plan;
+use App\Services\SubscriptionService;
 
 class SubscriptionController extends Controller
 {
@@ -39,7 +40,7 @@ class SubscriptionController extends Controller
   /**
    * Traite la création de l'abonnement de manière dynamique et sécurisée.
    */
-  public function processSubscription(Request $request): RedirectResponse
+  public function processSubscription(Request $request, SubscriptionService $service): RedirectResponse
   {
     // Validation stricte des intrants
     $request->validate([
@@ -193,64 +194,7 @@ class SubscriptionController extends Controller
     return $user->redirectToBillingPortal(route("pricing"));
   }
 
-  /**
-   * Centralisation : Met à jour le plan local de l'utilisateur (Pattern DRY)
-   */
-
-  private function syncLocalUserPlan($user, ?string $stripePriceId): void
-  {
-    if (!$stripePriceId) {
-      return;
-    }
-
-    $subscription = $user->subscription("default");
-
-    if (!$subscription) {
-      return;
-    }
-
-    // Détermination du plan
-    if ($stripePriceId === config("services.stripe.prices.pro")) {
-      $plan = Plan::whereNameLike("pro")->first();
-
-      $user->update([
-        "plan" => SubscriptionPlan::PRO->value,
-        "plan_id" => optional($plan)->id,
-      ]);
-    } elseif ($stripePriceId === config("services.stripe.prices.premium")) {
-      $plan = Plan::whereNameLike("premium")->first();
-
-      $user->update([
-        "plan" => SubscriptionPlan::PREMIUM->value,
-        "plan_id" => optional($plan)->id,
-      ]);
-    } else {
-      return;
-    }
-
-    try {
-      $stripeSubscription = $subscription->asStripeSubscription();
-
-      $item = $stripeSubscription->items->data[0] ?? null;
-
-    $subscription->update([
-    'current_period_start' => $item ? Carbon::createFromTimestamp($item->current_period_start) : null,
-    'current_period_end'   => $item ? Carbon::createFromTimestamp($item->current_period_end)   : null,
-    
-]);
-
-
-    } catch (\Throwable $e) {
-      report($e);
-
-      // Valeurs de secours
-      $subscription->update([
-        "plan_id" => optional($plan)->id,
-        "current_period_start" => now(),
-        "current_period_end" => now()->addMonth(),
-      ]);
-    }
-  }
+ 
   /**
    * Force le téléchargement d'une facture spécifique au format PDF.
    */

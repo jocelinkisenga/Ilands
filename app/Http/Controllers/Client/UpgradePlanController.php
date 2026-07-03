@@ -27,8 +27,8 @@ class UpgradePlanController extends Controller
     $user = $request->user();
 
     $priceId = $service->getStripePriceId($request->plan);
-
-    // si déjà abonné → swap plan
+   
+   
     if ($user->subscribed("default")) {
       $user->subscription("default")->swap($priceId);
     } else {
@@ -37,7 +37,7 @@ class UpgradePlanController extends Controller
         ->create($request->payment_method);
     }
 
-    $service->syncPlan($user, $priceId);
+    $service->syncLocalUserPlan($user, $priceId);
 
     return redirect()
       ->route("subscription.upgrade")

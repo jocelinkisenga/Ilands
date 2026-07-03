@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
 <div class="max-w-5xl mx-auto p-6">
 
     <h1 class="text-2xl font-bold mb-6">
@@ -12,13 +10,18 @@
             {{ session('success') }}
         </div>
     @endif
+        @if(session('status'))
+        <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
+            {{ session('status') }}
+        </div>
+    @endif
 
     <div class="grid md:grid-cols-2 gap-6">
 
         <!-- PRO -->
         <div class="border rounded-xl p-6 shadow-sm">
-            <h2 class="text-xl font-semibold">Pro Plan</h2>
-            <p class="text-gray-500 mt-2">For growing users</p>
+            <h2 class="text-xl font-semibold text-black dark:text-white">Pro Plan</h2>
+            <p class="text-gray-500 mt-2 text-black dark:text-white">For growing users</p>
 
             <div class="mt-4 text-2xl font-bold">
                 $9 / month
@@ -36,7 +39,7 @@
 
                 <input type="hidden" name="payment_method" value="pm_card_visa">
 
-                <button class="mt-6 w-full bg-black text-white py-2 rounded">
+                <button class="mt-6 w-full bg-black text-white dark:bg-white dark:text-black py-2 rounded">
                     Upgrade to Pro
                 </button>
             </form>
@@ -44,8 +47,8 @@
 
         <!-- PREMIUM -->
         <div class="border rounded-xl p-6 shadow-md border-blue-500">
-            <h2 class="text-xl font-semibold">Premium Plan</h2>
-            <p class="text-gray-500 mt-2">For power users</p>
+            <h2 class="text-xl font-semibold text-black dark:text-white">Premium Plan</h2>
+            <p class="text-gray-500 mt-2 text-black dark:text-white">For power users</p>
 
             <div class="mt-4 text-2xl font-bold">
                 $29 / month
@@ -73,4 +76,4 @@
     </div>
 
 </div>
-@endsection
+</x-app-layout>

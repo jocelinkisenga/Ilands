@@ -1,6 +1,8 @@
 {{-- Carte de Consommation des Tokens IA --}}
 @php
-  $tokens_used = \App\Models\AiLogs::where('user_id', auth()->id())->sum('tokens_used');
+use App\Services\TokenService;
+  $tokens_used = TokenService::getTotalUserTokens();
+  $totalPlanTokens = TokenService::totalPlanTokens();
 @endphp
 <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs transition-all duration-200 hover:shadow-sm">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0 mb-4">
@@ -22,7 +24,7 @@
 
         {{-- Compteur Numérique (Police Mono pour l'aspect Data) --}}
         <div class="flex items-baseline space-x-1.5 font-mono text-xs sm:text-right">
-            <span class="text-gray-400 dark:text-gray-500">Utilisés:</span>
+            <span class="text-gray-400 dark:text-gray-500">used:</span>
             <strong class="text-base font-bold text-gray-900 dark:text-white">
                 {{ number_format($tokens_used) }}
             </strong>
@@ -32,8 +34,9 @@
     {{-- Barre de Progression --}}
     @php
         // Définir une limite théorique si tu as un système de quota (ex: 50k tokens par défaut)
-        $maxTokensLimit = $maxTokensLimit ?? 50000; 
+        $maxTokensLimit = $totalPlanTokens ?? 1; 
         $usagePercentage = min(($tokens_used / $maxTokensLimit) * 100, 100);
+        $remaining = $totalPlanTokens -  $tokens_used;
     @endphp
 
     <div class="relative w-full h-3 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden shadow-inner">
@@ -50,9 +53,10 @@
             @else
                 <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
                 <span>Quota control</span>
+                <span class="ml-4">remaining : {{$remaining}}</span>
             @endif
         </div>
-        <span class="font-mono bg-gray-50 dark:bg-gray-800/60 px-2 py-0.5 rounded border border-gray-100 dark:border-gray-800 text-gray-700 dark:text-black">
+        <span class="font-mono bg-gray-50 dark:bg-gray-800/60 px-2 py-0.5 rounded border border-gray-100 dark:border-gray-800 text-black dark:text-white">
             {{ number_format($usagePercentage, 1) }}% of the offer
         </span>
     </div>

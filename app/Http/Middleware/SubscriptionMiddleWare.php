@@ -7,18 +7,22 @@ use Illuminate\Http\Request;
 
 class SubscriptionMiddleWare
 {
-    public function handle(Request $request, Closure $next)
-    {
-        $user = auth()->user();
+public function handle(Request $request, Closure $next)
+{
+    $user = $request->user();
 
-        if (!$user) {
-            return redirect()->route('login');
-        }
-
-        if (! $user->subscribed('default')) {
-        return redirect()->route('pricing');
-    }
-
+    // 1. Si l'utilisateur n'est pas connecté, 
+    
+    if (!$user) {
         return $next($request);
     }
+
+    if ($user->subscribed('default')) {
+        return redirect()->route('subscription.upgrade')
+            ->with('status', 'Vous avez déjà un abonnement actif.');
+    }
+
+    
+    return $next($request);
+}
 }

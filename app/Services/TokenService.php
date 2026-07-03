@@ -1,11 +1,30 @@
 <?php 
 namespace App\Services;
 
+use App\Models\Plan;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Mcp\Request;
 
 class TokenService {
+
 	protected $user;
-	public function getTotalUserTokens(){
-		$this->user = Auth::user();
+
+	public static function getTotalUserTokens(){
+			$user = Auth::user();
+
+			$subscription = $user->subscription("default");
+			    $start = Carbon::parse($subscription->current_period_start);
+    			$end = Carbon::parse($subscription->current_period_end);
+
+  return  $user->ailogs()
+      ->whereBetween("created_at", [$start, $end])
+      ->sum("tokens_used");
 	}
+
+public static function totalPlanTokens() {
+	return Plan::whereId(auth()->user()->id)->first()->value('analysis_quota');
+
+}
+
 }
