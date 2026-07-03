@@ -64,7 +64,7 @@ class SubscriptionController extends Controller
         ->newSubscription("default", $stripePriceId)
         ->create($request->payment_method);
 
-      // $user->refresh();
+       $user->refresh();
 
       
       

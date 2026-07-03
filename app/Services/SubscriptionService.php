@@ -28,7 +28,6 @@ class SubscriptionService {
       return;
     }
 
-    // Détermination du plan
     if ($stripePriceId === config("services.stripe.prices.pro")) {
       $plan = Plan::whereNameLike("pro")->first();
 
@@ -52,17 +51,22 @@ class SubscriptionService {
 
       $item = $stripeSubscription->items->data[0] ?? null;
 
-    $subscription->update([
-    'current_period_start' => $item ? Carbon::createFromTimestamp($item->current_period_start) : null,
-    'current_period_end'   => $item ? Carbon::createFromTimestamp($item->current_period_end)   : null,
-    
+      $subscription->update([
+    'plan_id'              => optional($plan)->id,
+    'current_period_start' => now(),
+    'current_period_end'   => now()->addMonth(),
 ]);
+
+//     $subscription->update([
+//     'current_period_start' => $item ? Carbon::createFromTimestamp($item->current_period_start) : null,
+//     'current_period_end'   => $item ? Carbon::createFromTimestamp($item->current_period_end)   : null,
+    
+// ]);
 
 
     } catch (\Throwable $e) {
       report($e);
-
-      // Valeurs de secours
+      
       $subscription->update([
         "plan_id" => optional($plan)->id,
         "current_period_start" => now(),

@@ -37,6 +37,8 @@ class UpgradePlanController extends Controller
         ->create($request->payment_method);
     }
 
+    $user->refresh();
+
     $service->syncLocalUserPlan($user, $priceId);
 
     return redirect()
