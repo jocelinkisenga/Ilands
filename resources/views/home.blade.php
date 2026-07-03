@@ -12,12 +12,12 @@
 
         <div>
             <h1 class="text-4xl md:text-6xl font-bold text-black dark:text-white leading-tight">
-                Tax Education Made Simple
+                Maximize Your Tax Deductions
                 <span class="text-emerald-400"> Without Expensive CPA.</span>
             </h1>
 
             <p class="mt-6 text-lg text-black dark:text-white/70 leading-relaxed">
-                Understand your taxes with expert guidance. Learn through videos, documents, and AI-powered Q&A — at your own pace.
+                AI-Powered Tax Advisory for Gig Workers & Expats — From $9. Get personalized guidance that helps you keep more of what you earn.
             </p>
 
             <div class="mt-10 flex flex-col sm:flex-row gap-4">
