@@ -61,6 +61,7 @@ use App\Livewire\Admin\Content\ContentCreate;
 use App\Livewire\Admin\Content\ContentEdit;
 use App\Livewire\Admin\Plans\Plan;
 use App\Livewire\Admin\Plans\CreatePlan;
+use App\Livewire\Admin\Plans\EditPlan;
 use App\Livewire\Admin\Tokens\CreateToken;
 use App\Livewire\Admin\Tokens\EditToken;
 use App\Livewire\Admin\Tokens\Token;
@@ -281,6 +282,9 @@ Route::livewire("admin/tokens", Token::class)->name("admin.tokens");
 Route::livewire("admin/token", CreateToken::class)->name("admin.create.token");
 Route::livewire("admin/token/edit/{tokenId}", EditToken::class)->name(
   "admin.create.token.edit"
+);
+Route::livewire("admin/plan/edit/{planId}", EditPlan::class)->name(
+  "admin.create.plan.edit"
 );
 /*
 |--------------------------------------------------------------------------

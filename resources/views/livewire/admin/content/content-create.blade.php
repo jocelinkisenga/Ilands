@@ -31,7 +31,7 @@
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
                 Create Content
             </h1>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Remplissez les informations ci-dessous pour publier un nouveau contenu.</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Fill all the informations below to publish the content</p>
         </div>
 
         <div class="space-y-6">

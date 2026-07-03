@@ -61,14 +61,12 @@
                         </td>
                         <td class="px-6 py-3.5">
                             <div class="flex items-center">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                                   
-                                </p>
+                                <a href="plan/edit/{{ $plan->id }}" class="px-3 py-1.5 text-xs font-bold bg-green-400 dark:bg-white text-white-500 dark:text-white-400 hover:text-white dark:hover:text-white-400 transition">Éditer</a>
                             </div>
                         </td>
                         <td class="px-6 py-3.5">
                             <div class="flex items-center">
-                                <p class="text-theme-sm text-success-600"></p>
+                               
                             </div>
                         </td>
                     </tr>
@@ -94,9 +92,9 @@
 
 
                 <div class="flex items-center justify-end gap-3 pt-1">
-                    <button class="flex-1 text-center py-2 bg-green-100 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-xs font-bold text-gray-900 dark:text-gray-100 rounded-xl transition">
+                    <a href="plan/edit/{{ $plan->id }}" class="flex-1 text-center py-2 bg-green-100 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-xs font-bold text-gray-900 dark:text-gray-100 rounded-xl transition">
                         edit
-                    </button>
+                    </a>
                     <button wire:confirm="Suspendre cet utilisateur ?" class="flex-1 text-center py-2 bg-red-50 dark:bg-red-500/10 hover:bg-red-100 dark:hover:bg-red-500/20 text-xs font-bold text-red-600 dark:text-red-400 rounded-xl transition">
                         Suspendre
                     </button>

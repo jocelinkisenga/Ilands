@@ -29,22 +29,21 @@
 
         <div class="mb-8 border-b border-gray-100 dark:border-gray-800 pb-5">
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-                Edit token
+                Create Content
             </h1>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1"></p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Fill all the all the informations.</p>
         </div>
 
         <div class="space-y-6">
 
             <div>
                 <label class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
-                    Supplier 
+                    Name
                 </label>
-
                 <input
                     type="text"
-                    wire:model="supplier"
-                    value="{{$supplier}}"
+                    wire:model="name"
+                    value="{{$name}}"
                     class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
                 >
             </div>
@@ -76,17 +75,52 @@
 
             </div>
 
+
+            <div wire:ignore class="w-full">
+                <label class="block mb-2 text-sm font-semibold text-black dark:text-gray-300">
+                    description
+                </label>
+                <textarea
+                    wire:model="description"
+                    id="edit"
+                    
+                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm"
+                >{!! $description !!}</textarea>
+            </div>
+
             <div class="pt-6 mt-6 border-t border-gray-100 dark:border-gray-800 flex justify-end">
                 <button
                     wire:click="save"
                     class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white dark:text-gray-950 font-bold tracking-wide shadow-sm transition transform active:scale-95"
                 >
-                    publish modifications
+                    Publish Content
                 </button>
             </div>
 
         </div>
     </div>
 
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            ClassicEditor
+                .create(document.querySelector('#edit'), {
+                    ckfinder: {
+                        uploadUrl: "{{ route('ckeditor.upload') }}?_token={{ csrf_token() }}"
+                    },
+                    toolbar: [ 
+                        'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 
+                        '|', 'uploadImage', 'insertTable', 'blockQuote', 'undo', 'redo' 
+                    ]
+                })
+                .then(editor => {
+                    // Synchronisation des données vers Livewire à chaque modification
+                    editor.model.document.on('change:data', () => {
+                        @this.set('description', editor.getData());
+                    });
+                })
+                .catch(error => {
+                    console.error('Erreur CKEditor:', error);
+                });
+        });
+    </script>
 </div>
