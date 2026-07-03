@@ -12,14 +12,16 @@ class TokenService {
 
 	public static function getTotalUserTokens(){
 			$user = Auth::user();
-
-			$subscription = $user->subscription("default");
+			if ($user->role == "client") {
+							$subscription = $user->subscription("default");
 			    $start = Carbon::parse($subscription->current_period_start);
     			$end = Carbon::parse($subscription->current_period_end);
 
-  return  $user->ailogs()
+  		return  $user->ailogs()
       ->whereBetween("created_at", [$start, $end])
       ->sum("tokens_used");
+			}
+
 	}
 
 public static function totalPlanTokens() {
