@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Models\Plan; // N'oublie pas d'importer le modèle Plan
+use App\Models\Plan; 
 
 class CheckTokenQuota
 {
@@ -20,8 +20,6 @@ class CheckTokenQuota
 
     $subscription = $user->subscription("default");
 
-    // Vérification basée STRICTEMENT sur la base de données locale
-    // Assure-toi que ces champs sont castés en datetime dans ton modèle Subscription
     if (
       !$subscription->current_period_start ||
       !$subscription->current_period_end
@@ -34,13 +32,13 @@ class CheckTokenQuota
     $start = Carbon::parse($subscription->current_period_start);
     $end = Carbon::parse($subscription->current_period_end);
 
-    // 🔥 ONLY TOKENS INSIDE CURRENT BILLING CYCLE
+    
     $used = $user
       ->ailogs()
       ->whereBetween("created_at", [$start, $end])
       ->sum("tokens_used");
 
-    // Utilisation du plan_id pour une requête plus performante (Index primaire vs String)
+    
     $plan = Plan::find($user->plan_id);
 
     if (!$plan) {
