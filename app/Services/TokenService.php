@@ -12,7 +12,7 @@ class TokenService {
 
 	public static function getTotalUserTokens(){
 			$user = Auth::user();
-			if ($user->role == "client") {
+			if ($user->role->value == "client") {
 							$subscription = $user->subscription("default");
 			    $start = Carbon::parse($subscription->current_period_start);
     			$end = Carbon::parse($subscription->current_period_end);
