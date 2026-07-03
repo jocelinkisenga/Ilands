@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+    <div class="min-h-screen flex items-center justify-center bg-green-600 dark:bg-green-500  px-4">
         <div class="max-w-md w-full bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8">
             <h2 class="text-2xl font-bold text-gray-900 dark:text-white text-center mb-6">
                 Reset Password

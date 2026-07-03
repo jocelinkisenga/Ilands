@@ -28,7 +28,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // Récupération de l'utilisateur connecté
+        if (! auth()->user()->hasVerifiedEmail()) {
+
+    return redirect()->route('verification.notice');
+
+}
+
+        
 $user = $request->user();
  if ($user->role->value === 'admin') {
         return redirect()->to('/admin/dashboard'); 
