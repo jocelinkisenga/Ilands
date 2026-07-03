@@ -3,7 +3,7 @@
 use App\Services\TokenService;
   $tokens_used = TokenService::getTotalUserTokens();
   $plan = TokenService::totalPlanTokens();
-  $totalPlanTokens = $plan->analysis_quota; 
+  $totalPlanTokens = $plan->analysis_quota ?? 1; 
 @endphp
 <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs transition-all duration-200 hover:shadow-sm">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0 mb-4">
