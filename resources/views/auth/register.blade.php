@@ -69,33 +69,90 @@
                 <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
             @enderror
         </div>
+                    <div x-data="{ show: false }" class="relative">
 
-        <!-- Password -->
-        <div>
-            <label class="text-sm text-slate-600 dark:text-slate-400">Password</label>
-            <input
-                type="password"
-                name="password"
-                placeholder="••••••••"
-                class="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 text-sm focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700 outline-none"
-                required
-            />
+    <input
+        :type="show ? 'text' : 'password'"
+        name="password"
+        placeholder="Password"
+        class="w-full rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-800 outline-none transition"
+    />
+
+    <!-- Icon button -->
+    <button
+        type="button"
+        @click="show = !show"
+        class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+
+        <!-- Eye open -->
+        <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7
+                     -1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+
+        <!-- Eye closed -->
+        <svg x-show="show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13.875 18.825A10.05 10.05 0 0112 19
+                     c-4.478 0-8.268-2.943-9.542-7
+                     a9.97 9.97 0 012.293-3.95M6.228 6.228A9.956 9.956 0 0112 5
+                     c4.478 0 8.268 2.943 9.542 7
+                     a9.971 9.971 0 01-4.132 5.411M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 3l18 18" />
+        </svg>
+
+    </button>
             @error('password')
                 <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
             @enderror
-        </div>
+</div>
+
+
 
         <!-- Confirm Password -->
-        <div>
-            <label class="text-sm text-slate-600 dark:text-slate-400">Confirm password</label>
-            <input
-                type="password"
-                name="password_confirmation"
-                placeholder="••••••••"
-                class="mt-1 w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 text-sm focus:ring-2 focus:ring-slate-300 dark:focus:ring-slate-700 outline-none"
-                required
-            />
-        </div>
+        <div x-data="{ show: false }" class="relative">
+
+    <input
+        :type="show ? 'text' : 'password'"
+        name="password_confirmation"
+        placeholder="confirm Password"
+        class="w-full rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-800 outline-none transition"
+    />
+
+    <!-- Icon button -->
+    <button
+        type="button"
+        @click="show = !show"
+        class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+
+        <!-- Eye open -->
+        <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7
+                     -1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+
+        <!-- Eye closed -->
+        <svg x-show="show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13.875 18.825A10.05 10.05 0 0112 19
+                     c-4.478 0-8.268-2.943-9.542-7
+                     a9.97 9.97 0 012.293-3.95M6.228 6.228A9.956 9.956 0 0112 5
+                     c4.478 0 8.268 2.943 9.542 7
+                     a9.971 9.971 0 01-4.132 5.411M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 3l18 18" />
+        </svg>
+
+    </button>
+
+</div>
 
         <!-- Terms -->
         <div class="flex items-start gap-2 text-sm text-slate-500">
