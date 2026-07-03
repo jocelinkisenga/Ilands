@@ -229,10 +229,11 @@ class SubscriptionController extends Controller
       $stripeSubscription = $subscription->asStripeSubscription();
 
       $item = $stripeSubscription->items->data[0] ?? null;
-$subscription->update([
+
+    $subscription->update([
     'current_period_start' => $item ? Carbon::createFromTimestamp($item->current_period_start) : null,
     'current_period_end'   => $item ? Carbon::createFromTimestamp($item->current_period_end)   : null,
-    // ...
+    
 ]);
 
 
