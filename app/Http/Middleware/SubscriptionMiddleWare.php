@@ -11,7 +11,7 @@ public function handle(Request $request, Closure $next)
 {
     $user = $request->user();
 
-    // 1. Si l'utilisateur n'est pas connecté, 
+
     
     if (!$user) {
         return $next($request);

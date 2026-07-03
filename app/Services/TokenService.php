@@ -23,7 +23,7 @@ class TokenService {
 	}
 
 public static function totalPlanTokens() {
-	return Plan::whereId(auth()->user()->id)->first()->value('analysis_quota');
+	return Plan::where("id",auth()->user()->plan_id)->first();
 
 }
 

@@ -1,20 +1,16 @@
 <x-app-layout>
-<div class="max-w-5xl mx-auto p-6">
+<div class="max-w-5xl mx-auto p-2">
 
-    <h1 class="text-2xl font-bold mb-6">
+    <h1 class="text-2xl font-bold mb-6 text-black dark:text-white">
         Upgrade your plan
     </h1>
 
     @if(session('success'))
-        <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
-            {{ session('success') }}
-        </div>
+<x-plan-alert-upgrade>{{ session('success') }}</x-plan-alert>
     @endif
-        @if(session('status'))
-        <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
-            {{ session('status') }}
-        </div>
-    @endif
+@if (session('status'))
+    <x-plan-alert>{{ session('status') }}</x-plan-alert>
+@endif
 
     <div class="grid md:grid-cols-2 gap-6">
 
