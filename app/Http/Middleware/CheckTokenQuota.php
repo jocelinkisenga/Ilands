@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Http\Middleware;
 
+use App\Enums\FreeTokensPlan;
 use Closure;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -8,53 +10,56 @@ use App\Models\Plan;
 
 class CheckTokenQuota
 {
-  public function handle($request, Closure $next)
-  {
-    $user = $request->user();
+    public function handle($request, Closure $next)
+    {
+        $user = $request->user();
 
-    if (!$user->subscribed("default")) {
-      return redirect()
-        ->route("pricing")
-        ->with("error", "You must have an active subscription.");
+        // 1. GESTION DU PLAN GRATUIT
+        if ($user->plan->value === "free") {
+            // Correction du bug relationnel : on utilise sum() pour récupérer le total
+            $usedFreeTokens = $user->ailogs()->sum("tokens_used");
+
+            if ($usedFreeTokens >= FreeTokensPlan::FREE->value) { // Assurez-vous d'appeler ->value si c'est un Enum PHP 8.1
+                return redirect()
+                    ->route("pricing")
+                    ->with("error", "You must have an active subscription.");
+            }
+
+            // Retour anticipé : le plan gratuit est valide, on ignore la logique de souscription
+            return $next($request);
+        }
+
+        // 2. GESTION DU PLAN PAYANT
+        $subscription = $user->subscription("default");
+
+        // Vérification de l'existence de la souscription avant de lire ses propriétés
+        if (!$subscription || !$subscription->current_period_start || !$subscription->current_period_end) {
+            return redirect()
+                ->route("pricing")
+                ->with("error", "Subscription period data is missing or inactive.");
+        }
+
+        $start = Carbon::parse($subscription->current_period_start);
+        $end = Carbon::parse($subscription->current_period_end);
+
+        $used = $user->ailogs()
+            ->whereBetween("created_at", [$start, $end])
+            ->sum("tokens_used");
+
+        $plan = Plan::find($user->plan_id);
+
+        if (!$plan) {
+            return redirect()
+                ->route("pricing")
+                ->with("error", "Subscription plan details not found.");
+        }
+
+        if ($used >= $plan->analysis_quota) {
+            return redirect()
+                ->route("pricing")
+                ->with("error", "Token quota exceeded for this billing cycle.");
+        }
+
+        return $next($request);
     }
-
-    $subscription = $user->subscription("default");
-
-    if (
-      !$subscription->current_period_start ||
-      !$subscription->current_period_end
-    ) {
-      return redirect()
-        ->route("pricing")
-        ->with("error", "Subscription period data is missing.");
-    }
-
-    $start = Carbon::parse($subscription->current_period_start);
-    $end = Carbon::parse($subscription->current_period_end);
-
-    
-    $used = $user
-      ->ailogs()
-      ->whereBetween("created_at", [$start, $end])
-      ->sum("tokens_used");
-
-    
-    $plan = Plan::find($user->plan_id);
-
-    if (!$plan) {
-      return redirect()
-        ->route("pricing")
-        ->with("error", "Subscription plan details not found.");
-    }
-
-    $quota = $plan->analysis_quota;
-
-    if ($used >= $quota) {
-      return redirect()
-        ->route("pricing")
-        ->with("error", "Token quota exceeded for this billing cycle.");
-    }
-
-    return $next($request);
-  }
 }
