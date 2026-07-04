@@ -46,3 +46,37 @@ document.addEventListener('DOMContentLoaded', () => {
         import('./components/calendar-init').then(module => module.calendarInit());
     }
 });
+
+//service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js');
+  });
+}
+
+let deferredPrompt;
+
+// 1. Capture l'événement d'installation
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); // empêche popup automatique
+  deferredPrompt = e;
+
+  // optionnel: afficher ton bouton "Installer"
+  document.getElementById('installBtn')?.classList.remove('hidden');
+});
+
+// 2. Clic sur bouton installation
+const installBtn = document.getElementById('installBtn');
+
+installBtn?.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt(); // ouvre popup installation
+
+  const { outcome } = await deferredPrompt.userChoice;
+
+  console.log('User choice:', outcome);
+
+  deferredPrompt = null;
+  installBtn.style.display = 'none';
+});

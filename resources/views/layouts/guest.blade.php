@@ -137,7 +137,28 @@
     <body  class=" bg-white text-gray-900 dark:bg-black dark:text-white transition-colors duration-300" >
       @include('components.navbar')
                {{ $slot }}
-         
+    <button
+  id="installBtn"
+  class="hidden fixed bottom-6 right-6 z-50 
+         flex items-center gap-2 
+         bg-white text-gray-900 
+         border border-gray-200 
+         px-5 py-3 rounded-2xl 
+         shadow-xl hover:shadow-2xl 
+         transition-all duration-300 
+         hover:scale-105 active:scale-95"
+>
+  <span class="text-xl">📲</span>
+
+  <div class="flex flex-col text-left">
+    <span class="text-sm font-semibold">
+      Installer Ilands
+    </span>
+    <span class="text-xs text-gray-500">
+      Accès plus rapide & hors ligne
+    </span>
+  </div>
+</button>
     @include('components.footer')
    
     <script src="https://unpkg.com/lucide@latest"></script>
