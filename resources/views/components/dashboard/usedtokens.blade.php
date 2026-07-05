@@ -2,9 +2,10 @@
 {{-- Carte de Consommation des Tokens IA --}}
 @php
 use App\Services\TokenService;
+use App\Enums\FreeTokensPlan;
   $tokens_used = TokenService::getTotalUserTokens();
   $plan = TokenService::totalPlanTokens();
-  $totalPlanTokens = $plan->analysis_quota ?? 1; 
+  $totalPlanTokens = $plan->analysis_quota ?? FreeTokensPlan::FREE; 
 @endphp
 
 <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs transition-all duration-200 hover:shadow-sm">

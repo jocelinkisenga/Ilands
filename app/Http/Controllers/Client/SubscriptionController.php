@@ -68,7 +68,7 @@ class SubscriptionController extends Controller
 
       
       
-      $this->syncLocalUserPlan($user, $stripePriceId);
+      $service->syncLocalUserPlan($user, $stripePriceId);
 
       return redirect()->route("subscription.success");
     } catch (\Exception $e) {

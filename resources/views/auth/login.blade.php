@@ -41,7 +41,7 @@
             type="email"
             name="email"
             placeholder="Email address"
-            class="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 text-sm focus:ring-2 focus:ring-slate-300 text-black dark:focus:ring-slate-700 outline-none"
+            class="w-full rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-800 outline-none transition"
         />
 
         <div x-data="{ show: false }" class="relative">

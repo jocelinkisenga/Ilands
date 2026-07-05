@@ -109,6 +109,45 @@
   </div>
   @endforeach
 
+{{-- token error --}}
+  @if($tokenError === true)
+  <div class="max-w-md mx-auto bg-white dark:bg-gray-900 rounded-3xl shadow-xl border border-emerald-100 dark:border-emerald-900/50 p-8 transition-all duration-300 hover:border-emerald-200 dark:hover:border-emerald-800">
+        
+        <div class="flex items-start gap-5 mb-6">
+            
+            <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center border-2 border-emerald-100 dark:border-emerald-900 ring-4 ring-emerald-50/50 dark:ring-emerald-950/30">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.007z" clip-rule="evenodd" />
+                </svg>
+            </div>
+
+            <div class="flex-1">
+                <h3 class="text-2xl font-bold text-gray-950 dark:text-white mb-1 leading-tight">Level up you subscription</h3>
+                <p class="text-sm text-emerald-700 dark:text-emerald-300 font-medium tracking-wide">Access unlimited functionalities</p>
+            </div>
+        </div>
+        @if(auth()->user()->plan == "free")
+        <a href="/price" class="w-full group relative flex items-center justify-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white font-bold rounded-2xl shadow-lg shadow-emerald-950/10 dark:shadow-emerald-950/40 transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-800 active:scale-[0.98]">
+            <span class="text-lg tracking-tight">Subsucribe to one of our plans</span>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </a>
+        @else
+                <a href="{{ route('subscription.upgrade') }}" class="w-full group relative flex items-center justify-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white font-bold rounded-2xl shadow-lg shadow-emerald-950/10 dark:shadow-emerald-950/40 transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-800 active:scale-[0.98]">
+            <span class="text-lg tracking-tight">Upgrade your plan for more functionalities</span>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </a>
+        @endif
+        <p class="text-xs text-center text-gray-500 dark:text-gray-500 mt-4">Annulable à tout moment. Votre succès est notre priorité.</p>
+
+    </div>
+    @endif
+
   {{-- LOADING --}}
   <div wire:loading.flex wire:target="sendMessage" class="justify-start items-end gap-3">
    <div class="w-8 h-8 md:w-10 md:h-10 rounded-xl md:rounded-2xl bg-gradient-to-br from-gray-800 to-gray-950 border border-gray-700 flex items-center justify-center text-white shadow-lg">

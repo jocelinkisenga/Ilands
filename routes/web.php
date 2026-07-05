@@ -78,7 +78,7 @@ Route::middleware(["auth"])->group(function () {
 
     // 1. Dashboard & Core Features
     Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
-    Route::get("/chat/{chatId?}", AiChatBot::class)->middleware("checkTokenQuota")->name("chat");
+    Route::get("/chat/{chatId?}", AiChatBot::class)->name("chat");
     Route::livewire("/tax-screener", TaxScreener::class)->name("tax-screener");
     Route::livewire("/reports", ReportAi::class)->name("reports");
     

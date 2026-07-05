@@ -240,7 +240,7 @@
                     </p>
                     
                     <div class="mt-8 flex justify-center">
-                        <a href="{{route('pricing')}}" class="inline-flex items-center text-gray-500 border-green-100 justify-center px-5 py-3 rounded-xl font-semibold text-sm bg-black-600 dark:bg-indigo-500  shadow-sm hover:bg-indigo-500 dark:hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-200 hover:scale-[1.02]">
+                        <a href="{{route('pricing')}}" class="inline-flex items-center text-gray-500 border-green-100 justify-center px-5 py-3 rounded-xl font-semibold text-sm bg-black-600 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white font-bold rounded-2xl shadow-lg shadow-emerald-950/10 dark:shadow-emerald-950/40 transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-800 active:scale-[0.98]">
                             Choose a plan
                         </a>
                     </div>

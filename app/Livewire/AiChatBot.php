@@ -2,12 +2,14 @@
 
 namespace App\Livewire;
 
+use App\Enums\FreeTokensPlan;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Services\AI\TaxAdvisoryService;
 use App\Services\ReportGenerationService;
 use League\CommonMark\CommonMarkConverter;
 use App\Models\Chat;
+use App\Services\TokenService;
 use Illuminate\Support\Str;
 
 class AiChatBot extends Component
@@ -27,6 +29,8 @@ class AiChatBot extends Component
     public ?array $documentPreview = null;
 
     protected $listeners = ['loadChat'];
+
+    public bool $tokenError = false;
 
     public function mount($chatId = null): void
     {
@@ -83,8 +87,19 @@ class AiChatBot extends Component
         ];
     }
 
-    public function sendMessage(TaxAdvisoryService $ai): void
+    public function sendMessage(TaxAdvisoryService $ai,): void
     {
+        $totalTokens = TokenService::getTotalUserTokens();
+
+        if (
+            $totalTokens >= TokenService::totalPlanTokens()->analysis_quota || 
+            (auth()->user()->plan === 'free' && $totalTokens >= FreeTokensPlan::FREE)
+        ) {
+            $this->tokenError = true;
+            return; // Livewire s'arrête ici et met à jour le Blade
+        }
+
+
         $this->prompt = trim($this->prompt);
 
         if (!$this->validateMessage()) return;
@@ -93,7 +108,7 @@ class AiChatBot extends Component
 
         try {
 
-            // 🔥 CREATE CHAT IF NEEDED
+            //🔥 CREATE CHAT IF NEEDED
             if (!$this->chat_id) {
                 $chat = auth()->user()->chats()->create([
                     'title' => Str::limit($this->prompt ?: 'New chat', 40)
@@ -162,61 +177,70 @@ class AiChatBot extends Component
     }
 
     public function generateReport(ReportGenerationService $service): void 
-{
-    $this->isLoading = true;
+    {
+                $totalTokens = TokenService::getTotalUserTokens();
 
-    try {
-        // 1. Initialisation ou récupération forcée du chat_id
-        if (!$this->chat_id) {
-            $title = $this->prompt ? \Illuminate\Support\Str::limit(trim($this->prompt), 40) : 'Report Chat';
-            
-            $chat = auth()->user()->chats()->create([
-                'title' => $title
-            ]);
-
-            $this->chat_id = $chat->id;
+        if (
+            $totalTokens >= TokenService::totalPlanTokens()->analysis_quota || 
+            (auth()->user()->plan === 'free' && $totalTokens >= FreeTokensPlan::FREE)
+        ) {
+            $this->tokenError = true;
+            return; // Livewire s'arrête ici et met à jour le Blade
         }
 
-        // 2. Traitement du document actuel s'il y en a un
-        $filePath = null;
-        $fileName = null;
-        $fileType = null;
 
-        if ($this->document) {
-            $filePath = $this->document->store('ai_documents', 'local');
-            $fileName = $this->document->getClientOriginalName();
-            $fileType = $this->document->getMimeType();
+        $this->isLoading = true;
 
-            // Optionnel : Ajout visuel dans la conversation
-            $this->addMessage('user', "Document joint pour analyse immédiate : {$fileName}", $filePath, $fileName, $fileType);
+        try {
+            // 1. Initialisation ou récupération forcée du chat_id
+            if (!$this->chat_id) {
+                $title = $this->prompt ? \Illuminate\Support\Str::limit(trim($this->prompt), 40) : 'Report Chat';
+                
+                $chat = auth()->user()->chats()->create([
+                    'title' => $title
+                ]);
+
+                $this->chat_id = $chat->id;
+            }
+
+            // 2. Traitement du document actuel s'il y en a un
+            $filePath = null;
+            $fileName = null;
+            $fileType = null;
+
+            if ($this->document) {
+                $filePath = $this->document->store('ai_documents', 'local');
+                $fileName = $this->document->getClientOriginalName();
+                $fileType = $this->document->getMimeType();
+
+                // Optionnel : Ajout visuel dans la conversation
+                $this->addMessage('user', "Document joint pour analyse immédiate : {$fileName}", $filePath, $fileName, $fileType);
+            }
+
+            // 3. Appel du service avec TOUS les paramètres nécessaires dans le bon ordre ou nommés
+            $reportModel = $service->generate(
+                messages: $this->messages,
+                chatId: $this->chat_id,
+                user: auth()->user(),
+                documentPath: $filePath,
+                documentName: $fileName
+            );
+
+            // 4. Extraction du contenu textuel généré depuis l'objet de base de données retourné
+            $this->addMessage(
+                role: 'assistant',
+                content: $reportModel->content // Récupère le texte Markdown stocké avec succès
+            );
+
+            // 5. Reset UI
+            $this->reset(['prompt', 'document', 'documentPreview']);
+
+        } catch (\Throwable $e) {
+            $this->handleException($e);
+        } finally {
+            $this->isLoading = false;
         }
-
-        // 3. Appel du service avec TOUS les paramètres nécessaires dans le bon ordre ou nommés
-        $reportModel = $service->generate(
-            messages: $this->messages,
-            chatId: $this->chat_id,
-            user: auth()->user(),
-            documentPath: $filePath,
-            documentName: $fileName
-        );
-
-        // 4. Extraction du contenu textuel généré depuis l'objet de base de données retourné
-        $this->addMessage(
-            role: 'assistant',
-            content: $reportModel->content // Récupère le texte Markdown stocké avec succès
-        );
-
-        // 5. Reset UI
-        $this->reset(['prompt', 'document', 'documentPreview']);
-
-    } catch (\Throwable $e) {
-        $this->handleException($e);
-    } finally {
-        $this->isLoading = false;
     }
-}
-
-
 
 
     private function handleException(\Throwable $e): void

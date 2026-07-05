@@ -1,93 +1,93 @@
-<section id="pricing" class="py-8">
- <div class="max-w-6xl mx-auto px-6 text-center">
-  <h2 class="text-4xl font-bold mb-16 text-emerald-400">Transparent Pricing</h2>
+<section id="pricing" class="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-200">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-10">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+                Transparent Pricing
+            </h2>
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+                Choose the right plan to accelerate your growth. No hidden fees.
+            </p>
+        </div>
 
-  <div class="max-w-7xl mx-auto px-6">
-   <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center max-w-4xl mx-auto">
 
-    <!-- STARTER -->
-    <div class="bg-white/5 dark:bg-gray-800/50 backdrop-blur-xl
-     border border-gray-500 dark:border-green-500/30
-     rounded-2xl  p-8 transition-colors">
-     <h3 class="text-xl font-semibold text-emerald-500 dark:text-emerald-400">Free</h3>
-     <p class="text-gray-600 dark:text-gray-300 mt-2 text-sm">
-      Get started with essential content
-     </p>
+            <div class="relative bg-white dark:bg-gray-900 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-emerald-900/10 dark:shadow-emerald-900/20 ring-2 ring-emerald-600 dark:ring-emerald-500 md:scale-105 z-10 transition-transform duration-300">
+                
+                <div class="absolute top-0 right-6 -translate-y-1/2">
+                    <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest shadow-sm">
+                        Most Popular
+                    </span>
+                </div>
 
-     <div class="mt-8 text-4xl font-bold text-green-500">
-      $0
-      <span class="text-sm text-gray-400 font-normal">/ engagement</span>
-     </div>
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Pro</h3>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Unlimited access to all content</p>
+                </div>
 
-     <ul class="mt-8 space-y-3 text-gray-600 dark:text-gray-300 text-sm">
-      <li>• 5 curated videos </li>
-      <li>• 10 documents</li>
-      <li>• Limited AI chat</li>
-     </ul>
+                <div class="mb-8 flex items-baseline text-gray-900 dark:text-white">
+                    <span class="text-5xl font-extrabold tracking-tight">$9</span>
+                    <span class="ml-1 text-lg font-medium text-gray-500 dark:text-gray-400">/ month</span>
+                </div>
 
-     <a href="{{route('subscription.page')}} class="mt-10 block text-center py-3 border border-green-500 rounded-lg hover:bg-green-600/10 transition">
-      Start free
-     </a>
+                <ul class="space-y-4 mb-8 text-sm text-gray-700 dark:text-gray-300">
+                    <li class="flex items-center gap-3">
+                        <svg class="h-5 w-5 text-emerald-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
+                        All videos & documents
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="h-5 w-5 text-emerald-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
+                        Unlimited AI chat
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="h-5 w-5 text-emerald-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
+                        AIssue packs included
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="h-5 w-5 text-emerald-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
+                        Cash-flow tax forecasting
+                    </li>
+                </ul>
+
+                <a href="{{route('subscription.page')}}" class="block w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white text-center font-semibold rounded-xl shadow-sm transition-colors focus:ring-4 focus:ring-emerald-500/30">
+                    Study your taxes
+                </a>
+            </div>
+
+            <div class="relative bg-white/60 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-gray-800 rounded-3xl p-8 sm:p-10 transition-transform duration-300 hover:-translate-y-1">
+                
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Priority Match</h3>
+                    <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">One-time professional connection</p>
+                </div>
+                <div class="mb-8 flex items-baseline text-gray-900 dark:text-white">
+                    <span class="text-5xl font-extrabold tracking-tight">$19</span>
+                    <span class="ml-1 text-lg font-medium text-gray-500 dark:text-gray-400">/ month</span>
+                </div>
+                <div class="mb-8 flex items-baseline text-gray-900 dark:text-white">
+                    <span class="text-4xl font-extrabold tracking-tight text-emerald-600 dark:text-emerald-500">Custom</span>
+                </div>
+
+                <ul class="space-y-4 mb-8 text-sm text-gray-700 dark:text-gray-300">
+                    <li class="flex items-center gap-3">
+                        <svg class="h-5 w-5 text-gray-400 dark:text-gray-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
+                        Matched with CPA/EA
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="h-5 w-5 text-gray-400 dark:text-gray-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
+                        Initial consultation
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="h-5 w-5 text-gray-400 dark:text-gray-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" /></svg>
+                        Issue-specific matching
+                    </li>
+                </ul>
+
+                <a href="{{route('subscription.page')}}" class="block w-full py-3.5 px-4 bg-transparent border-2 border-emerald-600 dark:border-emerald-500 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/50 text-center font-semibold rounded-xl transition-colors focus:ring-4 focus:ring-emerald-500/30">
+                    Request Proposal
+                </a>
+            </div>
+
+        </div>
     </div>
-
-
-    <!-- GROWTH (Highlighted) -->
-    <div class="bg-gradient-to-br from-green-600/20 to-white dark:to-black dark:from-green-600/20 backdrop-blur-xl border border-gray-500 dark:border-green-500/30 rounded-2xl p-10 shadow-2xl scale-105 transition-colors">
-     <div class="text-center mb-4">
-      <span class="text-xs bg-green-600 px-3 py-1 rounded-full uppercase tracking-wider">
-       Most Popular
-      </span>
-     </div>
-
-     <h3 class="text-xl font-semibold text-green-500 text-center">
-      Pro
-     </h3>
-
-     <p class="text-gray-300 mt-2 text-sm text-center">
-      Unlimited access to all content
-     </p>
-
-     <div class="mt-8 text-4xl font-bold text-center">
-      $9
-      <span class="text-sm text-gray-400 font-normal">/ month</span>
-     </div>
-
-     <ul class="mt-8 space-y-3 text-gray-600 dark:text-gray-300 text-sm">
-      <li>• All videos & documents</li>
-      <li>• Unlimited AI chat</li>
-      <li>• AIssue packs included</li>
-      <li>• Cash-flow tax forecasting</li>
-     </ul>
-
-     <a href="{{route('subscription.page')}}" class="mt-10 block text-center py-3 bg-green-600 hover:bg-green-500 rounded-lg font-semibold transition">
-      Book Strategy Call
-     </a>
-    </div>
-
-
-    <!-- ELITE -->
-    <div class="bg-white/5 backdrop-blur-xl border border-gray-500 dark:border-green-500/30 rounded-2xl p-8">
-     <h3 class="text-xl font-semibold text-gray-200">Priority Match</h3>
-     <p class="text-gray-400 mt-2 text-sm">
-      One-time professional connection
-     </p>
-
-     <div class="mt-8 text-4xl font-bold text-green-500">
-      Custom
-     </div>
-
-     <ul class="mt-8 space-y-3 text-gray-600 dark:text-gray-300 text-sm">
-      <li>• Matched with CPA/EA</li>
-      <li>• Initial consultation</li>
-      <li>• Issue-specific matching</li>
-     </ul>
-
-     <a href="{{route('subscription.page')}}" class="mt-10 block text-center py-3 border border-green-500 rounded-lg hover:bg-green-600/10 transition">
-      Request Proposal
-     </a>
-    </div>
-
-   </div>
-  </div>
- </div>
 </section>
