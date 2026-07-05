@@ -38,7 +38,7 @@ use App\Enums\FreeTokensPlan;
     {{-- Barre de Progression --}}
     @php
         // Définir une limite théorique si tu as un système de quota (ex: 50k tokens par défaut)
-        $maxTokensLimit = $totalPlanTokens ?? 1; 
+        $maxTokensLimit = $totalPlanTokens; 
         $usagePercentage = min(($tokens_used / $maxTokensLimit) * 100, 100);
         $remaining = $totalPlanTokens -  $tokens_used;
     @endphp
