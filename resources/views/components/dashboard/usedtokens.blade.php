@@ -3,9 +3,13 @@
 @php
 use App\Services\TokenService;
 use App\Enums\FreeTokensPlan;
-  $tokens_used = TokenService::getTotalUserTokens();
+
+  // 1. On s'assure d'avoir un entier (0) si le service retourne null
+  $tokens_used = TokenService::getTotalUserTokens() ?? 0;
   $plan = TokenService::totalPlanTokens();
-  $totalPlanTokens = $plan->analysis_quota ?? FreeTokensPlan::FREE; 
+  
+  // 2. On ajoute ->value pour extraire l'entier de l'Enum
+  $totalPlanTokens = $plan->analysis_quota ?? FreeTokensPlan::FREE->value; 
 @endphp
 
 <div class="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-xs transition-all duration-200 hover:shadow-sm">
@@ -35,14 +39,18 @@ use App\Enums\FreeTokensPlan;
         </div>
     </div>
 
-    {{-- Barre de Progression --}}
+{{-- Barre de Progression --}}
     @php
-        // Définir une limite théorique si tu as un système de quota (ex: 50k tokens par défaut)
         $maxTokensLimit = $totalPlanTokens; 
-        $usagePercentage = min(($tokens_used / $maxTokensLimit) * 100, 100);
-        $remaining = $totalPlanTokens -  $tokens_used;
+        
+        // 3. On empêche la division par zéro si la limite est de 0
+        $usagePercentage = $maxTokensLimit > 0 
+            ? min(($tokens_used / $maxTokensLimit) * 100, 100) 
+            : 0;
+            
+        // 4. (Bonus) On utilise max() pour éviter un reste négatif si tokens_used > totalPlanTokens
+        $remaining = max($totalPlanTokens - $tokens_used, 0);
     @endphp
-
     <div class="relative w-full h-3 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden shadow-inner">
         <div class="absolute top-0 left-0 h-full rounded-full transition-all duration-500 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600"
              style="width: {{ $usagePercentage }}%"></div>
