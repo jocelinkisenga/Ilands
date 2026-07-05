@@ -16,16 +16,16 @@ class CheckTokenQuota
 
         // 1. GESTION DU PLAN GRATUIT
         if ($user->plan->value === "free") {
-            // Correction du bug relationnel : on utilise sum() pour récupérer le total
+ 
             $usedFreeTokens = $user->ailogs()->sum("tokens_used");
 
-            if ($usedFreeTokens >= FreeTokensPlan::FREE->value) { // Assurez-vous d'appeler ->value si c'est un Enum PHP 8.1
+            if ($usedFreeTokens >= FreeTokensPlan::FREE->value) { 
                 return redirect()
                     ->route("pricing")
                     ->with("error", "You must have an active subscription.");
             }
 
-            // Retour anticipé : le plan gratuit est valide, on ignore la logique de souscription
+           
             return $next($request);
         }
 

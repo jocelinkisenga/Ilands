@@ -20,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
       "subscribed" => \App\Http\Middleware\SubscriptionMiddleWare::class,
       "content.access" => \App\Http\Middleware\ContentAccessMiddleware::class,
       "checkTokenQuota" => \App\Http\Middleware\CheckTokenQuota::class,
+      "freePlan" => \App\Http\Middleware\FreePlanMiddleware::class,
       \App\Http\Middleware\SetLocale::class,
     ]);
   })
