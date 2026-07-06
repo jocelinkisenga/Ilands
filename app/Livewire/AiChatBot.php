@@ -90,9 +90,10 @@ class AiChatBot extends Component
     public function sendMessage(TaxAdvisoryService $ai,): void
     {
         $totalTokens = TokenService::getTotalUserTokens();
+        $totalPlan = TokenService::totalPlanTokens()->analysis_quota ?? FreeTokensPlan::FREE;
 
         if (
-            $totalTokens >= TokenService::totalPlanTokens()->analysis_quota || 
+            $totalTokens >= $totalPlan || 
             (auth()->user()->plan === 'free' && $totalTokens >= FreeTokensPlan::FREE)
         ) {
             $this->tokenError = true;
@@ -179,9 +180,10 @@ class AiChatBot extends Component
     public function generateReport(ReportGenerationService $service): void 
     {
                 $totalTokens = TokenService::getTotalUserTokens();
+                $totalPlan = TokenService::totalPlanTokens()->analysis_quota ?? FreeTokensPlan::FREE;
 
         if (
-            $totalTokens >= TokenService::totalPlanTokens()->analysis_quota || 
+            $totalTokens >= $totalPlan || 
             (auth()->user()->plan === 'free' && $totalTokens >= FreeTokensPlan::FREE)
         ) {
             $this->tokenError = true;

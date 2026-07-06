@@ -113,7 +113,7 @@ Route::middleware(["auth"])->group(function () {
     Route::get("/subscription/invoice/{invoice}", [SubscriptionController::class, "downloadInvoice"])->name("subscription.invoice");
     
     Route::get("/subscription/upgrade", [UpgradePlanController::class, "index"])->middleware("freePlan")->name("subscription.upgrade");
-     Route::post("/subscription/success", [UpgradePlanController::class, "upgrade_success"])->name("upgrade.success");
+     Route::get("/subscription/success", [UpgradePlanController::class, "upgrade_success"])->name("upgrade.success");
     Route::post("/subscription/upgrade", [UpgradePlanController::class, "upgrade"]);
 
     // 6. Subscribed Users Only
