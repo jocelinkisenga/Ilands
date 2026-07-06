@@ -54,6 +54,7 @@ Route::get("/privacy", [LegalController::class, "privacy"])->name("privacy");
 Route::get("/blog", [BlogController::class, "index"])->name("blog");
 Route::get("/blog/{slug}", [BlogController::class, "show"])->name("blog.show");
 Route::get("/contact", Contact::class)->name("contact");
+Route::get("/pricing", [SubscriptionController::class, "pricing"])->middleware("subscribed")->name("pricing"); 
 
 Route::post("/stripe/webhook", [WebhookController::class, "handleWebhook"]);
 
@@ -74,7 +75,7 @@ require __DIR__ . "/auth.php";
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(["auth","verified"])->group(function () {
+Route::middleware(["auth"])->group(function () {
 
     // 1. Dashboard & Core Features
     Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
@@ -101,7 +102,7 @@ Route::middleware(["auth","verified"])->group(function () {
     Route::get("report/{reportId}", [ReportController::class, "show"])->name("report.show");
 
     // 5. Subscription & Billing
-    Route::get("/pricing", [SubscriptionController::class, "pricing"])->name("pricing"); // Placé ici pour refléter l'intention (généralement on s'abonne après login)
+    
     Route::get("/checkout/{plan?}", CheckoutContoller::class)->name("checkout");
     Route::get("/checkout-success", [SubscriptionController::class, "success"])->name("checkout-success");
     
@@ -112,6 +113,7 @@ Route::middleware(["auth","verified"])->group(function () {
     Route::get("/subscription/invoice/{invoice}", [SubscriptionController::class, "downloadInvoice"])->name("subscription.invoice");
     
     Route::get("/subscription/upgrade", [UpgradePlanController::class, "index"])->middleware("freePlan")->name("subscription.upgrade");
+     Route::post("/subscription/success", [UpgradePlanController::class, "upgrade_success"])->name("upgrade.success");
     Route::post("/subscription/upgrade", [UpgradePlanController::class, "upgrade"]);
 
     // 6. Subscribed Users Only

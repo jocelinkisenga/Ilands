@@ -70,7 +70,7 @@ class SubscriptionController extends Controller
       
       $service->syncLocalUserPlan($user, $stripePriceId);
 
-      return redirect()->route("subscription.success");
+      return redirect()->route("checkout-success")->with("success", "Plan upgraded successfully!");
     } catch (\Exception $e) {
       report($e); // Log l'erreur en interne
       return back()->withErrors([
@@ -82,7 +82,7 @@ class SubscriptionController extends Controller
   /**
    * Page de retour après succès (Mise à jour et sécurité).
    */
-  public function success(Request $request): RedirectResponse|View
+  public function success(Request $request, SubscriptionService $subscriptionService): RedirectResponse|View
   {
     /** @var \App\Models\User $user */
     $user = $request->user();
@@ -92,8 +92,8 @@ class SubscriptionController extends Controller
       return redirect()->route("dashboard");
     }
 
-    // Filet de sécurité si le webhook ou le process d'achat a eu du lag
-    $this->syncLocalUserPlan($user, $subscription->stripe_price);
+   
+    $subscriptionService->syncLocalUserPlan($user, $subscription->stripe_price);
 
     return view("subscription.success");
   }

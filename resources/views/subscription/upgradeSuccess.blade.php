@@ -14,7 +14,7 @@
                 Thank you for your subscription!
             </h1>
             <p class="text-gray-500 dark:text-gray-400 text-sm mb-8 leading-relaxed">
-                Welcome to the <span class="font-medium text-gray-900 dark:text-white">{{ auth()->user()->plan ?? 'Pro' }}</span> tier. Your ILANDS account is now  ready for tax planning and reporting.
+                Welcome to the <span class="font-medium text-gray-900 dark:text-white">{{ auth()->user()->plan ?? 'Pro' }}</span> tier. Your ILANDS account is now fully upgraded ready for tax planning and reporting.
             </p>
 
             {{-- Séparateur subtil --}}
