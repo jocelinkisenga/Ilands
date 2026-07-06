@@ -8,6 +8,9 @@ use Prism\Prism\ValueObjects\Messages\AssistantMessage;
 use Prism\Prism\ValueObjects\Media\Document;
 use Illuminate\Support\Facades\Storage;
 use App\Actions\StoreAiLog;
+use Prism\Prism\Exceptions\PrismRateLimitedException;
+use Prism\Prism\ValueObjects\ProviderRateLimit;
+use Illuminate\Support\Arr;
 class TaxAdvisoryService
 {
   public function __construct(public StoreAiLog $storeAiLog)
@@ -69,12 +72,32 @@ class TaxAdvisoryService
       : $currentPrompt;
     $conversation[] = new UserMessage($finalPrompt, $media);
 
+try {
+
     // 4. Exécution de la requête via Prism
     $response = Prism::text()
       ->using("gemini", "gemini-flash-latest") // Version flash ultra-rapide et économique
       ->withSystemPrompt($this->systemPrompt())
       ->withMessages($conversation)
       ->generate();
+
+} catch (PrismRateLimitedException $e) {
+
+    $limit = Arr::first(
+        $e->rateLimits,
+        fn (ProviderRateLimit $r) => $r->remaining === 0
+    );
+
+    logger()->warning('Provider rate limit reached', [
+        'limit' => $limit?->name,
+        'reset_at' => $limit?->resetsAt,
+    ]);
+
+    throw new \Exception(
+        'Le service IA est temporairement saturé. Réessayez dans quelques instants.'
+    );
+}
+
 
     $context = trim($response->text ?? "");
     if (empty($context)) {

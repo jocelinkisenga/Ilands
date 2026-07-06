@@ -89,12 +89,13 @@ class AiChatBot extends Component
 
     public function sendMessage(TaxAdvisoryService $ai,): void
     {
-        $totalTokens = TokenService::getTotalUserTokens();
-        $totalPlan = TokenService::totalPlanTokens()->analysis_quota ?? FreeTokensPlan::FREE;
 
+        $totalTokens = TokenService::getTotalUserTokens();
+        $totalPlan = TokenService::totalPlanTokens()->analysis_quota ?? 0;
+ 
         if (
             $totalTokens >= $totalPlan || 
-            (auth()->user()->plan === 'free' && $totalTokens >= FreeTokensPlan::FREE)
+            (auth()->user()->plan === 'free' && $totalTokens >= FreeTokensPlan::FREE->value)
         ) {
             $this->tokenError = true;
             return; // Livewire s'arrête ici et met à jour le Blade

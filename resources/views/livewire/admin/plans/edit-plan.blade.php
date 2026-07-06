@@ -29,7 +29,7 @@
 
         <div class="mb-8 border-b border-gray-100 dark:border-gray-800 pb-5">
             <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-                Create Content
+                Edit Plan
             </h1>
             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Fill all the all the informations.</p>
         </div>
@@ -93,7 +93,7 @@
                     wire:click="save"
                     class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white dark:text-gray-950 font-bold tracking-wide shadow-sm transition transform active:scale-95"
                 >
-                    Publish Content
+                    Publish Modifications
                 </button>
             </div>
 

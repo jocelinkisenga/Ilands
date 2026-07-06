@@ -3,9 +3,9 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div class="w-full sm:w-auto">
             <select wire:model.live="filterStatus" class="w-full sm:w-64 rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm text-gray-900 dark:text-gray-100 shadow-sm focus:border-primary focus:ring-1 focus:ring-primary transition duration-150">
-                <option value="">Tous les abonnements</option>
-                <option value="active">Actifs</option>
-                <option value="canceled">Annulés</option>
+                <option value="">All subscriptions</option>
+                <option value="active">Active</option>
+                <option value="canceled">Cancelled</option>
             </select>
         </div>
     </div>
@@ -16,9 +16,9 @@
             <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="border-b border-gray-100 dark:border-gray-800 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 bg-gray-50/70 dark:bg-gray-800/40">
-                        <th class="px-6 py-4">Utilisateur</th>
-                        <th class="px-6 py-4">Rôle</th>
-                        <th class="px-6 py-4">Statut Stripe</th>
+                        <th class="px-6 py-4">User</th>
+                        <th class="px-6 py-4">Role</th>
+                        <th class="px-6 py-4">Status</th>
                         <th class="px-6 py-4 text-right">Actions</th>
                     </tr>
                 </thead>
@@ -42,8 +42,8 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <div class="flex justify-end gap-4">
-                                <button class="text-xs font-bold text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary hover:underline transition">Détails</button>
-                                <button wire:confirm="Suspendre cet utilisateur ?" class="text-xs font-bold text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:underline transition">Suspendre</button>
+                                <button class="text-xs font-bold text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-primary hover:underline transition">Details</button>
+                                <button wire:confirm="Suspendre cet utilisateur ?" class="text-xs font-bold text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:underline transition">Suspend</button>
                             </div>
                         </td>
                     </tr>
@@ -72,7 +72,7 @@
                         {{ $user->stripe_status === 'active' 
                             ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400' 
                             : 'bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400' }}">
-                        {{ $user->stripe_status ?? 'Sans abonnement' }}
+                        {{ $user->stripe_status ?? 'no subscription' }}
                     </span>
                 </div>
 
@@ -81,7 +81,7 @@
                         Détails
                     </button>
                     <button wire:confirm="Suspendre cet utilisateur ?" class="flex-1 text-center py-2 bg-red-50 dark:bg-red-500/10 hover:bg-red-100 dark:hover:bg-red-500/20 text-xs font-bold text-red-600 dark:text-red-400 rounded-xl transition">
-                        Suspendre
+                        Suspend
                     </button>
                 </div>
 

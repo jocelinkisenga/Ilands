@@ -37,7 +37,7 @@ class MenuHelper
       ],
       [
         "icon" => "book",
-        "name" => "Tutorials",
+        "name" => "Library",
         "roles" => ["client"],
         "path" => "/library",
         "route_name" => "library.index",
@@ -59,7 +59,7 @@ class MenuHelper
 
       /* [
         "icon" => "movie",
-        "name" => "My Tutorials",
+        "name" => "Library",
         "roles" => ["client"],
         "path" => "/videos",
         "route_name" => "videos",
@@ -80,7 +80,7 @@ class MenuHelper
       ],
       [
         "icon" => "user-profile",
-        "name" => "Mon Profil",
+        "name" => "My profile",
         "roles" => ["client"],
         "path" => "/profile",
         "route_name" => "profile.edit",
