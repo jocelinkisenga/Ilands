@@ -9,11 +9,10 @@ use Carbon\Carbon;
 class StripeRevenueService
 {
   /**
-   * Récupère le chiffre d'affaires net (Succeeded - Refunded) pour le mois en cours.
+   * return monthly affaires
    */
   public function getMonthToDateRevenue(): float
   {
-    // Mise en cache de 4 heures pour éviter les appels API Stripe synchrones intempestifs
     return Cache::remember(
       "stripe_revenue_month_to_date",
       now()->addHours(4),
@@ -21,13 +20,11 @@ class StripeRevenueService
         $stripe = Cashier::stripe();
         $revenue = 0;
 
-        // Récupération de toutes les charges depuis le début du mois en cours
         $charges = $stripe->charges->all([
           "created" => ["gte" => Carbon::now()->startOfMonth()->timestamp],
           "limit" => 100,
         ]);
 
-        // L'autoPagingIterator gère automatiquement la pagination Stripe si > 100 transactions
         foreach ($charges->autoPagingIterator() as $charge) {
           if ($charge->status === "succeeded") {
             $amount = $charge->amount / 100;
@@ -43,7 +40,7 @@ class StripeRevenueService
   }
 
   /**
-   * Récupère le chiffre d'affaires global historique (Optionnel).
+   * Returns all time affaires hystory.
    */
   public function getAllTimeRevenue(): float
   {

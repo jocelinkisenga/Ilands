@@ -1,10 +1,12 @@
-import './bootstrap';
+    // Vérifie la préférence enregistrée ou celle du système
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
 
-// import Alpine from 'alpinejs';
-
-// window.Alpine = Alpine;
-
-        document.addEventListener('alpine:init', () => {
+    // theme
+            document.addEventListener('alpine:init', () => {
             Alpine.store('theme', {
                 init() {
                     const savedTheme = localStorage.getItem('theme');
@@ -62,17 +64,8 @@ import './bootstrap';
             });
         });
 
-
-        $nextTick(() => {
-    const chat = document.querySelector('#chat');
-    chat.scrollTop = chat.scrollHeight;
-});
-
-
-// Alpine.start();
-// dark mode
-
-   
+         // Apply dark mode immediately to prevent flash
+    
         (function() {
             const savedTheme = localStorage.getItem('theme');
             const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -85,79 +78,25 @@ import './bootstrap';
                 document.body.classList.remove('dark', 'bg-gray-900');
             }
         })();
-    
-// end of darkmode
-    // Vérifie la préférence enregistrée ou celle du système
-    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
+
+    // toogle theme
+    function toggleDarkMode() {
+  
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
     }
 
-
-// Initialize components on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-    // Map imports
-    if (document.querySelector('#mapOne')) {
-        import('./components/map').then(module => module.initMap());
-    }
-
-    // Chart imports
-    if (document.querySelector('#chartOne')) {
-        import('./components/chart/chart-1').then(module => module.initChartOne());
-    }
-    if (document.querySelector('#chartTwo')) {
-        import('./components/chart/chart-2').then(module => module.initChartTwo());
-    }
-    if (document.querySelector('#chartThree')) {
-        import('./components/chart/chart-3').then(module => module.initChartThree());
-    }
-    if (document.querySelector('#chartSix')) {
-        import('./components/chart/chart-6').then(module => module.initChartSix());
-    }
-    if (document.querySelector('#chartEight')) {
-        import('./components/chart/chart-8').then(module => module.initChartEight());
-    }
-    if (document.querySelector('#chartThirteen')) {
-        import('./components/chart/chart-13').then(module => module.initChartThirteen());
-    }
-
-    // Calendar init
-    if (document.querySelector('#calendar')) {
-        import('./components/calendar-init').then(module => module.calendarInit());
-    }
-});
-
-//service worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js');
-  });
-}
-
-let deferredPrompt;
-
-// 1. Capture l'événement d'installation
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault(); // empêche popup automatique
-  deferredPrompt = e;
-
-  // optionnel: afficher ton bouton "Installer"
-  document.getElementById('installBtn')?.classList.remove('hidden');
-});
-
-// 2. Clic sur bouton installation
-const installBtn = document.getElementById('installBtn');
-
-installBtn?.addEventListener('click', async () => {
-  if (!deferredPrompt) return;
-
-  deferredPrompt.prompt(); // ouvre popup installation
-
-  const { outcome } = await deferredPrompt.userChoice;
-
-  console.log('User choice:', outcome);
-
-  deferredPrompt = null;
-  installBtn.style.display = 'none';
-});
+// end color
+    document.addEventListener("DOMContentLoaded", function () {
+        const observer = new MutationObserver(() => {
+            if (document.body.style.top && document.body.style.top !== '0px') {
+                document.body.style.top = '0px';
+            }
+        });
+        observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+    });

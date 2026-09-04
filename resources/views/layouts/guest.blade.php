@@ -32,8 +32,8 @@
         <meta name="theme-color" content="#16a34a" media="(prefers-color-scheme: light)">
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
         @if(request()->routeIs('dashboard*'))
-    <meta name="robots" content="noindex, nofollow">
-@endif
+        <meta name="robots" content="noindex, nofollow">
+       @endif
 
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -43,95 +43,9 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <script>
-    // Vérifie la préférence enregistrée ou celle du système
-    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-</script>
-<script src="https://cdn.jsdelivr.net/gh/snd-lib/snd-lib@v1.2.4/dist/browser/snd.js?kit=01"></script>
 
-    <!-- Theme Store -->
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.store('theme', {
-                init() {
-                    const savedTheme = localStorage.getItem('theme');
-                    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' :
-                        'light';
-                    this.theme = savedTheme || systemTheme;
-                    this.updateTheme();
-                },
-                theme: 'light',
-                toggle() {
-                    this.theme = this.theme === 'light' ? 'dark' : 'light';
-                    localStorage.setItem('theme', this.theme);
-                    this.updateTheme();
-                },
-                updateTheme() {
-                    const html = document.documentElement;
-                    const body = document.body;
-                    if (this.theme === 'dark') {
-                        html.classList.add('dark');
-                        body.classList.add('dark', 'bg-gray-900');
-                    } else {
-                        html.classList.remove('dark');
-                        body.classList.remove('dark', 'bg-gray-900');
-                    }
-                }
-            });
-
-            Alpine.store('sidebar', {
-                // Initialize based on screen size
-                isExpanded: window.innerWidth >= 1280, // true for desktop, false for mobile
-                isMobileOpen: false,
-                isHovered: false,
-
-                toggleExpanded() {
-                    this.isExpanded = !this.isExpanded;
-                    // When toggling desktop sidebar, ensure mobile menu is closed
-                    this.isMobileOpen = false;
-                },
-
-                toggleMobileOpen() {
-                    this.isMobileOpen = !this.isMobileOpen;
-                    // Don't modify isExpanded when toggling mobile menu
-                },
-
-                setMobileOpen(val) {
-                    this.isMobileOpen = val;
-                },
-
-                setHovered(val) {
-                    // Only allow hover effects on desktop when sidebar is collapsed
-                    if (window.innerWidth >= 1280 && !this.isExpanded) {
-                        this.isHovered = val;
-                    }
-                }
-            });
-        });
-    </script>
-
-    <!-- Apply dark mode immediately to prevent flash -->
-    <script>
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            const theme = savedTheme || systemTheme;
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-                document.body.classList.add('dark', 'bg-gray-900');
-            } else {
-                document.documentElement.classList.remove('dark');
-                document.body.classList.remove('dark', 'bg-gray-900');
-            }
-        })();
-    </script>
-   {{--  x-data="{ dark: true }"
-    :class="dark ? 'dark bg-black text-white' : 'bg-gray-100 text-gray-900'"      
-    class="transition duration-500" --}}
+        <script src="https://cdn.jsdelivr.net/gh/snd-lib/snd-lib@v1.2.4/dist/browser/snd.js?kit=01"></script>
+        <link rel="stylesheet" href="{{asset("assets/css/main.css")}}"/>
         @livewireStyles
     </head>
     <body  class=" bg-white text-gray-900 dark:bg-black dark:text-white transition-colors duration-300" >
@@ -162,21 +76,29 @@
     @include('components.footer')
    
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="{{asset("assets/js/main.js")}}" type="script"></script>
+{{-- <script type="text/javascript">
+    function googleTranslateElementInit() {
+        // Widget Desktop
+        new google.translate.TranslateElement({
+            pageLanguage: 'en', // Langue par défaut de votre site
+            includedLanguages: 'en,fr',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
 
-    <script>
-
-
-    function toggleDarkMode() {
-  
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        }
+        // Widget Mobile (optionnel si vous le dupliquez dans le menu burger)
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,fr',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element_mobile');
     }
 </script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> --}}
+
+{{-- google --}}
 <script>
     lucide.createIcons();
 </script>

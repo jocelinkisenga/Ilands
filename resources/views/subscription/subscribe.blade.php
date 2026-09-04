@@ -43,12 +43,12 @@
                     <div class="space-y-6">
                         <div>
                             <label for="card-holder-name" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Cardholder Name</label>
-                            <input type="text" id="card-holder-name" class="w-full border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-800 outline-none transition" placeholder="John Doe" required>
+                            <input type="text" id="card-holder-name" class="w-full border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-800 outline-none transition" placeholder="your name" required>
                         </div>
 
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Card Details</label>
-                            <div id="card-element" class="w-full border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 pr-12 text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-800 outline-none transition"></div>
+                            <div id="card-element" class="w-full border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3 pr-12 text-black dark:text-white  focus:ring-4  dark:focus:ring-slate-800 outline-none "></div>
                             <div id="card-errors" class="text-red-500 text-xs mt-2 font-medium" role="alert"></div>
                         </div>
 
@@ -113,15 +113,31 @@
 
             const stripe = Stripe(stripeKey);
             const elements = stripe.elements();
-            
+
+            const isDark = document.documentElement.classList.contains('dark');
             const style = {
                 base: {
-                    color: window.matchMedia('(prefers-color-scheme: dark)').matches ? '#ffffff' : '#0f172a',
+                    color : isDark ? '#ffffff' : '#0f172a',
+                    fontFamily : 'inter, system-ui, sans-serif',
+                    fontSize : '16px',
+                    '::placeholde':{
+                        color: isDark ? '#94a3b8' :'#64748b',
+                    }
+                },
+                invalid:{
+                    color:'#dc2626',
+                    iconColor:"#dc2626"
+                }
+            }
+            
+{{--             const style = {
+                base: {
+                    color: window.matchMedia('(prefers-color-scheme: dark)').matches ? '#ffffff' : 'black',
                     fontFamily: 'ui-sans-serif, system-ui, sans-serif',
                     fontSize: '14px',
-                    '::placeholder': { color: '#94a3b8' }
+                    '::placeholder': { color: '#64748b' }
                 }
-            };
+            }; --}}
 
             const cardElement = elements.create('card', { style: style, hidePostalCode: true });
             cardElement.mount('#card-element');

@@ -16,25 +16,23 @@ class BlogController extends Controller
         return view("pages.blog.details",["article" => $article]);
     }
 
+// reach text editor
     public function ckeditor (Request $request) {
-
     if ($request->hasFile('upload')) {
         $file = $request->file('upload');
         
-        // 1. On sépare le nom et l'extension pour nettoyer proprement
+        
         $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $extension = $file->getClientOriginalExtension();
         
-        // 2. On sécurise le nom (plus d'espaces, plus d'accents)
+        
         $safeName = Str::slug($originalName);
         $fileName = time() . '_' . $safeName . '.' . $extension;
         
-        // 3. Déplacement sécurisé vers public/media
         $file->move(public_path('media'), $fileName);
 
         $url = asset('media/' . $fileName);
 
-        // 4. Retour au format booléen strict attendu par CKEditor
         return response()->json([
             'uploaded' => true,
             'fileName' => $fileName,
@@ -45,9 +43,9 @@ class BlogController extends Controller
     return response()->json([
         'uploaded' => false, 
         'error' => [
-            'message' => 'Aucun fichier reçu ou format invalide.'
+            'message' => 'File not received or invalid format.'
         ]
-    ], 400); // On renvoie un code 400 pour que CKEditor comprenne l'erreur
+    ], 400); 
 
     }
 }

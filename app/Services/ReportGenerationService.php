@@ -17,7 +17,7 @@ class ReportGenerationService
   {
   }
   /**
-   * Génère un rapport complet et le sauvegarde en base de données.
+   * generates all the reports and save in the database
    */
   public function generate(
     array $messages,
@@ -28,7 +28,7 @@ class ReportGenerationService
   ): AiReport {
     $conversation = [];
 
-    // 1. Reconstruction de l'historique de manière propre pour Prism
+    // 1. Prism report reconstruction
     foreach ($messages as $message) {
       if (empty($message["content"])) {
         continue;
@@ -40,7 +40,7 @@ class ReportGenerationService
           : new UserMessage($message["content"]);
     }
 
-    // 2. Gestion du média (S'il vient juste d'être téléversé)
+    // 2. Media management if uploaded
     $media = [];
     if ($documentPath && Storage::disk("local")->exists($documentPath)) {
       $media[] = Document::fromLocalPath(
@@ -49,12 +49,12 @@ class ReportGenerationService
       );
     }
 
-    // 3. Injection du prompt de déclenchement du rapport avec son média dans l'historique
+    // 3. report injection with the media in the report
     $type = $this->detectReportType($messages);
     $finalInstruction =
-      "Rédige immédiatement le rapport final basé sur les données de notre session. Génère uniquement le rapport au format Markdown structuré.";
+      "write Immediatly the final report  based the dara of our session. generate only the report at structured  Markdown format.";
 
-    // Ajout du message utilisateur final qui déclenche la génération
+    // Adding the last users message to start generating
     $conversation[] = new UserMessage($finalInstruction, $media);
 
     $systemPrompt = $this->buildPrompt(
@@ -62,7 +62,7 @@ class ReportGenerationService
       $this->buildProfileContext($user)
     );
 
-    // 4. Appel à l'API Gemini
+    // 4. Api call
     $response = Prism::text()
       ->using("gemini", "gemini-flash-latest")
       ->withSystemPrompt($systemPrompt)
@@ -71,7 +71,7 @@ class ReportGenerationService
 
     $context = trim($response->text ?? "");
 
-    // Sécurité : Si l'IA n'a rien renvoyé, on ne valide pas un rapport vide
+    // Security : Ai doesn't return anything no report genarated
     if (empty($context)) {
       throw new \Exception(
         "L'API Gemini a retourné une réponse vide pour le rapport."
@@ -79,7 +79,7 @@ class ReportGenerationService
     }
     $usage = $response->usage;
     $this->storeAiLog->handler($chatId, $usage);
-    // 5. Persistance en Base de données
+    // 5. storing in the database
     return AiReport::create([
       "user_id" => $user->id,
       "chat_id" => $chatId,

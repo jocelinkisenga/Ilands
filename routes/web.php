@@ -75,7 +75,7 @@ require __DIR__ . "/auth.php";
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(["auth","verified"])->group(function () {
+Route::middleware(["auth",])->group(function () {
 
     // 1. Dashboard & Core Features
     Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
@@ -128,7 +128,7 @@ Route::middleware(["auth","verified"])->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(["auth", "admin", "verified"])
+Route::middleware(["auth", "admin"])
     ->prefix("admin")
     ->group(function () {
         
