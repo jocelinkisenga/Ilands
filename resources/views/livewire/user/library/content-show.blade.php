@@ -154,9 +154,9 @@
 
                 <div class="mt-14">
 
-                    <article class="prose prose-lg dark:prose-invert max-w-none">
+                    <article class="prose prose-lg text-gray-700 dark:text-gray-300  dark:prose-invert max-w-none">
 
-                        {!! nl2br(e($content->content)) !!}
+                        {!! $content->content !!}
 
                     </article>
 
