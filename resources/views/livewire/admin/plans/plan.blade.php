@@ -32,11 +32,6 @@
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">CR</p>
                         </div>
                     </th>
-                    <th class="px-6 py-3">
-                        <div class="flex items-center col-span-2">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Value</p>
-                        </div>
-                    </th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100 dark:divide-white/[0.05]">
@@ -62,11 +57,6 @@
                         <td class="px-6 py-3.5">
                             <div class="flex items-center">
                                 <a href="plan/edit/{{ $plan->id }}" class="px-3 py-1.5 text-xs font-bold bg-green-400 dark:bg-green-400 text-white-500 dark:text-white-400 hover:text-white dark:hover:text-white-400 transition">Éditer</a>
-                            </div>
-                        </td>
-                        <td class="px-6 py-3.5">
-                            <div class="flex items-center">
-                               
                             </div>
                         </td>
                     </tr>

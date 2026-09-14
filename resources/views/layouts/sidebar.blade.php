@@ -131,11 +131,13 @@
                         </ul>
                     </div>
                 @endforeach
+                @if(auth()->user()->role === "client")
                 <a href="{{ route('subscription.upgrade') }}" class="px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 ease-in-out
                bg-blue-600 text-white hover:bg-blue-700 active:scale-95
                dark:bg-blue-500 dark:hover:bg-blue-400">
   Upgrade your plan
 </a>
+@endif
             </div>
         </nav>
     </div>

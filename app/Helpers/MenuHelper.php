@@ -143,7 +143,7 @@ class MenuHelper
       ],
       [
         "icon" => "user-profile",
-        "name" => "Mon Profil",
+        "name" => "Manage Profile",
         "roles" => ["admin"],
         "path" => "/profile",
         "route_name" => "profile.edit",

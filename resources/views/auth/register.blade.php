@@ -159,9 +159,9 @@
             <input type="checkbox" required class="mt-1 rounded border-slate-300">
             <span>
                 I agree to the
-                <a href="#" class="text-slate-900 dark:text-white font-medium">Terms</a>
+                <a href="/terms" class="text-slate-900 dark:text-white font-medium">Terms</a>
                 and
-                <a href="#" class="text-slate-900 dark:text-white font-medium">Privacy Policy</a>
+                <a href="/privacy" class="text-slate-900 dark:text-white font-medium">Privacy Policy</a>
             </span>
         </div>
 

@@ -15,16 +15,16 @@
 
   <div class="flex gap-3">
 
-   <input
+ {{--   <input
    wire:model.live="search"
    type="text"
    placeholder="Search reports..."
-   class="rounded-xl border px-4 py-2 bg-white dark:text-white dark:bg-gray-900"
-   >
+   class="rounded-xl border px-4 py-2 bg-white dark:text-white border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900"
+   > --}}
 
    <select
     wire:model.live="type"
-    class="rounded-xl border px-4 py-2 bg-white dark:text-white dark:bg-gray-900"
+    class="rounded-xl border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 py-2 bg-white text-gray-900 dark:text-white "
     >
     <option value="">All Types</option>
     <option value="tax">Tax</option>

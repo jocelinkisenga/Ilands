@@ -14,7 +14,7 @@
                 <tr class="border-gray-100 border-y dark:border-white/[0.05]">
                     <th class="px-6 py-3">
                         <div class="flex items-center">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">name</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Supplier name</p>
                         </div>
                     </th>
                     <th class="px-6 py-3">
@@ -26,15 +26,9 @@
                         <div class="flex items-center col-span-2">
                             <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Tokens</p>
                         </div>
-                    </th>
-                    <th class="px-6 py-3">
+                    </th>                    <th class="px-6 py-3">
                         <div class="flex items-center col-span-2">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">CR</p>
-                        </div>
-                    </th>
-                    <th class="px-6 py-3">
-                        <div class="flex items-center col-span-2">
-                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Value</p>
+                            <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">Actions</p>
                         </div>
                     </th>
                 </tr>
@@ -42,30 +36,25 @@
             <tbody class="divide-y divide-gray-100 dark:divide-white/[0.05]">
                 @foreach ($tokens as $token)
                     <tr>
+                         <td class="px-6 py-3.5">
+                            <div class="flex items-center">
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $token->supplier }}</p>
+                            </div>
+                        </td>
+ 
                         <td class="px-6 py-3.5">
+                            <div class="flex items-center">
+                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $token->price }} $</p>
+                            </div>
+                        </td>
+                                              <td class="px-6 py-3.5">
                             <div class="flex items-center">
                                 <p class="font-medium text-gray-800 text-theme-sm dark:text-white/90">
                                     {{ $token->entry_tokens }}
                                 </p>
                             </div>
                         </td>
-                        <td class="px-6 py-3.5">
-                            <div class="flex items-center">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $token->price }}</p>
-                            </div>
-                        </td>
-                        <td class="px-6 py-3.5">
-                            <div class="flex items-center">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $token->supplier }}</p>
-                            </div>
-                        </td>
-                        <td class="px-6 py-3.5">
-                            <div class="flex items-center">
-                                <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                                   
-                                </p>
-                            </div>
-                        </td>
+
                         <td class="px-6 py-3.5">
                             <div class="flex items-center">
                                 <a href="token/edit/{{ $token->id }}" class="px-3 py-1.5 text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition">Éditer</a>

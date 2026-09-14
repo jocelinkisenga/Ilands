@@ -1,17 +1,35 @@
 <footer class="bg-white dark:bg-black border-t border-slate-200 dark:border-white/10 pt-16 pb-8 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-            
-            <div class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+            <div class="space-y-6 lg:col-span-2">
                 <a href="/" class="flex items-center gap-2">
                     <span class="text-xl font-bold tracking-tighter uppercase text-slate-900 dark:text-white">
                         ILANDS <span class="text-green-600 dark:text-green-500">SOLUTIONS</span>
                     </span>
                 </a>
-                <p class="text-slate-500 dark:text-gray-400 text-sm leading-relaxed">
+                <p class="text-slate-500 dark:text-gray-400 text-sm leading-relaxed max-w-sm">
                     Smart tax optimization for the Gig Economy and independent professionals. Secure, fast, and precise.
                 </p>
-                <div class="flex space-x-4">
+
+                <!-- Newsletter Subscription Form -->
+                <form action="#" method="POST" class="pt-2">
+                    @csrf
+                    <div class="flex flex-col sm:flex-row gap-2 max-w-md">
+                        <input type="email" 
+                               name="email" 
+                               required 
+                               placeholder="Enter your email" 
+                               class="bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-600 dark:focus:border-green-500 transition flex-1">
+                        
+                        <button type="submit" 
+                                class="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold text-sm px-6 py-3 rounded-xl transition shadow-sm whitespace-nowrap">
+                            Subscribe
+                        </button>
+                    </div>
+                    <span class="block text-xs text-slate-400 dark:text-gray-500 mt-2">No spam. Unsubscribe at any time.</span>
+                </form>
+
+                <div class="flex space-x-4 pt-2">
                     <a href="#" class="text-slate-400 hover:text-green-600 dark:hover:text-green-500 transition">
                         <span class="sr-only">LinkedIn</span>
                         <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -49,7 +67,6 @@
                     <li><a href="#" class="text-sm text-slate-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-500 transition">Cookie Settings</a></li>
                 </ul>
             </div>
-
         </div>
 
         <div class="border-t border-slate-100 dark:border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">

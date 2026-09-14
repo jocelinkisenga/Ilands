@@ -110,7 +110,7 @@ class AiChatBot extends Component
 
         try {
 
-            //🔥 CREATE CHAT IF NEEDED
+            //CREATE CHAT IF NEEDED
             if (!$this->chat_id) {
                 $chat = auth()->user()->chats()->create([
                     'title' => Str::limit($this->prompt ?: 'New chat', 40)

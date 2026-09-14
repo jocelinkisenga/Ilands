@@ -1,4 +1,4 @@
-<section id="pricing" class="py-20 bg-gray-50 dark:bg-gray-950 transition-colors duration-200">
+<section id="pricing" class="py-10 bg-gray-50 dark:bg-black transition-colors duration-200">
     <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-10">
         
         <div class="text-center max-w-2xl mx-auto mb-16">

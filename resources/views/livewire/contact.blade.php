@@ -1,7 +1,7 @@
 <div>
 <div class="bg-white text-gray-900 dark:bg-black dark:text-white transition-colors min-h-screen">
     <section class="relative py-20 overflow-hidden border-b border-green-500/10">
-        <div class="absolute inset-0 bg-gradient-to-br from-green-600/10 via-black to-black"></div>
+        {{-- <div class="absolute inset-0 bg-gradient-to-br from-green-600/10 via-black to-black"></div> --}}
         
         <div class="relative max-w-5xl mx-auto px-6 text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold">Get in <span class="text-green-500">Touch</span></h1>
@@ -62,17 +62,17 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="form-control">
                                 <label class="label"><span class="label-text text-gray-400">Full Name</span></label>
-                                <input type="text" wire:model="name" class="input bg-black/40 border-green-500/20 focus:border-green-500 text-white rounded-xl outline-none" placeholder="John Doe">
+                                <input type="text" wire:model="name" class="input bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-600 dark:focus:border-green-500rounded-xl outline-none" placeholder="Jack Rayan">
                             </div>
                             <div class="form-control">
                                 <label class="label"><span class="label-text text-gray-400">Email Address</span></label>
-                                <input type="email" wire:model="email" class="input bg-black/40 border-green-500/20 focus:border-green-500 text-white rounded-xl outline-none" placeholder="john@example.com">
+                                <input type="email" wire:model="email" class="input bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-600 dark:focus:border-green-500 rounded-xl outline-none" placeholder="jackes@example.com">
                             </div>
                         </div>
 
                         <div class="form-control">
                             <label class="label"><span class="label-text text-gray-400">Subject</span></label>
-                            <select wire:model="subject" class="select bg-black/40 border-green-500/20 focus:border-green-500 text-white rounded-xl outline-none">
+                            <select wire:model="subject" class="select bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-600 dark:focus:border-green-500 rounded-xl outline-none">
                                 <option value="general">General Inquiry</option>
                                 <option value="tax_advisory">Tax Advisory Service</option>
                                 <option value="crypto">Crypto Taxation</option>
@@ -82,7 +82,7 @@
 
                         <div class="form-control">
                             <label class="label"><span class="label-text text-gray-400">Message</span></label>
-                            <textarea wire:model="message" class="textarea bg-black/40 border-green-500/20 focus:border-green-500 text-white rounded-xl h-32 outline-none" placeholder="How can our EA assist you?"></textarea>
+                            <textarea wire:model="message" class="textarea bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-600 dark:focus:border-green-500 rounded-xl h-32 outline-none" placeholder="How can we assist you?"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-block bg-green-600 hover:bg-green-500 text-white border-none rounded-xl h-14 font-bold text-lg shadow-lg shadow-green-900/20">

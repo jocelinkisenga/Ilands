@@ -45,7 +45,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <script src="https://cdn.jsdelivr.net/gh/snd-lib/snd-lib@v1.2.4/dist/browser/snd.js?kit=01"></script>
-        <link rel="stylesheet" href="{{asset("assets/css/main.css")}}"/>
+        <link rel="stylesheet" href="{{asset('assets/css/main.css')}}"/>
         @livewireStyles
     </head>
     <body  class=" bg-white text-gray-900 dark:bg-black dark:text-white transition-colors duration-300" >

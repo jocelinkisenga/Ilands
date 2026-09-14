@@ -1,21 +1,22 @@
 <x-guest-layout>
 <div>
 <div class="bg-white text-gray-900 dark:bg-black dark:text-white transition-colors min-h-screen">
-    <section class="relative py-20 overflow-hidden border-b border-green-500/10">
-        <div class="absolute inset-0 bg-gradient-to-br from-green-600/10 via-black to-black"></div>
+    <section class="relative py-10 overflow-hidden border-b border-green-500/10">
+        {{-- <div class="absolute inset-0 bg-gradient-to-br from-green-600/10 via-black to-black"></div> --}}
         
-        <div class="relative max-w-5xl mx-auto px-6 text-center">
-            <span class="text-green-500 font-mono tracking-widest uppercase text-sm">Expert Insights</span>
+        <div class="relative max-w-5xl mx-auto px-2 text-center">
+            
             <h1 class="text-4xl md:text-6xl font-extrabold mt-4">
                  <span class="text-green-500">BLOG</span> 
             </h1>
-            <p class="mt-6 text-gray-400 text-lg max-w-2xl mx-auto">
-                Strategies and compliance guides for entrepreneurs and expats, powered by AI and verified by licensed professionals.
+            <span class="text-green-500 font-mono tracking-widest uppercase text-sm">Expert Insights</span>
+            <p class="mt-6 text-gray-500 text-lg max-w-2xl mx-auto">
+                Strategies and compliance guides for entrepreneurs and expats, wrote  by licensed professionals.
             </p>
         </div>
     </section>
 
-    <section class="py-16">
+    <section class="py-14">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach($articles as $article)

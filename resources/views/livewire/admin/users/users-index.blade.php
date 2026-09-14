@@ -37,7 +37,7 @@
                                 {{ $user->stripe_status === 'active' 
                                     ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400' 
                                     : 'bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400' }}">
-                                {{ $user->stripe_status ?? 'Sans abonnement' }}
+                                {{ $user->stripe_status ?? 'No subscription' }}
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
