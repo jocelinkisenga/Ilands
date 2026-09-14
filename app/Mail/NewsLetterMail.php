@@ -5,7 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -14,13 +13,24 @@ class NewsLetterMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subjectLine;
+    public $content;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($subjectLine, $content)
     {
-        //
+        $this->subjectLine = $subjectLine;
+        $this->content = $content;
     }
+
+    // public function build() {
+    //     return $this->subject($this->subjectLine)->view("emails.newsletter")->with([
+    //         "content" => $this->content,
+    //         "subjectLine" => $this->subjectLine,
+    //     ]);
+    // }
 
     /**
      * Get the message envelope.
@@ -28,7 +38,7 @@ class NewsLetterMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'News Letter Mail',
+            subject: $this->subjectLine,
         );
     }
 
@@ -38,14 +48,18 @@ class NewsLetterMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.newsletter',
+            with : [
+                "content" => $this->content,
+                "subjectLine" => $this->subjectLine,
+            ]
         );
     }
 
     /**
      * Get the attachments for the message.
      *
-     * @return array<int, Attachment>
+     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
     public function attachments(): array
     {

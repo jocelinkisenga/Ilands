@@ -148,6 +148,13 @@ class MenuHelper
         "path" => "/profile",
         "route_name" => "profile.edit",
       ],
+      [
+        "icon" => "settings",
+        "name" => "model",
+        "roles" => ["admin"],
+        "path" => "/admin/models",
+        "route_name" => "admin.models"
+      ]
     ];
   }
 

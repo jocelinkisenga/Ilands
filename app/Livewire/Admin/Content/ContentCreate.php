@@ -1,7 +1,10 @@
 <?php 
 namespace App\Livewire\Admin\Content;
 
+use App\Mail\NewsLetterMail;
 use App\Models\Content;
+use App\Models\NewsLetter;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -68,6 +71,14 @@ class ContentCreate extends Component
         ]);
 
         session()->flash('success', 'Content created successfully.');
+
+                $subscribers = NewsLetter::whereSubscribed(true)->get();
+
+            foreach ($subscribers as $subscriber) {
+                Mail::to($subscriber->email)
+                    ->send(new NewsLetterMail($this->title, $this->excerpt));
+            }
+
         return redirect()->to('/admin/content');
     }
 

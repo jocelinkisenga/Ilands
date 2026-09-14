@@ -12,22 +12,7 @@
                 </p>
 
                 <!-- Newsletter Subscription Form -->
-                <form action="#" method="POST" class="pt-2">
-                    @csrf
-                    <div class="flex flex-col sm:flex-row gap-2 max-w-md">
-                        <input type="email" 
-                               name="email" 
-                               required 
-                               placeholder="Enter your email" 
-                               class="bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-600 dark:focus:border-green-500 transition flex-1">
-                        
-                        <button type="submit" 
-                                class="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold text-sm px-6 py-3 rounded-xl transition shadow-sm whitespace-nowrap">
-                            Subscribe
-                        </button>
-                    </div>
-                    <span class="block text-xs text-slate-400 dark:text-gray-500 mt-2">No spam. Unsubscribe at any time.</span>
-                </form>
+               @livewire("news-letter")
 
                 <div class="flex space-x-4 pt-2">
                     <a href="#" class="text-slate-400 hover:text-green-600 dark:hover:text-green-500 transition">
