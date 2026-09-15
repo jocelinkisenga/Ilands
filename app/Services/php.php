@@ -1,27 +1,41 @@
-<?php
+<?php 
+namespace App\Services;
 
-enum DiscountType 
+use App\Models\Plan;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Mcp\Request;
+
+class TokenService {
+
+    protected $user;
+
+public static function getTotalUserTokens()
 {
-    case Standard;
-    case Seasonal;
-    case Weight;
+    $user = Auth::user();
+
+    if ($user->role->value !== 'client') {
+        return 0;
+    }
+
+    if ($user->subscribed('default')) {
+        $subscription = $user->subscription('default');
+
+        return $user->ailogs()
+            ->whereBetween('created_at', [
+                $subscription->current_period_start,
+                $subscription->current_period_end,
+            ])
+            ->sum('tokens_used');
+    }
+
+    // Utilisateur sans abonnement : total des tokens utilisés
+    return $user->ailogs()->sum('tokens_used');
 }
 
-function getDiscountedPrice(float $cartWeight, float $totalPrice, 
-                            DiscountType $discountType): float
-{
-    switch($discountType) {
-        case DiscountType::Standard : 
-        return $totalPrice * 0.9;
-        case DiscountType::Seasonal : 
-        return $totalPrice * 0.88;
-        case DiscountType::Weight : 
-        $discount = $cartWeight * 1.5;
-        return $totalPrice - $discount;
+public static function totalPlanTokens() {
+    return Plan::where("id",auth()->user()->plan_id)->first();
 
-        default : return $totalPrice;
-    } 
-   
 }
 
-echo getDiscountedPrice(12, 100, DiscountType::Weight);
+}

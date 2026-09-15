@@ -8,7 +8,7 @@ use Laravel\Mcp\Request;
 
 class TokenService {
 
-	protected $user;
+    protected $user;
 
 public static function getTotalUserTokens()
 {
@@ -34,7 +34,7 @@ public static function getTotalUserTokens()
 }
 
 public static function totalPlanTokens() {
-	return Plan::where("id",auth()->user()->plan_id)->first();
+    return Plan::where("id",auth()->user()->plan_id)->first();
 
 }
 

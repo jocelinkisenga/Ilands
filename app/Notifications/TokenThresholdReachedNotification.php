@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -11,44 +10,41 @@ class TokenThresholdReachedNotification extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     */
-    public function __construct()
+    public string $type; // '50_percent' ou '10_percent_remaining'
+    public int $remainingTokens;
+
+    public function __construct(string $type, int $remainingTokens)
     {
-        //
+        $this->type = $type;
+        $this->remainingTokens = $remainingTokens;
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @return array<int, string>
-     */
-    public function via(object $notifiable): array
+    public function via($notifiable): array
     {
-        return ['mail'];
+        return ['database', 'mail']; // Mail et/ou base de données pour l'interface Livewire
     }
 
-    /**
-     * Get the mail representation of the notification.
-     */
-    public function toMail(object $notifiable): MailMessage
+    public function toMail($notifiable): MailMessage
     {
+        $isUrgent = $this->type === '10_percent_remaining';
+        
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            ->subject($isUrgent ? 'Alerte critique : Vos tokens sont presque épuisés !' : 'Alerte : 50% de vos tokens utilisés')
+            ->line($isUrgent 
+                ? "Attention ! Il ne vous reste plus que 10% de vos tokens ({$this->remainingTokens} tokens)." 
+                : "Vous avez consommé plus de 50% de votre quota de tokens pour la période en cours.")
+            ->action('Se réabonner', url('/subscription'))
+            ->line('Pensez à renouveler votre offre pour éviter toute interruption de service.');
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @return array<string, mixed>
-     */
-    public function toArray(object $notifiable): array
+    public function toArray($notifiable): array
     {
         return [
-            //
+            'type' => $this->type,
+            'remaining_tokens' => $this->remainingTokens,
+            'message' => $this->type === '10_percent_remaining'
+                ? "Attention ! Il ne vous reste plus que 10% de vos tokens."
+                : "Vous avez utilisé 50% de votre quota de tokens.",
         ];
     }
 }

@@ -22,5 +22,7 @@ class StoreAiLog
       "output_tokens" => $usadeTokens,
       "total_tokens" => $lastTokens - $usadeTokens,
     ]);
+
+    
   }
 }
