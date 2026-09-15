@@ -11,9 +11,11 @@ use Prism\Prism\ValueObjects\Messages\UserMessage;
 use Prism\Prism\ValueObjects\Messages\AssistantMessage;
 use Prism\Prism\ValueObjects\Media\Document;
 use App\Actions\StoreAiLog;
+use App\Services\AI\AiModelManager;
+
 class ReportGenerationService
 {
-  public function __construct(public StoreAiLog $storeAiLog)
+  public function __construct(public StoreAiLog $storeAiLog, public AiModelManager $aiModelManager)
   {
   }
   /**
@@ -63,11 +65,20 @@ class ReportGenerationService
     );
 
     // 4. Api call
-    $response = Prism::text()
-      ->using("gemini", "gemini-flash-latest")
-      ->withSystemPrompt($systemPrompt)
-      ->withMessages($conversation)
-      ->generate();
+    // $response = Prism::text()
+    //   ->using("gemini", "gemini-flash-latest")
+    //   ->withSystemPrompt($systemPrompt)
+    //   ->withMessages($conversation)
+    //   ->generate();
+
+    $response = $this->aiModelManager->generate(
+    messages: $conversation,
+    systemPrompt: $systemPrompt,
+    options: [
+        'timeout' => 60,
+    ]
+);
+
 
     $context = trim($response->text ?? "");
 

@@ -2,12 +2,10 @@
 
     {{-- Header --}}
     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-
         <div>
             <h1 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                 AI Models
             </h1>
-
             <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
                 Manage the models available for AI generation and failover.
             </p>
@@ -16,13 +14,11 @@
         <button
             type="button"
             wire:click="create"
-            class="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
+            class="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
         >
             + Add Model
         </button>
-
     </div>
-
 
     {{-- Messages --}}
     @if (session('success'))
@@ -37,443 +33,300 @@
         </div>
     @endif
 
-
     {{-- Filters --}}
     <div class="grid gap-3 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm md:grid-cols-2 dark:border-gray-800 dark:bg-gray-900">
-
         <input
             type="search"
             wire:model.live.debounce.300ms="search"
             placeholder="Search models..."
-            class="rounded-xl border-gray-300 bg-white px-4 py-2.5 text-sm dark:border-gray-700 dark:bg-gray-950 dark:text-white"
+            class="rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
         >
 
         <select
             wire:model.live="providerId"
-            class="rounded-xl border-gray-300 bg-white px-4 py-2.5 text-sm dark:border-gray-700 dark:bg-gray-950 dark:text-white"
+            class="rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
         >
-
-            <option value="">
-                All providers
-            </option>
-
+            <option value="">All providers</option>
             @foreach ($providers as $provider)
-                <option value="{{ $provider->id }}">
-                    {{ $provider->name }}
-                </option>
+                <option value="{{ $provider->id }}">{{ $provider->name }}</option>
             @endforeach
-
         </select>
-
     </div>
-
 
     {{-- Table --}}
     <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
-
         <div class="overflow-x-auto">
-
             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-800">
-
                 <thead class="bg-gray-50 dark:bg-gray-950/50">
-
                     <tr>
-
-                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
-                            Model
-                        </th>
-
-                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
-                            Provider
-                        </th>
-
-                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
-                            Priority
-                        </th>
-
-                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">
-                            Status
-                        </th>
-
-                        <th class="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-gray-500">
-                            Actions
-                        </th>
-
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">Model</th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">Provider</th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">Priority</th>
+                        <th class="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-gray-500">Status</th>
+                        <th class="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-gray-500">Actions</th>
                     </tr>
-
                 </thead>
-
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
-
                     @forelse ($models as $model)
-
                         <tr class="transition hover:bg-gray-50 dark:hover:bg-gray-950/40">
-
                             <td class="px-6 py-4">
-
                                 <div class="font-medium text-gray-900 dark:text-white">
                                     {{ $model->label ?: $model->name }}
                                 </div>
-
                                 <code class="mt-1 block text-xs text-gray-500">
                                     {{ $model->model_identifier }}
                                 </code>
-
                             </td>
-
                             <td class="px-6 py-4">
-
                                 <span class="text-sm text-gray-700 dark:text-gray-300">
                                     {{ $model->provider->name }}
                                 </span>
-
                             </td>
-
                             <td class="px-6 py-4">
-
                                 <span class="rounded-lg bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">
                                     {{ $model->priority }}
                                 </span>
-
                             </td>
-
                             <td class="px-6 py-4">
-
                                 @if ($model->is_enabled)
-
                                     <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400">
                                         <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                                         Enabled
                                     </span>
-
                                 @else
-
                                     <span class="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-400">
                                         <span class="h-1.5 w-1.5 rounded-full bg-gray-400"></span>
                                         Disabled
                                     </span>
-
                                 @endif
-
                             </td>
-
                             <td class="px-6 py-4">
-
                                 <div class="flex justify-end gap-2">
-
                                     <button
                                         wire:click="edit({{ $model->id }})"
-                                        class="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                                        class="rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 dark:focus:ring-gray-700"
                                     >
                                         Edit
                                     </button>
-
                                     <button
                                         wire:click="toggleStatus({{ $model->id }})"
-                                        class="rounded-lg px-3 py-2 text-sm font-medium {{ $model->is_enabled ? 'text-amber-600 hover:bg-amber-50' : 'text-emerald-600 hover:bg-emerald-50' }}"
+                                        class="rounded-lg px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-gray-900 {{ $model->is_enabled ? 'text-amber-600 hover:bg-amber-50 focus:ring-amber-500' : 'text-emerald-600 hover:bg-emerald-50 focus:ring-emerald-500' }}"
                                     >
                                         {{ $model->is_enabled ? 'Disable' : 'Enable' }}
                                     </button>
-
                                     <button
                                         wire:click="confirmDelete({{ $model->id }})"
-                                        class="rounded-lg px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
+                                        class="rounded-lg px-3 py-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-1 dark:focus:ring-offset-gray-900"
                                     >
                                         Delete
                                     </button>
-
                                 </div>
-
                             </td>
-
                         </tr>
-
                     @empty
-
                         <tr>
-
-                            <td
-                                colspan="5"
-                                class="px-6 py-12 text-center text-sm text-gray-500"
-                            >
+                            <td colspan="5" class="px-6 py-12 text-center text-sm text-gray-500">
                                 No AI models found.
                             </td>
-
                         </tr>
-
                     @endforelse
-
                 </tbody>
-
             </table>
-
         </div>
-
         <div class="border-t border-gray-200 px-6 py-4 dark:border-gray-800">
             {{ $models->links() }}
         </div>
-
     </div>
 
-
-    {{-- Form --}}
+    {{-- Form Modal --}}
     @if ($showForm)
-
-        <div class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/50 p-4 backdrop-blur-sm">
-
-            <div class="my-8 w-full max-w-2xl rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
-
-                <div class="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-800">
-
+        <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 sm:p-6 backdrop-blur-sm transition-opacity">
+            
+            {{-- Modal Container (Responsive & internal scroll) --}}
+            <div class="flex max-h-full w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
+                
+                {{-- Modal Header (Fixed) --}}
+                <div class="flex flex-none items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-800">
                     <div>
                         <h2 class="font-semibold text-gray-900 dark:text-white">
                             {{ $editingId ? 'Edit AI Model' : 'Add AI Model' }}
                         </h2>
-
                         <p class="mt-1 text-xs text-gray-500">
                             Configure the model identifier used by Prism.
                         </p>
                     </div>
-
                     <button
                         wire:click="cancelForm"
-                        class="rounded-lg p-2 text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        class="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-800 dark:hover:text-gray-300"
                     >
                         ✕
                     </button>
-
                 </div>
 
-
-                <form
-                    wire:submit="save"
-                    class="space-y-5 p-6"
-                >
-
-                    {{-- Provider --}}
-                    <div>
-
-                        <label class="mb-2 block text-sm font-medium">
-                            Provider
-                        </label>
-
-                        <select
-                            wire:model="providerId"
-                            class="w-full rounded-xl border-gray-300 bg-white px-4 py-2.5 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-                        >
-
-                            <option value="">
-                                Select provider
-                            </option>
-
-                            @foreach ($providers as $provider)
-
-                                <option value="{{ $provider->id }}">
-                                    {{ $provider->name }}
-                                </option>
-
-                            @endforeach
-
-                        </select>
-
-                        @error('providerId')
-                            <p class="mt-1 text-xs text-red-600">
-                                {{ $message }}
-                            </p>
-                        @enderror
-
-                    </div>
-
-
-                    {{-- Name + label --}}
-                    <div class="grid gap-5 md:grid-cols-2">
-
+                <form wire:submit="save" class="flex flex-1 flex-col overflow-hidden">
+                    
+                    {{-- Modal Body (Scrollable) --}}
+                    <div class="flex-1 overflow-y-auto p-6 space-y-6">
+                        
+                        {{-- Provider --}}
                         <div>
-
-                            <label class="mb-2 block text-sm font-medium">
-                                Internal name
+                            <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
+                                Provider
                             </label>
-
-                            <input
-                                type="text"
-                                wire:model="name"
-                                placeholder="Gemini Flash"
-                                class="w-full rounded-xl border-gray-300 px-4 py-2.5 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
+                            <select
+                                wire:model="providerId"
+                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
                             >
-
-                            @error('name')
-                                <p class="mt-1 text-xs text-red-600">
-                                    {{ $message }}
-                                </p>
+                                <option value="">Select provider</option>
+                                @foreach ($providers as $provider)
+                                    <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('providerId')
+                                <p class="mt-1.5 text-xs font-medium text-red-600 dark:text-red-400">{{ $message }}</p>
                             @enderror
-
                         </div>
 
+                        {{-- Name + label --}}
+                        <div class="grid gap-5 md:grid-cols-2">
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
+                                    Internal name
+                                </label>
+                                <input
+                                    type="text"
+                                    wire:model="name"
+                                    placeholder="Gemini Flash"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                >
+                                @error('name')
+                                    <p class="mt-1.5 text-xs font-medium text-red-600 dark:text-red-400">{{ $message }}</p>
+                                @enderror
+                            </div>
 
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
+                                    Display label
+                                </label>
+                                <input
+                                    type="text"
+                                    wire:model="label"
+                                    placeholder="Gemini Flash Latest"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                >
+                            </div>
+                        </div>
+
+                        {{-- Identifier --}}
                         <div>
-
-                            <label class="mb-2 block text-sm font-medium">
-                                Display label
+                            <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
+                                Model identifier
                             </label>
-
                             <input
                                 type="text"
-                                wire:model="label"
-                                placeholder="Gemini Flash Latest"
-                                class="w-full rounded-xl border-gray-300 px-4 py-2.5 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
+                                wire:model="modelIdentifier"
+                                placeholder="gemini-flash-latest"
+                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 font-mono text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
                             >
-
-                        </div>
-
-                    </div>
-
-
-                    {{-- Identifier --}}
-                    <div>
-
-                        <label class="mb-2 block text-sm font-medium">
-                            Model identifier
-                        </label>
-
-                        <input
-                            type="text"
-                            wire:model="modelIdentifier"
-                            placeholder="gemini-flash-latest"
-                            class="w-full rounded-xl border-gray-300 px-4 py-2.5 font-mono text-sm dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-                        >
-
-                        <p class="mt-1 text-xs text-gray-500">
-                            Exact model identifier passed to Prism.
-                        </p>
-
-                        @error('modelIdentifier')
-                            <p class="mt-1 text-xs text-red-600">
-                                {{ $message }}
+                            <p class="mt-1.5 text-xs text-gray-500">
+                                Exact model identifier passed to Prism.
                             </p>
-                        @enderror
+                            @error('modelIdentifier')
+                                <p class="mt-1.5 text-xs font-medium text-red-600 dark:text-red-400">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    </div>
+                        {{-- Priority --}}
+                        <div>
+                            <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
+                                Priority
+                            </label>
+                            <input
+                                type="number"
+                                wire:model="priority"
+                                min="1"
+                                max="10000"
+                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                            >
+                            <p class="mt-1.5 text-xs text-gray-500">
+                                Lower numbers represent higher priority.
+                            </p>
+                        </div>
 
+                        {{-- Token limits --}}
+                        <div class="grid gap-5 md:grid-cols-2">
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
+                                    Max input tokens
+                                </label>
+                                <input
+                                    type="number"
+                                    wire:model="maxInputTokens"
+                                    min="1"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                >
+                            </div>
 
-                    {{-- Priority --}}
-                    <div>
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
+                                    Max output tokens
+                                </label>
+                                <input
+                                    type="number"
+                                    wire:model="maxOutputTokens"
+                                    min="1"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                >
+                            </div>
+                        </div>
 
-                        <label class="mb-2 block text-sm font-medium">
-                            Priority
+                        {{-- Pricing --}}
+                        <div class="grid gap-5 md:grid-cols-2">
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
+                                    Input price / 1M tokens
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.000001"
+                                    wire:model="inputPricePerMillion"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                >
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-200">
+                                    Output price / 1M tokens
+                                </label>
+                                <input
+                                    type="number"
+                                    step="0.000001"
+                                    wire:model="outputPricePerMillion"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                >
+                            </div>
+                        </div>
+
+                        {{-- Enabled --}}
+                        <label class="flex w-fit cursor-pointer items-center gap-3">
+                            <input
+                                type="checkbox"
+                                wire:model="isEnabled"
+                                class="h-5 w-5 rounded border-gray-300 text-emerald-600 transition focus:ring-emerald-500 dark:border-gray-700 dark:bg-gray-900 dark:checked:bg-emerald-600"
+                            >
+                            <span class="text-sm font-medium text-gray-900 dark:text-gray-200">
+                                Model enabled
+                            </span>
                         </label>
 
-                        <input
-                            type="number"
-                            wire:model="priority"
-                            min="1"
-                            max="10000"
-                            class="w-full rounded-xl border-gray-300 px-4 py-2.5 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-                        >
-
-                        <p class="mt-1 text-xs text-gray-500">
-                            Lower numbers represent higher priority.
-                        </p>
-
                     </div>
 
-
-                    {{-- Token limits --}}
-                    <div class="grid gap-5 md:grid-cols-2">
-
-                        <div>
-
-                            <label class="mb-2 block text-sm font-medium">
-                                Max input tokens
-                            </label>
-
-                            <input
-                                type="number"
-                                wire:model="maxInputTokens"
-                                min="1"
-                                class="w-full rounded-xl border-gray-300 px-4 py-2.5 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-                            >
-
-                        </div>
-
-
-                        <div>
-
-                            <label class="mb-2 block text-sm font-medium">
-                                Max output tokens
-                            </label>
-
-                            <input
-                                type="number"
-                                wire:model="maxOutputTokens"
-                                min="1"
-                                class="w-full rounded-xl border-gray-300 px-4 py-2.5 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    {{-- Pricing --}}
-                    <div class="grid gap-5 md:grid-cols-2">
-
-                        <div>
-
-                            <label class="mb-2 block text-sm font-medium">
-                                Input price / 1M tokens
-                            </label>
-
-                            <input
-                                type="number"
-                                step="0.000001"
-                                wire:model="inputPricePerMillion"
-                                class="w-full rounded-xl border-gray-300 px-4 py-2.5 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-                            >
-
-                        </div>
-
-
-                        <div>
-
-                            <label class="mb-2 block text-sm font-medium">
-                                Output price / 1M tokens
-                            </label>
-
-                            <input
-                                type="number"
-                                step="0.000001"
-                                wire:model="outputPricePerMillion"
-                                class="w-full rounded-xl border-gray-300 px-4 py-2.5 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-                            >
-
-                        </div>
-
-                    </div>
-
-
-                    {{-- Enabled --}}
-                    <label class="flex items-center gap-3">
-
-                        <input
-                            type="checkbox"
-                            wire:model="isEnabled"
-                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
-                        >
-
-                        <span class="text-sm">
-                            Model enabled
-                        </span>
-
-                    </label>
-
-
-                    {{-- Actions --}}
-                    <div class="flex justify-end gap-3 border-t border-gray-200 pt-5 dark:border-gray-800">
-
+                    {{-- Modal Footer (Fixed) --}}
+                    <div class="flex flex-none justify-end gap-3 border-t border-gray-200 bg-gray-50/50 px-6 py-4 dark:border-gray-800 dark:bg-gray-950/50">
                         <button
                             type="button"
                             wire:click="cancelForm"
-                            class="rounded-xl px-4 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                            class="rounded-xl px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:text-gray-300 dark:hover:bg-gray-800 dark:focus:ring-gray-700"
                         >
                             Cancel
                         </button>
@@ -481,65 +334,51 @@
                         <button
                             type="submit"
                             wire:loading.attr="disabled"
-                            class="rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700 disabled:opacity-50"
+                            class="rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:opacity-50 dark:focus:ring-offset-gray-900"
                         >
                             <span wire:loading.remove>
                                 Save Model
                             </span>
-
                             <span wire:loading>
                                 Saving...
                             </span>
                         </button>
-
                     </div>
 
                 </form>
-
             </div>
-
         </div>
-
     @endif
-
 
     {{-- Delete confirmation --}}
     @if ($deletingId)
+        <div class="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4 sm:p-6 backdrop-blur-sm transition-opacity">
+            <div class="w-full max-w-md overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900">
+                <div class="p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        Delete AI model?
+                    </h2>
+                    <p class="mt-2 text-sm leading-6 text-gray-500 dark:text-gray-400">
+                        The model cannot be deleted while it is configured as the primary or fallback model.
+                    </p>
+                </div>
 
-        <div class="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-
-            <div class="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl dark:border-gray-800 dark:bg-gray-900">
-
-                <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Delete AI model?
-                </h2>
-
-                <p class="mt-2 text-sm leading-6 text-gray-500">
-                    The model cannot be deleted while it is configured as the primary or fallback model.
-                </p>
-
-                <div class="mt-6 flex justify-end gap-3">
-
+                <div class="flex justify-end gap-3 border-t border-gray-200 bg-gray-50/50 px-6 py-4 dark:border-gray-800 dark:bg-gray-950/50">
                     <button
                         wire:click="cancelDelete"
-                        class="rounded-xl px-4 py-2.5 text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+                        class="rounded-xl px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:text-gray-300 dark:hover:bg-gray-800 dark:focus:ring-gray-700"
                     >
                         Cancel
                     </button>
-
                     <button
                         wire:click="delete"
-                        class="rounded-xl bg-red-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-red-700"
+                        class="rounded-xl bg-red-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
                     >
                         Delete
                     </button>
-
                 </div>
-
             </div>
-
         </div>
-
     @endif
 
 </div>

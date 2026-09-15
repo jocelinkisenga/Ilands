@@ -109,7 +109,7 @@ $result = $this->aiModelManager->generate(
     ]);
 
     throw new \Exception(
-        'Le service IA est temporairement saturé. Réessayez dans quelques instants.'
+        'The service is currently unvalaible try again letter.'
     );
 }
 
