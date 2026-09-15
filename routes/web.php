@@ -28,6 +28,7 @@ use App\Livewire\Admin\Tokens\Token;
 use App\Livewire\Admin\Users\UsersIndex;
 use App\Livewire\AiChatBot;
 use App\Livewire\Contact;
+use App\Livewire\ModelConfiguration;
 use App\Livewire\Report\ReportAi;
 use App\Livewire\TaxProfile;
 use App\Livewire\TaxScreener;
@@ -153,7 +154,7 @@ Route::middleware(["auth", "admin"])
         Route::livewire("/tokens", Token::class)->name("admin.tokens");
         Route::livewire("/token", CreateToken::class)->name("admin.create.token");
         Route::livewire("/token/edit/{tokenId}", EditToken::class)->name("admin.create.token.edit");
-
+        Route::livewire("/admin/models", ModelConfiguration::class)->name("admin.models");
         // CKEditor Upload
         Route::post("/ckeditor", [BlogController::class, "ckeditor"])->name("ckeditor.upload");
     });

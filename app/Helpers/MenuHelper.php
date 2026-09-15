@@ -150,7 +150,7 @@ class MenuHelper
       ],
       [
         "icon" => "settings",
-        "name" => "model",
+        "name" => "model configuration",
         "roles" => ["admin"],
         "path" => "/admin/models",
         "route_name" => "admin.models"

@@ -160,7 +160,7 @@
     </section>
 
     <!-- ================= PRODUCT DEMO VIDEO ================= -->
-<section class="py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200 dark:border-white/5">
+{{-- <section class="py-24 bg-white dark:bg-[#0B0F19] border-t border-slate-200 dark:border-white/5">
     <div class="max-w-5xl mx-auto px-6">
         
         <!-- Section Header -->
@@ -203,7 +203,7 @@
         </div>
 
     </div>
-</section>
+</section> --}}
 
     <!-- ================= PRICING ================= -->
     @include("components.pricing")
