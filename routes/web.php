@@ -38,6 +38,9 @@ use App\Livewire\User\Library\LibraryIndex;
 use App\Livewire\User\Library\SavedContent;
 use Illuminate\Support\Facades\Route;
 use Laravel\Cashier\Http\Controllers\WebhookController;
+use App\Livewire\Admin\AI\Configuration;
+use App\Livewire\Admin\AI\Models;
+use App\Livewire\Admin\AI\Providers;
 
 /*
 |--------------------------------------------------------------------------
@@ -154,7 +157,25 @@ Route::middleware(["auth", "admin"])
         Route::livewire("/tokens", Token::class)->name("admin.tokens");
         Route::livewire("/token", CreateToken::class)->name("admin.create.token");
         Route::livewire("/token/edit/{tokenId}", EditToken::class)->name("admin.create.token.edit");
-        Route::livewire("/admin/models", ModelConfiguration::class)->name("admin.models");
+        
+
+  Route::livewire(
+            '/ai',
+            Configuration::class
+        )->name('ai.configuration');
+
+      
+
+Route::get('/ai/providers', Providers::class)
+    ->name('ai.providers');
+
+Route::get('/ai/models', Models::class)
+    ->name('ai.models');
+      
         // CKEditor Upload
         Route::post("/ckeditor", [BlogController::class, "ckeditor"])->name("ckeditor.upload");
+
+    
     });
+
+

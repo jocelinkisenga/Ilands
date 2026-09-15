@@ -6,24 +6,46 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('ai_providers', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Ex: OpenAI, Gemini, Anthropic
-        $table->string('slug')->unique(); // openai, gemini, anthropic
-        $table->string('api_key'); // Chiffré
-        $table->string('base_url')->nullable();
+
+            $table->string('name');
+            $table->string('slug')->unique()->nullable();
+
+            /*
+             * Nom du provider utilisé par Prism.
+             *
+             * Exemples :
+             * gemini
+             * anthropic
+             * openai
+             */
+            $table->string('driver')->nullable();
+
+            $table->boolean('is_enabled')->default(true);
+
+            /*
+             * healthy
+             * limited
+             * unavailable
+             * unknown
+             */
+            $table->string('status')->default('unknown');
+
+            $table->timestamp('last_health_check_at')->nullable();
+
+            $table->text('last_error')->nullable();
+
+            $table->json('metadata')->nullable();
+
             $table->timestamps();
+
+            $table->index(['is_enabled', 'status']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('ai_providers');

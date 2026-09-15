@@ -147,15 +147,32 @@ class MenuHelper
         "roles" => ["admin"],
         "path" => "/profile",
         "route_name" => "profile.edit",
+      ],  
+      [
+      "icon" => "pages",
+        "name" => "AI Configuration",
+        "roles" => ["admin"],
+        "path" => "/ai/providers",
+        "route_name" => "ai.providers",
+        "subItems" => [
+          [
+        "name" => "Ai provider config",
+        "path" => "/admin/ai/providers",
+        "route_name" => "ai.providers"
       ],
       [
-        "icon" => "settings",
-        "name" => "model configuration",
-        "roles" => ["admin"],
-        "path" => "/admin/models",
-        "route_name" => "admin.models"
+        "name" => "Ai model configuration",
+        "path" => "/admin/ai/models",
+        "route_name" => "ai.models"
+      ],
+      [
+        "name" => "Ai defaut model config",
+        "path" => "/admin/ai",
+        "route_name" => "ai.configuration"
       ]
-    ];
+      ]
+    ]
+      ];
   }
 
   /**

@@ -13,7 +13,8 @@ use Prism\Prism\ValueObjects\ProviderRateLimit;
 use Illuminate\Support\Arr;
 class TaxAdvisoryService
 {
-  public function __construct(public StoreAiLog $storeAiLog)
+  public function __construct(public StoreAiLog $storeAiLog ,
+    public AiModelManager $aiModelManager)
   {
   }
   /**
@@ -73,13 +74,27 @@ class TaxAdvisoryService
     $conversation[] = new UserMessage($finalPrompt, $media);
 
 try {
+//begin essai
 
     // 4. Exécution de la requête via Prism
-    $response = Prism::text()
-      ->using("gemini", "gemini-flash-latest") // Version flash ultra-rapide et économique
-      ->withSystemPrompt($this->systemPrompt())
-      ->withMessages($conversation)
-      ->generate();
+  //$response = Prism::text()
+    //  ->using("gemini", "gemini-flash-latest") 
+     // ->withSystemPrompt($this->systemPrompt())
+   //   ->withMessages($conversation)
+    //  ->generate();
+
+
+//end essai
+
+$result = $this->aiModelManager->generate(
+    messages: $conversation,
+    systemPrompt: $this->systemPrompt(),
+    options: [
+        'timeout' => 60,
+    ]
+);
+
+  
 
 } catch (PrismRateLimitedException $e) {
 
@@ -98,15 +113,26 @@ try {
     );
 }
 
+    //start essai
 
-    $context = trim($response->text ?? "");
-    if (empty($context)) {
-      throw new \Exception(
-        "L'API Gemini a retourné une réponse vide pour le rapport."
-      );
-    }
+   // $context = trim($response->text ?? "");
+  //  if (empty($context)) {
+    //  throw new \Exception(
+      //  "L'API Gemini a retourné une réponse vide pour le rapport."
+   //   );
+  //  }
 
-    $usage = $response->usage;
+    $context = trim($result->text);
+
+if (empty($context)) {
+    throw new \Exception(
+        "Le fournisseur IA a retourné une réponse vide."
+    );
+}
+
+  //  end 
+
+    $usage = $result->usage;
     $this->storeAiLog->handler($chatId, $usage);
     return $context;
   }
