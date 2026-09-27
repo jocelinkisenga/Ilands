@@ -172,8 +172,9 @@ Route::get('/ai/providers', Providers::class)
 
 Route::get('/ai/models', Models::class)
     ->name('ai.models');
+Route::get('/ai/defaultmessages', DefaultMessage::class)
+    ->name('default.messages');
 
-Route::get('admin/defaultMessages', DefaultMessage::class)->name('defaultmessages');
       
         // CKEditor Upload
         Route::post("/ckeditor", [BlogController::class, "ckeditor"])->name("ckeditor.upload");
