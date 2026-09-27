@@ -41,6 +41,7 @@ use Laravel\Cashier\Http\Controllers\WebhookController;
 use App\Livewire\Admin\AI\Configuration;
 use App\Livewire\Admin\AI\Models;
 use App\Livewire\Admin\AI\Providers;
+use App\Livewire\DefaultMessage;
 
 /*
 |--------------------------------------------------------------------------
@@ -171,6 +172,8 @@ Route::get('/ai/providers', Providers::class)
 
 Route::get('/ai/models', Models::class)
     ->name('ai.models');
+
+Route::get('admin/defaultMessages', DefaultMessage::class)->name('defaultmessages');
       
         // CKEditor Upload
         Route::post("/ckeditor", [BlogController::class, "ckeditor"])->name("ckeditor.upload");

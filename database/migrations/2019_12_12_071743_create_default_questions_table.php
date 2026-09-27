@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('default_questions', function (Blueprint $table) {
             $table->id();
+            $table->text("message")->nullable();
             $table->timestamps();
         });
     }

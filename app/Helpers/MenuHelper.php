@@ -125,6 +125,11 @@ class MenuHelper
             "path" => "/admin/content/create",
             "route_name" => "content.create",
           ],
+          [
+            "name" => "Add Defaultmessages",
+            "path" => "/admin/defaultMessages",
+            "route_name" => "defaultmessages",
+          ]
         ],
       ],
       [
