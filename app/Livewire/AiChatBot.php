@@ -260,8 +260,8 @@ class AiChatBot extends Component
 
         $error = match(true) {
             str_contains($msg, 'rate limit') => '⚠️ Too many requests',
-            str_contains($msg, 'overloaded') => '⚠️ AI busy',
-            default => '⚠️ AI error'
+            str_contains($msg, 'overloaded') => '⚠️ we have accounted an error try again later',
+            default => '⚠️ we have accounted an error try again later'
         };
 
         $this->addMessage('assistant', $error);

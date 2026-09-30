@@ -74,7 +74,7 @@
    <div class="w-full px-4 py-5 flex flex-col gap-6">
 
     {{-- EMPTY STATE --}}
-    @if(count($messages) === 0)
+    {{-- @if(count($messages) === 0) --}}
     <div class="flex flex-col items-center text-center pt-4">
      <div class="w-14 h-14 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center border border-gray-100 dark:border-gray-700/50 mb-4">
       <span class="text-xl">✨</span>
@@ -92,7 +92,7 @@
       @endforeach
      </div>
     </div>
-    @endif
+    {{-- @endif --}}
 
     {{-- MESSAGES --}}
     @foreach($messages as $index => $msg)
@@ -185,10 +185,10 @@
 
     {{-- BOUTON ATTACHEMENT --}}
     <label class="shrink-0 flex items-center justify-center w-11 h-11 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 cursor-pointer transition">
-     <input type="file" wire:model="document" class="hidden" accept=".pdf,.doc,.docx,.txt,image/*" />
+{{--      <input type="file" wire:model="document" class="hidden" accept=".pdf,.doc,.docx,.txt,image/*" />
      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
       <path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
-     </svg>
+     </svg> --}}
     </label>
 
     {{-- TEXTAREA --}}
