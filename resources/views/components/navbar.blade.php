@@ -5,7 +5,7 @@
             <div class="flex items-center">
                 <a href="/" class="flex-shrink-0 flex items-center gap-2">
                     <span class="text-xl font-black tracking-tighter uppercase text-slate-900 dark:text-white">
-                        ILANDS <span class="text-blue-600 dark:text-blue-500">SOLUTIONS</span>
+                        UNSTACK <span class="text-blue-600 dark:text-blue-500">MY TAXES</span>
                     </span>
                 </a>
             </div>
