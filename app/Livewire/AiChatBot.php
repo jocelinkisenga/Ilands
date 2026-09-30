@@ -9,6 +9,7 @@ use App\Services\AI\TaxAdvisoryService;
 use App\Services\ReportGenerationService;
 use League\CommonMark\CommonMarkConverter;
 use App\Models\Chat;
+use App\Models\DefaultQuestions;
 use App\Services\TokenService;
 use Illuminate\Support\Str;
 
@@ -31,9 +32,12 @@ class AiChatBot extends Component
     protected $listeners = ['loadChat'];
 
     public bool $tokenError = false;
+    public $defaultQuestions;
 
     public function mount($chatId = null): void
     {
+        $this->defaultQuestions =  DefaultQuestions::where("is_anabled", true)->get();
+        
         if ($chatId) {
             $this->loadChat($chatId);
         } else {

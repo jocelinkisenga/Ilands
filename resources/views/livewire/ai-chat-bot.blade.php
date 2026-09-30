@@ -49,30 +49,31 @@
   <div class="max-w-3xl mx-auto w-full px-4 md:px-6 py-8 flex flex-col gap-8">
    
    {{-- EMPTY STATE --}}
-   @if(count($messages) === 0)
+   {{-- @if(count($messages) === 0) --}}
    <div class="flex flex-col items-center justify-center pt-12 md:pt-20 text-center animate-fade-in">
     <div class="w-16 h-16 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center border border-gray-100 dark:border-gray-700/50 mb-6 shadow-sm">
      <span class="text-2xl">✨</span>
     </div>
     <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-     How can I help you today?
+     How can I help you?
     </h2>
     <p class="text-sm text-gray-500 dark:text-gray-400 max-w-md mx-auto mb-8">
      Ask questions about taxes, business, finance, entrepreneurship, documents, or anything related to your platform.
+     <span class=" items-center gap-1.5 px-2 py-1 rounded bg-red-500/10 border border-red-500/20 text-[10px] font-mono font-bold tracking-wider text-red-400 whitespace-nowrap">
+                <span class=" h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                Educational guidance only
+            </span>
     </p>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-2xl">
-     <button wire:click="$set('prompt', 'Help me optimize my taxes')" class="text-left p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#2A2A2A] hover:bg-gray-50 dark:hover:bg-[#333333] transition-colors group">
-      <p class="font-medium text-gray-900 dark:text-gray-100 text-sm group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Tax Optimization</p>
-      <p class="text-xs text-gray-500 mt-1">Get intelligent tax suggestions</p>
+    @foreach($defaultQuestions as $question)
+     <button wire:click="$set('prompt', '{{$question->message}}')" class="text-left p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#2A2A2A] hover:bg-gray-50 dark:hover:bg-[#333333] transition-colors group">
+      <p class="font-medium text-gray-900 dark:text-gray-100 text-sm group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{{$question->message}}</p>
      </button>
-     <button wire:click="$set('prompt', 'Generate a professional business report')" class="text-left p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#2A2A2A] hover:bg-gray-50 dark:hover:bg-[#333333] transition-colors group">
-      <p class="font-medium text-gray-900 dark:text-gray-100 text-sm group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Business Reports</p>
-      <p class="text-xs text-gray-500 mt-1">Generate analytics & reports</p>
-     </button>
+     @endforeach
     </div>
    </div>
-   @endif
+   {{-- @endif --}}
 
    {{-- MESSAGES --}}
    @foreach($messages as $index => $msg)

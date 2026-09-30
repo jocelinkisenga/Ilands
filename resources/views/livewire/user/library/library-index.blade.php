@@ -96,7 +96,7 @@ use App\Enums\SubscriptionPlan;
 
       @if($content->access_level === SubscriptionPlan::FREE->value)
 
-      <span class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500 text-white">
+      <span class="px-3 py-1 rounded-full text-xs font-medium bg-blue-500 text-white">
        FREE
       </span>
 
@@ -144,7 +144,7 @@ use App\Enums\SubscriptionPlan;
 
       <a
        href="{{ route('library.show', $content->slug) }}"
-       class="inline-flex items-center px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium transition"
+       class="inline-flex items-center px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium transition"
        >
        View Content
       </a>

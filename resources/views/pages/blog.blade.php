@@ -7,9 +7,9 @@
         <div class="relative max-w-5xl mx-auto px-2 text-center">
             
             <h1 class="text-4xl md:text-6xl font-extrabold mt-4">
-                 <span class="text-green-500">BLOG</span> 
+                 <span class="text-blue-500">BLOG</span> 
             </h1>
-            <span class="text-green-500 font-mono tracking-widest uppercase text-sm">Expert Insights</span>
+            <span class="text-blue-500 font-mono tracking-widest uppercase text-sm">Expert Insights</span>
             <p class="mt-6 text-gray-500 text-lg max-w-2xl mx-auto">
                 Strategies and compliance guides for entrepreneurs and expats, wrote  by licensed professionals.
             </p>
@@ -37,7 +37,7 @@
                             <span class="text-gray-500 text-xs">{{ $article['read_time'] }} read</span>
                         </div>
 
-                        <h2 class="text-xl font-bold group-hover:text-green-400 transition-colors mb-4">
+                        <h2 class="text-xl font-bold group-hover:text-blue-400 transition-colors mb-4">
                             <a href="/blog/{{ $article['slug'] }}">{{ $article['title'] }}</a>
                         </h2>
 
@@ -47,7 +47,7 @@
 
                         <div class="flex items-center justify-between border-t border-white/5 pt-6">
                             <span class="text-xs text-gray-500 italic">By ILANDS Expert Review</span>
-                            <a href="/blog/{{ $article['slug'] }}" class="text-green-500 font-semibold text-sm flex items-center gap-2 hover:gap-3 transition-all">
+                            <a href="/blog/{{ $article['slug'] }}" class="text-blue-500 font-semibold text-sm flex items-center gap-2 hover:gap-3 transition-all">
                                 Read More 
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                             </a>
@@ -66,7 +66,7 @@
                 <p class="text-gray-400 mb-8 italic">Stay updated with AI-driven tax optimization strategies.</p>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
                     <input type="email" placeholder="Enter your email" class="bg-white/5 border border-green-500/20 rounded-xl px-6 py-3 focus:border-green-500 outline-none w-full md:w-64">
-                    <button class="bg-green-600 hover:bg-green-500 px-8 py-3 rounded-xl font-bold transition">Join List</button>
+                    <button class="bg-blue-600 hover:bg-green-500 px-8 py-3 rounded-xl font-bold transition">Join List</button>
                 </div>
             </div>
         </div>

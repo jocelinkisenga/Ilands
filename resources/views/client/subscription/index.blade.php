@@ -101,7 +101,7 @@
                                             <span class="text-gray-900 dark:text-gray-100">{{ $usageMetrics['used'] }} / {{ $usageMetrics['total'] }}</span>
                                         </div>
                                         <div class="w-full bg-gray-100 dark:bg-gray-800 h-1.5 rounded-full overflow-hidden">
-                                            <div class="bg-emerald-500 h-1.5 rounded-full" style="width: {{ $usageMetrics['percentage'] }}%"></div>
+                                            <div class="bg-blue-500 h-1.5 rounded-full" style="width: {{ $usageMetrics['percentage'] }}%"></div>
                                         </div>
                                         <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Quota : {{ $usageMetrics['total'] - $usageMetrics['used'] }} ressources</p>
                                     </div>
@@ -130,7 +130,7 @@
                         </a>
 
                         <a href="{{ route('subscription.billing') }}" class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-5 rounded-xl shadow-xs transition-all duration-200 hover:scale-[1.02] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 flex items-center gap-4" aria-label="Mettre à jour la carte bancaire sur Stripe">
-                            <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 rounded-lg group-hover:bg-emerald-100 transition-colors">
+                            <div class="p-3 bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 rounded-lg group-hover:bg-blue-100 transition-colors">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" /></svg>
                             </div>
                             <div>
@@ -240,7 +240,7 @@
                     </p>
                     
                     <div class="mt-8 flex justify-center">
-                        <a href="{{route('pricing')}}" class="inline-flex items-center text-gray-500 border-green-100 justify-center px-5 py-3 rounded-xl font-semibold text-sm bg-black-600 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white font-bold rounded-2xl shadow-lg shadow-emerald-950/10 dark:shadow-emerald-950/40 transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-800 active:scale-[0.98]">
+                        <a href="{{route('pricing')}}" class="inline-flex items-center text-gray-500 border-green-100 justify-center px-5 py-3 rounded-xl font-semibold text-sm bg-black-600 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 text-white font-bold rounded-2xl shadow-lg shadow-blue-950/10 dark:shadow-blue-950/40 transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 active:scale-[0.98]">
                             Choose a plan
                         </a>
                     </div>

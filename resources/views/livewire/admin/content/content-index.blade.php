@@ -41,7 +41,7 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex flex-col gap-0.5">
                                 <span class="text-xs font-mono font-medium text-gray-500 dark:text-gray-400">{{ strtoupper($content->type) }}</span>
-                                <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold tracking-wide">{{ strtoupper($content->access_level) }}</span>
+                                <span class="text-[11px] text-blue-600 dark:text-blue-400 font-bold tracking-wide">{{ strtoupper($content->access_level) }}</span>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
@@ -82,7 +82,7 @@
                         <h4 class="font-bold text-sm text-gray-900 dark:text-white truncate" title="{{ $content->title }}">{{ $content->title }}</h4>
                         <div class="flex items-center gap-2 mt-1">
                             <span class="text-[10px] font-mono text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-1.5 py-0.5 rounded">{{ strtoupper($content->type) }}</span>
-                            <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-extrabold tracking-wide">{{ strtoupper($content->access_level) }}</span>
+                            <span class="text-[10px] text-blue-600 dark:text-blue-400 font-extrabold tracking-wide">{{ strtoupper($content->access_level) }}</span>
                         </div>
                     </div>
                 </div>

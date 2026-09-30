@@ -35,7 +35,7 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span class="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] uppercase font-bold tracking-wider 
                                 {{ $user->stripe_status === 'active' 
-                                    ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400' 
+                                    ? 'bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400' 
                                     : 'bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400' }}">
                                 {{ $user->stripe_status ?? 'No subscription' }}
                             </span>
@@ -70,7 +70,7 @@
                     <span class="text-xs text-gray-400 dark:text-gray-500">Abonnement</span>
                     <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider 
                         {{ $user->stripe_status === 'active' 
-                            ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400' 
+                            ? 'bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400' 
                             : 'bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400' }}">
                         {{ $user->stripe_status ?? 'no subscription' }}
                     </span>

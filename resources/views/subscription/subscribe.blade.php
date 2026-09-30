@@ -20,10 +20,10 @@
 
                 <div class="grid grid-cols-2 gap-4 mb-6">
                     <button type="button" id="btn-plan-pro" onclick="selectPlan('pro')"
-                        class="p-4 rounded-xl border-2 text-left transition-all duration-200 bg-white dark:bg-slate-900/50 border-green-500 ring-2 ring-green-500/20">
+                        class="p-4 rounded-xl border-2 text-left transition-all duration-200 bg-white dark:bg-slate-900/50 border-blue-500 ring-2 ring-blue-500/20">
                         <div class="flex justify-between items-center mb-1">
                             <span class="font-bold text-sm uppercase tracking-wider">Pro Plan</span>
-                            <span class="w-4 h-4 rounded-full bg-green-500 flex items-center justify-center text-[10px] text-white font-bold" id="badge-pro">✓</span>
+                            <span class="w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center text-[10px] text-white font-bold" id="badge-pro">✓</span>
                         </div>
                         <p class="text-xs text-slate-500 dark:text-slate-400">Perfect for individuals starting out.</p>
                     </button>
@@ -53,7 +53,7 @@
                         </div>
 
                         <button id="card-button" data-secret="{{ $intent->client_secret }}" type="submit"
-                           class="inline-flex items-center justify-center w-full bg-green-600 hover:bg-green-500 dark:bg-green-500 dark:hover:bg-green-400 text-white py-4 px-6 rounded-xl font-semibold text-base transition-all duration-200 shadow-lg shadow-green-600/20 active:scale-[0.98]">
+                           class="inline-flex items-center justify-center w-full bg-blue-600 hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400 text-white py-4 px-6 rounded-xl font-semibold text-base transition-all duration-200 shadow-lg shadow-blue-600/20 active:scale-[0.98]">
                             <span id="button-text">Subscribe to <span id="submit-btn-plan-text">Pro</span></span>
                         </button>
                     </div>
@@ -79,9 +79,9 @@
 
             if (planName === 'pro') {
                 // Style bouton Pro Actif
-                btnPro.className = "p-4 rounded-xl border-2 text-left transition-all duration-200 bg-white dark:bg-slate-900/50 border-green-500 ring-2 ring-green-500/20";
+                btnPro.className = "p-4 rounded-xl border-2 text-left transition-all duration-200 bg-white dark:bg-slate-900/50 border-blue-500 ring-2 ring-blue-500/20";
                 btnPro.classList.remove('opacity-70');
-                badgePro.className = "w-4 h-4 rounded-full bg-green-500 flex items-center justify-center text-[10px] text-white font-bold";
+                badgePro.className = "w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center text-[10px] text-white font-bold";
                 badgePro.innerText = "✓";
 
                 // Style bouton Premium Inactif
@@ -92,9 +92,9 @@
                 btnText.innerText = "Pro";
             } else {
                 // Style bouton Premium Actif
-                btnPremium.className = "p-4 rounded-xl border-2 text-left transition-all duration-200 bg-white dark:bg-slate-900/50 border-green-500 ring-2 ring-green-500/20";
+                btnPremium.className = "p-4 rounded-xl border-2 text-left transition-all duration-200 bg-white dark:bg-slate-900/50 border-blue-500 ring-2 ring-blue-500/20";
                 btnPremium.classList.remove('opacity-70');
-                badgePremium.className = "w-4 h-4 rounded-full bg-green-500 flex items-center justify-center text-[10px] text-white font-bold";
+                badgePremium.className = "w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center text-[10px] text-white font-bold";
                 badgePremium.innerText = "✓";
 
                 // Style bouton Pro Inactif

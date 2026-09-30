@@ -16,7 +16,7 @@
         <button
             type="button"
             wire:click="create"
-            class="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-gray-950"
+            class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-950"
         >
             + Add Provider
         </button>
@@ -26,7 +26,7 @@
 
     {{-- Flash messages --}}
     @if (session('success'))
-        <div class="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-400">
+        <div class="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-700 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-400">
             {{ session('success') }}
         </div>
     @endif
@@ -45,7 +45,7 @@
             type="search"
             wire:model.live.debounce.300ms="search"
             placeholder="Search providers..."
-            class="w-full rounded-xl border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-emerald-500 focus:ring-emerald-500 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
+            class="w-full rounded-xl border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
         >
 
     </div>
@@ -120,8 +120,8 @@
 
                                 @if ($provider->is_enabled)
 
-                                    <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400">
-                                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                    <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700 dark:bg-blue-950/40 dark:text-blue-400">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
                                         Enabled
                                     </span>
 
@@ -149,7 +149,7 @@
 
                                     <button
                                         wire:click="toggleStatus({{ $provider->id }})"
-                                        class="rounded-lg px-3 py-2 text-sm font-medium {{ $provider->is_enabled ? 'text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-950/30' : 'text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950/30' }}"
+                                        class="rounded-lg px-3 py-2 text-sm font-medium {{ $provider->is_enabled ? 'text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-950/30' : 'text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/30' }}"
                                     >
                                         {{ $provider->is_enabled ? 'Disable' : 'Enable' }}
                                     </button>
@@ -311,7 +311,7 @@
                         <input
                             type="checkbox"
                             wire:model="isEnabled"
-                            class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                            class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                         >
 
                         <span class="text-sm text-gray-700 dark:text-gray-300">
@@ -334,7 +334,7 @@
                         <button
                             type="submit"
                             wire:loading.attr="disabled"
-                            class="rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700 disabled:opacity-50"
+                            class="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 disabled:opacity-50"
                         >
                             Save Provider
                         </button>

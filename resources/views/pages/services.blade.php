@@ -3,7 +3,7 @@
 
     <!-- HERO -->
 <section class="relative py-24 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-green-600/20 via-white to-white dark:via-black dark:to-black"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-white to-white dark:via-black dark:to-black"></div>
 
     <div class="relative max-w-6xl mx-auto px-6 text-center">
         <h1 class="text-4xl md:text-5xl font-bold">
@@ -24,11 +24,11 @@
             <div class="grid md:grid-cols-3 gap-8">
 
                 <!-- STARTER -->
-                <div class="bg-white/5 backdrop-blur-xl border border-green-500/10 rounded-2xl p-8">
+                <div class="bg-white/5 backdrop-blur-xl border border-blue-500/10 rounded-2xl p-8">
                     <h3 class="text-xl font-semibold text-gray-200">Strategic Foundation</h3>
                     <p class="text-gray-400 mt-2 text-sm">For individuals & early-stage founders</p>
 
-                    <div class="mt-8 text-4xl font-bold text-green-500">
+                    <div class="mt-8 text-4xl font-bold text-blue-500">
                         $XXX
                         <span class="text-sm text-gray-400 font-normal">/ engagement</span>
                     </div>
@@ -40,21 +40,21 @@
                         <li>• Filing coordination</li>
                     </ul>
 
-                    <a href="#" class="mt-10 block text-center py-3 border border-green-500 rounded-lg hover:bg-green-600/10 transition">
+                    <a href="#" class="mt-10 block text-center py-3 border border-blue-500 rounded-lg hover:bg-blue-600/10 transition">
                         Get Started
                     </a>
                 </div>
 
 
                 <!-- GROWTH (Highlighted) -->
-                <div class="bg-gradient-to-br from-green-600/20 to-black backdrop-blur-xl border border-green-500/30 rounded-2xl p-10 shadow-2xl scale-105">
+                <div class="bg-gradient-to-br from-blue-600/20 to-black backdrop-blur-xl border border-blue-500/30 rounded-2xl p-10 shadow-2xl scale-105">
                     <div class="text-center mb-4">
-                        <span class="text-xs bg-green-600 px-3 py-1 rounded-full uppercase tracking-wider">
+                        <span class="text-xs bg-blue-600 px-3 py-1 rounded-full uppercase tracking-wider">
                             Most Selected
                         </span>
                     </div>
 
-                    <h3 class="text-xl font-semibold text-green-500 text-center">
+                    <h3 class="text-xl font-semibold text-blue-500 text-center">
                         Growth Advisory
                     </h3>
 
@@ -75,18 +75,18 @@
                         <li>• IRS representation if needed</li>
                     </ul>
 
-                    <a href="#" class="mt-10 block text-center py-3 bg-green-600 hover:bg-green-500 rounded-lg font-semibold transition">
+                    <a href="#" class="mt-10 block text-center py-3 bg-blue-600 hover:bg-blue-500 rounded-lg font-semibold transition">
                         Book Strategy Call
                     </a>
                 </div>
 
 
                 <!-- ELITE -->
-                <div class="bg-white/5 backdrop-blur-xl border border-green-500/10 rounded-2xl p-8">
+                <div class="bg-white/5 backdrop-blur-xl border border-blue-500/10 rounded-2xl p-8">
                     <h3 class="text-xl font-semibold text-gray-200">Elite Advisory</h3>
                     <p class="text-gray-400 mt-2 text-sm">High-net-worth & complex structures</p>
 
-                    <div class="mt-8 text-4xl font-bold text-green-500">
+                    <div class="mt-8 text-4xl font-bold text-blue-500">
                         Custom
                     </div>
 
@@ -98,7 +98,7 @@
                         <li>• Advanced AI analytics integration</li>
                     </ul>
 
-                    <a href="#" class="mt-10 block text-center py-3 border border-green-500 rounded-lg hover:bg-green-600/10 transition">
+                    <a href="#" class="mt-10 block text-center py-3 border border-blue-500 rounded-lg hover:bg-blue-600/10 transition">
                         Request Proposal
                     </a>
                 </div>
@@ -113,7 +113,7 @@
 
 
     <!-- CTA -->
-    <section class="py-24 border-t border-green-500/10 text-center">
+    <section class="py-24 border-t border-blue-500/10 text-center">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-3xl font-bold mb-6">
                 Not Sure Which Plan Fits?
@@ -123,7 +123,7 @@
                 Schedule a strategic assessment and receive a personalized recommendation.
             </p>
 
-            <a href="#" class="px-8 py-4 bg-green-600 hover:bg-green-500 rounded-xl font-semibold text-lg transition shadow-lg">
+            <a href="#" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold text-lg transition shadow-lg">
                 Start Assessment
             </a>
         </div>

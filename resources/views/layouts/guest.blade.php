@@ -51,7 +51,7 @@
     <body  class=" bg-white text-gray-900 dark:bg-black dark:text-white transition-colors duration-300" >
       @include('components.navbar')
                {{ $slot }}
-    <button
+{{--     <button
   id="installBtn"
   class="hidden fixed bottom-6 right-6 z-50 
          flex items-center gap-2 
@@ -72,13 +72,16 @@
       Accès plus rapide & hors ligne
     </span>
   </div>
-</button>
+</button> --}}
+@livewire("chat-bot")
+
     @include('components.footer')
    
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="{{asset('assets/js/main.js')}}" type="script"></script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> --}}
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
 
 {{-- google --}}
 <script>

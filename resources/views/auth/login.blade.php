@@ -109,7 +109,7 @@
 
         <!-- Button -->
         <button
-            class="w-full rounded-2xl bg-gradient-to-r from-emerald-600 via-green-600 to-emerald-700 px-6 py-4 font-semibold text-white shadow-lg shadow-emerald-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-emerald-500/40 focus:outline-none focus:ring-4 focus:ring-emerald-500/20 text-white py-3 text-sm font-medium transition">
+            class="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-blue-600 to-blue-700 px-6 py-4 font-semibold text-white shadow-lg shadow-blue-500/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 focus:outline-none focus:ring-4 focus:ring-blue-500/20 text-white py-3 text-sm font-medium transition">
 
             Sign in
 

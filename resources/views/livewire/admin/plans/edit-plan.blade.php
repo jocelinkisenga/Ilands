@@ -44,7 +44,7 @@
                     type="text"
                     wire:model="name"
                     value="{{$name}}"
-                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
+                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
                 >
             </div>
 
@@ -57,7 +57,7 @@
                     type="text"
                     wire:model="price"
                     value="{{$price}}"
-                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
+                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
                 >
                 </div>
                             <div>
@@ -68,7 +68,7 @@
                     type="text"
                     wire:model="tokens"
                     value="{{$tokens}}"
-                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
+                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
                 >
                 </div>
 
@@ -91,7 +91,7 @@
             <div class="pt-6 mt-6 border-t border-gray-100 dark:border-gray-800 flex justify-end">
                 <button
                     wire:click="save"
-                    class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white dark:text-gray-950 font-bold tracking-wide shadow-sm transition transform active:scale-95"
+                    class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400 text-white dark:text-gray-950 font-bold tracking-wide shadow-sm transition transform active:scale-95"
                 >
                     Publish Modifications
                 </button>

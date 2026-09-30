@@ -133,7 +133,9 @@ if (empty($context)) {
   //  end 
 
     $usage = $result->usage;
+    if(auth()->user()) {
     $this->storeAiLog->handler($chatId, $usage);
+      }
     return $context;
   }
 

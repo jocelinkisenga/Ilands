@@ -82,8 +82,8 @@
                                 </td>
 
                                 <td class="p-4 pr-6 text-center whitespace-nowrap">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
-                                        <span class="w-1.5 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full mr-1.5"></span>
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20">
+                                        <span class="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full mr-1.5"></span>
                                         Traited
                                     </span>
                                 </td>
@@ -127,8 +127,8 @@
 
                         <!-- Statut de traitement -->
                         <div class="flex justify-end mt-1">
-                            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20">
-                                <span class="w-1.5 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full mr-1.5 animate-pulse"></span>
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20">
+                                <span class="w-1.5 h-1.5 bg-blue-500 dark:bg-blue-400 rounded-full mr-1.5 animate-pulse"></span>
                                 Traited
                             </span>
                         </div>

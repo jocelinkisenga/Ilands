@@ -5,16 +5,16 @@
             <div class="flex items-center">
                 <a href="/" class="flex-shrink-0 flex items-center gap-2">
                     <span class="text-xl font-black tracking-tighter uppercase text-slate-900 dark:text-white">
-                        ILANDS <span class="text-green-600 dark:text-green-500">SOLUTIONS</span>
+                        ILANDS <span class="text-blue-600 dark:text-blue-500">SOLUTIONS</span>
                     </span>
                 </a>
             </div>
 
             <div class="hidden lg:flex items-center space-x-6">
  
-                <a href="/pricing" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('Pricing')}}</a>
-                <a href="/blog" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('blog')}}</a>
-                <a href="/contact" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{__('Contact')}}</a>
+                <a href="/pricing" class="text-xs text-black font-bold uppercase tracking-widest hover:text-blue-600 dark:text-blue-500  dark:hover:text-blue-500 transition">{{__('Pricing')}}</a>
+                <a href="/blog" class="text-xs text-black font-bold uppercase tracking-widest hover:text-blue-600 dark:text-blue-500  dark:hover:text-blue-500 transition">{{__('blog')}}</a>
+                <a href="/contact" class="text-xs text-black font-bold uppercase tracking-widest hover:text-blue-600 dark:text-blue-500  dark:hover:text-blue-500 transition">{{__('Contact')}}</a>
                 
                 <!-- Intégration Desktop -->
                 <div class="flex items-center">
@@ -25,16 +25,16 @@
 
                 @auth
                 @if(auth()->user()->role->value === "client")
-                    <a href="/dashboard" class="text-xs font-bold uppercase tracking-widest text-green-600 text-black dark:text-green-500 transition">My dashboard</a>
+                    <a href="/dashboard" class="text-xs font-bold uppercase tracking-widest text-blue-600 text-black dark:text-blue-500 transition">My dashboard</a>
                 @else
-                    <a href="{{ route('admin.dashboard') }}" class="text-xs font-bold uppercase tracking-widest text-green-600 text-black dark:text-green-500 transition">Dashboard</a>
+                    <a href="{{ route('admin.dashboard') }}" class="text-xs font-bold uppercase tracking-widest text-blue-600 text-black dark:text-blue-500 transition">Dashboard</a>
                 @endif
                     <form method="POST" action="{{ route('logout') }}" class="inline">
                         @csrf
                         <button type="submit" class="text-xs font-bold uppercase tracking-widest text-red-500 hover:text-red-400 transition">Logout</button>
                     </form>
                 @else
-                    <a href="/login" class="text-xs text-black font-bold uppercase tracking-widest hover:text-green-600 dark:text-green-500  dark:hover:text-green-500 transition">{{ __('Login') }}</a>
+                    <a href="/login" class="text-xs text-black font-bold uppercase tracking-widest hover:text-blue-600 dark:text-blue-500  dark:hover:text-blue-500 transition">{{ __('Login') }}</a>
                 @endauth
 
                 <button @click.prevent="$store.theme.toggle()" class="ml-4 p-2 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-white transition">
@@ -106,9 +106,9 @@
         <div class="pt-4 space-y-4">
             @auth
                 @if(auth()->user()->role->value === "client")
-                <a href="/dashboard" class="block text-sm font-bold uppercase tracking-widest text-green-600 py-2">My Dashboard</a>
+                <a href="/dashboard" class="block text-sm font-bold uppercase tracking-widest text-blue-600 py-2">My Dashboard</a>
                 @else
-                <a href="{{ route('admin.dashboard') }}" class="block text-sm font-bold uppercase tracking-widest text-green-600 py-2">Dashboard</a>
+                <a href="{{ route('admin.dashboard') }}" class="block text-sm font-bold uppercase tracking-widest text-blue-600 py-2">Dashboard</a>
                 @endif
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -116,7 +116,7 @@
                 </form>
             @else
                 <a href="/login" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-2">Login</a>
-                <a href="/tax-screener" class="block bg-green-600 dark:bg-green-500 text-white px-6 py-4 rounded-xl font-bold text-center text-xs uppercase tracking-widest shadow-lg shadow-green-900/20">
+                <a href="/tax-screener" class="block bg-blue-600 dark:bg-blue-500 text-white px-6 py-4 rounded-xl font-bold text-center text-xs uppercase tracking-widest shadow-lg shadow-blue-900/20">
                     Get your free tax screener
                 </a>
             @endauth

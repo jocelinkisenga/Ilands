@@ -3,7 +3,7 @@
 
     <!-- HERO -->
     <section class="relative py-24 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-green-600/20 via-black to-black"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-black to-black"></div>
 
         <div class="relative max-w-5xl mx-auto px-6 text-center">
             <h1 class="text-4xl md:text-5xl font-bold">
@@ -23,8 +23,8 @@
         <div class="max-w-4xl mx-auto px-6 space-y-6">
 
             <!-- 1 Credentials -->
-            <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
-                <h3 class="text-xl font-semibold text-green-500 mb-4">
+            <div class="bg-white/5 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-blue-500 mb-4">
                    What's included in the free tier?
                 </h3>
                 <p class="text-gray-300 leading-relaxed">
@@ -34,8 +34,8 @@
 
 
             <!-- 2 Security -->
-            <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
-                <h3 class="text-xl font-semibold text-green-500 mb-4">
+            <div class="bg-white/5 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-blue-500 mb-4">
                     Can I cancel my Pro subscription anytime?
                 </h3>
                 <p class="text-gray-300 leading-relaxed">
@@ -43,8 +43,8 @@
                 </p>
             </div>
 
-                        <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
-                <h3 class="text-xl font-semibold text-green-500 mb-4">
+                        <div class="bg-white/5 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-blue-500 mb-4">
                     What is Priority Match?
                 </h3>
                 <p class="text-gray-300 leading-relaxed">
@@ -52,8 +52,8 @@
                 </p>
             </div>
 
-            <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
-                <h3 class="text-xl font-semibold text-green-500 mb-4">
+            <div class="bg-white/5 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-blue-500 mb-4">
                     Is this tax preparation or legal advice?
 
                 </h3>
@@ -64,8 +64,8 @@
 
 
             <!-- 3 Advisory vs Prep -->
-            <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
-                <h3 class="text-xl font-semibold text-green-500 mb-4">
+            <div class="bg-white/5 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-blue-500 mb-4">
                     What is the difference between tax advisory and tax preparation?
                 </h3>
                 <p class="text-gray-300 leading-relaxed">
@@ -78,8 +78,8 @@
 
 
             <!-- 4 AI -->
-            <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
-                <h3 class="text-xl font-semibold text-green-500 mb-4">
+            <div class="bg-white/5 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-blue-500 mb-4">
                     How is artificial intelligence used in your advisory process?
                 </h3>
                 <p class="text-gray-300 leading-relaxed">
@@ -91,8 +91,8 @@
 
 
             <!-- 5 Refund Policy -->
-            <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
-                <h3 class="text-xl font-semibold text-green-500 mb-4">
+            <div class="bg-white/5 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-blue-500 mb-4">
                     What is your refund or engagement policy?
                 </h3>
                 <p class="text-gray-300 leading-relaxed">
@@ -105,8 +105,8 @@
 
 
             <!-- 6 Who This Is For -->
-            <div class="bg-white/5 backdrop-blur-xl border border-green-500/20 rounded-2xl p-8">
-                <h3 class="text-xl font-semibold text-green-500 mb-4">
+            <div class="bg-white/5 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-8">
+                <h3 class="text-xl font-semibold text-blue-500 mb-4">
                     Who is this advisory service best suited for?
                 </h3>
                 <p class="text-gray-300 leading-relaxed">
@@ -123,7 +123,7 @@
 
 
     <!-- TRUST REINFORCEMENT SECTION -->
-    <section class="py-20 border-t border-green-500/10 text-center">
+    <section class="py-20 border-t border-blue-500/10 text-center">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-3xl font-bold mb-6">
                 Still Have Questions?
@@ -134,7 +134,7 @@
                 personalized clarity before making any commitment.
             </p>
 
-            <a href="#" class="px-8 py-4 bg-green-600 hover:bg-green-500 rounded-xl font-semibold text-lg transition shadow-lg">
+            <a href="#" class="px-8 py-4 bg-blue-600 hover:bg-blue-500 rounded-xl font-semibold text-lg transition shadow-lg">
                 Schedule Consultation
             </a>
         </div>

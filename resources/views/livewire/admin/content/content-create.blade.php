@@ -44,7 +44,7 @@
                     type="text"
                     wire:model="title"
                     placeholder="Ex: How to ..."
-                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
+                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3"
                 >
             </div>
 
@@ -55,7 +55,7 @@
                     </label>
                     <select
                         wire:model.live="type"
-                        class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors px-5 py-3"
+                        class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors px-5 py-3"
                     >
                         <option value="blog">Blog</option>
                         <option value="video">Video</option>
@@ -70,7 +70,7 @@
                     </label>
                     <select
                         wire:model="access_level"
-                        class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors px-5 py-3"
+                        class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors px-5 py-3"
                     >
                         <option value="free">Free</option>
                         <option value="pro">Pro</option>
@@ -87,7 +87,7 @@
                     wire:model="excerpt"
                     rows="3"
                     placeholder="Un bref résumé du contenu..."
-                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3 resize-none"
+                    class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors placeholder-gray-400 dark:placeholder-gray-500 px-5 py-3 resize-none"
                 ></textarea>
             </div>
 
@@ -105,9 +105,9 @@
                             file:mr-4 file:py-2.5 file:px-4
                             file:rounded-xl file:border-0
                             file:text-sm file:font-bold
-                            file:bg-emerald-50 file:text-emerald-700
-                            hover:file:bg-emerald-100
-                            dark:file:bg-emerald-500/10 dark:file:text-emerald-400 dark:hover:file:bg-emerald-500/20
+                            file:bg-blue-50 file:text-blue-700
+                            hover:file:bg-blue-100
+                            dark:file:bg-blue-500/10 dark:file:text-blue-400 dark:hover:file:bg-blue-500/20
                             transition cursor-pointer"
                     >
                     @if ($thumbnail)
@@ -131,9 +131,9 @@
                                 file:mr-4 file:py-2.5 file:px-4 
                                 file:rounded-xl file:border-0 
                                 file:text-sm file:font-bold 
-                                file:bg-emerald-50 file:text-emerald-700 
-                                hover:file:bg-emerald-100 
-                                dark:file:bg-emerald-500/10 dark:file:text-emerald-400 dark:hover:file:bg-emerald-500/20
+                                file:bg-blue-50 file:text-blue-700 
+                                hover:file:bg-blue-100 
+                                dark:file:bg-blue-500/10 dark:file:text-blue-400 dark:hover:file:bg-blue-500/20
                                 transition cursor-pointer"
                         >
                         @error('document') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
@@ -150,15 +150,15 @@
                                 file:mr-4 file:py-2.5 file:px-4 
                                 file:rounded-xl file:border-0 
                                 file:text-sm file:font-bold 
-                                file:bg-emerald-50 file:text-emerald-700 
-                                hover:file:bg-emerald-100 
-                                dark:file:bg-emerald-500/10 dark:file:text-emerald-400 dark:hover:file:bg-emerald-500/20
+                                file:bg-blue-50 file:text-blue-700 
+                                hover:file:bg-blue-100 
+                                dark:file:bg-blue-500/10 dark:file:text-blue-400 dark:hover:file:bg-blue-500/20
                                 transition cursor-pointer"
                         >
                         <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Taille maximale : 50 Mo.</p>
                         @error('video') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
                         
-                        <div wire:loading wire:target="video" class="text-sm text-emerald-500 mt-2 font-medium">
+                        <div wire:loading wire:target="video" class="text-sm text-blue-500 mt-2 font-medium">
                             Upload en cours, veuillez patienter...
                         </div>
                     @else
@@ -183,7 +183,7 @@
             <div class="pt-6 mt-6 border-t border-gray-100 dark:border-gray-800 flex justify-end">
                 <button
                     wire:click="save"
-                    class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400 text-white dark:text-gray-950 font-bold tracking-wide shadow-sm transition transform active:scale-95"
+                    class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400 text-white dark:text-gray-950 font-bold tracking-wide shadow-sm transition transform active:scale-95"
                 >
                     Publish Content
                 </button>

@@ -39,7 +39,7 @@
 
                     @if($content->access_level === 'free')
 
-                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-500">
+                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-500">
 
                             FREE
 
@@ -141,7 +141,7 @@
                         <a
                             href="{{ asset('storage/' . $content->document_path) }}"
                             target="_blank"
-                            class="inline-flex items-center px-6 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium transition"
+                            class="inline-flex items-center px-6 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-medium transition"
                         >
                             Download PDF
                         </a>
@@ -166,7 +166,7 @@
 
                 <div class="mt-14 flex flex-wrap gap-4">
 
-                    <button class="px-5 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-emerald-500 transition">
+                    <button class="px-5 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-blue-500 transition">
 
                         Share
 
@@ -174,7 +174,7 @@
 
                     <button
     wire:click="toggleSave"
-    class="px-5 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-emerald-500 transition"
+    class="px-5 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:border-blue-500 transition"
 >
 
     @if($isSaved)
@@ -295,7 +295,7 @@
 
                                         <div>
 
-                                            <h4 class="font-medium text-gray-900 dark:text-white group-hover:text-emerald-500 transition line-clamp-2">
+                                            <h4 class="font-medium text-gray-900 dark:text-white group-hover:text-blue-500 transition line-clamp-2">
 
                                                 {{ $related->title }}
 

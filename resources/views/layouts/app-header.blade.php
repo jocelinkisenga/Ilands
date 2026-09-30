@@ -40,15 +40,15 @@
             {{-- Logo --}}
             <a href="/" class="flex-shrink-0">
                 <span class="text-lg sm:text-xl font-black tracking-tighter uppercase text-slate-900 dark:text-white">
-                    USTACK MY <span class="text-green-600 dark:text-green-500">TAXES</span>
+                    USTACK MY <span class="text-blue-600 dark:text-green-500">TAXES</span>
                 </span>
             </a>
 
             {{-- Badge (xl and up) --}}
-            <span class="hidden lg:inline-flex items-center gap-1.5 px-2 py-1 rounded bg-red-500/10 border border-red-500/20 text-[10px] font-mono font-bold tracking-wider text-red-400 whitespace-nowrap">
+            {{-- <span class="hidden lg:inline-flex items-center gap-1.5 px-2 py-1 rounded bg-red-500/10 border border-red-500/20 text-[10px] font-mono font-bold tracking-wider text-red-400 whitespace-nowrap">
                 <span class="flex h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse"></span>
                 Educational guidance only
-            </span>
+            </span> --}}
         </div>
 
         {{-- Dots button (mobile only) --}}

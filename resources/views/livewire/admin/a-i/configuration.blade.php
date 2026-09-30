@@ -12,7 +12,7 @@
     </div>
 
     @if (session('success'))
-        <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-700 dark:border-emerald-900/40 dark:bg-emerald-950/30 dark:text-emerald-400">
+        <div class="rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-700 dark:border-blue-900/40 dark:bg-blue-950/30 dark:text-blue-400">
             {{ session('success') }}
         </div>
     @endif
@@ -127,7 +127,7 @@
         <button
             wire:click="save"
             wire:loading.attr="disabled"
-            class="rounded-xl bg-emerald-600 px-5 py-3 font-medium text-white transition hover:bg-emerald-700 disabled:opacity-50"
+            class="rounded-xl bg-blue-600 px-5 py-3 font-medium text-white transition hover:bg-blue-700 disabled:opacity-50"
         >
             <span wire:loading.remove>
                 Save configuration

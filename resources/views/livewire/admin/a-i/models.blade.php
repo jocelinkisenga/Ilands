@@ -14,7 +14,7 @@
         <button
             type="button"
             wire:click="create"
-            class="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+            class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
         >
             + Add Model
         </button>
@@ -22,7 +22,7 @@
 
     {{-- Messages --}}
     @if (session('success'))
-        <div class="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-400">
+        <div class="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-700 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-400">
             {{ session('success') }}
         </div>
     @endif
@@ -39,12 +39,12 @@
             type="search"
             wire:model.live.debounce.300ms="search"
             placeholder="Search models..."
-            class="rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+            class="rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
         >
 
         <select
             wire:model.live="providerId"
-            class="rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+            class="rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
         >
             <option value="">All providers</option>
             @foreach ($providers as $provider)
@@ -89,8 +89,8 @@
                             </td>
                             <td class="px-6 py-4">
                                 @if ($model->is_enabled)
-                                    <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400">
-                                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                    <span class="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700 dark:bg-blue-950/40 dark:text-blue-400">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-blue-500"></span>
                                         Enabled
                                     </span>
                                 @else
@@ -110,7 +110,7 @@
                                     </button>
                                     <button
                                         wire:click="toggleStatus({{ $model->id }})"
-                                        class="rounded-lg px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-gray-900 {{ $model->is_enabled ? 'text-amber-600 hover:bg-amber-50 focus:ring-amber-500' : 'text-emerald-600 hover:bg-emerald-50 focus:ring-emerald-500' }}"
+                                        class="rounded-lg px-3 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-gray-900 {{ $model->is_enabled ? 'text-amber-600 hover:bg-amber-50 focus:ring-amber-500' : 'text-blue-600 hover:bg-blue-50 focus:ring-blue-500' }}"
                                     >
                                         {{ $model->is_enabled ? 'Disable' : 'Enable' }}
                                     </button>
@@ -175,7 +175,7 @@
                             </label>
                             <select
                                 wire:model="providerId"
-                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
                             >
                                 <option value="">Select provider</option>
                                 @foreach ($providers as $provider)
@@ -197,7 +197,7 @@
                                     type="text"
                                     wire:model="name"
                                     placeholder="Gemini Flash"
-                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
                                 >
                                 @error('name')
                                     <p class="mt-1.5 text-xs font-medium text-red-600 dark:text-red-400">{{ $message }}</p>
@@ -212,7 +212,7 @@
                                     type="text"
                                     wire:model="label"
                                     placeholder="Gemini Flash Latest"
-                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
                                 >
                             </div>
                         </div>
@@ -226,7 +226,7 @@
                                 type="text"
                                 wire:model="modelIdentifier"
                                 placeholder="gemini-flash-latest"
-                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 font-mono text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 font-mono text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
                             >
                             <p class="mt-1.5 text-xs text-gray-500">
                                 Exact model identifier passed to Prism.
@@ -246,7 +246,7 @@
                                 wire:model="priority"
                                 min="1"
                                 max="10000"
-                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
                             >
                             <p class="mt-1.5 text-xs text-gray-500">
                                 Lower numbers represent higher priority.
@@ -263,7 +263,7 @@
                                     type="number"
                                     wire:model="maxInputTokens"
                                     min="1"
-                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
                                 >
                             </div>
 
@@ -275,7 +275,7 @@
                                     type="number"
                                     wire:model="maxOutputTokens"
                                     min="1"
-                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
                                 >
                             </div>
                         </div>
@@ -290,7 +290,7 @@
                                     type="number"
                                     step="0.000001"
                                     wire:model="inputPricePerMillion"
-                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
                                 >
                             </div>
 
@@ -302,7 +302,7 @@
                                     type="number"
                                     step="0.000001"
                                     wire:model="outputPricePerMillion"
-                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
+                                    class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm transition-colors focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-700 dark:bg-gray-950 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500/20"
                                 >
                             </div>
                         </div>
@@ -312,7 +312,7 @@
                             <input
                                 type="checkbox"
                                 wire:model="isEnabled"
-                                class="h-5 w-5 rounded border-gray-300 text-emerald-600 transition focus:ring-emerald-500 dark:border-gray-700 dark:bg-gray-900 dark:checked:bg-emerald-600"
+                                class="h-5 w-5 rounded border-gray-300 text-blue-600 transition focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-900 dark:checked:bg-blue-600"
                             >
                             <span class="text-sm font-medium text-gray-900 dark:text-gray-200">
                                 Model enabled
@@ -334,7 +334,7 @@
                         <button
                             type="submit"
                             wire:loading.attr="disabled"
-                            class="rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 disabled:opacity-50 dark:focus:ring-offset-gray-900"
+                            class="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 dark:focus:ring-offset-gray-900"
                         >
                             <span wire:loading.remove>
                                 Save Model

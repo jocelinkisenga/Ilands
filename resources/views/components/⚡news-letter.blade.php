@@ -32,10 +32,10 @@ new class extends Component
                                name="email" 
                                required 
                                placeholder="Enter your email" 
-                               class="bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-600 dark:focus:border-green-500 transition flex-1">
+                               class="bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 transition flex-1">
                         
                         <button  wire:click="save"
-                                class="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white font-semibold text-sm px-6 py-3 rounded-xl transition shadow-sm whitespace-nowrap">
+                                class="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold text-sm px-6 py-3 rounded-xl transition shadow-sm whitespace-nowrap">
                             Subscribe
                         </button>
                     </div>

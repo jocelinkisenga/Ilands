@@ -4,7 +4,7 @@
 
             <!-- Header Section -->
             <section class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-emerald-500 dark:text-emerald-400">
+                <h1 class="text-4xl md:text-5xl font-bold text-blue-500 dark:text-blue-400">
                     About ILANDS Solutions
                 </h1>
                 <p class="mt-4 text-gray-600 dark:text-gray-300 text-lg max-w-3xl mx-auto">
@@ -13,9 +13,9 @@
             </section>
 
             <!-- Owner Profile Card -->
-            <section class="flex flex-col md:flex-row items-center bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-green-500/30 rounded-2xl p-8 md:p-12 shadow-lg transition-colors">
+            <section class="flex flex-col md:flex-row items-center bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-blue-500/30 rounded-2xl p-8 md:p-12 shadow-lg transition-colors">
                 <div class="md:w-1/3 flex justify-center md:justify-start mb-6 md:mb-0">
-                    <img src="{{ asset('images/shabani.jpg') }}" alt="Shabani, EA" class="w-48 h-48 rounded-full object-cover border-4 border-green-500/50 dark:border-emerald-400 transition-colors">
+                    <img src="{{ asset('images/shabani.jpg') }}" alt="Shabani, EA" class="w-48 h-48 rounded-full object-cover border-4 border-blue-500/50 dark:border-emerald-400 transition-colors">
                 </div>
                 <div class="md:w-2/3 md:pl-10 space-y-4">
                     <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
@@ -34,8 +34,8 @@
 
             <!-- Mission & Problem/Solution Cards -->
             <section class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors">
-                    <h3 class="text-xl font-semibold text-green-600 dark:text-emerald-400">Our Mission</h3>
+                <div class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
+                    <h3 class="text-xl font-semibold text-blue-600 dark:text-emerald-400">Our Mission</h3>
                     <p class="mt-2 text-gray-600 dark:text-gray-300">
                         Making Professional Tax Guidance Accessible
                     </p>
@@ -49,12 +49,12 @@
                     </p>
                 </div>
 
-                <div class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors">
-                    <h3 class="text-xl font-semibold text-green-600 dark:text-emerald-400">Underserved Markets</h3>
+                <div class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
+                    <h3 class="text-xl font-semibold text-blue-600 dark:text-emerald-400">Underserved Markets</h3>
                     <p class="mt-2 text-gray-600 dark:text-gray-300">
                         57+ million gig workers and 9+ million American expats need specialized tax guidance. We built ILANDS specifically for these communities that traditional services overlook.
                     </p>
-                    <h3 class="mt-4 text-xl font-semibold text-green-600 dark:text-emerald-400">Education First</h3>
+                    <h3 class="mt-4 text-xl font-semibold text-blue-600 dark:text-emerald-400">Education First</h3>
                     <p class="text-gray-600 dark:text-gray-300">
                         We believe informed taxpayers make better decisions. Our approach prioritizes teaching you about deductions and strategies — knowledge you'll use for years to come.
                     </p>
@@ -74,7 +74,7 @@
       
       <!-- Advisory Focus Card -->
       <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6 flex flex-col items-center text-center hover:scale-105 transform transition">
-        <div class="bg-green-100 dark:bg-green-800 text-green-600 dark:text-green-300 p-4 rounded-full mb-4">
+        <div class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300 p-4 rounded-full mb-4">
           <!-- Heroicon: academic-cap -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -139,38 +139,38 @@
       <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-8 hover:scale-105 transform transition">
         <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
           <!-- Heroicon: users -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-green-600 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m0-2.13a4 4 0 100-8 4 4 0 000 8zm8 0a4 4 0 100-8 4 4 0 000 8z" />
           </svg>
           Gig Economy Workers
         </h3>
         <ul class="space-y-3 text-gray-600 dark:text-gray-300 text-left">
           <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             Uber, Lyft, DoorDash drivers
           </li>
           <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             Freelancers and contractors
           </li>
           <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             Side hustle entrepreneurs
           </li>
           <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 dark:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             Etsy sellers and creators
           </li>
-          <li class="flex items-center gap-2 font-semibold text-green-700 dark:text-green-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-700 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <li class="flex items-center gap-2 font-semibold text-blue-700 dark:text-blue-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             Learn about gig worker deductions
@@ -227,24 +227,24 @@
 
             <!-- Our Approach -->
             <section class="space-y-8">
-                <h2 class="text-3xl font-bold text-center text-green-600 dark:text-emerald-400">Education-First Tax Advisory</h2>
+                <h2 class="text-3xl font-bold text-center text-blue-600 dark:text-emerald-400">Education-First Tax Advisory</h2>
                 <div class="grid md:grid-cols-3 gap-6 text-center">
-                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors">
-                        <h3 class="text-2xl font-bold text-green-600 dark:text-emerald-400">01</h3>
+                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
+                        <h3 class="text-2xl font-bold text-blue-600 dark:text-emerald-400">01</h3>
                         <h4 class="font-semibold mt-2">Assess</h4>
                         <p class="text-gray-600 dark:text-gray-300 text-sm">
                             We analyze your unique tax situation, income sources, and potential deductions.
                         </p>
                     </div>
-                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors">
-                        <h3 class="text-2xl font-bold text-green-600 dark:text-emerald-400">02</h3>
+                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
+                        <h3 class="text-2xl font-bold text-blue-600 dark:text-emerald-400">02</h3>
                         <h4 class="font-semibold mt-2">Educate</h4>
                         <p class="text-gray-600 dark:text-gray-300 text-sm">
                             We explain opportunities, requirements, and strategies in plain language.
                         </p>
                     </div>
-                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors">
-                        <h3 class="text-2xl font-bold text-green-600 dark:text-emerald-400">03</h3>
+                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
+                        <h3 class="text-2xl font-bold text-blue-600 dark:text-emerald-400">03</h3>
                         <h4 class="font-semibold mt-2">Empower</h4>
                         <p class="text-gray-600 dark:text-gray-300 text-sm">
                             You make informed decisions with our expert guidance and ongoing support.
@@ -254,8 +254,8 @@
             </section>
 
             <!-- Compliance Card -->
-            <section class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-green-500/30 rounded-2xl p-6 shadow transition-colors space-y-4">
-                <h3 class="text-xl font-semibold text-green-600 dark:text-emerald-400">Licensed, Insured, and Compliant</h3>
+            <section class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors space-y-4">
+                <h3 class="text-xl font-semibold text-blue-600 dark:text-emerald-400">Licensed, Insured, and Compliant</h3>
                 <ul class="text-gray-600 dark:text-gray-300 space-y-1 text-sm">
                     <li>• Licensed Enrolled Agent (EA) — IRS License #EA-XXXXX</li>
                     <li>• Professional Liability Insurance — $1M coverage</li>
@@ -282,25 +282,25 @@
         <ul class="space-y-2 text-gray-600 dark:text-gray-300">
           <li class="flex items-center gap-3">
             <!-- Check Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             Tax education
           </li>
           <li class="flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             Strategic guidance
           </li>
           <li class="flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             Deduction identification
           </li>
           <li class="flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
             Personalized advisory services
