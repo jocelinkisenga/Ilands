@@ -129,7 +129,7 @@
       <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Limit Reached</h3>
       <p class="text-xs text-gray-600 dark:text-gray-400 mb-4">Upgrade your plan to unlock unlimited AI functionalities and remove all restrictions.</p>
 
-      @if(auth()->user()->plan == "free")
+      
       <a href="/price" class="inline-flex items-center justify-center px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-xl transition-colors w-full">
        Subscribe to a plan
       </a>
@@ -137,7 +137,7 @@
       <a href="{{ route('subscription.upgrade') }}" class="inline-flex items-center justify-center px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-xl transition-colors w-full">
        Upgrade your plan
       </a>
-      @endif
+     
      </div>
     </div>
     @endif
