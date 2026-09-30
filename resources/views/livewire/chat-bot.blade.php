@@ -87,7 +87,7 @@
      <div class="grid grid-cols-1 gap-2 w-full">
       @foreach($defaultQuestions as $question)
       <button wire:click="$set('prompt', '{{$question->message}}')" class="text-left px-3.5 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#2A2A2A] hover:bg-gray-50 dark:hover:bg-[#333333] transition-colors group">
-       <p class="font-medium text-gray-900 dark:text-gray-100 text-[13px] group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{{$question->message}}</p>
+       <p class="font-medium text-gray-900 dark:text-gray-100 text-[13px] group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{{$question->message}}</p>
       </button>
       @endforeach
      </div>
@@ -121,21 +121,17 @@
 
     {{-- TOKEN ERROR --}}
     @if($guestLimitReached == 2)
-    <div class="w-full bg-emerald-50 dark:bg-emerald-900/10 rounded-2xl border border-emerald-100 dark:border-emerald-800/30 p-5">
+    <div class="w-full bg-blue-50 dark:bg-blue-900/10 rounded-2xl border border-blue-100 dark:border-blue-800/30 p-5">
      <div class="flex flex-col items-center text-center">
-      <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-800/50 flex items-center justify-center mb-3 text-emerald-600 dark:text-emerald-400">
+      <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-800/50 flex items-center justify-center mb-3 text-blue-600 dark:text-blue-400">
        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
       </div>
       <h3 class="text-base font-semibold text-gray-900 dark:text-white mb-1">Limit Reached</h3>
-      <p class="text-xs text-gray-600 dark:text-gray-400 mb-4">Upgrade your plan to unlock unlimited AI functionalities and remove all restrictions.</p>
+      <p class="text-xs text-gray-600 dark:text-gray-400 mb-4">create account to unlock unlimited AI functionalities and remove all restrictions.</p>
 
       
-      <a href="/price" class="inline-flex items-center justify-center px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-xl transition-colors w-full">
-       Subscribe to a plan
-      </a>
-      @else
-      <a href="{{ route('subscription.upgrade') }}" class="inline-flex items-center justify-center px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-xl transition-colors w-full">
-       Upgrade your plan
+      <a href="/register" class="inline-flex items-center justify-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-xl transition-colors w-full">
+       create your account
       </a>
      
      </div>
