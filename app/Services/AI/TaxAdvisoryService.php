@@ -11,6 +11,8 @@ use App\Actions\StoreAiLog;
 use Prism\Prism\Exceptions\PrismRateLimitedException;
 use Prism\Prism\ValueObjects\ProviderRateLimit;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+
 class TaxAdvisoryService
 {
   public function __construct(public StoreAiLog $storeAiLog ,
@@ -133,7 +135,7 @@ if (empty($context)) {
   //  end 
 
     $usage = $result->usage;
-    if(auth()->user()) {
+    if(Auth::check()) {
     $this->storeAiLog->handler($chatId, $usage);
       }
     return $context;

@@ -4,7 +4,7 @@ use App\Models\AiLogs;
 use App\Models\Token;
 class StoreAiLog
 {
-  public function handler(int $chatId, $usage)
+  public function handler(?int $chatId, $usage)
   {
     $usadeTokens =
       ($usage->promptTokens ?? 0) + ($usage->completionTokens ?? 0);
