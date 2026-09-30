@@ -13,7 +13,7 @@ class ChatBot extends Component
 {
     use WithFileUploads;
 
-    private const GUEST_LIMIT = 2;
+    private const GUEST_LIMIT = 10;
 
     public bool $isLoading = false;
     public string $prompt = '';
