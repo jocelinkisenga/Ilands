@@ -5,7 +5,10 @@ namespace App\Livewire\Report;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\AiReport;
+use Livewire\Attributes\Layout;
 
+
+#[Layout('layouts.client')]
 class ReportAi extends Component
 {
     use WithPagination;

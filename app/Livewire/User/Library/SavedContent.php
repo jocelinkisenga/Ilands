@@ -3,7 +3,9 @@
 namespace App\Livewire\User\Library;
 
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
+#[Layout('layouts.client')]
 class SavedContent extends Component
 {
     public function render()

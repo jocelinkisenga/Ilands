@@ -9,6 +9,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use Laravel\Cashier\Events\WebhookReceived;
 use App\Listeners\StripeEventListener;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     if (!App::environment("local")) {
       URL::forceScheme("https");
     }
-
+    Blade::component('layouts.client', 'app-client');
     Event::listen(WebhookReceived::class, StripeEventListener::class);
   }
 }

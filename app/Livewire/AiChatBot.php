@@ -12,7 +12,10 @@ use App\Models\Chat;
 use App\Models\DefaultQuestions;
 use App\Services\TokenService;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Layout;
 
+
+#[Layout('layouts.client')]
 class AiChatBot extends Component
 {
     use WithFileUploads;

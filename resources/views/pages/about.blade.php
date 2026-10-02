@@ -15,7 +15,7 @@
             <!-- Owner Profile Card -->
             <section class="flex flex-col md:flex-row items-center bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-blue-500/30 rounded-2xl p-8 md:p-12 shadow-lg transition-colors">
                 <div class="md:w-1/3 flex justify-center md:justify-start mb-6 md:mb-0">
-                    <img src="{{ asset('images/shabani.jpg') }}" alt="Shabani, EA" class="w-48 h-48 rounded-full object-cover border-4 border-blue-500/50 dark:border-emerald-400 transition-colors">
+                    <img src="{{ asset('avatar.webp') }}" alt="Shabani, EA" class="w-48 h-48 rounded-full object-cover border-4 border-blue-500/50 dark:border-blue-400 transition-colors">
                 </div>
                 <div class="md:w-2/3 md:pl-10 space-y-4">
                     <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
@@ -35,7 +35,7 @@
             <!-- Mission & Problem/Solution Cards -->
             <section class="grid md:grid-cols-2 gap-8">
                 <div class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
-                    <h3 class="text-xl font-semibold text-blue-600 dark:text-emerald-400">Our Mission</h3>
+                    <h3 class="text-xl font-semibold text-blue-600 dark:text-blue-400">Our Mission</h3>
                     <p class="mt-2 text-gray-600 dark:text-gray-300">
                         Making Professional Tax Guidance Accessible
                     </p>
@@ -50,11 +50,11 @@
                 </div>
 
                 <div class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
-                    <h3 class="text-xl font-semibold text-blue-600 dark:text-emerald-400">Underserved Markets</h3>
+                    <h3 class="text-xl font-semibold text-blue-600 dark:text-blue-400">Underserved Markets</h3>
                     <p class="mt-2 text-gray-600 dark:text-gray-300">
                         57+ million gig workers and 9+ million American expats need specialized tax guidance. We built ILANDS specifically for these communities that traditional services overlook.
                     </p>
-                    <h3 class="mt-4 text-xl font-semibold text-blue-600 dark:text-emerald-400">Education First</h3>
+                    <h3 class="mt-4 text-xl font-semibold text-blue-600 dark:text-blue-400">Education First</h3>
                     <p class="text-gray-600 dark:text-gray-300">
                         We believe informed taxpayers make better decisions. Our approach prioritizes teaching you about deductions and strategies — knowledge you'll use for years to come.
                     </p>
@@ -227,24 +227,24 @@
 
             <!-- Our Approach -->
             <section class="space-y-8">
-                <h2 class="text-3xl font-bold text-center text-blue-600 dark:text-emerald-400">Education-First Tax Advisory</h2>
+                <h2 class="text-3xl font-bold text-center text-blue-600 dark:text-blue-400">Education-First Tax Advisory</h2>
                 <div class="grid md:grid-cols-3 gap-6 text-center">
                     <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
-                        <h3 class="text-2xl font-bold text-blue-600 dark:text-emerald-400">01</h3>
+                        <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">01</h3>
                         <h4 class="font-semibold mt-2">Assess</h4>
                         <p class="text-gray-600 dark:text-gray-300 text-sm">
                             We analyze your unique tax situation, income sources, and potential deductions.
                         </p>
                     </div>
                     <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
-                        <h3 class="text-2xl font-bold text-blue-600 dark:text-emerald-400">02</h3>
+                        <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">02</h3>
                         <h4 class="font-semibold mt-2">Educate</h4>
                         <p class="text-gray-600 dark:text-gray-300 text-sm">
                             We explain opportunities, requirements, and strategies in plain language.
                         </p>
                     </div>
                     <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
-                        <h3 class="text-2xl font-bold text-blue-600 dark:text-emerald-400">03</h3>
+                        <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">03</h3>
                         <h4 class="font-semibold mt-2">Empower</h4>
                         <p class="text-gray-600 dark:text-gray-300 text-sm">
                             You make informed decisions with our expert guidance and ongoing support.
@@ -255,7 +255,7 @@
 
             <!-- Compliance Card -->
             <section class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-xl border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors space-y-4">
-                <h3 class="text-xl font-semibold text-blue-600 dark:text-emerald-400">Licensed, Insured, and Compliant</h3>
+                <h3 class="text-xl font-semibold text-blue-600 dark:text-blue-400">Licensed, Insured, and Compliant</h3>
                 <ul class="text-gray-600 dark:text-gray-300 space-y-1 text-sm">
                     <li>• Licensed Enrolled Agent (EA) — IRS License #EA-XXXXX</li>
                     <li>• Professional Liability Insurance — $1M coverage</li>

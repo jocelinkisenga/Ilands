@@ -71,22 +71,12 @@ class TaxAdvisoryService
 
     // 3. Construction du message utilisateur ACTUEL avec son média attaché
     $finalPrompt = empty($currentPrompt)
-      ? "Analyse le document fourni."
+      ? "Analyze the sent document using the default prompt."
       : $currentPrompt;
     $conversation[] = new UserMessage($finalPrompt, $media);
 
 try {
-//begin essai
 
-    // 4. Exécution de la requête via Prism
-  //$response = Prism::text()
-    //  ->using("gemini", "gemini-flash-latest") 
-     // ->withSystemPrompt($this->systemPrompt())
-   //   ->withMessages($conversation)
-    //  ->generate();
-
-
-//end essai
 
 $result = $this->aiModelManager->generate(
     messages: $conversation,
@@ -114,15 +104,6 @@ $result = $this->aiModelManager->generate(
         'The service is currently unvalaible try again letter.'
     );
 }
-
-    //start essai
-
-   // $context = trim($response->text ?? "");
-  //  if (empty($context)) {
-    //  throw new \Exception(
-      //  "L'API Gemini a retourné une réponse vide pour le rapport."
-   //   );
-  //  }
 
     $context = trim($result->text);
 

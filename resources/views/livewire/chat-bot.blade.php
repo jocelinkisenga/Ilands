@@ -20,7 +20,7 @@
  <button
   type="button"
   @click="open = !open"
-  class="fixed bottom-5 right-5 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-lg shadow-black/20 hover:scale-105 active:scale-95 transition-transform duration-200 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-700"
+  class="fixed bottom-5 right-5 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-blue-500 dark:bg-white text-white dark:text-gray-900 shadow-lg shadow-black/20 hover:scale-105 active:scale-95 transition-transform duration-200 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-700"
   :aria-label="open ? 'Close chat' : 'Open chat'"
   :aria-expanded="open"
  >
@@ -50,7 +50,7 @@
   {{-- HEADER --}}
   <div class="flex-none flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-800">
    <div class="flex items-center gap-3">
-    <div class="flex items-center justify-center w-9 h-9 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900">
+    <div class="flex items-center justify-center w-9 h-9 rounded-full bg-blue-500 dark:bg-white text-white dark:text-gray-900">
      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
       <path fill-rule="evenodd" d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 01-1.422 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z" clip-rule="evenodd" />
      </svg>
@@ -76,7 +76,7 @@
     {{-- EMPTY STATE --}}
     {{-- @if(count($messages) === 0) --}}
     <div class="flex flex-col items-center text-center pt-4">
-     <div class="w-14 h-14 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center border border-gray-100 dark:border-gray-700/50 mb-4">
+     <div class="w-14 h-14 rounded-full bg-blue-50 dark:bg-gray-800 flex items-center justify-center border border-gray-100 dark:border-gray-700/50 mb-4">
       <span class="text-xl">✨</span>
      </div>
      <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">How can I help you?</h2>
@@ -101,7 +101,7 @@
      {{-- IA MESSAGE --}}
      @if($msg['role'] !== 'user')
      <div class="flex gap-3 w-full">
-      <div class="w-7 h-7 shrink-0 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 flex items-center justify-center mt-0.5">
+      <div class="w-7 h-7 shrink-0 rounded-full bg-blue-500 dark:bg-white text-white dark:text-gray-900 flex items-center justify-center mt-0.5">
        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5"><path fill-rule="evenodd" d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5z" clip-rule="evenodd" /></svg>
       </div>
       <div class="flex-1 min-w-0 prose prose-sm prose-slate dark:prose-invert max-w-none text-[14px] leading-relaxed text-gray-800 dark:text-gray-200 break-words">
@@ -210,7 +210,7 @@
       type="button"
       wire:click="sendMessage"
       wire:loading.attr="disabled"
-      class="flex items-center justify-center w-8 h-8 rounded-full bg-black dark:bg-white text-white dark:text-black hover:opacity-80 transition disabled:opacity-50 disabled:cursor-not-allowed"
+      class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 dark:bg-white text-white dark:text-black hover:opacity-80 transition disabled:opacity-50 disabled:cursor-not-allowed"
      >
       <svg wire:loading.remove xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />

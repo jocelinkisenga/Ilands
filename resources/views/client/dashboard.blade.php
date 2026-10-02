@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-client>
 <!-- Content -->
 
 
@@ -96,4 +96,4 @@
     </section>
   </main>
 
-</x-app-layout>
+</x-app-client>

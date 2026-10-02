@@ -25,7 +25,7 @@ class AiModelManager
 
         if ($models->isEmpty()) {
             throw new \RuntimeException(
-                'Aucun modèle IA actif n’est configuré.'
+                'No model configured.'
             );
         }
 
@@ -63,7 +63,7 @@ class AiModelManager
         }
 
         throw new \RuntimeException(
-            'Tous les fournisseurs IA disponibles ont échoué.',
+            'All ai models not working.',
             previous: $lastException
         );
     }

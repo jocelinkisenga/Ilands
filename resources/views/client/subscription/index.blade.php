@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-client>
     <div class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen py-10 transition-colors duration-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
             
@@ -250,4 +250,4 @@
 
         </div>
     </div>
-</x-app-layout>
+</x-app-client>

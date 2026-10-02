@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-client>
     {{-- <x-common.page-breadcrumb pageTitle="List of documents" />
     <div class="space-y-6">
         <x-common.component-card title="Analysed documents">
@@ -142,4 +142,4 @@
         </div>
     </div>
 
-</x-app-layout>
+</x-app-client>

@@ -2,11 +2,14 @@
 
 namespace App\Livewire\User\Library;
 
+use Livewire\Attributes\Layout;
 use App\Models\Content;
 use Livewire\Component;
 
+#[Layout('layouts.client')]
 class ContentShow extends Component
 {
+
 public bool $isSaved = false;
     public Content $content;
 
