@@ -9,6 +9,7 @@
     </div>
 
     <!-- Upgrade banner -->
+    @if(auth()->user()->plan != "Premium")
     <section class="mt-6 overflow-hidden rounded-2xl p-5 text-white sm:p-6" style="background:linear-gradient(135deg,#1e3a5f,#33527f)" aria-labelledby="upgrade-title">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div class="flex items-start gap-4">
@@ -23,7 +24,7 @@
         </a>
       </div>
     </section>
-
+  @endif
     <!-- Start here -->
     <section class="mt-10" aria-labelledby="start-title">
       <h2 id="start-title" class="text-lg font-semibold">🎯 Start here</h2>
@@ -61,11 +62,11 @@
     <section class="mt-10" aria-labelledby="quick-title">
       <h2 id="quick-title" class="text-lg font-semibold">Quick actions</h2>
       <div class="mt-4 grid gap-3 sm:grid-cols-3 sm:gap-4">
-        <a href="#" class="flex items-center gap-3 rounded-2xl border border-line bg-surface p-4 transition hover:border-navy/40 hover:shadow-md">
+        <a href="{{route('library.index')}}" class="flex items-center gap-3 rounded-2xl border border-line bg-surface p-4 transition hover:border-navy/40 hover:shadow-md">
           <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-500/15"><svg class="h-5 w-5"><use href="#i-book"/></svg></span>
           <span class="min-w-0"><span class="block text-sm font-semibold">Browse library</span><span class="block truncate text-xs text-muted">Explore videos and documents</span></span>
         </a>
-        <a href="#" class="flex items-center gap-3 rounded-2xl border border-line bg-surface p-4 transition hover:border-navy/40 hover:shadow-md">
+        <a href="/chat" class="flex items-center gap-3 rounded-2xl border border-line bg-surface p-4 transition hover:border-navy/40 hover:shadow-md">
           <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-green-100 text-green-600 dark:bg-green-500/15"><svg class="h-5 w-5"><use href="#i-chat"/></svg></span>
           <span class="min-w-0"><span class="block text-sm font-semibold">Ask AI</span><span class="block truncate text-xs text-muted">Get instant tax answers</span></span>
         </a>
@@ -79,17 +80,17 @@
     <!-- Usage -->
     <section class="mt-6 grid grid-cols-3 gap-3 sm:gap-4" aria-label="Your free usage">
       <div class="rounded-2xl border border-line bg-surface p-4 text-center">
-        <p class="text-xl font-bold sm:text-2xl">2<span class="text-muted">/5</span></p>
+        <p class="text-xl font-bold sm:text-2xl"><span class="text-muted">/5</span></p>
         <p class="mt-1 text-xs text-muted">Free videos used</p>
         <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-page"><div class="h-full rounded-full bg-navy" style="width:40%"></div></div>
       </div>
       <div class="rounded-2xl border border-line bg-surface p-4 text-center">
-        <p class="text-xl font-bold sm:text-2xl">4<span class="text-muted">/10</span></p>
+        <p class="text-xl font-bold sm:text-2xl"><span class="text-muted">/10</span></p>
         <p class="mt-1 text-xs text-muted">Free docs used</p>
         <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-page"><div class="h-full rounded-full bg-navy" style="width:40%"></div></div>
       </div>
       <div class="rounded-2xl border border-line bg-surface p-4 text-center">
-        <p class="text-xl font-bold sm:text-2xl">3<span class="text-muted">/5</span></p>
+        <p class="text-xl font-bold sm:text-2xl"><span class="text-muted">/5</span></p>
         <p class="mt-1 text-xs text-muted">AI questions today</p>
         <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-page"><div class="h-full rounded-full bg-navy" style="width:60%"></div></div>
       </div>

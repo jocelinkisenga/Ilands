@@ -116,7 +116,7 @@
                     <button type="submit" class="block w-full text-left text-sm font-bold uppercase tracking-widest text-red-500 py-2">Logout</button>
                 </form>
             @else
-
+            <a href="/login" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white  border-b border-slate-100  dark:border-white/5">login</a>
             @endauth
         </div>
     </div>

@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-client>
 <div class="max-w-5xl mx-auto p-2">
 
     <h1 class="text-2xl font-bold mb-6 text-black dark:text-white">
@@ -72,4 +72,4 @@
     </div>
 
 </div>
-</x-app-layout>
+</x-app-client>

@@ -46,7 +46,7 @@
        aria-label="Main navigation">
   <div class="flex h-14 items-center justify-between px-4">
     <a href="/" class="flex items-center gap-2.5 rounded-lg focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2">
-      <span class="grid h-8 w-8 place-items-center rounded-lg bg-blue-900 dark:bg-blue-700 text-sm font-bold text-white">UNSTACK </span>
+      <span class="grid  place-items-center p-2 rounded  bg-blue-900 dark:bg-blue-700 text-sm font-bold text-white">UNSTACK </span>
       <span class="text-sm font-bold tracking-wide">MY TAXES</span>
     </a>
     <button id="closeNav" type="button" class="grid h-9 w-9 place-items-center rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-950 lg:hidden focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2" aria-label="Close menu">
@@ -90,8 +90,8 @@
   <header class="sticky top-0 z-30 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur lg:hidden pt-[env(safe-area-inset-top,0px)]">
     <div class="flex h-14 items-center justify-between px-4">
       <a href="#" class="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2">
-        <span class="grid h-8 w-8 place-items-center rounded-lg bg-blue-900 dark:bg-blue-700 text-sm font-bold text-white">I</span>
-        <span class="text-sm font-bold tracking-wide">ILANDS</span>
+        <span class="grid h-8 w-8 place-items-center rounded-lg bg-blue-900 dark:bg-blue-700 text-sm font-bold text-white">U</span>
+        <span class="text-sm font-bold tracking-wide">TAXES</span>
       </a>
       <button id="openNav" type="button" class="grid h-10 w-10 place-items-center rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-950 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
         <svg class="h-6 w-6"><use href="#i-menu"/></svg>
