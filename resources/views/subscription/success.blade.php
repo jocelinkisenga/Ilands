@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-client>
     <div class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 px-4 sm:px-6 py-12 transition-colors duration-300">
         <div class="max-w-md w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm p-8 text-center">
 
@@ -37,4 +37,4 @@
             
         </div>
     </div>
-</x-app-layout>
+</x-app-client>

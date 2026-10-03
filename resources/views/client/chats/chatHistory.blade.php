@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-client>
  <div class="w-full min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 lg:p-8">
 
   <div class="max-w-6xl mx-auto bg-white dark:bg-gray-800 shadow-sm rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
@@ -106,4 +106,4 @@
 
   </div>
  </div>
-</x-app-layout>
+</x-app-client>

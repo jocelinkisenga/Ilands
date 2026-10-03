@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-client>
     <div class="max-w-7xl mx-auto p-6 md:p-10 space-y-12">
         
         <div class="bg-brand-amber border border-amber-200 text-brand-amber-text p-4 rounded-xl flex items-center space-x-3 text-sm font-medium">
@@ -122,4 +122,4 @@
 
     </div>
 
-</x-app-layout>
+</x-app-client>

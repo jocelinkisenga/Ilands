@@ -1,16 +1,12 @@
-<div class="w-full">
+<div class="w-full min-h-screen bg-gray-50 dark:bg-gray-900 p-4 sm:p-6 lg:p-8">
 
  {{-- HEADER --}}
  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
 
   <div>
    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
-    AI Reports
+    Generated Ai reports
    </h1>
-
-   <p class="text-sm text-gray-500">
-    View and manage generated reports
-   </p>
   </div>
 
   <div class="flex gap-3">
@@ -173,12 +169,12 @@
        <div>
 
         <div class="font-medium">
-         {{ $report->title }}
+         {!! $report->title !!}
         </div>
 
-        <div class="text-sm text-gray-500">
-         {{ Str::limit($report->summary,80) }}
-        </div>
+{{--         <div class="text-sm text-gray-500">
+         {!! Str::limit($report->summary,80) !!}
+        </div> --}}
 
        </div>
 

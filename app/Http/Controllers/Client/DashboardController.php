@@ -7,6 +7,7 @@ use App\Services\TaxProfileService;
 use Illuminate\Http\Request;
 use App\Models\AiReport;
 use App\Models\Chat;
+use App\Models\Content;
 
 class DashboardController extends Controller
 {
@@ -16,6 +17,7 @@ class DashboardController extends Controller
         }
         public function index(Request $request)
 {
+            $contents = Content::latest()->limit(3)->get();
 
 
     $recentReports = AiReport::whereUser_id(auth()->user()->id)->latest()->take(5)->get();
@@ -29,6 +31,8 @@ class DashboardController extends Controller
 
     return view('client.dashboard', [
         'taxProfiles' => $this->tax_profile_service->getAllTaxProfiles()
-    , "recentReports" =>$recentReports,]);
+    , "recentReports" =>$recentReports,
+    "contents" => $contents
+]);
 }
 }

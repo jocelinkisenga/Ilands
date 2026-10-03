@@ -14,6 +14,7 @@
  
                 <a href="/pricing" class="text-xs text-black font-bold uppercase tracking-widest hover:text-blue-600 dark:text-blue-500  dark:hover:text-blue-500 transition">{{__('Pricing')}}</a>
                 <a href="/blog" class="text-xs text-black font-bold uppercase tracking-widest hover:text-blue-600 dark:text-blue-500  dark:hover:text-blue-500 transition">{{__('blog')}}</a>
+                <a href="/about" class="text-xs text-black font-bold uppercase tracking-widest hover:text-blue-600 dark:text-blue-500  dark:hover:text-blue-500 transition">{{__('about')}}</a>
                 <a href="/contact" class="text-xs text-black font-bold uppercase tracking-widest hover:text-blue-600 dark:text-blue-500  dark:hover:text-blue-500 transition">{{__('Contact')}}</a>
                 
                 <!-- Intégration Desktop -->
@@ -115,10 +116,7 @@
                     <button type="submit" class="block w-full text-left text-sm font-bold uppercase tracking-widest text-red-500 py-2">Logout</button>
                 </form>
             @else
-                <a href="/login" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white py-2">Login</a>
-                <a href="/tax-screener" class="block bg-blue-600 dark:bg-blue-500 text-white px-6 py-4 rounded-xl font-bold text-center text-xs uppercase tracking-widest shadow-lg shadow-blue-900/20">
-                    Get your free tax screener
-                </a>
+            <a href="/login" class="block text-sm font-bold uppercase tracking-widest text-slate-900 dark:text-white  border-b border-slate-100  dark:border-white/5">login</a>
             @endauth
         </div>
     </div>

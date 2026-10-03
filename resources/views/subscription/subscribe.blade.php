@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-client>
     <div class="min-h-screen bg-slate-50 dark:bg-black text-slate-900 dark:text-white flex flex-col items-center justify-center px-6 py-12 transition-colors duration-300">
         
         <div class="max-w-xl w-full">
@@ -173,4 +173,4 @@
             });
         });
     </script>
-</x-app-layout>
+</x-app-client>

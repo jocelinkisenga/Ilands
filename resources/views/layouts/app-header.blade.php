@@ -40,7 +40,7 @@
             {{-- Logo --}}
             <a href="/" class="flex-shrink-0">
                 <span class="text-lg sm:text-xl font-black tracking-tighter uppercase text-slate-900 dark:text-white">
-                    USTACK MY <span class="text-blue-600 dark:text-green-500">TAXES</span>
+                    UNSTACK MY <span class="text-blue-600 dark:text-green-500">TAXES</span>
                 </span>
             </a>
 

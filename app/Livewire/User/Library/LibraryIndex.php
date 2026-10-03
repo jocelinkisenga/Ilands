@@ -4,7 +4,9 @@ namespace App\Livewire\User\Library;
 
 use App\Models\Content;
 use Livewire\Component;
+use Livewire\Attributes\Layout;
 
+#[Layout('layouts.client')]
 class LibraryIndex extends Component
 {
     public string $search = '';
