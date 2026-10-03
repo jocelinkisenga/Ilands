@@ -25,7 +25,7 @@
                             </div>
                             <div>
                                 <p class="text-sm text-gray-500 uppercase tracking-widest font-semibold">Email</p>
-                                <a href="mailto:contact@ilands.ai" class="text-xl font-bold hover:text-blue-400 transition-colors">contact@ilands.ai</a>
+                                <a href="mailto:contact@unstackmytaxes.com" class="text-xl font-bold hover:text-blue-400 transition-colors">contact@unstackmytaxes.com</a>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                             </div>
                             <div>
                                 <p class="text-sm text-gray-500 uppercase tracking-widest font-semibold">Phone (U.S.)</p>
-                                <p class="text-xl font-bold">+1 (555) 000-ILANDS</p>
+                                <p class="text-xl font-bold">+1 (555) 000-unstackmytaxes</p>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="form-control">
                                 <label class="label"><span class="label-text text-gray-400">Full Name</span></label>
-                                <input type="text" wire:model="name" class="input bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-600 dark:focus:border-blue-500rounded-xl outline-none" placeholder="Jack Rayan">
+                                <input type="text" wire:model="name" class="input bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-600 dark:focus:border-blue-500rounded-xl outline-none" placeholder="Jack Ricks">
                             </div>
                             <div class="form-control">
                                 <label class="label"><span class="label-text text-gray-400">Email Address</span></label>
@@ -72,12 +72,7 @@
 
                         <div class="form-control">
                             <label class="label"><span class="label-text text-gray-400">Subject</span></label>
-                            <select wire:model="subject" class="select bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 rounded-xl outline-none">
-                                <option value="general">General Inquiry</option>
-                                <option value="tax_advisory">Tax Advisory Service</option>
-                                <option value="crypto">Crypto Taxation</option>
-                                <option value="billing">Billing & Plans</option>
-                            </select>
+                            <input wire:model="subject" class=" bg-slate-50 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 rounded-xl outline-none" placeholder="your subject" />
                         </div>
 
                         <div class="form-control">

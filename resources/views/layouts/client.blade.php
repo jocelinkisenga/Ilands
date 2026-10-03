@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-pt-[env(safe-area-inset-top,0px)]">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data :class="$store.theme.theme === 'dark' ? 'dark' : ''">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -42,54 +42,13 @@
 <div id="scrim" class="fixed inset-0 z-40 bg-slate-900/50 dark:bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 ease-in lg:hidden" aria-hidden="true"></div>
 
 <!-- Sidebar -->
-<aside id="sidebar" class="fixed inset-y-0 left-0 z-50 flex w-72 max-w-[85vw] flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 lg:w-64 -translate-x-full invisible transition-all duration-300 ease-[cubic-bezier(.32,.72,0,1)] lg:translate-x-0 lg:visible lg:transition-none pt-[env(safe-area-inset-top,0px)] pb-[env(safe-area-inset-bottom,0px)] focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2"
-       aria-label="Main navigation">
-  <div class="flex h-14 items-center justify-between px-4">
-    <a href="/" class="flex items-center gap-2.5 rounded-lg focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2">
-      <span class="grid  place-items-center p-2 rounded  bg-blue-900 dark:bg-blue-700 text-sm font-bold text-white">UNSTACK </span>
-      <span class="text-sm font-bold tracking-wide">MY TAXES</span>
-    </a>
-    <button id="closeNav" type="button" class="grid h-9 w-9 place-items-center rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-950 lg:hidden focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2" aria-label="Close menu">
-      <svg class="h-5 w-5"><use href="#i-x"/></svg>
-    </button>
-  </div>
-
-  <div class="border-t border-slate-200 dark:border-slate-800 px-3 py-3">
-    <ul class="space-y-1">
-       <li><a href="{{route("dashboard")}}" aria-current="page" class="flex items-center gap-3 rounded-xl bg-blue-900 dark:bg-blue-700 px-3 py-2.5 text-sm font-medium text-white focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2"><svg class="h-[18px] w-[18px]"><use href="#i-grid"/></svg>Dashboard</a></li>
-   </ul>
- </div>
-
-  <nav class="mt-2 flex-1 overflow-y-auto px-3" aria-label="Primary">
-    <ul class="space-y-1">
-      <li><a href="{{route('library.index')}}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors hover:bg-slate-50 dark:hover:bg-slate-950 hover:text-slate-800 dark:hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2"><svg class="h-[18px] w-[18px]"><use href="#i-library"/></svg>Library</a></li>
-      <li><a href="{{route('documents')}}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors hover:bg-slate-50 dark:hover:bg-slate-950 hover:text-slate-800 dark:hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2"><svg class="h-[18px] w-[18px]"><use href="#i-library"/></svg>My documents</a></li>
-      <li><a href="{{route('chat')}}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors hover:bg-slate-50 dark:hover:bg-slate-950 hover:text-slate-800 dark:hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2"><svg class="h-[18px] w-[18px]"><use href="#i-chat"/></svg>New chat</a></li>
-       <li><a href="{{route('hystory')}}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors hover:bg-slate-50 dark:hover:bg-slate-950 hover:text-slate-800 dark:hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2"><svg class="h-[18px] w-[18px]"><use href="#i-library"/></svg>My hystory chats</a></li>
-       <li><a href="{{route('reports')}}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors hover:bg-slate-50 dark:hover:bg-slate-950 hover:text-slate-800 dark:hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2"><svg class="h-[18px] w-[18px]"><use href="#i-library"/></svg>My generated reports</a></li>
-      <li><a href="{{route("subscription.index")}}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors hover:bg-slate-50 dark:hover:bg-slate-950 hover:text-slate-800 dark:hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2"><svg class="h-[18px] w-[18px]"><use href="#i-users"/></svg>My subscription</a></li>
-    </ul>
-  </nav>
-
-  <div class="border-t border-slate-200 dark:border-slate-800 px-3 py-3">
-    <ul class="space-y-1">
-      <li><a href="{{ route('subscription.upgrade') }}" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors hover:bg-slate-50 dark:hover:bg-slate-950 hover:text-slate-800 dark:hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2"><svg class="h-[18px] w-[18px]"><use href="#i-crown"/></svg>Upgrade</a></li>
-      <li><a href="/profile" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-slate-500 dark:text-slate-400 transition-colors hover:bg-slate-50 dark:hover:bg-slate-950 hover:text-slate-800 dark:hover:text-slate-100 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2"><svg class="h-[18px] w-[18px]"><use href="#i-settings"/></svg>Settings</a></li>
-    </ul>
-    <p class="mt-2 truncate px-3 text-xs text-slate-500 dark:text-slate-400" title="you@example.com">{{auth()->user()->email}}</p>
-     <form method="POST" action="{{route("logout")}}">
-      @csrf
-    <button type="wire:submit="save"" class="mt-1 flex bg-red-500 text-white w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2">
-      <svg class="h-[18px] w-[18px]"><use href="#i-logout"/></svg>Log out
-    </button>
-  </form>
-  </div>
-</aside>
+<x-aside/>
 
 <div class="lg:pl-64">
   <header class="sticky top-0 z-30 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur lg:hidden pt-[env(safe-area-inset-top,0px)]">
     <div class="flex h-14 items-center justify-between px-4">
-      <a href="#" class="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2">
+      <a href="#" class="flex items-center gap-2
+      .5 focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2">
         <span class="grid h-8 w-8 place-items-center rounded-lg bg-blue-900 dark:bg-blue-700 text-sm font-bold text-white">U</span>
         <span class="text-sm font-bold tracking-wide">TAXES</span>
       </a>
@@ -161,6 +120,7 @@
   desktop.addEventListener('change', function (e) { if (e.matches) close(false); });
 })();
 </script>
+    <script src="{{asset('assets/js/main.js')}}" type="script"></script>
  @livewireScripts
 </body>
 </html>

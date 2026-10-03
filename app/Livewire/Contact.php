@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 
+use App\Mail\Contact as MailContact;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
@@ -9,7 +11,7 @@ use Livewire\Attributes\Layout;
 #[Layout('layouts.guest')]
 class Contact extends Component
 {
-    public $name, $email, $subject = 'general', $message;
+    public $name, $email, $subject = '', $message;
 
     protected $rules = [
         'name' => 'required|min:3',
@@ -19,16 +21,10 @@ class Contact extends Component
 
     public function sendMessage()
     {
+       
         $this->validate();
 
-        
-        Log::info('New Contact Message', [
-            'name' => $this->name,
-            'email' => $this->email,
-            'subject' => $this->subject,
-            'message' => $this->message,
-            'ip' => request()->ip()
-        ]);
+        Mail::to(env("MAIL_FROM_ADDRESS"))->send(new MailContact($this->name, $this->subject,$this->email, $this->message));
 
         session()->flash('message', 'Thank you. Your secure inquiry has been received.');
         

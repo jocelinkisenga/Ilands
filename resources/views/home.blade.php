@@ -47,38 +47,133 @@
     </section>
 
     <!-- Who it's for -->
-<section id="who" class="bg-white  dark:bg-[#0B0F19] text-slate-900 dark:text-white  py-16 sm:py-24">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl text-center">
-      <p class="text-sm font-semibold uppercase tracking-wider text-brand-600">Who it's for</p>
-      <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl dark:text-blue-500">Two groups of people the big tax companies overlook</h2>
-    </div>
+            <section class="space-y-8">
+                <h2 class="text-3xl font-bold text-center text-blue-600 dark:text-blue-400">Education-First Tax Advisory</h2>
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
+                        <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">01</h3>
+                        <h4 class="font-semibold mt-2">Assess</h4>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">
+                            We analyze your unique tax situation, income sources, and potential deductions.
+                        </p>
+                    </div>
+                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
+                        <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">02</h3>
+                        <h4 class="font-semibold mt-2">Educate</h4>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">
+                            We explain opportunities, requirements, and strategies in plain language.
+                        </p>
+                    </div>
+                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
+                        <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">03</h3>
+                        <h4 class="font-semibold mt-2">Empower</h4>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">
+                            You make informed decisions with our expert guidance and ongoing support.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-    <div class="mt-12 grid gap-6 lg:grid-cols-2">
-      <div class="rounded-2xl bg-white p-8 shadow-card ring-1 ring-slate-200">
-        <h3 class="text-2xl font-bold text-brand-950">Gig workers and freelancers</h3>
-        <p class="mt-2 text-slate-600">Driving for Uber or Lyft, delivering for DoorDash, freelancing on the side. You get a 1099 and a tax bill nobody warned you about.</p>
-        <ul class="mt-6 space-y-3 text-slate-700">
-          <li class="flex gap-3"><span class="mt-1.5 h-2 w-2 flex-none rounded-full bg-brand-600"></span>Which expenses you can actually deduct, and how to prove them</li>
-          <li class="flex gap-3"><span class="mt-1.5 h-2 w-2 flex-none rounded-full bg-brand-600"></span>How mileage tracking works and which method to pick</li>
-          <li class="flex gap-3"><span class="mt-1.5 h-2 w-2 flex-none rounded-full bg-brand-600"></span>Quarterly estimated payments, without the guesswork</li>
-          <li class="flex gap-3"><span class="mt-1.5 h-2 w-2 flex-none rounded-full bg-brand-600"></span>Self-employment tax and what to set aside from each payout</li>
+            <section class="py-16 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">Who We Serve</h2>
+    <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+      We specialize in two underserved communities that need specialized tax guidance.
+    </p>
+
+    <div class="mt-12 grid gap-8 grid-cols-1 md:grid-cols-2">
+      
+      <!-- Gig Economy Workers Card -->
+      <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-8 hover:scale-105 transform transition">
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <!-- Heroicon: users -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m0-2.13a4 4 0 100-8 4 4 0 000 8zm8 0a4 4 0 100-8 4 4 0 000 8z" />
+          </svg>
+          Gig Economy Workers
+        </h3>
+        <ul class="space-y-3 text-gray-600 dark:text-gray-300 text-left">
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Uber, Lyft, DoorDash drivers
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Freelancers and contractors
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Side hustle entrepreneurs
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Etsy sellers and creators
+          </li>
+          <li class="flex items-center gap-2 font-semibold text-blue-700 dark:text-blue-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Learn about gig worker deductions
+          </li>
         </ul>
       </div>
 
-      <div class="rounded-2xl bg-brand-900 p-8 text-white shadow-card">
-        <h3 class="text-2xl font-bold">Americans living abroad</h3>
-        <p class="mt-2 text-brand-100">You still file a U.S. return from overseas, and the rules are different. FEIE, foreign tax credit, FBAR. We help you sort out which ones apply.</p>
-        <ul class="mt-6 space-y-3 text-brand-50">
-          <li class="flex gap-3"><span class="mt-1.5 h-2 w-2 flex-none rounded-full bg-brand-300"></span>Foreign Earned Income Exclusion vs. Foreign Tax Credit, explained</li>
-          <li class="flex gap-3"><span class="mt-1.5 h-2 w-2 flex-none rounded-full bg-brand-300"></span>Which forms you may need to file, and by when</li>
-          <li class="flex gap-3"><span class="mt-1.5 h-2 w-2 flex-none rounded-full bg-brand-300"></span>Foreign account reporting requirements, in plain language</li>
-          <li class="flex gap-3"><span class="mt-1.5 h-2 w-2 flex-none rounded-full bg-brand-300"></span>Video consultations that work across time zones</li>
+      <!-- American Expats Card -->
+      <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-8 hover:scale-105 transform transition">
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+          <!-- Heroicon: globe-alt -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-purple-600 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v20m-8-10h16" />
+          </svg>
+          American Expats
+        </h3>
+        <ul class="space-y-3 text-gray-600 dark:text-gray-300 text-left">
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            US citizens living abroad
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Digital nomads
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            International professionals
+          </li>
+          <li class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Foreign income earners
+          </li>
+          <li class="flex items-center gap-2 font-semibold text-purple-700 dark:text-purple-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-700 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Learn about expat tax obligations
+          </li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
+
+
 
     @include("components.pricing")
 
@@ -100,7 +195,7 @@
       </details>
       <details class="group p-5 sm:p-6">
         <summary class="flex items-center justify-between gap-4 text-left font-semibold text-brand-950 dark:text-blue-500">Is my information safe?<span class="faq-icon text-2xl leading-none text-brand-600" aria-hidden="true">+</span></summary>
-        <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-400">Your data travels over encrypted connections and is only used to build your report and run your account. Payments are processed by Stripe, so we never see or store your card number. We don't sell your information.</p>
+        <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-400">Your data travels over encrypted connections and is only used to build your report and run your account. Payments are processed by secured payment systems, so we never see or store your card number. We don't sell your information.</p>
       </details>
       <details class="group p-5 sm:p-6">
         <summary class="flex items-center justify-between gap-4 text-left font-semibold text-brand-950 dark:text-blue-500">Does this work if I live outside the U.S.?<span class="faq-icon text-2xl leading-none text-brand-600" aria-hidden="true">+</span></summary>
