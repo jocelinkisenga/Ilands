@@ -73,7 +73,7 @@
     </span>
   </div>
 </button> --}}
-@livewire("chat-bot")
+@livewire("chat")
 
     @include('components.footer')
    

@@ -133,7 +133,7 @@ Route::middleware(["auth"])->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(["auth", "admin","verified"])
+Route::middleware(["auth", "admin"])
     ->prefix("admin")
     ->group(function () {
         

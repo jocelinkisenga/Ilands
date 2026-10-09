@@ -1,343 +1,188 @@
-<div
- x-data="{
- autoScroll() {
- this.$nextTick(() => {
- const container = this.$refs.messagesContainer;
- container.scrollTop = container.scrollHeight;
- });
- }
- }"
- x-init="autoScroll()"
- @message-sent.window="autoScroll()"
- class="flex flex-col h-[calc(100vh-120px)] w-full overflow-hidden rounded-3xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-xl"
- >
+<div class="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6"
+     x-data="{
+         open: false,
+         showSuggestions: true,
+         scrollToBottom(smooth = true) {
+             const el = this.$refs.messages;
+             if (el) el.scrollTo({ top: el.scrollHeight, behavior: smooth ? 'smooth' : 'auto' });
+         }
+     }"
+     x-init="$watch('open', value => {
+         if (value) $nextTick(() => {
+             scrollToBottom(false);
+             if (window.innerWidth >= 640) $refs.input?.focus();
+         });
+     })"
+     @keydown.escape.window="open = false">
 
- {{-- HEADER --}}
- <div class="relative shrink-0 overflow-hidden border-b border-gray-200 dark:border-gray-800">
-  <div class="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-900 to-gray-800 dark:from-black dark:via-gray-950 dark:to-gray-950 opacity-95"></div>
+    <!-- Fenêtre de chat -->
+    <div x-show="open"
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 translate-y-4 scale-95"
+         x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+         x-transition:leave-end="opacity-0 translate-y-4 scale-95"
+         role="dialog" aria-label="Unstack my taxes - Assistant"
+         class="fixed inset-x-3 top-3 bottom-24 flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900
+                sm:absolute sm:inset-auto sm:bottom-20 sm:right-0 sm:h-[560px] sm:max-h-[calc(100vh-8rem)] sm:w-[390px]"
+         style="display: none;">
 
-  <div class="relative z-10 flex items-center justify-between px-4 md:px-6 py-4 md:py-5">
-   <div class="flex items-center gap-4">
-    <div class="relative">
-     <div class="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white text-xl shadow-lg">
-      ✨
-     </div>
-     <div class="absolute -bottom-1 -right-1 w-3 h-3 md:w-4 md:h-4 bg-gray-400 border-2 border-gray-950 rounded-full animate-pulse dark:bg-gray-200"></div>
+        <!-- En-tête -->
+        <div class="flex items-center justify-between bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-3 text-white">
+            <div class="flex min-w-0 items-center gap-3">
+                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15 ring-1 ring-white/25">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 14.25l6-6m-5.25.75h.008v.008H9.75V9zm4.5 5.25h.008v.008h-.008v-.008zM6.75 3h10.5A2.25 2.25 0 0119.5 5.25v15.19a.56.56 0 01-.9.45L16.5 19.5l-2.1 1.39a.56.56 0 01-.62 0L12 19.7l-1.78 1.19a.56.56 0 01-.62 0L7.5 19.5l-2.1 1.39a.56.56 0 01-.9-.45V5.25A2.25 2.25 0 016.75 3z"/>
+                    </svg>
+                </div>
+                <div class="min-w-0 leading-tight">
+                    <p class="truncate text-sm font-semibold">Unstack my taxes</p>
+                    <p class="mt-0.5 flex items-center gap-1.5 text-xs text-blue-100">
+                        <span class="relative flex h-2 w-2">
+                            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-75"></span>
+                            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+                        </span>
+                        <span>En ligne</span>
+                        <span class="truncate opacity-70">· {{ $theme }}</span>
+                    </p>
+                </div>
+            </div>
+
+            <button type="button" @click="open = false" aria-label="Fermer le chat"
+                    class="rounded-lg p-1.5 text-blue-100 transition hover:bg-white/15 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Avertissement permanent -->
+        <div class="flex items-center gap-2 border-b border-amber-200/70 bg-amber-50 px-4 py-1.5 text-xs font-medium text-amber-800 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-300">
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.04-.02a.75.75 0 011.06.85l-.7 2.8a.75.75 0 001.07.85l.04-.02M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/></svg>
+            <span>Educational guidance only</span>
+            <span class="hidden font-normal opacity-80 sm:inline">— not tax, legal or accounting advice</span>
+        </div>
+
+        <!-- Messages -->
+        <div x-ref="messages"
+             x-init="new MutationObserver(() => scrollToBottom()).observe($el, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] })"
+             class="flex-1 space-y-3 overflow-y-auto bg-gray-50 px-4 py-4 text-sm text-gray-700 dark:bg-black/20 dark:text-gray-300">
+
+            @foreach($messages as $msg)
+                @php $isUser = $msg['sender'] === 'user'; @endphp
+                <div wire:key="msg-{{ $loop->index }}" class="flex items-end gap-2 {{ $isUser ? 'justify-end' : 'justify-start' }}">
+                    @unless($isUser)
+                        <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+                        </div>
+                    @endunless
+
+                    <div class="max-w-[82%] whitespace-pre-line break-words px-3.5 py-2.5 leading-relaxed {{ $isUser
+                        ? 'rounded-2xl rounded-br-md bg-blue-600 text-white shadow-sm'
+                        : 'rounded-2xl rounded-bl-md border border-gray-200 bg-white text-gray-800 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100' }}">{{ $msg['text'] }}</div>
+                </div>
+            @endforeach
+
+            <!-- Indicateur "l'IA écrit..." -->
+            <div wire:loading.flex wire:target="sendMessage,selectQuestion" class="items-end gap-2">
+                <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
+                </div>
+                <div class="flex items-center gap-1 rounded-2xl rounded-bl-md border border-gray-200 bg-white px-3.5 py-3 shadow-sm dark:border-gray-700 dark:bg-gray-800" aria-label="L'IA rédige une réponse">
+                    <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-gray-400" style="animation-delay: 0ms"></span>
+                    <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-gray-400" style="animation-delay: 150ms"></span>
+                    <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-gray-400" style="animation-delay: 300ms"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggestions (masquables) -->
+        @if(!empty($suggestedQuestions) && !$guestLimitReached)
+            <div x-show="showSuggestions"
+                 x-transition:enter="transition ease-out duration-150"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 class="border-t border-gray-200 bg-white px-3 pb-2 pt-2 dark:border-gray-800 dark:bg-gray-900">
+                <div class="mb-1.5 flex items-center justify-between px-1">
+                    <span class="text-[11px] font-semibold uppercase tracking-wide text-gray-400 dark:text-gray-500">Suggestions</span>
+                    <button type="button" @click="showSuggestions = false"
+                            title="Masquer les suggestions" aria-label="Masquer les suggestions"
+                            class="rounded-md p-1 text-gray-400 transition hover:bg-gray-100 hover:text-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:hover:bg-gray-800 dark:hover:text-gray-200">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <div class="flex max-h-28 flex-wrap gap-1.5 overflow-y-auto">
+                    @foreach($suggestedQuestions as $question)
+                        <button type="button"
+                                wire:key="suggestion-{{ $loop->index }}"
+                                wire:click="selectQuestion(@js($question))"
+                                wire:loading.attr="disabled" wire:target="sendMessage,selectQuestion"
+                                class="rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-left text-xs text-blue-700 transition hover:bg-blue-100 disabled:opacity-50 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-300 dark:hover:bg-blue-500/20">
+                            {{ $question }}
+                        </button>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
+        <!-- Zone de saisie / limite atteinte -->
+        @if($guestLimitReached)
+            <!-- Limite atteinte : invitation à créer un compte -->
+            <div class="border-t border-gray-200 bg-gradient-to-b from-blue-50/70 to-white p-5 text-center dark:border-gray-800 dark:from-blue-500/10 dark:to-gray-900">
+                <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg shadow-blue-600/30">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"/></svg>
+                </div>
+
+                <p class="text-base font-semibold text-gray-900 dark:text-gray-100">You have used all your free questions</p>
+                <p class="mx-auto mt-1 max-w-xs text-xs leading-relaxed text-gray-500 dark:text-gray-400">Create an account and continue asking questions.</p>
+
+                <a href="{{ Route::has('register') ? route('register') : url('/register') }}"
+                   class="group mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/30 transition hover:from-blue-500 hover:to-blue-400 hover:shadow-blue-500/40 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/40">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"/></svg>
+                    <span>Create account</span>
+                    <svg class="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+                </a>
+
+                <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+                    Already has account ?
+                    <a href="{{ Route::has('login') ? route('login') : url('/login') }}" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Login</a>
+                </p>
+            </div>
+        @else
+            <form wire:submit.prevent="sendMessage" class="border-t border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-900">
+                @error('newMessage')
+                    <p class="mb-1.5 px-1 text-xs text-red-500">{{ $message }}</p>
+                @enderror
+
+                <div class="flex items-center gap-2">
+                    @if(!empty($suggestedQuestions))
+                        <!-- Ré-afficher les suggestions -->
+                        <button type="button" x-show="!showSuggestions" @click="showSuggestions = true"
+                                title="Afficher les suggestions" aria-label="Afficher les suggestions"
+                                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:hover:bg-gray-800 dark:hover:text-blue-300"
+                                style="display: none;">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+                        </button>
+                    @endif
+
+                    <input x-ref="input" type="text" wire:model="newMessage" maxlength="1000" autocomplete="off"
+                           placeholder="Posez votre question..."
+                           class="min-w-0 flex-1 rounded-full border border-gray-300 bg-gray-50 px-4 py-2.5 text-base text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-500 sm:text-sm">
+
+                    <button type="submit" aria-label="Envoyer"
+                            wire:loading.attr="disabled" wire:target="sendMessage,selectQuestion"
+                            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white transition hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:focus-visible:ring-offset-gray-900">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.27 3.13a.75.75 0 011.04-.89l16.5 8.25a.75.75 0 010 1.34l-16.5 8.25a.75.75 0 01-1.04-.89L6 12zm0 0h7.5"/></svg>
+                    </button>
+                </div>
+            </form>
+        @endif
     </div>
 
-    <div>
-     <h2 class="text-base md:text-lg font-bold text-white tracking-tight">
-      ILANDS AI Assistant <span class="text-red-500">(for educational guidance only !)</span>
-     </h2>
-     <p class="text-[10px] md:text-xs text-gray-400 mt-0.5">
-      
-     </p>
-    </div>
-   </div>
-   <div class="flex items-center gap-2">
-
-    {{-- Desktop --}}
-{{--     <div class="hidden md:flex items-center gap-2">
-     <a href="{{route("chat")}}"
-      class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white text-sm">
-      New Chat
-     </a>
-
-     <button wire:click="generateReport"
-      class="px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-400/20 text-emerald-300 text-sm">
-      Report
-     </button>
-    </div> --}}
-
-    {{-- Mobile --}}
-    <div class="flex md:hidden items-center gap-2">
-     <a href="{{route("chat")}}"
-      class="w-10 h-10 rounded-xl bg-white/10 border border-white/10 text-white flex items-center justify-center" title="start new conversation">
-      ➕
-     </a>
-
-     <button wire:click="generateReport"
-      class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-400/20 text-emerald-300 flex items-center justify-center" title="generate report">
-      📊
-     </button>
-    </div>
-
-   </div>
-  </div>
- </div>
-
- {{-- CHAT BODY --}}
- <div
-  x-ref="messagesContainer"
-  class="flex-1 overflow-y-auto px-4 md:px-6 py-6 space-y-6 bg-gray-50 dark:bg-gray-950"
-  >
-  {{-- EMPTY STATE --}}
-  @if(count($messages) === 0)
-  <div class="h-full flex flex-col items-center justify-center text-center">
-   <div class="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-gradient-to-br from-gray-700 to-gray-900 dark:from-gray-800 dark:to-black flex items-center justify-center text-3xl md:text-4xl shadow-xl border border-gray-600 dark:border-gray-800">
-    🤖
-   </div>
-   <h2 class="mt-6 text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-    Welcome to ILANDS AI
-   </h2>
-   <p class="mt-3 text-xs md:text-sm max-w-md text-gray-500 dark:text-gray-400 leading-relaxed">
-    Ask questions about taxes, business, finance, entrepreneurship, documents, or anything related to your platform.
-   </p>
-   <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-2xl">
-    <button wire:click="$set('prompt', 'Help me optimize my taxes')" class="text-left p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:border-gray-400 dark:hover:border-gray-600 transition">
-     <p class="font-semibold text-gray-900 dark:text-white text-sm">
-      Tax Optimization
-     </p>
-     <p class="text-xs mt-1 text-gray-500 dark:text-gray-400">
-      Get intelligent tax suggestions
-     </p>
+    <!-- Bouton flottant -->
+    <button type="button" @click="open = !open" :aria-expanded="open" aria-label="Ouvrir le chat"
+            class="flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-2xl transition hover:scale-105 hover:bg-blue-500 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50">
+        <svg x-show="!open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+        <svg x-show="open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
     </button>
-    <button wire:click="$set('prompt', 'Generate a professional business report')" class="text-left p-4 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:border-gray-400 dark:hover:border-gray-600 transition">
-     <p class="font-semibold text-gray-900 dark:text-white text-sm">
-      Business Reports
-     </p>
-     <p class="text-xs mt-1 text-gray-500 dark:text-gray-400">
-      Generate analytics & reports
-     </p>
-    </button>
-   </div>
-  </div>
-  @endif
-
-  {{-- MESSAGES --}}
-  @foreach($messages as $index => $msg)
-  <div wire:key="message-{{ $index }}" class="flex items-end gap-3 {{ $msg['role'] === 'user' ? 'justify-end' : 'justify-start' }}">
-   @if($msg['role'] !== 'user')
-   <div class="w-8 h-8 md:w-10 md:h-10 shrink-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-gray-800 to-gray-950 border border-gray-700 flex items-center justify-center text-white shadow-lg text-sm md:text-base">
-    ✨
-   </div>
-   @endif
-
-   <div class="max-w-[90%] md:max-w-[75%]">
-    <div class="px-4 py-3 md:px-5 md:py-4 rounded-3xl shadow-sm border {{ $msg['role'] === 'user' ? 'bg-gray-900 dark:bg-gray-800 text-white border-gray-900 dark:border-gray-700 rounded-br-md' : 'bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 border-gray-200 dark:border-gray-800 rounded-bl-md' }}">
-     <div id="ai-response-{{ $index }}" class="text-sm leading-6 md:leading-7 whitespace-pre-line break-words">
-
-
-      {!! $this->markdown($msg['content']) !!}
-     </div>
-    </div>
-
-    <div class="mt-2 px-1 flex items-center gap-2 text-[10px] md:text-[11px] {{ $msg['role'] === 'user' ? 'justify-end text-gray-400' : 'justify-start text-gray-500' }}">
-     <span>{{ $msg['role'] === 'user' ? 'You' : 'ILANDS AI' }}</span>
-     <span>•</span>
-     <span>{{ now()->format('H:i') }}</span>
-    </div>
-   </div>
-
-   @if($msg['role'] === 'user')
-   <div class="w-8 h-8 md:w-10 md:h-10 shrink-0 rounded-xl md:rounded-2xl bg-gray-900 dark:bg-gray-800 border border-gray-700 dark:border-gray-600 text-white flex items-center justify-center shadow-lg font-bold text-sm md:text-base">
-    U
-   </div>
-   @endif
-  </div>
-  @endforeach
-
-  {{-- LOADING --}}
-  <div wire:loading.flex wire:target="sendMessage" class="justify-start items-end gap-3">
-   <div class="w-8 h-8 md:w-10 md:h-10 rounded-xl md:rounded-2xl bg-gradient-to-br from-gray-800 to-gray-950 border border-gray-700 flex items-center justify-center text-white shadow-lg">
-    ✨
-   </div>
-   <div class="px-5 py-4 rounded-3xl rounded-bl-md bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm">
-    <div class="flex items-center gap-2">
-     <span class="w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full animate-bounce"></span>
-     <span class="w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full animate-bounce [animation-delay:0.2s]"></span>
-     <span class="w-2 h-2 bg-gray-600 dark:bg-gray-400 rounded-full animate-bounce [animation-delay:0.4s]"></span>
-    </div>
-   </div>
-  </div>
- </div>
-
- {{-- INPUT CORRIGÉ AVEC UPLOAD DE FICHIER --}}
-
- {{-- ajout du document previrw ---}}
- @if($documentPreview)
- <div class="flex items-center gap-3 p-2 mb-2 rounded-xl bg-gray-100 dark:bg-gray-800 border">
-
-  {{-- ICON --}}
-  <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
-   📄
-  </div>
-
-  {{-- INFO --}}
-  <div class="flex-1">
-   <p class="text-sm font-medium text-gray-900 dark:text-white">
-    {{ $documentPreview['name'] }}
-   </p>
-
-   <p class="text-xs text-gray-500">
-    {{ $documentPreview['size'] }} • {{ $documentPreview['type'] }}
-   </p>
-  </div>
-
-  {{-- REMOVE --}}
-  <button wire:click="$set('document', null); $set('documentPreview', null)"
-   class="text-red-500 text-sm">
-   ✕
-  </button>
- </div>
- @endif
- {{-- end documentpreview --}}
-
-{{--  <div class="shrink-0 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-3 md:p-5"
-  x-data="{
-  resizeTextarea() {
-  $refs.textarea.style.height = '44px';
-  $refs.textarea.style.height = $refs.textarea.scrollHeight + 'px';
-  },
-  resetTextarea() {
-  $refs.textarea.style.height = '44px';
-  }
-  }"
-  @message-sent.window="resetTextarea()"
-  >
-  <div class="relative flex flex-col w-full rounded-3xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 transition-shadow focus-within:border-gray-500 focus-within:ring-4 focus-within:ring-gray-500/10 dark:focus-within:border-gray-400 dark:focus-within:ring-gray-400/10">
-
-   <div class="flex items-end gap-2 p-2">
-
-    
-    <label class="shrink-0 flex items-center justify-center w-10 h-10 mb-0.5 rounded-full text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-gray-400 cursor-pointer transition" title="Joindre un document">
-     <input type="file" wire:model="document" class="hidden" accept=".pdf,.doc,.docx,.txt,image/*" />
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-     <path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
-    </svg>
-   </label>
-
-  
-   <textarea
-    x-ref="textarea"
-    @input="resizeTextarea()"
-    @keydown.enter="
-    if (!$event.shiftKey) {
-    $event.preventDefault();
-    if (!$wire.isLoading) {
-    $wire.sendMessage();
-    }
-    }
-    "
-    wire:model.defer="prompt"
-    maxlength="5000"
-    rows="1"
-    placeholder="Ask ILANDS AI anything..."
-    class="flex-1 max-h-[35vh] min-h-[44px] py-3 px-2 bg-transparent border-0 focus:ring-0 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 resize-none overflow-y-auto"
-    ></textarea>
-
-     <button
-    type="button"
-    wire:click="sendMessage"
-    wire:loading.attr="disabled"
-    class="shrink-0 flex items-center justify-center w-10 h-10 mb-0.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 shadow-sm transition disabled:opacity-50"
-    >
-    <svg wire:loading.remove xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-    </svg>
-
-    <svg wire:loading class="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-    </svg>
-   </button>
-  </div>
-
- 
-  <div class="flex justify-end px-4 pb-2">
-   <span class="text-[10px] font-medium {{ strlen($prompt ?? '') > 4900 ? 'text-red-500' : 'text-gray-400' }}">
-    {{ strlen($prompt ?? '') }}/5000
-   </span>
-  </div>
- </div>
-</div> --}}
-
-
-<div class="relative shrink-0 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-3 md:p-5"
- x-data="{
- resizeTextarea() {
- $refs.textarea.style.height = '44px';
- $refs.textarea.style.height = $refs.textarea.scrollHeight + 'px';
- },
- resetTextarea() {
- $refs.textarea.style.height = '44px';
- }
- }"
- @message-sent.window="resetTextarea()"
- >
- 
- {{-- BOUTONS FLOTTANTS --}}
- <div class="absolute bottom-full right-4 mb-4 flex items-center gap-2 z-20">
-  <a href="{{route('chat')}}"
-   class="flex items-center gap-2 px-3 py-2.5 md:px-4 md:py-2 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition" 
-   title="New Chat">
-   <span class="text-sm md:text-base">➕</span>
-   <span class="text-sm font-medium hidden md:block">New Chat</span>
-  </a>
-
-  <button wire:click="generateReport"
-   class="flex items-center gap-2 px-3 py-2.5 md:px-4 md:py-2 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 backdrop-blur-md border border-emerald-200 dark:border-emerald-800/50 text-emerald-600 dark:text-emerald-400 shadow-lg hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition" 
-   title="Generate Report">
-   <span class="text-sm md:text-base">📊</span>
-   <span class="text-sm font-medium hidden md:block">Report</span>
-  </button>
- </div>
-
- <div class="relative flex flex-col w-full rounded-3xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 transition-shadow focus-within:border-gray-500 focus-within:ring-4 focus-within:ring-gray-500/10 dark:focus-within:border-gray-400 dark:focus-within:ring-gray-400/10">
-
-  <div class="flex items-end gap-2 p-2">
-
-   {{-- BOUTON ATTACHEMENT (Document) --}}
-   <label class="shrink-0 flex items-center justify-center w-10 h-10 mb-0.5 rounded-full text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-800 dark:text-gray-400 cursor-pointer transition" title="Joindre un document">
-    <input type="file" wire:model="document" class="hidden" accept=".pdf,.doc,.docx,.txt,image/*" />
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-     <path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
-    </svg>
-   </label>
-
-   {{-- TEXTAREA --}}
-   <textarea
-    x-ref="textarea"
-    @input="resizeTextarea()"
-    @keydown.enter="
-    if (!$event.shiftKey) {
-    $event.preventDefault();
-    if (!$wire.isLoading) {
-    $wire.sendMessage();
-    }
-    }
-    "
-    wire:model.defer="prompt"
-    maxlength="5000"
-    rows="1"
-    placeholder="Ask ILANDS AI anything..."
-    class="flex-1 max-h-[35vh] min-h-[44px] py-3 px-2 bg-transparent border-0 focus:ring-0 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 resize-none overflow-y-auto"
-    ></textarea>
-
-   {{-- BOUTON ENVOYER --}}
-   <button
-    type="button"
-    wire:click="sendMessage"
-    wire:loading.attr="disabled"
-    class="shrink-0 flex items-center justify-center w-10 h-10 mb-0.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 shadow-sm transition disabled:opacity-50"
-    >
-    <svg wire:loading.remove xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-    </svg>
-
-    <svg wire:loading class="animate-spin h-5 w-5 text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-    </svg>
-   </button>
-  </div>
-
-  {{-- COMPTEUR DE CARACTÈRES --}}
-  <div class="flex justify-end px-4 pb-2">
-   <span class="text-[10px] font-medium {{ strlen($prompt ?? '') > 4900 ? 'text-red-500' : 'text-gray-400' }}">
-    {{ strlen($prompt ?? '') }}/5000
-   </span>
-  </div>
- </div>
-</div>
 </div>

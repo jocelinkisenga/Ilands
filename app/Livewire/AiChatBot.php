@@ -87,7 +87,7 @@ class AiChatBot extends Component
     {
         return [
             'role' => 'assistant',
-            'content' => 'Hello 👋 I am ILANDS AI assistant.',
+            'content' => '',
             'file_name' => null,
             'file_path' => null,
             'file_type' => null,
@@ -226,7 +226,7 @@ class AiChatBot extends Component
                 $fileType = $this->document->getMimeType();
 
                 // Optionnel : Ajout visuel dans la conversation
-                $this->addMessage('user', "Document joint pour analyse immédiate : {$fileName}", $filePath, $fileName, $fileType);
+                $this->addMessage('user', "Joint document for analyzes : {$fileName}", $filePath, $fileName, $fileType);
             }
 
             // 3. Appel du service avec TOUS les paramètres nécessaires dans le bon ordre ou nommés
