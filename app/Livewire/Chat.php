@@ -6,6 +6,7 @@ use App\Services\ChatService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Livewire\Component;
+use League\CommonMark\CommonMarkConverter;
 
 class Chat extends Component
 {
@@ -122,6 +123,11 @@ class Chat extends Component
     private function guestKey(): string
     {
         return 'guest-chat:' . request()->ip();
+    }
+
+ public function markdown(string $text): string
+    {
+        return app(CommonMarkConverter::class)->convert($text)->getContent();
     }
 
     public function render()

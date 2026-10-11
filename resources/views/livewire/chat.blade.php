@@ -78,7 +78,7 @@
 
                     <div class="max-w-[82%] whitespace-pre-line break-words px-3.5 py-2.5 leading-relaxed {{ $isUser
                         ? 'rounded-2xl rounded-br-md bg-blue-600 text-white shadow-sm'
-                        : 'rounded-2xl rounded-bl-md border border-gray-200 bg-white text-gray-800 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100' }}">{{ $msg['text'] }}</div>
+                        : 'rounded-2xl rounded-bl-md border border-gray-200 bg-white text-gray-800 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100' }}">{!! $this->markdown($msg['text']) !!}</div>
                 </div>
             @endforeach
 

@@ -72,10 +72,10 @@
                     {{-- <p class="mx-auto mb-8 max-w-md text-sm text-gray-500 dark:text-gray-400">                    </p> --}}
 
                     <div class="grid w-full max-w-2xl grid-cols-1 gap-3 md:grid-cols-2">
-                        @foreach ($defaultQuestions as $question)
-                            <button type="button" wire:click="$set('prompt', @js($question->message))"
-                                class="group rounded-xl border border-gray-200 bg-white p-4 text-left transition-colors hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700/60">
-                                <p class="text-sm font-medium text-gray-900 transition-colors group-hover:text-emerald-600 dark:text-gray-100 dark:group-hover:text-emerald-400">{{ $question->message }}</p>
+                        @foreach ($suggestedQuestions as $question)
+                            <button type="button" wire:click="$set('prompt', @js($question))"
+                                class="rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-left text-xs text-blue-700 transition hover:bg-blue-100 disabled:opacity-50 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-300 dark:hover:bg-blue-500/20">
+                                <p class="text-sm font-medium text-gray-900 transition-colors group-hover:text-emerald-600 dark:text-gray-100 dark:group-hover:text-emerald-400">{{ $question }}</p>
                             </button>
                         @endforeach
                     </div>
@@ -198,7 +198,7 @@
                     maxlength="5000"
                     rows="1"
                     placeholder="Write your message…"
-                    class="max-h-[200px] min-h-[48px] flex-1 resize-none overflow-y-auto border-0 bg-transparent px-0 py-3.5 text-[15px] text-gray-900 placeholder:text-gray-500 focus:ring-0 dark:text-gray-100"
+                    class="max-h-[200px] min-h-[48px] flex-1 resize-none overflow-y-auto border-0 bg-transparent px-0 py-3.5 text-[15px] text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 dark:border-gray-700 dark:text-gray-100"
                 ></textarea>
 
                 {{-- Send --}}

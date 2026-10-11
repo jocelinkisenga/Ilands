@@ -13,6 +13,7 @@ use App\Models\DefaultQuestions;
 use App\Services\TokenService;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
+use App\Services\ChatService;
 
 
 #[Layout('layouts.client')]
@@ -36,15 +37,21 @@ class AiChatBot extends Component
 
     public bool $tokenError = false;
     public $defaultQuestions;
+    public array $suggestedQuestions = [];
+    public $theme;
 
-    public function mount($chatId = null): void
+    public function mount($chatId = null, string $theme = 'Estimated taxes, Gig Economy Workers, American Expats, period of declarations'): void
     {
         $this->defaultQuestions =  DefaultQuestions::where("is_anabled", true)->get();
+        $this->theme = $theme;
+
         
         if ($chatId) {
             $this->loadChat($chatId);
         } else {
+            $this->loadSuggestions();
             $this->initNewChat();
+
         }
     }
 
@@ -284,6 +291,12 @@ class AiChatBot extends Component
     public function markdown(string $text): string
     {
         return app(CommonMarkConverter::class)->convert($text)->getContent();
+    }
+
+
+    private function loadSuggestions(): void
+    {
+        $this->suggestedQuestions = app(ChatService::class)->getSuggestedQuestions($this->theme);
     }
 
     public function render()
