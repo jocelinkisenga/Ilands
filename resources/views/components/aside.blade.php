@@ -2,7 +2,7 @@
        aria-label="Main navigation">
   <div class="flex h-14 items-center justify-between px-4">
     <a href="/" class="flex items-center gap-2.5 rounded-lg focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2">
-      <span class="grid  place-items-center p-2 rounded  bg-blue-900 dark:bg-blue-700 text-sm font-bold text-white">UNSTACK </span>
+      <span class="grid  place-items-center p-2 rounded  bg-blue-900 dark:bg-blue-700 text-sm font-bold text-white">UNSTUCK </span>
       <span class="text-sm font-bold tracking-wide">MY TAXES</span>
     </a>
     <button id="closeNav" type="button" class="grid h-9 w-9 place-items-center rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-950 lg:hidden focus-visible:outline-2 focus-visible:outline-blue-900 dark:focus-visible:outline-blue-700 focus-visible:outline-offset-2" aria-label="Close menu">

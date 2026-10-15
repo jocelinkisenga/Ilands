@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Ilands LLC'),
+    'name' => env('APP_NAME', 'UNSTUCK MY TAXES'),
 
     /*
     |--------------------------------------------------------------------------

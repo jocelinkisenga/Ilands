@@ -9,7 +9,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
 
-        <title>{{ config('app.name', 'unstack my taxes') }}</title>
+        <title>{{ config('app.name', 'unstuck my taxes') }}</title>
         <meta name="description" content="Optimize your tax profile with AI-powered insights. Specialized for gig workers, freelancers, and expats.">
         <meta name="robots" content="index, follow">
 
@@ -29,7 +29,7 @@
         <meta name="twitter:image" content="{{ asset('logo.png') }}">
 
         {{-- mobile --}}
-        <meta name="theme-color" content="#16a34a" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
         @if(request()->routeIs('dashboard*'))
         <meta name="robots" content="noindex, nofollow">

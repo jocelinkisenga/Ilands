@@ -55,7 +55,7 @@ use App\Enums\SubscriptionPlan;
       <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         @foreach($contents as $content)
 
-        <a href="#" class="group flex flex-col rounded-2xl border border-line bg-surface p-5 transition hover:border-navy/40 hover:shadow-md">
+        <a href="{{ route('library.show', $content->slug) }}" class="group flex flex-col rounded-2xl border border-line bg-surface p-5 transition hover:border-navy/40 hover:shadow-md">
           <div class="flex items-center gap-3">
             @if($content->type == "document")
             <span class="grid h-10 w-10 place-items-center rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-500/15"><svg class="h-5 w-5"><use href="#i-file"/></svg></span>

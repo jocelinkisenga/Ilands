@@ -76,7 +76,7 @@
                         </div>
                     @endunless
 
-                    <div class="max-w-[82%] whitespace-pre-line break-words px-3.5 py-2.5 leading-relaxed {{ $isUser
+                    <div class="max-w-[82%] whitespace-pre-line break-words px-3.5 py-2.5 leading-relaxed prose prose-sm max-w-none dark:prose-invert overflow-x-auto  prose-table:my-2 prose-table:text-xs proxe-th:px-3 prose-th:py-2 prose-th:text-left prose-th:bg-gray-100 dark:prose-th:bg-gray-700 prose-td:px-3 prose-td:py-2  {{ $isUser
                         ? 'rounded-2xl rounded-br-md bg-blue-600 text-white shadow-sm'
                         : 'rounded-2xl rounded-bl-md border border-gray-200 bg-white text-gray-800 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100' }}">{!! $this->markdown($msg['text']) !!}</div>
                 </div>

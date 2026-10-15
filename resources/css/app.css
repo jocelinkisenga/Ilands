@@ -1,5 +1,6 @@
 
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Indique à Tailwind où chercher vos classes */
 @source "../../resources/**/*.blade.php";

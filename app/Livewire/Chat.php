@@ -127,7 +127,11 @@ class Chat extends Component
 
  public function markdown(string $text): string
     {
-        return app(CommonMarkConverter::class)->convert($text)->getContent();
+        //return app(CommonMarkConverter::class)->convert($text)->getContent();
+        return \Illuminate\Support\Str::markdown($text, [
+            'html_input' => 'strip',
+            'allow_unsafe_links' => false,
+        ]);
     }
 
     public function render()
