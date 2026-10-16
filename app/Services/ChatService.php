@@ -61,7 +61,7 @@ class ChatService
      * Génère 4 questions fréquentes pour une thématique donnée.
      * Méthode non critique : en cas d'échec, on renvoie simplement un tableau vide.
      */
-    public function getSuggestedQuestions(string $theme): array
+    public function getSuggestedQuestions(?string $theme): array
     {
         $systemPrompt = 'you are an expert in a given subject. you respond only using json format, blank line before every table'
             . ' sentences only, no surounding tex and  markdown caracters.'.'Unstack my taxes is a tax education and advisory plateform by Ilands solutions LLC, helping Gig economy workers who whant to find deductions they are missing and understand quartely estimated taxes, american expats who need clear guidance'.'only tax deduction and advisory, delivered online, no preparation and file tax returns'.'pricing membership pro 9$, premium 39$';

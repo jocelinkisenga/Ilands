@@ -1,250 +1,182 @@
 <x-guest-layout>
-
+@php
+   
+    $faq = [
+        ['q' => 'What is Unstack my taxes?', 'a' => 'It is an education platform for US taxes. You get short, plain-English lessons and an assistant you can ask questions, so you understand what is going on with your return.'],
+        ['q' => 'Is this tax advice?', 'a' => 'No. Everything here is educational. For decisions about your own situation, talk to a licensed tax professional such as a CPA or an enrolled agent.'],
+        ['q' => 'How does the assistant work?', 'a' => 'You type a question about a tax topic and it explains the concept in simple terms. It can make mistakes, so check anything important on IRS.gov or with a professional.'],
+        ['q' => 'Do I need to know anything about taxes to start?', 'a' => 'No. The lessons start from the basics, and you can skip ahead to the topic you care about.'],
+        ['q' => 'Who is it for?', 'a' => 'Anyone in the US who files taxes, whether you do it yourself or use a preparer, and wants to understand what the numbers mean.'],
+    ];
+@endphp
 <div x-data="app()" x-init="init()" class="bg-white dark:bg-[#0B0F19] min-h-screen text-slate-900 dark:text-white transition-colors duration-300 font-sans">
-
-    <!-- ================= HERO ================= -->
-    <section class="relative pt-15 pb-15 lg:pt-15 lg:pb-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-
-            <!-- Left Content -->
-            <div class="flex flex-col space-y-8">
-                <h1 class="text-5xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
-                    Maximize Your Tax Deductions
-                    <span class="text-blue-500 block mt-2">Without Expensive CPA.</span>
-                </h1>
-
-                <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
-                    AI-Powered Tax Advisory for Gig Workers & Expats — From $9. Get personalized guidance that helps you keep more of what you earn.
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="#" 
-                       class="inline-flex justify-center items-center bg-blue-600 hover:bg-emerald-600 text-white font-semibold px-8 py-4 rounded-xl transition duration-200 shadow-sm hover:shadow-md">
-                        Start free
-                    </a>
-
-                    <a href="/pricing"
-                       class="inline-flex justify-center items-center border border-slate-300 dark:border-white/20 text-slate-900 dark:text-white font-semibold px-8 py-4 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition duration-200">
-                        View pricing
-                    </a>
-                </div>
-
-                <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 font-medium">
-                    <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span>IRS Enrolled Agents • EU Tax Advisors • GDPR Compliant</span>
-                </div>
+<main>
+{{-- ============ HERO ============ --}}
+<section class="">
+    <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-12">
+        <div>
+            <h1 class="text-4xl font-extrabold leading-[1.1] tracking-tight text-slate-900 dark:text-white  sm:text-5xl">
+                Understand your taxes before they surprise you.
+            </h1>
+            <p class="mt-5 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+                Short, plain-English lessons on how US taxes work, plus an assistant you can ask anything. No jargon, no guessing what a form means.
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href="{{route('register')}}" class="inline-flex justify-center rounded-md bg-blue-700 px-6 py-3 text-base font-semibold text-white hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">Get started</a>
+                <button type="button" @click="$dispatch('open-chat')" class="inline-flex justify-center rounded-md border border-blue-200 bg-white px-6 py-3 text-base font-semibold text-blue-800 hover:border-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">Ask the assistant</button>
             </div>
-
-            <!-- Right Content: Image / Video Placeholder (Hidden on Mobile) -->
-            <div class="hidden lg:block relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-white/10 group bg-slate-100 dark:bg-slate-800">
-                <!-- Video Thumbnail Image -->
-                <img src="hero.jpg?auto=format&fit=crop&w=1200&q=80" alt="Platform Presentation" class="w-full h-full object-cover opacity-70 group-hover:opacity- transition duration-500">
-                
-    
-            </div>
-
+            <p class="mt-4 text-sm text-slate-500">Educational content, not tax advice.</p>
         </div>
-    </section>
 
-    <!-- Who it's for -->
-            <section class="space-y-8">
-                <h2 class="text-3xl font-bold text-center text-blue-600 dark:text-blue-400">Education-First Tax Advisory</h2>
-                <div class="grid md:grid-cols-3 gap-6 text-center">
-                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
-                        <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">01</h3>
-                        <h4 class="font-semibold mt-2">Assess</h4>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm">
-                            We analyze your unique tax situation, income sources, and potential deductions.
-                        </p>
+        {{-- Visual : la pile de documents, puis la liste claire --}}
+        <div class="flex flex-col items-center gap-8 sm:flex-row sm:justify-center" aria-hidden="true">
+            <div class="relative h-44 w-56 shrink-0">
+                <div class="absolute left-0 top-10 w-44 -rotate-6 rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-500 shadow-sm">Form 1099</div>
+                <div class="absolute left-6 top-4 w-44 rotate-3 rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-500 shadow-sm">Deductions?</div>
+                <div class="absolute left-3 top-[4.5rem] w-44 -rotate-2 rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-500 shadow-sm">Credits???</div>
+                <div class="absolute left-10 top-0 w-44 rotate-6 rounded-md border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm">Form W-2</div>
+            </div>
+            <svg class="h-8 w-8 shrink-0 rotate-90 text-blue-700 sm:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-5 5 5-5 5"/></svg>
+            <ul class="w-60 shrink-0 divide-y divide-slate-100 rounded-lg border border-blue-100 bg-white shadow-md">
+                @foreach (['Income: what counts', 'Deductions: what lowers it', 'Credits: what reduces the bill', 'Filing: what to send, when'] as $row)
+                    <li class="flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-800">
+                        <svg class="h-5 w-5 shrink-0 text-blue-700" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0L3.3 9.7a1 1 0 1 1 1.4-1.4l3.8 3.8 6.8-6.8a1 1 0 0 1 1.4 0Z" clip-rule="evenodd"/></svg>
+                        {{ $row }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+</section>
+
+{{-- ============ RÉASSURANCE (uniquement des faits vrais) ============ --}}
+<section class="border-y border-slate-200 bg-white dark:bg-[#0B0F19] ">
+    <ul class="mx-auto grid max-w-6xl gap-x-8 gap-y-4 px-4 py-6 text-sm font-medium text-slate-700 dark:text-white sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
+        <li>Plain English, no jargon</li>
+        <li>Learn at your own pace</li>
+        <li>Ask the assistant any time</li>
+        <li>Educational, not tax advice</li>
+    </ul>
+</section>
+
+{{-- ============ LE PROBLÈME ============ --}}
+<section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
+    <h2 class="text-3xl font-bold tracking-tight text-black dark:text-blue-600 sm:text-4xl">Taxes feel stacked up because nobody explains how the pieces fit.</h2>
+    <p class="mt-5 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+        Income forms, deductions, credits, deadlines. Each one makes sense on its own. Together they turn into a pile, and most people deal with it once a year, in a hurry.
+    </p>
+    <p class="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+        Unstack my taxes takes the pile apart one topic at a time, so you know what each piece does and why it matters to you.
+    </p>
+</section>
+
+{{-- ============ SECTIONS PRODUIT EN ALTERNANCE ============ --}}
+<section id="topics" class="bg-slate-50 dark:bg-[#0B0F19]">
+    <div class="mx-auto max-w-6xl space-y-20 px-4 py-16 sm:px-6 lg:space-y-28 lg:py-24">
+
+        {{-- Apprendre --}}
+        <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div>
+                <h2 class="text-2xl font-bold tracking-tight text-blue-600 sm:text-3xl">Learn the basics in short lessons.</h2>
+                <p class="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">Each lesson covers one idea, from filing status to the difference between W-2 and 1099 income. Read it in a few minutes, then move on when you're ready.</p>
+                <a href="{{route('register')}}" class="mt-6 inline-block font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900">Start with the basics</a>
+            </div>
+            {{-- Remplace ce bloc par une capture de ton app : <img src="{{ asset('images/lessons.png') }}" alt="..."> --}}
+            <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm" aria-hidden="true">
+                @foreach ([['Filing status, explained', 'w-full'], ['W-2 vs. 1099 income', 'w-2/3'], ['Standard vs. itemized deduction', 'w-1/4']] as [$title, $w])
+                    <div class="@if(!$loop->first) mt-5 @endif">
+                        <div class="flex justify-between text-sm font-semibold text-slate-800"><span>{{ $title }}</span></div>
+                        <div class="mt-2 h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full bg-blue-700 {{ $w }}"></div></div>
                     </div>
-                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
-                        <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">02</h3>
-                        <h4 class="font-semibold mt-2">Educate</h4>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm">
-                            We explain opportunities, requirements, and strategies in plain language.
-                        </p>
+                @endforeach
+            </div>
+        </div>
+
+        {{-- Demander --}}
+        <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div class="lg:order-last">
+                <h2 class="text-2xl font-bold tracking-tight text-blue-600 sm:text-3xl">Ask a question, get a clear answer.</h2>
+                <p class="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">Stuck on a term? Ask the assistant. It explains the concept in simple words and points you to the lesson that goes deeper.</p>
+                <button type="button" @click="$dispatch('open-chat')" class="mt-6 font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900">Try the assistant</button>
+            </div>
+            <div class="space-y-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm" aria-hidden="true">
+                <p class="ml-auto max-w-[85%] rounded-2xl rounded-br-sm bg-blue-700 px-4 py-2.5 text-sm text-white">What's the difference between a deduction and a credit?</p>
+                <p class="max-w-[90%] rounded-2xl rounded-bl-sm bg-slate-100 px-4 py-2.5 text-sm text-slate-800 dark:text-slate-400">A deduction lowers the income you're taxed on. A credit lowers the tax you owe, dollar for dollar.</p>
+            </div>
+        </div>
+
+        {{-- Suivre --}}
+        <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div>
+                <h2 class="text-2xl font-bold tracking-tight text-blue-600 sm:text-3xl">See where you are and what's next.</h2>
+                <p class="mt-4 text-lg leading-relaxed text-slate-600 dark:text-slate-400">Your dashboard keeps your progress in one place, so you can pick up where you left off instead of starting over every season.</p>
+                <a href="{{route('dashboard')}}" class="mt-6 inline-block font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900">Open your dashboard</a>
+            </div>
+            {{-- Idéal : une vraie capture du dashboard ILANDS ici --}}
+            <div class="grid grid-cols-3 gap-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm" aria-hidden="true">
+                @foreach (['Income', 'Deductions', 'Credits'] as $t)
+                    <div class="rounded-lg bg-blue-50 p-3">
+                        <p class="text-xs font-semibold text-blue-900">{{ $t }}</p>
+                        <div class="mt-3 h-1.5 rounded-full bg-blue-100"><div class="h-1.5 rounded-full bg-blue-700" style="width: {{ [70, 40, 15][$loop->index] }}%"></div></div>
                     </div>
-                    <div class="bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-blue-500/30 rounded-2xl p-6 shadow transition-colors">
-                        <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400">03</h3>
-                        <h4 class="font-semibold mt-2">Empower</h4>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm">
-                            You make informed decisions with our expert guidance and ongoing support.
-                        </p>
+                @endforeach
+                <div class="col-span-3 rounded-lg border border-dashed border-slate-300 p-3 text-sm text-slate-500">Next lesson: Standard vs. itemized deduction</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- ============ HOW IT WORKS (vraie séquence : numérotation justifiée) ============ --}}
+<section id="how-it-works" class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24 dark:bg-[#0B0F19]">
+    <h2 class="text-3xl font-bold tracking-tight text-blue-600 sm:text-4xl">How it works</h2>
+    <ol class="mt-10 grid gap-8 md:grid-cols-3">
+        @foreach ([
+            ['Create your account', 'It takes a minute. Nothing to upload to get started.'],
+            ['Pick a topic', 'Start at the beginning or jump to what you need right now.'],
+            ['Learn, then ask', 'Read the lesson. If something is unclear, ask the assistant.'],
+        ] as [$title, $text])
+            <li class="flex gap-4">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-700 text-base font-bold text-white">{{ $loop->iteration }}</span>
+                <div>
+                    <h3 class="text-lg font-semibold text-blue-600">{{ $title }}</h3>
+                    <p class="mt-1 text-slate-600 dark:text-slate-400">{{ $text }}</p>
+                </div>
+            </li>
+        @endforeach
+    </ol>
+</section>
+
+{{-- ============ FAQ ============ --}}
+<section id="faq" class="bg-slate-50 dark:bg-[#0B0F19]">
+    <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24" x-data="{ active: null }">
+        <h2 class="text-3xl font-bold tracking-tight text-blue-600 sm:text-4xl">Common questions</h2>
+        <div class="mt-8 divide-y divide-slate-200 border-y border-slate-200">
+            @foreach ($faq as $i => $item)
+                <div>
+                    <button type="button" @click="active = active === {{ $i }} ? null : {{ $i }}" :aria-expanded="active === {{ $i }}" class="flex w-full items-center justify-between gap-4 py-5 text-left text-lg font-semibold dark:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-700">
+                        {{ $item['q'] }}
+                        <svg class="h-5 w-5 shrink-0 text-blue-700 transition-transform" :class="active === {{ $i }} && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div x-show="active === {{ $i }}" x-cloak x-collapse>
+                        <p class="pb-5 leading-relaxed text-translate-950 dark:text-slate-200">{{ $item['a'] }}</p>
                     </div>
                 </div>
-            </section>
-
-            <section class="py-16 bg-gray-50 dark:bg-gray-900">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">Who We Serve</h2>
-    <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
-      We specialize in two underserved communities that need specialized tax guidance.
-    </p>
-
-    <div class="mt-12 grid gap-8 grid-cols-1 md:grid-cols-2">
-      
-      <!-- Gig Economy Workers Card -->
-      <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-8 hover:scale-105 transform transition">
-        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-          <!-- Heroicon: users -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m0-2.13a4 4 0 100-8 4 4 0 000 8zm8 0a4 4 0 100-8 4 4 0 000 8z" />
-          </svg>
-          Gig Economy Workers
-        </h3>
-        <ul class="space-y-3 text-gray-600 dark:text-gray-300 text-left">
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            Uber, Lyft, DoorDash drivers
-          </li>
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            Freelancers and contractors
-          </li>
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            Side hustle entrepreneurs
-          </li>
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 dark:text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            Etsy sellers and creators
-          </li>
-          <li class="flex items-center gap-2 font-semibold text-blue-700 dark:text-blue-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-700 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            Learn about gig worker deductions
-          </li>
-        </ul>
-      </div>
-
-      <!-- American Expats Card -->
-      <div class="bg-white dark:bg-gray-800 shadow-md rounded-xl p-8 hover:scale-105 transform transition">
-        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
-          <!-- Heroicon: globe-alt -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-purple-600 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0v20m-8-10h16" />
-          </svg>
-          American Expats
-        </h3>
-        <ul class="space-y-3 text-gray-600 dark:text-gray-300 text-left">
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            US citizens living abroad
-          </li>
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            Digital nomads
-          </li>
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            International professionals
-          </li>
-          <li class="flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 dark:text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            Foreign income earners
-          </li>
-          <li class="flex items-center gap-2 font-semibold text-purple-700 dark:text-purple-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-700 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            Learn about expat tax obligations
-          </li>
-        </ul>
-      </div>
-
+            @endforeach
+        </div>
     </div>
-  </div>
 </section>
 
-
-
-    @include("components.pricing")
-
-    <section id="faq" class="bg-white  dark:bg-[#0B0F19] text-slate-900 dark:text-white transition-colors duration-300 py-16 sm:py-24">
-  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <p class="text-sm font-semibold uppercase tracking-wider text-brand-600">FAQ</p>
-      <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl dark:text-blue-500">Questions people ask first</h2>
+{{-- ============ CTA FINAL ============ --}}
+<section class="bg-blue-800">
+    <div class="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6">
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Start with one topic. See how it feels.</h2>
+        <p class="mx-auto mt-4 max-w-xl text-lg text-blue-100">You don't need to understand all of it today. You just need to begin.</p>
+        <a href="{{route('register')}}" class="mt-8 inline-block rounded-md bg-white px-6 py-3 text-base font-semibold text-blue-900 hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Get started</a>
     </div>
-
-    <div class="mt-10 divide-y divide-slate-200 rounded-2xl border border-slate-200">
-      <details class="group p-5 sm:p-6" open>
-        <summary class="flex items-center justify-between gap-4 text-left font-semibold text-brand-950 dark:text-blue-500">Do you prepare and file my tax return?<span class="faq-icon text-2xl leading-none text-brand-600" aria-hidden="true">+</span></summary>
-        <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-400">No. We're advisory and education. We show you what applies to your situation and what to do about it. You then file with tax software or a preparer of your choice. Many clients tell us it makes that step quicker and cheaper.</p>
-      </details>
-      <details class="group p-5 sm:p-6">
-        <summary class="flex items-center justify-between gap-4 text-left font-semibold text-brand-950 dark:text-blue-500">What's an Enrolled Agent?<span class="faq-icon text-2xl leading-none text-brand-600" aria-hidden="true">+</span></summary>
-        <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-400">An Enrolled Agent (EA) is a tax professional licensed by the U.S. Department of the Treasury. EAs can represent taxpayers before the IRS on any tax matter. It's the same federal authority CPAs have for IRS representation, with a focus on tax.</p>
-      </details>
-      <details class="group p-5 sm:p-6">
-        <summary class="flex items-center justify-between gap-4 text-left font-semibold text-brand-950 dark:text-blue-500">Is my information safe?<span class="faq-icon text-2xl leading-none text-brand-600" aria-hidden="true">+</span></summary>
-        <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-400">Your data travels over encrypted connections and is only used to build your report and run your account. Payments are processed by secured payment systems, so we never see or store your card number. We don't sell your information.</p>
-      </details>
-      <details class="group p-5 sm:p-6">
-        <summary class="flex items-center justify-between gap-4 text-left font-semibold text-brand-950 dark:text-blue-500">Does this work if I live outside the U.S.?<span class="faq-icon text-2xl leading-none text-brand-600" aria-hidden="true">+</span></summary>
-        <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-400">Yes. Everything is online, and expat topics like FEIE, foreign tax credits and foreign account reporting are a core part of what we cover. Premium consultations are by video, so time zones aren't a problem.</p>
-      </details>
-      <details class="group p-5 sm:p-6">
-        <summary class="flex items-center justify-between gap-4 text-left font-semibold text-brand-950 dark:text-blue-500">How does the AI assistant fit in?<span class="faq-icon text-2xl leading-none text-brand-600" aria-hidden="true">+</span></summary>
-        <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-400">It answers general tax questions quickly and points you to the right video or template. It's a first stop, not a replacement for a professional. For anything complex, it will direct you to email support or a consultation.</p>
-      </details>
-      <details class="group p-5 sm:p-6">
-        <summary class="flex items-center justify-between gap-4 text-left font-semibold text-brand-950 dark:text-blue-500">Can I cancel my membership?<span class="faq-icon text-2xl leading-none text-brand-600" aria-hidden="true">+</span></summary>
-        <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-400">Yes. You can manage or cancel your subscription from your account at any time. There are no long-term contracts.</p>
-      </details>
-      <details class="group p-5 sm:p-6">
-        <summary class="flex items-center justify-between gap-4 text-left font-semibold text-brand-950 dark:text-blue-500">What if I'm not happy with my report?<span class="faq-icon text-2xl leading-none text-brand-600" aria-hidden="true">+</span></summary>
-        <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-400">Email us and we'll make it right, either by fixing the report or issuing a refund. The details are on our Refund Policy page.</p>
-      </details>
-    </div>
-  </div>
 </section>
+</main>
 
-{{-- <section class="bg-slate-50 py-16 sm:py-24">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl text-center">
-      <p class="text-sm font-semibold uppercase tracking-wider text-brand-600">What clients say</p>
-      <h2 class="mt-2 text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl">People who finally understood their return</h2>
-    </div>
-    <div class="mt-12 grid gap-6 md:grid-cols-3">
-      <figure class="flex flex-col rounded-2xl bg-white p-7 shadow-card ring-1 ring-slate-200">
-        <div class="flex gap-0.5 text-amber-400" aria-label="5 out of 5 stars"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg></div>
-        <blockquote class="mt-4 flex-1 text-slate-700">"I drove for two apps for three years and never tracked a single mile properly. The report told me exactly what to keep and how. It paid for itself."</blockquote>
-        <figcaption class="mt-5 text-sm"><span class="font-semibold text-brand-950">Marcus T.</span><span class="text-slate-500"> · Rideshare driver, Atlanta</span></figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-2xl bg-white p-7 shadow-card ring-1 ring-slate-200">
-        <div class="flex gap-0.5 text-amber-400" aria-label="5 out of 5 stars"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg></div>
-        <blockquote class="mt-4 flex-1 text-slate-700">"I live in Lisbon and the FEIE versus foreign tax credit question had me going in circles. The video call cleared it up in half an hour."</blockquote>
-        <figcaption class="mt-5 text-sm"><span class="font-semibold text-brand-950">David R.</span><span class="text-slate-500"> · U.S. remote worker abroad</span></figcaption>
-      </figure>
-      <figure class="flex flex-col rounded-2xl bg-white p-7 shadow-card ring-1 ring-slate-200">
-        <div class="flex gap-0.5 text-amber-400" aria-label="5 out of 5 stars"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg><svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5L9 8.9z"/></svg></div>
-        <blockquote class="mt-4 flex-1 text-slate-700">"The quarterly checklist is what I needed. I used to dread April. Now I know what to set aside each month."</blockquote>
-        <figcaption class="mt-5 text-sm"><span class="font-semibold text-brand-950">Priya S.</span><span class="text-slate-500"> · Freelance designer, Austin</span></figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
- --}}
+
 
 </div>
-
-
 </x-guest-layout>

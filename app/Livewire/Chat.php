@@ -20,7 +20,7 @@ class Chat extends Component
     public bool $isLoading = false;
     public bool $guestLimitReached = false;
 
-    public function mount(string $theme = 'Estimated taxes, Gig Economy Workers, American Expats, period of declarations')
+    public function mount(string $theme = '')
     {
         $this->theme = $theme;
 

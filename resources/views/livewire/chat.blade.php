@@ -13,7 +13,10 @@
              if (window.innerWidth >= 640) $refs.input?.focus();
          });
      })"
-     @keydown.escape.window="open = false">
+     @keydown.escape.window="open = false"
+     @open-chat.window="open = true"
+     >
+
 
     <!-- Fenêtre de chat -->
     <div x-show="open"

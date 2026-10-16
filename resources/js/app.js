@@ -161,3 +161,32 @@ installBtn?.addEventListener('click', async () => {
   deferredPrompt = null;
   installBtn.style.display = 'none';
 });
+
+
+const el = document.querySelector('.sm\\:w-\\[390px\\]');
+if (el) {
+  // Simulate the sm: breakpoint styles manually
+  await setElementStyles(el, {
+    display: 'flex',
+    position: 'absolute',
+    top: 'auto',
+    left: 'auto',
+    right: '0',
+    bottom: '80px', // sm:bottom-20 (20 * 4px)
+    width: '390px',
+    height: '560px',
+    maxHeight: 'calc(100vh - 8rem)',
+    zIndex: '51'
+  });
+}
+
+const data = {
+  applied: !!el,
+  newComputedStyles: el ? {
+    position: getComputedStyle(el).position,
+    width: getComputedStyle(el).width,
+    height: getComputedStyle(el).height,
+    right: getComputedStyle(el).right,
+    bottom: getComputedStyle(el).bottom
+  } : null
+};
