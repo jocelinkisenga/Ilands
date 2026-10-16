@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Nnjeim\World\World;
 use Livewire\Attributes\Validate;
+use Livewire\Attributes\Layout;
 
+#[Layout('layouts.client')]
 class TaxProfile extends Component
 {
    

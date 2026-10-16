@@ -12,6 +12,7 @@ use Prism\Prism\ValueObjects\Messages\AssistantMessage;
 use Prism\Prism\ValueObjects\Media\Document;
 use App\Actions\StoreAiLog;
 use App\Services\AI\AiModelManager;
+use Illuminate\Support\Facades\Auth;
 
 class ReportGenerationService
 {
@@ -161,9 +162,47 @@ class ReportGenerationService
     string $type,
     string $profileContext = ""
   ): string {
+    $taxeProfile = TaxProfile::whereUser_id(Auth::id())->first();
+    if ($taxeProfile?->data != null ) {
+      return "generate a report from my profile {$taxeProfile} 
+      Educational purposes only. Do not provide tax, legal, accounting, or financial advice. Do not prepare tax returns, determine tax liability, or recommend filing positions.
+
+Report Type: {$type}
+
+{$profileContext}
+
+Instructions:
+
+- Analyze available information and relevant chat context.
+- Never invent facts or financial figures.
+- Clearly state assumptions and uncertainties.
+- Use accurate U.S. tax terminology.
+- Format output in clean, professional Markdown with headings, tables, and bullet points when appropriate.
+
+Structure:
+
+Executive Summary
+
+Key Findings
+
+Financial Overview
+
+Educational Tax Analysis
+
+Risks & Compliance Considerations
+
+Opportunities
+
+Educational Recommendations
+
+Action Plan
+
+Conclusion
+      ";
+    } else {
     return "You are ILANDS AI Report Generator.
 
-Generate professional educational U.S. tax, finance, and business reports only.
+Generate professional educational U.S. tax, finance, and business reports only, if the user as no tax-profile, suggest a to generate a tax-profile using the link https://nstuckmytaxes.com/tax-profile. use a good format clickable text so that the link is note show in hard
 
 Educational purposes only. Do not provide tax, legal, accounting, or financial advice. Do not prepare tax returns, determine tax liability, or recommend filing positions.
 
@@ -198,5 +237,6 @@ Educational Recommendations
 Action Plan
 
 Conclusion";
+}
   }
 }

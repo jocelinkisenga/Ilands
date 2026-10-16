@@ -27,21 +27,22 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        return redirect()->to($request->user()->role->homePath());
 
         if (! auth()->user()->hasVerifiedEmail()) {
 
-    return redirect()->route('verification.notice');
+         return redirect()->route('verification.notice');
 
-}
+        }
 
         
-$user = $request->user();
- if ($user->role->value === 'admin') {
-        return redirect()->to('/admin/dashboard'); 
-    }
+// $user = $request->user();
+//  if ($user->role->value === 'admin') {
+//         return redirect()->to('/admin/dashboard'); 
+//     }
 
-    return redirect()->to('/dashboard');
-  }
+//     return redirect()->to('/dashboard');
+ }
 
     /**
      * Destroy an authenticated session.

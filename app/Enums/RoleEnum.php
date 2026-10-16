@@ -15,6 +15,14 @@ enum RoleEnum: string
         };
     }
 
+        public function homePath(): string
+    {
+        return match ($this) {
+            self::CLIENT => '/dashboard',
+            self::ADMIN  => '/admin/dashboard',
+        };
+    }
+
     public function badgeColor(): string
     {
         return match ($this) {

@@ -48,10 +48,6 @@
             </div>
 
             <div class="flex items-center gap-1">
-                <button wire:click="generateReport" title="Generate report"
-                    class="rounded-lg p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
-                </button>
                 <a href="{{ route('chat') }}" title="New chat"
                     class="rounded-lg p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" /></svg>
@@ -61,21 +57,25 @@
     </header>
 
     {{-- CONVERSATION --}}
-    <div x-ref="messagesContainer" class="flex-1 overflow-y-auto scroll-smooth pb-36">
-        <div x-ref="thread" class="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 py-6 md:px-6 md:py-8">
+    <div x-ref="messagesContainer" class="min-h-0 flex-1 overflow-y-auto scroll-smooth">
+        <div x-ref="thread" class="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-14 pt-6 md:px-6 md:pb-16 md:pt-8">
 
             {{-- EMPTY STATE --}}
             {{-- @if (count($messages) === 0) --}}
                 <div class="flex flex-col items-center pt-8 text-center md:pt-16">
                     <div class="mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-gray-100 bg-gray-50 text-2xl shadow-sm dark:border-gray-700/50 dark:bg-gray-800">💬</div>
-                    <h2 class="mb-2 text-2xl font-semibold text-gray-900 dark:text-white">How can help you today?</h2>
+                    <h2 class="mb-2 text-2xl font-semibold text-gray-900 dark:text-white">How can we help you today?</h2>
+                    <p class="mx-auto max-w-md text-sm text-gray-500 dark:text-gray-400">Pick a question below or write your own.</p>
                     {{-- <p class="mx-auto mb-8 max-w-md text-sm text-gray-500 dark:text-gray-400">                    </p> --}}
 
-                    <div class="grid w-full max-w-2xl grid-cols-1 gap-3 md:grid-cols-2">
+                    <div class="mt-8 grid w-full max-w-2xl grid-cols-1 gap-2.5 text-left sm:grid-cols-2">
                         @foreach ($suggestedQuestions as $question)
                             <button type="button" wire:click="$set('prompt', @js($question))"
-                                class="rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-left text-xs text-blue-700 transition hover:bg-blue-100 disabled:opacity-50 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-300 dark:hover:bg-blue-500/20">
-                                <p class="text-sm font-medium text-gray-900 transition-colors group-hover:text-emerald-600 dark:text-gray-100 dark:group-hover:text-emerald-400">{{ $question }}</p>
+                                class="group flex items-start gap-3 rounded-2xl border border-gray-200 bg-white p-3.5 text-left transition-colors duration-150 hover:border-gray-300 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/20 disabled:opacity-50 dark:border-gray-700/70 dark:bg-gray-800/50 dark:hover:border-gray-600 dark:hover:bg-gray-800 dark:focus-visible:ring-white/30">
+                                <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-500 transition-colors group-hover:bg-gray-900 group-hover:text-white dark:bg-gray-700 dark:text-gray-300 dark:group-hover:bg-white dark:group-hover:text-gray-900">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>
+                                </span>
+                                <span class="flex-1 text-sm leading-snug text-gray-700 transition-colors group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-white">{{ $question }}</span>
                             </button>
                         @endforeach
                     </div>
@@ -148,10 +148,14 @@
         </div>
     </div>
 
-    {{-- COMPOSER --}}
-    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white to-transparent px-4 pb-4 pt-6 dark:from-gray-900 dark:via-gray-900"
+    {{-- COMPOSER (dans le flux : ne recouvre plus la conversation, quelle que soit sa hauteur) --}}
+    <div class="relative z-10 flex-none bg-white px-4 pb-4 pt-2 dark:bg-gray-900"
          style="padding-bottom: max(1rem, env(safe-area-inset-bottom))">
-        <div class="mx-auto max-w-3xl"
+
+        {{-- Fondu doux entre la conversation et le composer --}}
+        <div class="pointer-events-none absolute inset-x-0 -top-6 h-6 bg-gradient-to-t from-white to-transparent dark:from-gray-900" aria-hidden="true"></div>
+
+        <div class="relative mx-auto max-w-3xl"
             x-data="{
                 resizeTextarea() {
                     $refs.textarea.style.height = '48px';
@@ -162,52 +166,75 @@
             @message-sent.window="resetTextarea()"
             x-effect="prompt; $nextTick(() => resizeTextarea())"
         >
-            {{-- DOCUMENT PREVIEW --}}
-            @if ($documentPreview)
-                <div class="mb-3 flex w-fit max-w-sm items-center gap-3 rounded-xl border border-gray-200 bg-white p-2 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+            {{-- GENERATE REPORT : pilule flottante alignée au-dessus du bouton d'envoi.
+                 Se réduit à l'icône dès que l'utilisateur écrit, pour laisser la place à la saisie. --}}
+            <button type="button" wire:click="generateReport" wire:loading.attr="disabled" wire:target="generateReport"
+                title="Generate report" aria-label="Generate report"
+                class="absolute -top-11 right-0 z-10 inline-flex h-8 items-center rounded-full border border-gray-200 bg-white/90 px-2.5 text-xs font-medium text-gray-600 shadow-md shadow-gray-900/5 backdrop-blur transition-all duration-200 hover:border-gray-300 hover:text-gray-900 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900/20 disabled:cursor-wait disabled:opacity-70 dark:border-gray-700 dark:bg-gray-800/90 dark:text-gray-300 dark:hover:border-gray-600 dark:hover:text-white dark:focus-visible:ring-white/30">
+                <svg wire:loading.remove wire:target="generateReport" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
+                <svg wire:loading wire:target="generateReport" class="h-4 w-4 shrink-0 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+                <span class="overflow-hidden whitespace-nowrap transition-all duration-200"
+                      :class="prompt.length > 0 ? 'ml-0 max-w-0 opacity-0' : 'ml-1.5 max-w-[7rem] opacity-100'">Generate report</span>
+            </button>
+
+            {{-- INPUT CARD : le fichier joint vit à l'intérieur de la carte, il n'est jamais masqué --}}
+            <div class="flex w-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-sm transition-all duration-200 focus-within:border-gray-300 focus-within:bg-white focus-within:ring-2 focus-within:ring-gray-100 dark:border-gray-700/80 dark:bg-gray-800 dark:focus-within:border-gray-600 dark:focus-within:bg-gray-800 dark:focus-within:ring-gray-800">
+
+                {{-- DOCUMENT PREVIEW --}}
+                @if ($documentPreview)
+                    <div class="px-3 pt-3">
+                        <div class="flex w-fit max-w-full items-center gap-3 rounded-xl border border-gray-200 bg-white py-2 pl-2 pr-1.5 shadow-sm dark:border-gray-600 dark:bg-gray-700/60 sm:max-w-sm">
+                            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-500/15 dark:text-blue-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="truncate text-xs font-medium text-gray-900 dark:text-white">{{ $documentPreview['name'] }}</p>
+                                <p class="truncate text-[11px] text-gray-500 dark:text-gray-400">{{ $documentPreview['size'] }}</p>
+                            </div>
+                            <button type="button" wire:click="$set('document', null); $set('documentPreview', null)" aria-label="Remove file"
+                                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-gray-400 transition hover:bg-gray-100 hover:text-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/40 dark:hover:bg-gray-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                            </button>
+                        </div>
                     </div>
-                    <div class="min-w-0 flex-1">
-                        <p class="truncate text-xs font-medium text-gray-900 dark:text-white">{{ $documentPreview['name'] }}</p>
-                        <p class="truncate text-[10px] text-gray-500">{{ $documentPreview['size'] }}</p>
-                    </div>
-                    <button type="button" wire:click="$set('document', null); $set('documentPreview', null)" aria-label="Remove file"
-                        class="shrink-0 p-1 text-gray-400 hover:text-red-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                    </button>
+                @endif
+
+                {{-- Indicateur d'envoi du fichier --}}
+                <div wire:loading.flex wire:target="document" class="items-center gap-2 px-4 pt-3 text-xs text-gray-500 dark:text-gray-400">
+                    <svg class="h-3.5 w-3.5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+                    Uploading file…
                 </div>
-            @endif
 
-            {{-- INPUT --}}
-            <div class="relative flex w-full items-end rounded-2xl border border-gray-200 bg-gray-50 shadow-sm transition-all duration-200 focus-within:border-gray-300 focus-within:ring-2 focus-within:ring-gray-100 dark:border-gray-700/80 dark:bg-gray-800 dark:focus-within:border-gray-600 dark:focus-within:ring-gray-800">
+                {{-- INPUT --}}
+                <div class="flex w-full items-end">
 
-                {{-- Attachment --}}
-                <label class="flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center text-gray-400 transition hover:text-gray-600 dark:hover:text-gray-300" title="Attach a file">
-                    <input type="file" wire:model="document" class="hidden" accept=".pdf,.doc,.docx,.txt,image/*" />
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" /></svg>
-                </label>
+                    {{-- Attachment --}}
+                    <label class="flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center text-gray-400 transition hover:text-gray-600 dark:hover:text-gray-300" title="Attach a file">
+                        <input type="file" wire:model="document" class="hidden" accept=".pdf,.doc,.docx,.txt,image/*" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" /></svg>
+                    </label>
 
-                {{-- Textarea : Entrée envoie, Maj+Entrée = nouvelle ligne --}}
-                <textarea
-                    x-ref="textarea"
-                    x-model="prompt"
+                    {{-- Textarea : Entrée envoie, Maj+Entrée = nouvelle ligne --}}
+                    <textarea
+                        x-ref="textarea"
+                        x-model="prompt"
      wire:model.defer="prompt"
-                    @input="resizeTextarea()"
-                    @keydown.enter="if (!$event.shiftKey) { $event.preventDefault(); $wire.sendMessage(); }"
-                    maxlength="5000"
-                    rows="1"
-                    placeholder="Write your message…"
-                    class="max-h-[200px] min-h-[48px] flex-1 resize-none overflow-y-auto border-0 bg-transparent px-0 py-3.5 text-[15px] text-gray-900 placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 dark:border-gray-700 dark:text-gray-100"
-                ></textarea>
+                        @input="resizeTextarea()"
+                        @keydown.enter="if (!$event.shiftKey) { $event.preventDefault(); $wire.sendMessage(); }"
+                        maxlength="5000"
+                        rows="1"
+                        placeholder="Write your message…"
+                        class="max-h-[200px] min-h-[48px] flex-1 resize-none overflow-y-auto border-0 bg-transparent px-0 py-3.5 text-[15px] text-gray-900 placeholder:text-gray-500 focus:border-0 focus:outline-none focus:ring-0 dark:text-gray-100"
+                    ></textarea>
 
-                {{-- Send --}}
-                <div class="flex h-12 w-12 shrink-0 items-center justify-center pr-2">
-                    <button type="button" wire:click="sendMessage" wire:loading.attr="disabled" aria-label="Send message"
-                        class="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black">
-                        <svg wire:loading.remove wire:target="sendMessage" xmlns="http://www.w3.org/2000/svg" class="ml-0.5 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" /></svg>
-                        <svg wire:loading wire:target="sendMessage" class="h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
-                    </button>
+                    {{-- Send --}}
+                    <div class="flex h-12 w-12 shrink-0 items-center justify-center pr-2">
+                        <button type="button" wire:click="sendMessage" wire:loading.attr="disabled" aria-label="Send message"
+                            class="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black">
+                            <svg wire:loading.remove wire:target="sendMessage" xmlns="http://www.w3.org/2000/svg" class="ml-0.5 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" /></svg>
+                            <svg wire:loading wire:target="sendMessage" class="h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 

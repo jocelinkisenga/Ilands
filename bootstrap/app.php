@@ -23,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
       "freePlan" => \App\Http\Middleware\FreePlanMiddleware::class,
       \App\Http\Middleware\SetLocale::class,
     ]);
+     $middleware->redirectUsersTo(fn () => auth()->user()->role->homePath());
   })
   ->withExceptions(function (Exceptions $exceptions): void {
     //
