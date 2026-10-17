@@ -83,7 +83,7 @@ require __DIR__ . "/auth.php";
 */
 Route::livewire("/tax-screener", TaxeprofileTaxScreener::class)->name("tax-screener");
 
-Route::middleware(["auth"])->group(function () {
+Route::middleware(["auth", "verified"])->group(function () {
 
     // 1. Dashboard & Core Features
     Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
@@ -137,7 +137,7 @@ Route::middleware(["auth"])->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(["auth", "admin"])
+Route::middleware(["auth", "admin","verified"])
     ->prefix("admin")
     ->group(function () {
         
