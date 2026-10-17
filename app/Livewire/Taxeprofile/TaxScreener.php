@@ -3,94 +3,125 @@
 namespace App\Livewire\Taxeprofile;
 
 use App\Models\Lead;
-use Livewire\Component;
+use App\Support\ScreenerProfile;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\Layout;
-
+use Livewire\Attributes\Locked;
+use Livewire\Component;
 
 #[Layout('layouts.guest')]
 class TaxScreener extends Component
 {
-    public $step = 1;
-    public $totalSteps = 4;
+    // #[Locked] : ces propriétés ne peuvent pas être modifiées depuis le navigateur
+    #[Locked] public int $step = 1;
+    #[Locked] public int $totalSteps = 4;
+    #[Locked] public bool $completed = false;
+    #[Locked] public array $recommendation = [];
 
-    // Champs du formulaire
-    public $income_source = '';
-    public $annual_income = '';
-    public $tracking_status = '';
-    public $tax_concern = '';
-    public $first_name = '';
-    public $email = '';
+    public string $income_source = '';
+    public string $annual_income = '';
+    public string $tracking_status = '';
+    public string $first_name = '';
+    public string $email = '';
+    public string $tax_concern = '';
 
-    public $recommendation = null;
-
-    
-    public function nextStep()
+    protected function rulesFor(int $step): array
     {
-        if ($this->step == 1) {
+        return match ($step) {
+            1 => ['income_source' => ['required', Rule::in(array_keys(ScreenerProfile::INCOME_SOURCES))]],
+            2 => ['annual_income' => ['required', Rule::in(array_keys(ScreenerProfile::INCOME_BRACKETS))]],
+            3 => ['tracking_status' => ['required', Rule::in(array_keys(ScreenerProfile::TRACKING))]],
+            4 => [
+                'first_name'  => ['required', 'string', 'min:2', 'max:50'],
+                'email'       => ['required', 'email:rfc', 'max:255'],
+                'tax_concern' => ['nullable', 'string', 'max:500'],
+            ],
+            default => [],
+        };
+    }
 
-            $this->validate(['income_source' => 'required'], ['income_source.required' => 'Veuillez sélectionner une source de revenus.']);
-        } elseif ($this->step == 2) {
-            
-            $this->validate(['annual_income' => 'required'], ['annual_income.required' => 'Veuillez sélectionner une tranche de revenus.']);
-        } elseif ($this->step == 3) {
-            $this->validate(['tracking_status' => 'required'], ['tracking_status.required' => 'Veuillez sélectionner une option de suivi.']);
-        }
+    protected function messages(): array
+    {
+        return [
+            'income_source.required'   => 'Please choose your main source of income.',
+            'income_source.in'         => 'Please choose one of the options.',
+            'annual_income.required'   => 'Please choose an income range.',
+            'annual_income.in'         => 'Please choose one of the options.',
+            'tracking_status.required' => 'Please choose an option.',
+            'tracking_status.in'       => 'Please choose one of the options.',
+            'first_name.required'      => 'Your first name is required.',
+            'email.required'           => 'A valid email address is required.',
+            'email.email'              => 'Please enter a valid email address.',
+        ];
+    }
+
+    public function nextStep(): void
+    {
+        $this->validate($this->rulesFor($this->step));
 
         if ($this->step < $this->totalSteps) {
             $this->step++;
         }
     }
 
-    public function submit()
+    public function previousStep(): void
     {
-        
-        $this->validate([
-            'first_name' => 'required|min:2',
-            'email'      => 'required|email|unique:leads,email',
-        ], [
-            'first_name.required' => 'Le prénom est obligatoire.',
-            'email.required' => 'Une adresse email valide est requise.'
-        ]);
+        if ($this->step > 1) {
+            $this->step--;
+            $this->resetErrorBag();
+        }
+    }
 
-       
-        if ($this->income_source === 'gig' && $this->tracking_status === 'no') {
-            $this->recommendation = [
-                'tier' => 'Business AI',
-                'message' => 'Basé sur votre activité, vous pourriez optimiser vos déductions de 15 à 25%.'
-            ];
-        } elseif ($this->income_source === 'expat' || $this->annual_income === '100k+') {
-            $this->recommendation = [
-                'tier' => 'Enterprise / Consultation',
-                'message' => 'Votre profil complexe nécessite une validation prioritaire par notre Enrolled Agent.'
-            ];
+    public function submit(): void
+    {
+        // On revalide TOUTES les étapes : impossible de sauter une étape ou d'envoyer une valeur inventée
+        $this->validate(array_merge(
+            $this->rulesFor(1),
+            $this->rulesFor(2),
+            $this->rulesFor(3),
+            $this->rulesFor(4),
+        ));
+
+        $this->recommendation = $this->recommend();
+
+        // Même email = on met à jour le profil au lieu de bloquer la personne qui refait le screener
+        $lead = Lead::updateOrCreate(
+            ['email' => mb_strtolower(trim($this->email))],
+            [
+                'first_name'            => trim(strip_tags($this->first_name)),
+                'primary_income_source' => $this->income_source,
+                'income_bracket'        => $this->annual_income,
+                'tracking_status'       => $this->tracking_status,
+                'tax_concern'           => trim(strip_tags($this->tax_concern)),
+                'recommended_tier'      => $this->recommendation['tier'],
+            ]
+        );
+
+        // Le chat retrouve le profil grâce à cet identifiant de session
+        session(['lead_id' => $lead->id]);
+
+        $this->completed = true;
+    }
+
+    protected function recommend(): array
+    {
+        $selfEmployed = in_array($this->income_source, ['gig', 'freelance'], true);
+
+        if ($this->income_source === 'expat' || $this->annual_income === '100k+') {
+            $tier = 'premium';
+            $message = 'Your situation has extra moving parts, so a one-on-one session with our Enrolled Agent is the best fit.';
+        } elseif ($selfEmployed && $this->tracking_status !== 'yes') {
+            $tier = 'plus';
+            $message = 'Many gig and freelance workers miss deductions when expenses aren’t tracked. Plus gives you the lessons, templates and assistant to fix that.';
         } else {
-            $this->recommendation = [
-                'tier' => 'Standard',
-                'message' => 'Un rapport standard couvrira parfaitement vos besoins actuels.'
-            ];
+            $tier = 'basic';
+            $message = 'You’re off to a good start. Our lessons and templates cover what you need right now.';
         }
 
-        
-        Lead::create([
-            'first_name' => $this->first_name,
-            'email' => $this->email,
-            'primary_income_source' => $this->income_source,
-            'income_bracket' => $this->annual_income,
-            'tracking_status' => $this->tracking_status,
-            'tax_concern' => $this->tax_concern,
-            'recommended_tier' => $this->recommendation['tier'],
-        ]);
+        [$name, $price] = ScreenerProfile::PLANS[$tier];
 
-        $this->step = 'results';
+        return compact('tier', 'name', 'price', 'message');
     }
-
-    public function previousStep()
-{
-    if ($this->step > 1) {
-        $this->step--;
-        $this->resetErrorBag(); 
-    }
-}
 
     public function render()
     {

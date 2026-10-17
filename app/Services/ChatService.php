@@ -61,14 +61,19 @@ class ChatService
      * Génère 4 questions fréquentes pour une thématique donnée.
      * Méthode non critique : en cas d'échec, on renvoie simplement un tableau vide.
      */
-    public function getSuggestedQuestions(?string $theme): array
+    public function getSuggestedQuestions(?string $theme,  ?string $profile = null): array
     {
+
         $systemPrompt = 'you are an expert in a given subject. you respond only using json format, blank line before every table'
             . ' sentences only, no surounding tex and  markdown caracters.'.'Unstack my taxes is a tax education and advisory plateform by Ilands solutions LLC, helping Gig economy workers who whant to find deductions they are missing and understand quartely estimated taxes, american expats who need clear guidance'.'only tax deduction and advisory, delivered online, no preparation and file tax returns'.'pricing membership pro 9$, premium 39$';
 
         $prompt = "for a website wich the theme is based on  : \"{$theme}\", generate 4 questions, if you don't know something suggest contacting our team "
             . "short and pertinentes wich users asks frequently. "
             . 'Example  format : ["Question 1 ?", "Question 2 ?"]';
+
+                   if ($profile) {
+        $prompt .= "\nVisitor profile (tailor the questions to it):\n" . $profile;
+    }
 
         try {
             $result = $this->callModel([new UserMessage($prompt)], $systemPrompt);
