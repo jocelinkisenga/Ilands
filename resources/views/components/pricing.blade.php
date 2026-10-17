@@ -6,7 +6,7 @@
                 Transparent Pricing
             </h2>
             <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
-                Choose the right plan to accelerate your growth. No hidden fees.
+                Choose the right plan to accelerate your growth. No hidden fees. One-time reports start at $9. Memberships unlock lessons, templates and the AI assistant.
             </p>
         </div>
 

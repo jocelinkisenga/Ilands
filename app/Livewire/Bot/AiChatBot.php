@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Bot;
 
 use App\Enums\FreeTokensPlan;
 use Livewire\Component;
@@ -306,6 +306,6 @@ class AiChatBot extends Component
     public function render()
     {
         
-        return view('livewire.ai-chat-bot');
+        return view('livewire.bot.ai-chat-bot');
     }
 }

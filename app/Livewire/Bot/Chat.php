@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Bot;
 
 use App\Services\ChatService;
 use Illuminate\Support\Facades\Auth;
@@ -136,6 +136,6 @@ class Chat extends Component
 
     public function render()
     {
-        return view('livewire.chat');
+        return view('livewire.bot.chat');
     }
 }

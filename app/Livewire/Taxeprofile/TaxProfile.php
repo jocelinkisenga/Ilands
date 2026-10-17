@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Taxeprofile;
 
 use App\Services\TaxProfileService;
 use Illuminate\Support\Facades\Auth;
@@ -202,7 +202,7 @@ class TaxProfile extends Component
     public function render()
     { 
 
-        return view('livewire.tax-profile');
+        return view('livewire.taxeprofile.tax-profile');
     }
 
 

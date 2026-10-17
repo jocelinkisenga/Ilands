@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Taxeprofile;
 
 use App\Models\Lead;
 use Livewire\Component;
@@ -94,6 +94,6 @@ class TaxScreener extends Component
 
     public function render()
     {
-        return view('livewire.tax-screener');
+        return view('livewire.taxeprofile.tax-screener');
     }
 }

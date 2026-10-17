@@ -26,12 +26,11 @@ use App\Livewire\Admin\Tokens\CreateToken;
 use App\Livewire\Admin\Tokens\EditToken;
 use App\Livewire\Admin\Tokens\Token;
 use App\Livewire\Admin\Users\UsersIndex;
-use App\Livewire\AiChatBot;
+use App\Livewire\Bot\AiChatBot;
 use App\Livewire\Contact;
 use App\Livewire\ModelConfiguration;
 use App\Livewire\Report\ReportAi;
-use App\Livewire\TaxProfile;
-use App\Livewire\TaxScreener;
+use App\Livewire\Taxeprofile\TaxProfile;
 use App\Livewire\User\Library\ContentShow;
 use App\Livewire\User\Library\ContinueLearning;
 use App\Livewire\User\Library\LibraryIndex;
@@ -42,6 +41,9 @@ use App\Livewire\Admin\AI\Configuration;
 use App\Livewire\Admin\AI\Models;
 use App\Livewire\Admin\AI\Providers;
 use App\Livewire\DefaultMessage;
+use App\Livewire\Taxeprofile\ListTaxProfiles;
+use App\Livewire\Taxeprofile\TaxScreener as TaxeprofileTaxScreener;
+use App\Livewire\Taxeprofile\EditTaxProfile as TaxProfileEditTaxProfile;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,13 +81,15 @@ require __DIR__ . "/auth.php";
 | AUTHENTICATED ROUTES (USER)
 |--------------------------------------------------------------------------
 */
+Route::livewire("/tax-screener", TaxeprofileTaxScreener::class)->name("tax-screener");
 
 Route::middleware(["auth"])->group(function () {
 
     // 1. Dashboard & Core Features
     Route::get("/dashboard", [DashboardController::class, "index"])->name("dashboard");
     Route::get("/chat/{chatId?}", AiChatBot::class)->name("chat");
-    Route::livewire("/tax-screener", TaxScreener::class)->name("tax-screener");
+    Route::livewire("/listTaxeprofiles", ListTaxProfiles::class)->name("listprofiles");
+    Route::livewire("/{profile}/edit", TaxProfileEditTaxProfile::class)->name("tax-profile.edit");
     Route::livewire("/reports", ReportAi::class)->name("reports");
     
     // 2. Profile Management
@@ -123,7 +127,7 @@ Route::middleware(["auth"])->group(function () {
 
     // 6. Subscribed Users Only
 
-        Route::livewire("/tax-profile", TaxProfile::class)->name("tax-profile");
+        Route::livewire("/tax-profile", TaxProfile::class)->name("tax-profile.create");
  
 });
 
